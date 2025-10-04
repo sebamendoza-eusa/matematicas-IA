@@ -34,7 +34,11 @@ $$
 
 > **Ejemplo:** En un dado, sea $A$: obtener un número par ($A=\{2,4,6\}$) y $B$: obtener un número mayor que 4 ($B=\{5,6\}$). La **intersección** es $A \cap B = \{6\}$.
 > Usando la regla de Laplace, $P(A) = 3/6$, $P(B) = 2/6$, y $P(A \cap B) = 1/6$.
-> Entonces, $P(A \cup B) = \frac{3}{6} + \frac{2}{6} - \frac{1}{6} = \frac{4}{6} = \frac{2}{3}$.
+> Entonces,
+>
+>$$
+>P(A \cup B) = \frac{3}{6} + \frac{2}{6} - \frac{1}{6} = \frac{4}{6} = \frac{2}{3}
+>$$
 
 #### Intersección de Eventos
 
@@ -69,7 +73,7 @@ $$
 
 En términos intuitivos, saber que ocurrió uno no cambia nuestra estimación de que ocurra el otro.
 
-> **Ejemplo:** al lanzar dos dados distintos, el resultado del primero no afecta al segundo. La probabilidad de obtener un 3 en el primero y un 5 en el segundo es
+> **Ejemplo:**\Al lanzar dos dados distintos, el resultado del primero no afecta al segundo. La probabilidad de obtener un 3 en el primero y un 5 en el segundo es
 >
 > $$
 >  \frac{1}{6} \cdot \frac{1}{6} = \frac{1}{36}.
@@ -80,8 +84,7 @@ En términos intuitivos, saber que ocurrió uno no cambia nuestra estimación de
 
 En contraste, dos eventos son **dependientes** cuando la ocurrencia de uno modifica la probabilidad del otro.
 
-> **Ejemplo:** si tenemos una bolsa con 5 bolas rojas y 5 azules y sacamos una sin reemplazo, la probabilidad de la segunda extracción depende de lo que ocurrió en la primera. Si la primera bola fue roja, habrá menos rojas disponibles en la segunda extracción y, por tanto, la probabilidad de cada color habrá cambiado.
-
+> **Ejemplo:**\Si tenemos una bolsa con 5 bolas rojas y 5 azules y sacamos una sin reemplazo, la probabilidad de la segunda extracción depende de lo que ocurrió en la primera. Si la primera bola fue roja, habrá menos rojas disponibles en la segunda extracción y, por tanto, la probabilidad de cada color habrá cambiado.
 > Este concepto de independencia no solo es importante para cálculos sencillos, sino que será clave en inteligencia artificial. Muchos modelos probabilísticos hacen suposiciones de independencia para simplificar problemas muy complejos. Más adelante veremos cómo esta idea reaparece en el **Teorema de Bayes** y en algoritmos como **Naive Bayes**, donde se asume que ciertas variables se comportan como si fueran independientes para poder construir modelos eficientes.
 
 
@@ -102,7 +105,7 @@ Por ejemplo, la probabilidad de sacar un 4 al lanzar un dado justo es $1/6$, pue
 
 Esta interpretación funciona bien en juegos de azar y situaciones simétricas, pero presenta límites cuando los resultados no son equiprobables. En un dado cargado, por ejemplo, algunos resultados tienen más probabilidad que otros, y el razonamiento clásico deja de ser aplicable.
 
-> **Para reflexionar…**
+> **Para reflexionar...**\
 > ¿Crees que podemos usar la interpretación clásica para calcular la probabilidad de que un correo electrónico sea spam? ¿Por qué ese contexto no encaja con un cálculo de “casos favorables / casos posibles” como en un dado?
 
 #### Interpretación frecuentista
@@ -117,10 +120,10 @@ Si lanzamos una moneda justa muchas veces, la proporción de caras tenderá a 0.
 
 Esta visión conecta directamente con la práctica del análisis de datos: se estiman probabilidades observando **muestras grandes** y confiando en que reflejan el comportamiento de la población. En inteligencia artificial, la mayoría de los modelos se basan en este enfoque: entrenamos algoritmos con miles de ejemplos y a partir de ahí inferimos qué patrones son más probables.
 
-> **Ejemplo**:
+> **Ejemplo**:\
 > Si en un dataset de 10.000 correos encontramos que 3.000 son spam, podríamos estimar la probabilidad de spam como $P(\text{spam}) \approx 0.3$.
 
-> **Para reflexionar…**
+> **Para reflexionar...**\
 > ¿Hasta qué punto crees que esa probabilidad de 0.3 es “real”? ¿Y si mañana cambia el tipo de correos que recibimos y la proporción de spam aumenta al 50%?
 
 #### Interpretación bayesiana o subjetiva
@@ -131,10 +134,10 @@ Por ejemplo, si el parte meteorológico anuncia un 70% de probabilidad de lluvia
 
 En IA, este enfoque es central: los modelos bayesianos asignan probabilidades iniciales (priors) y luego las actualizan conforme reciben nueva evidencia. Así funciona un filtro de spam basado en Bayes: comienza con creencias sobre qué palabras son típicas en correos spam, y cada nuevo mensaje ajusta esas creencias.
 
-> **Ejemplo**:
+> **Ejemplo**:\
 > Si recibes un correo con la palabra “gratis”, un modelo bayesiano calcularía la probabilidad de que sea spam combinando tu creencia previa con la evidencia de que “gratis” aparece con más frecuencia en correos no deseados.
 
-> **Para reflexionar…**
+> **Para reflexionar...**\
 > Imagina que un sistema de recomendación te sugiere una película con una probabilidad del 85% de que te guste. ¿Crees que esa probabilidad refleja una frecuencia observada en muchos “tus iguales”, o más bien una creencia actualizada del sistema sobre ti en particular?
 
 
@@ -143,7 +146,7 @@ Cada interpretación de la probabilidad ilumina un aspecto distinto de esta: la 
 
 En inteligencia artificial, estas tres miradas conviven. Los juegos de azar siguen siendo el ejemplo perfecto de la clásica, el entrenamiento con grandes datasets responde al enfoque frecuentista, y la personalización de predicciones con información en tiempo real se nutre del enfoque bayesiano.
 
-> **Para reflexionar…**
+> **Para reflexionar...**\
 > ¿Tiene sentido hablar de “la probabilidad verdadera” de un evento, o deberíamos aceptar que depende de la interpretación que adoptemos?
 
 ## Definición de función de probabilidad y axiomas de Kolmogórov
@@ -189,7 +192,7 @@ $$
 
 
 
-> **Ejemplo**:
+> **Ejemplo**:\
 >
 > Si lanzamos un dado justo, el espacio muestral es $\Omega = {1,2,3,4,5,6}$. La probabilidad de cada cara es $1/6$.
 >
