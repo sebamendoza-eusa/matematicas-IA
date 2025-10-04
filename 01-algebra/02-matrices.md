@@ -540,7 +540,9 @@ Como $|\mathbf{A}| = 1 \neq 0$, la matriz es invertible.
 
 Ahora calculamos cada cofactor $C_{ij} = (-1)^{i+j} |M_{ij}|$, donde $M_{ij}$ es la submatriz que se obtiene eliminando la fila $i$ y la columna $j$.
 
-- $C_{11} = |\begin{bmatrix} 1 & 4 \\ 6 & 0 \end{bmatrix}| = (1)(0) - (4)(6) = -24$
+$$
+C_{11} = |\begin{bmatrix} 1 & 4 \\ 6 & 0 \end{bmatrix}| = (1)(0) - (4)(6) = -24
+$$
 
 - $C_{12} = - \det \begin{bmatrix} 0 & 4 \\ 5 & 0 \end{bmatrix} = -[(0)(0) - (4)(5)] = -(-20) = 20$
 
