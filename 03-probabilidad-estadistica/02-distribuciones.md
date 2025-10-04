@@ -16,12 +16,13 @@ Para una variable aleatoria discreta, utilizamos la **función de masa de probab
 
 Para una variable aleatoria continua, el concepto cambia ligeramente. Dado que hay infinitos valores posibles en un intervalo, la probabilidad de que tome un valor exacto es cero. En su lugar, utilizamos la **función de densidad de probabilidad** ($f(x)$). Esta función nos permite calcular la probabilidad de que la variable caiga dentro de un rango específico, lo cual se logra integrando la función a lo largo de ese intervalo. Es importante notar que la integral de la función de densidad sobre todo su rango posible debe ser igual a 1.
 
-> Puede ser complicado entender el el hecho de que la probabilidad de que una variable continua tome un valor exacto es cero, pero piensa lo siguiente: 
->
-> Supón que eliges un número al azar en el intervalo $[0,1]$. La probabilidad de elegir exactamente $0.5$ sería como preguntar:
->  *“¿Qué probabilidad hay de acertar un número real con infinitas cifras decimales?”* Como hay infinitos números posibles y cada intervalo (por mínimo que sea) ya contiene infinitos valores, no se puede asignar probabilidad positiva a un único número.
->
-> A pertir de ahora ten en cuenta que **“en variables continuas, la probabilidad vive en los intervalos, no en los puntos”**.
+Puede ser complicado entender el el hecho de que la probabilidad de que una variable continua tome un valor exacto es cero, pero piensa lo siguiente:
+
+Supón que eliges un número al azar en el intervalo $[0,1]$. La probabilidad de elegir exactamente $0.5$ sería como preguntar:
+
+*“¿Qué probabilidad hay de acertar un número real con infinitas cifras decimales?”* Como hay infinitos números posibles y cada intervalo (por mínimo que sea) ya contiene infinitos valores, no se puede asignar probabilidad positiva a un único número.
+
+A partir de ahora ten en cuenta que **“en variables continuas, la probabilidad vive en los intervalos, no en los puntos”**.
 
 
 >**Para reflexionar...**\
@@ -75,7 +76,7 @@ El siguiente ejemplo ilustra la diferencia entre la **distribución de probabili
 Comprender la distribución de los datos y de los errores de un modelo es fundamental en la **IA**. Si conocemos la distribución, podemos tomar decisiones informadas, como establecer umbrales de alerta en un sistema de detección de anomalías o seleccionar la función de pérdida más adecuada para entrenar un modelo que se ajuste mejor a la naturaleza probabilística de los datos.
 
 > **Para reflexionar...**\
-> **Si un equipo de MLOps te reporta que el tiempo de inferencia de tu modelo no sigue una Distribución Exponencial, sino una Distribución Normal, ¿cómo cambiaría la interpretación práctica del riesgo de latencia?**
+> **Si un equipo de MLOps te reporta que el tiempo de inferencia de tu modelo no sigue una Distribución Exponencial, sino una Distribución Normal, ¿cómo cambiaría la interpretación práctica del riesgo de latencia?**\
 > *Considera que la Distribución Exponencial solo tiene valores positivos y decae rápidamente (es asimétrica), mientras que la Distribución Normal es simétrica y puede tener valores negativos (aunque en tiempo esto no tenga sentido). Piensa en cómo la asimetría de la Exponencial modela mejor los tiempos mínimos y el riesgo de colas largas (latencia extrema), mientras que la Normal asume que las desviaciones por encima o por debajo de la media son igualmente probables.*
 
 ### Caracterización de una Distribución de Probabilidad: Media, Varianza y la CDF
@@ -113,7 +114,7 @@ La **desviación estándar** ($\sigma$), siendo la raíz cuadrada de la varianza
 
 ### La Función de Distribución Acumulada (CDF)
 
-Finalmente, un concepto que caracteriza cualquier distribución es la **Función de Distribución Acumulada** ($F(x)$), a menudo abreviada como CDF. La CDF nos da la probabilidad de que una variable aleatoria $X$ tome un valor menor o igual a un valor específico $x$. Es decir, nos da una probabilidad *acumulada*.
+Finalmente, un concepto que caracteriza cualquier distribución es la **Función de Distribución Acumulada** $(F(x))$, a menudo abreviada como CDF. La CDF nos da la probabilidad de que una variable aleatoria $X$ tome un valor menor o igual a un valor específico $x$. Es decir, nos da una probabilidad *acumulada*.
 
 $$
 F(x) = P(X \leq x)
@@ -254,7 +255,7 @@ En síntesis, la distribución normal funciona como un **lenguaje común de la i
 
 La **Distribución Binomial** aparece siempre que nos interesa contar cuántas veces ocurre un determinado resultado dentro de una secuencia de intentos independientes. Se trata del modelo natural de los **ensayos de Bernoulli**, donde cada prueba solo puede dar dos resultados: éxito o fracaso. El supuesto clave es que el número de intentos $n$ es fijo y que la probabilidad de éxito $p$ se mantiene constante en cada repetición.
 
-En términos sencillos, la binomial responde a preguntas del tipo: *si la probabilidad de que un evento ocurra es $p$, ¿cuál es la probabilidad de observar exactamente $k$ éxitos tras $n$ intentos?* Matemáticamente, la probabilidad se expresa como:
+En términos sencillos, la binomial responde a preguntas del tipo: *si la probabilidad de que un evento ocurra es* $p$, *¿cuál es la probabilidad de observar exactamente* $k$ *éxitos tras* $n$ *intentos?* Matemáticamente, la probabilidad se expresa como:
 
 $$
  P(X=k) = \binom{n}{k} p^k (1-p)^{n-k}

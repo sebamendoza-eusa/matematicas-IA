@@ -197,13 +197,9 @@ $$
 
 
 > **Ejemplo**:\
->
 > Si lanzamos un dado justo, el espacio muestral es $\Omega = {1,2,3,4,5,6}$. La probabilidad de cada cara es $1/6$.
->
 > La **no negatividad** asegura que no tiene sentido hablar de probabilidades como $-0.2$.
->
 > La **normalización** garantiza que la probabilidad total de obtener “algún número” es 1.
->
 > La **aditividad** nos dice que la probabilidad de obtener un número par es
 >
 > $$
@@ -221,7 +217,7 @@ En IA, esto asegura que nunca asignemos probabilidad positiva a un evento “imp
 
 #### Complemento de un evento
 
-Si $A$ es un evento, su complemento $A^c$ representa que “$A$ no ocurre”. De los axiomas se deduce que:
+Si $A$ es un evento, su complemento $A^c$ representa que $A$ "no ocurre". De los axiomas se deduce que:
 
 $$
 P(A^c) = 1 - P(A).

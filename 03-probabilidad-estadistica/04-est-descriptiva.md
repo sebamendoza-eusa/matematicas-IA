@@ -101,7 +101,7 @@ $$
 > **Para reflexionar...**\
 > En un sistema de recomendación, ¿crees que sería más útil calcular la media de las calificaciones de un usuario, o la mediana? ¿Qué pasaría si ese usuario tiende a dar puntuaciones extremas (muy bajas o muy altas) que podrían distorsionar la media?
 
-Medidas de dispersión
+## Medidas de dispersión
 
 
 Las medidas de dispersión nos cuentan una parte de la historia que la media, la mediana o la moda no alcanzan a revelar. Saber que la nota media de una clase es un 7 no es lo mismo si casi todos los estudiantes rondan ese valor, o si en realidad hay una mezcla de sobresalientes y suspensos que se compensan. La dispersión mide justamente ese “grado de acuerdo” entre los datos: cuando es baja, los valores son parecidos y describen un comportamiento homogéneo; cuando es alta, los datos se dispersan por todo el rango posible y muestran gran diversidad.
@@ -219,10 +219,9 @@ Vamos a fijar ideas con un ejemplo
 >
 
 > **Para reflexionar...**\
->
 > ¿Por qué puede ser más informativo representar los datos con un diagrama de caja que limitarse a dar la media y la desviación estándar? ¿Qué nos dice un boxplot sobre los valores atípicos que una media nunca revelaría?
 
-Representaciones gráficas en EDA
+## Representaciones gráficas en EDA
 
 
 Hasta ahora hemos trabajado con números: medias, medianas, desviaciones y cuartiles. Pero los datos, además de resumirse, también se **visualizan**. La representación gráfica es uno de los pilares del análisis exploratorio de datos (EDA), porque permite captar patrones, tendencias y anomalías de un vistazo, mucho antes de aplicar algoritmos complejos.
@@ -281,7 +280,6 @@ Donde $x_i$ e $y_i$ son los valores observados de las variables $X$ e $Y$, y $\b
 <img src="./assets/Scatter-Plots-and-Correlation-Examples.png" alt="The Scatter Plot as a QC Tool for Quality Professionals" />
 
 > **Para reflexionar...**\
->
 > **¿Cómo podría un diagrama de dispersión ayudarte a justificar la elección de un modelo de *Machine Learning* sobre otro?**
 > *Piensa en dos variables que, al ser representadas, muestran claramente una forma curva (no lineal). ¿Qué le diría esto a un científico de datos sobre el uso de un modelo de Regresión Lineal? Reflexiona sobre cómo la visualización de una relación no lineal te obligaría a considerar modelos como Árboles de Decisión o Redes Neuronales que pueden capturar dependencias más complejas.*
 
