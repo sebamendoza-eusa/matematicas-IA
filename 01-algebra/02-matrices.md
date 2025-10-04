@@ -123,8 +123,8 @@ Esta operación es fundamental en las **redes neuronales**, donde la informació
 
 
 
->**Para reflexionar**
-> **¿Por qué la multiplicación de matrices es una operación tan importante en el Deep Learning?**
+>**Para reflexionar**\
+> **¿Por qué la multiplicación de matrices es una operación tan importante en el Deep Learning?**\
 > *Considera cómo los pesos de una capa neuronal y las entradas de la misma se organizan en matrices y cómo la multiplicación de estas matrices permite calcular de manera paralela y eficiente las activaciones de todas las neuronas de la siguiente capa. Piensa en la diferencia en la complejidad computacional entre realizar los cálculos uno por uno frente a usar una operación matricial única.*
 
 Tipos especiales de matrices
@@ -200,7 +200,7 @@ Las matrices simétricas tienen propiedades muy importantes:
 
 En IA, aparecen de forma recurrente en estadística y aprendizaje automático, ya que las matrices de covarianzas y correlaciones son siempre simétricas, y constituyen la base de técnicas como el PCA.
 
-> **Para reflexionar...**
+> **Para reflexionar...**\
 > **¿Por qué crees que resulta tan útil que las matrices de covarianzas sean simétricas en algoritmos de aprendizaje? ¿Qué implicaciones tiene que sus autovalores sean siempre reales?**
 
 
@@ -265,8 +265,8 @@ Supongamos que en una base de datos de viviendas tenemos las siguientes columnas
 
 Aunque parecen tres características, en realidad solo hay dos distintas: los metros cuadrados y el número de habitaciones. La columna de pies cuadrados es solo una versión escalada de los metros cuadrados. El rango de esta matriz de datos sería 2, no 3, porque una de las columnas no aporta información independiente.
 
-> **Para reflexionar...**
-> **¿Por qué crees que es problemático almacenar muchas características que en el fondo dicen lo mismo? ¿Qué ventajas tendría identificar estas redundancias antes de trabajar con los datos?**
+> **Para reflexionar...**\
+> **¿Por qué crees que es problemático almacenar muchas características que en el fondo dicen lo mismo? ¿Qué ventajas tendría identificar estas redundancias antes de trabajar con los datos?**\
 > **Si quisieras entrenar un modelo con estos datos, ¿qué problemas crees que surgirían al incluir una característica que es exactamente proporcional a otra? ¿Por qué sería más razonable quedarse solo con dos columnas?**
 
 
@@ -298,7 +298,7 @@ Esta relación es muy útil en la práctica, porque el rango nos ofrece una medi
 
 
 
-> **Para reflexionar...**
+> **Para reflexionar...**\
 > **¿Por qué crees que en el análisis de datos resulta más flexible trabajar con el rango que con el determinante? ¿Qué ventaja ofrece el rango cuando tratamos matrices rectangulares que no son cuadradas?**
 
 
@@ -333,7 +333,7 @@ El resultado nos indica que las dos columnas de $\mathbf{A}$ son dependientes (l
 
 
 
-> **Para reflexionar...**
+> **Para reflexionar...**\
 > **¿Por qué crees que es peligroso entrenar un modelo con variables redundantes? ¿Qué pasaría si intentamos resolver un sistema de ecuaciones con datos que contienen esta dependencia oculta?**
 
 
@@ -421,7 +421,7 @@ En IA, aunque rara vez se calcula la inversa de manera explícita en la práctic
 
 
 
-> **Para reflexionar...**
+> **Para reflexionar...**\
 > **¿Por qué crees que en problemas con datos redundantes (donde las características no son independientes) no podemos calcular una solución única usando la matriz inversa? ¿Qué alternativas podrían usarse en esos casos?**
 
 ### Cómo calcular la inversa de una matriz: Método formal
@@ -666,7 +666,7 @@ $$
 
 
 
-> **Para reflexionar...**
+> **Para reflexionar...**\
 > **Si en este ejemplo el determinante hubiera resultado ser cero, ¿qué habría significado en términos de independencia de las filas y columnas de la matriz? ¿Cómo se relaciona esto con la imposibilidad de calcular la inversa?**
 
 #### Interpretación práctica
@@ -678,7 +678,7 @@ Más allá de la técnica concreta, lo importante es comprender que el cálculo 
 
 
 
-> **Para reflexionar...**
+> **Para reflexionar...**\
 > **Si en un proyecto de IA tuviéramos que invertir una matriz de datos de tamaño muy grande, ¿crees que sería práctico hacerlo a mano con el método de cofactores? ¿Qué ventajas ofrecen entonces las bibliotecas computacionales frente a los métodos teóricos?**
 
 
@@ -862,8 +862,7 @@ Por ejemplo, imagina el caso concreto de un modelo dinámico que describe cómo 
 
 
 >**Para reflexionar...**\
-> ¿Por qué es tan útil poder identificar direcciones privilegiadas en un conjunto de datos o en la dinámica de un sistema? ¿Cómo nos ayuda esta visión a simplificar problemas que, a primera vista, parecen demasiado complejos
->
+> ¿Por qué es tan útil poder identificar direcciones privilegiadas en un conjunto de datos o en la dinámica de un sistema? ¿Cómo nos ayuda esta visión a simplificar problemas que, a primera vista, parecen demasiado complejos\
 > ¿Por qué es útil identificar vectores que no cambian de orientación bajo la acción de una matriz? ¿Qué nos dice un autovalor grande sobre la importancia de esa dirección en los datos?
 
 ### La ecuación característica

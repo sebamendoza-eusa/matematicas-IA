@@ -19,8 +19,8 @@ En el mundo de la IA, los vectores son omnipresentes. Los datos con los que trab
 La capacidad de representar información compleja en forma de vectores es lo que permite que los algoritmos de aprendizaje automático puedan procesar y encontrar patrones en los datos. El álgebra lineal nos proporciona las herramientas para manipular estos vectores, permitiéndonos realizar operaciones como la suma, la resta, o el producto escalar, que son fundamentales para los cálculos internos de los modelos.
 
 >**Para reflexionar...**\
-> **¿Por qué es más útil representar los datos como vectores en lugar de simplemente como una lista de números sin ninguna estructura?**
-> *Considera cómo la estructura de un vector, y la capacidad de realizar operaciones matemáticas con él, nos permite capturar no solo la información individual, sino también las relaciones y distancias entre los distintos puntos de datos. Piensa en cómo calcular la "distancia" entre dos perfiles de usuario, o la "similitud" entre dos imágenes, se convierte en un problema matemático manejable cuando los datos están representados como vectores.*
+>**¿Por qué es más útil representar los datos como vectores en lugar de simplemente como una lista de números sin ninguna estructura?**
+>*Considera cómo la estructura de un vector, y la capacidad de realizar operaciones matemáticas con él, nos permite capturar no solo la información individual, sino también las relaciones y distancias entre los distintos puntos de datos. Piensa en cómo calcular la "distancia" entre dos perfiles de usuario, o la "similitud" entre dos imágenes, se convierte en un problema matemático manejable cuando los datos están representados como vectores.*
 
 ## Ejemplo práctico: Vectores y escalares en Machine Learning
 
