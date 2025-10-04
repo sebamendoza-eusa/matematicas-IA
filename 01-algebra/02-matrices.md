@@ -553,7 +553,7 @@ C_{12} =
 -\begin{vmatrix}
  0 & 4 \\
  5 & 0 
- \end{bmatrix} 
+ \end{vmatrix} 
 = -[(0)(0) - (4)(5)] = -(-20) = 20
 $$
 
