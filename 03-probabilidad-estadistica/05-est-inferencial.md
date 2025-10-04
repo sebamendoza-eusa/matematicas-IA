@@ -94,6 +94,7 @@ Así que el procedimiento siempre es el mismo: **media muestral ± margen de err
 > Supongamos que medimos el tiempo medio que tarda en ejecutarse un algoritmo en 25 ejecuciones. La media observada es de $2.1$ segundos y la desviación estándar es $0.5$. Queremos un intervalo de confianza al 95%.
 >
 > El error estándar es
+>
 > $$
 > \frac{0.5}{\sqrt{25}}=0.1.
 > $$
@@ -172,19 +173,19 @@ La **hipótesis alternativa** ($H_1$), en cambio, expresa lo que nos interesa de
 
 * Si queremos comprobar si el método online es mejor, entonces
 
-  $$
-  H_1:\ \mu_{\text{nuevo}} > \mu_{\text{tradicional}}
-  $$
+$$
+H_1:\ \mu_{\text{nuevo}} > \mu_{\text{tradicional}}
+$$
 
 * Si solo queremos saber si existe alguna diferencia, sin importar el sentido, formulamos una alternativa bilateral:
 
-  $$
-  H_1:\ \mu_{\text{nuevo}} \ne \mu_{\text{tradicional}}
-  $$
+$$
+H_1:\ \mu_{\text{nuevo}} \ne \mu_{\text{tradicional}}
+$$
 
 Así, la nula funciona como el “estado de conservación” y la alternativa como la hipótesis de cambio.
 
-> **Ejemplo**
+> **Ejemplo**\
 > Supongamos que con el método tradicional la media histórica de calificaciones es de 6.5 sobre 10. El equipo docente aplica el nuevo método a 50 estudiantes y obtiene una media de 7.0 con desviación típica 0.6. La hipótesis nula sería $H_0:\ \mu=6.5$, mientras que la alternativa podría ser $H_1:\ \mu>6.5$. El contraste nos permitirá evaluar si esa diferencia de 0.5 puntos es simplemente fruto del azar en la muestra o una señal de mejora real.
 
 > **Para reflexionar...**\
@@ -289,7 +290,7 @@ En inteligencia artificial, esta discusión es especialmente relevante cuando co
 
 > **Para reflexionar...**\
 > **Si pasas de F1 = 0.910 a F1 = 0.918 con $p=0.03$ gracias a más datos de entrenamiento, ¿es una mejora que merece el cambio de modelo? ¿Y si con el doble de datos obtienes $p<10^{-6}$ para una mejora de solo 0.003?**\
-> *Piensa en el equilibrio entre significación estadística, tamaño de efecto y relevancia práctica: el valor p te habla de evidencia contra $H_0$, no de utilidad real del cambio.*
+> *Piensa en el equilibrio entre significación estadística, tamaño de efecto y relevancia práctica: el valor p te habla de evidencia contra* $H_0$, *no de utilidad real del cambio.*
 
 Para concluir volvamos a insistir **qué es y qué no es el valor p**. A menudo se interpreta como la probabilidad de que la hipótesis nula sea cierta, es decir, $P(H_0|\text{datos})$, y **esto no es así**. En realidad el valor p mide otra cosa: es la probabilidad de observar unos datos tan extremos como los obtenidos, o incluso más, **suponiendo que la hipótesis nula es cierta**. Matemáticamente, hablamos de $P(\text{datos extremos}|H_0)$.
 
@@ -345,7 +346,7 @@ $$
 
 donde $\text{cov}(X,Y)$ es la **covarianza** entre $X$ e $Y$, y $\sigma_X$, $\sigma_Y$ son las desviaciones estándar de cada variable. La covarianza mide cómo varían las dos variables de manera conjunta: si ambas tienden a desviarse de su media en la misma dirección, la covarianza es positiva; si lo hacen en direcciones opuestas, es negativa. Al dividirla entre las desviaciones estándar, conseguimos una medida normalizada entre −1 y 1, que nos permite comparar relaciones en distintos contextos.
 
-> **Ejemplo**
+> **Ejemplo**\
 > Supongamos que en una clase recogemos las horas de estudio y las notas de cinco estudiantes:
 > $X =$ [2, 4, 5, 6, 8] horas de estudio.
 > $Y =$ [5, 6, 7, 8, 9] calificaciones.
@@ -373,7 +374,7 @@ Este problema es muy relevante en inteligencia artificial. Si un modelo de predi
 
 Matemáticamente, una correlación elevada significa que dos variables se mueven juntas en promedio, pero no dice nada sobre la dirección de la influencia. Que $X$ y $Y$ estén correlacionados no implica que $X \to Y$ ni que $Y \to X$; también puede existir una **tercera variable oculta** que esté influyendo sobre ambas.
 
-> **Ejemplo**
+> **Ejemplo**\
 > Imaginemos que en un dataset de recomendación de música observamos que la edad de los usuarios está correlacionada con el número de canciones de un cierto género que escuchan. ¿Significa eso que cumplir años causa que alguien escuche más jazz o reguetón? No necesariamente. Puede que lo que realmente influya sea la **cohorte generacional**: haber crecido en un contexto cultural concreto explica tanto la edad como la preferencia musical.
 
 > **Para reflexionar...**\
@@ -398,7 +399,7 @@ Veremos en modelos probabilísticos como las **redes bayesianas**, esta idea se 
 
 También en el aprendizaje por refuerzo, aparece bajo otra forma muy conocida: la **hipótesis de Markov**. Según esta hipótesis, la acción futura de un agente depende únicamente del estado actual del sistema y no de toda la historia pasada. Dicho de otro modo, conocer el estado presente ya contiene toda la información relevante, y condicionando a él, las dependencias con estados previos desaparecen.
 
-> **Ejemplo**
+> **Ejemplo**\
 > Imaginemos un sistema de recomendación de películas. A simple vista puede parecer que la variable “género de la última película vista” y la variable “próxima película elegida” están directamente relacionadas. Pero si añadimos la variable “preferencias generales del usuario”, el vínculo directo desaparece: una vez que sabemos que el usuario en general prefiere la ciencia ficción, tanto la última película vista como la siguiente elección se explican por esa preferencia de fondo.
 
 > **Para reflexionar...**\
@@ -419,7 +420,7 @@ La **validación cruzada** es la herramienta que nos permite responder a esa pre
 
 La idea es muy similar a la de los intervalos de confianza. Cuando repetimos la validación cruzada, no buscamos un único número, sino una **estimación robusta del desempeño** y un rango dentro del cual es razonable esperar que caiga el verdadero rendimiento en datos nuevos. Así, la validación cruzada puede entenderse como un “muestreo dentro de la muestra”: no conocemos el futuro, pero creamos versiones simuladas del proceso de entrenamiento y prueba para aproximarlo.
 
-> **Ejemplo**
+> **Ejemplo**\
 > Supongamos que entrenamos un modelo para clasificar correos en “spam” o “no spam” con 1000 ejemplos. Si usamos el 80% de los datos para entrenar y el 20% para probar, el resultado depende demasiado de qué 200 correos concretos caen en el conjunto de test. Podría ser que, por azar, justo esos correos fueran más fáciles de clasificar. La validación cruzada evita este sesgo: dividimos el dataset en, por ejemplo, 5 pliegues. Cada pliegue actúa como test una vez, mientras los otros cuatro se usan para entrenar. Al final, tenemos 5 estimaciones y su promedio nos da una visión mucho más estable del rendimiento esperado.
 
 La conexión con la inferencia estadística se hace evidente. Mientras que en los apartados anteriores hemos visto cómo usar una muestra para estimar parámetros poblacionales (la media de notas de todos los estudiantes, la proporción de aciertos de un modelo en el mundo real), aquí aplicamos la misma lógica para estimar el **rendimiento de un modelo en datos no observados**.
@@ -438,7 +439,7 @@ Aquí es donde entran en juego los **métodos de simulación**, y entre ellos de
 
 Podemos pensarlo como un casino matemático. Cada repetición es como una tirada de dados: no nos dice mucho por sí sola, pero al repetir muchas veces obtenemos una imagen clara de cómo se comporta el sistema en promedio. De hecho, el nombre “Monte Carlo” viene de la analogía con el azar de los juegos de casino.
 
-> **Ejemplo**
+> **Ejemplo**\
 > Imagina que queremos calcular la probabilidad de que la media de un examen supere el 7, pero los datos reales no siguen una distribución normal clara. En lugar de recurrir a fórmulas exactas, podemos tomar la muestra disponible y generar muchas simulaciones extrayendo subconjuntos aleatorios (con reemplazo). Al calcular en cada simulación la media y observar cuántas veces supera el 7, obtenemos una estimación aproximada de esa probabilidad.
 
 En inteligencia artificial, los métodos de Monte Carlo son especialmente útiles en tres contextos. El primero es el de los **modelos bayesianos**, donde necesitamos muestrear distribuciones de probabilidad demasiado complicadas para describirlas con una fórmula cerrada. El segundo es el **cálculo de expectativas en problemas de decisión**: un agente puede simular miles de trayectorias posibles de sus acciones para estimar la recompensa futura esperada. El tercero es la **validación de modelos en entornos de alta dimensión**, donde los métodos exactos son imposibles y recurrimos a simulaciones para entender la variabilidad del rendimiento.

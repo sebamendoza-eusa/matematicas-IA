@@ -305,11 +305,10 @@ Si las cajas se superponen ampliamente, indica que la característica tiene un b
 
 <img src="./assets/Ht2tA.png" alt="pandas - matplotlib: box plot for each category - Stack Overflow" style="zoom:50%;" />
 
-> **Ejemplo**:
+> **Ejemplo**:\
 > En el análisis del rendimiento de un modelo de *Deep Learning*, se puede utilizar un conjunto de *boxplots* para contrastar la distribución de los **errores de predicción** (variable numérica) entre distintas **arquitecturas de red** (variable categórica). Si el *boxplot* de la Arquitectura X muestra una mediana más baja y una caja mucho más compacta que la Arquitectura Y, se concluye que X es más precisa y más consistente en sus errores. Si, además, Y presenta muchos más *outliers* de error, se sabe que Y es más inestable.
 
-> **Ejemplo:**
->
+> **Ejemplo:**\
 > Aquí tienes un ejemplo de **boxplot** construido a partir de los datos de visitas diarias a una web. La caja azul muestra el rango intercuartílico (Q1–Q3), la línea roja indica la mediana, los “bigotes” marcan el rango sin outliers y el punto naranja representa el valor extremo de 50 visitas, identificado como atípico.
 >
 > <img src="./assets/image-20251001095632885.png" alt="image-20251001095632885" />
@@ -322,8 +321,7 @@ Si las cajas se superponen ampliamente, indica que la característica tiene un b
 > 4. **El punto aislado en naranja** representa el día con 50 visitas. El boxplot lo detecta como **outlier**, porque se aleja demasiado del comportamiento normal. Visualmente, se resalta que es un día excepcional.
 
 > **Para reflexionar...**\
->
-> **Imagina que observas un *boxplot* donde la mediana está muy cerca de $Q_1$ y el bigote superior es extremadamente largo, con muchos *outliers* en el extremo superior. ¿Qué tipo de transformación sugerirías para esta variable (por ejemplo, en un modelo de Regresión)?**
+> **Imagina que observas un *boxplot* donde la mediana está muy cerca de $Q_1$ y el bigote superior es extremadamente largo, con muchos *outliers* en el extremo superior. ¿Qué tipo de transformación sugerirías para esta variable (por ejemplo, en un modelo de Regresión)?**\
 > *Reflexiona sobre cómo esta visualización revela un **fuerte sesgo positivo**. Piensa en transformaciones matemáticas (como la transformación logarítmica) que se utilizan comúnmente en EDA para reducir la asimetría y mitigar el impacto de los valores extremos.*
 
 ### Conexión con la exploración de datasets en IA
@@ -337,8 +335,7 @@ Es posible detectar escalas muy distintas entre variables, lo que justificaría 
 Visto así, las visualizaciones estadísticas actúan como los **“rayos X” de los datos**: una exploración preliminar que revela la salud, la estructura interna y los posibles puntos débiles del *dataset* antes de ponerlo en manos de un algoritmo. Este paso asegura que el entrenamiento comience sobre una base de datos limpia y bien comprendida, maximizando las posibilidades de obtener un modelo de IA preciso y robusto.
 
 > **Para reflexionar...**\
->
-> **Si un modelo de clasificación falla al distinguir dos clases, ¿crees que un diagrama de dispersión entre las variables clave podría mostrar visualmente por qué ocurre esa confusión? ¿Cómo cambiaría tu estrategia de modelado si descubrieras que las clases se solapan fuertemente en el plano de esas variables?**
+> **Si un modelo de clasificación falla al distinguir dos clases, ¿crees que un diagrama de dispersión entre las variables clave podría mostrar visualmente por qué ocurre esa confusión? ¿Cómo cambiaría tu estrategia de modelado si descubrieras que las clases se solapan fuertemente en el plano de esas variables?**\
 > *Reflexiona sobre si el problema es la complejidad del modelo o la falta de separación intrínseca de los datos. Piensa en qué implicaciones tendría visualmente el solapamiento de clases para la precisión de cualquier algoritmo, y qué medidas de ingeniería de características podrías considerar.*
 
 ## Conexiones de la estadística descriptiva con la Inteligencia Artificial
