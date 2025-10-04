@@ -21,7 +21,7 @@ Este planteamiento muestra que resolver sistemas lineales es, en esencia, un pro
 
 
 
->**Para reflexionar…**
+>**Para reflexionar…**\
 >**¿Qué significa, desde un punto de vista geométrico, que un sistema no tenga solución? ¿Podría interpretarse como que las restricciones que imponemos a los datos son incompatibles entre sí?**
 
 ## Representación matricial de un sistema
@@ -48,7 +48,7 @@ $$
 x \\
 y
 \end{bmatrix}
-=
+=\\
 \begin{bmatrix}
 10 \\
 3
@@ -69,7 +69,7 @@ La notación matricial conecta de manera natural con el trabajo en inteligencia 
 
 
 
->**Para reflexionar…**
+>**Para reflexionar…**\\
 >**¿Qué ventajas aporta expresar un sistema en forma matricial frente a mantenerlo como un conjunto de ecuaciones por separado? ¿Cómo puede esto ayudarnos a conectar con los cálculos que ya realizan los ordenadores de manera optimizada?**
 
 
@@ -127,7 +127,7 @@ Esta notación es mucho más que un atajo. Permite aplicar directamente concepto
 
 
 
->**Para reflexionar…**
+>**Para reflexionar…**\
 >**¿Qué significa, en términos de transformación lineal, que la ecuación $\mathbf{A}\mathbf{x} = \mathbf{b}$ no tenga solución? ¿Podría interpretarse como que el vector $\mathbf{b}$ no pertenece al espacio generado por las columnas de $\mathbf{A}$?**
 
 
@@ -150,7 +150,7 @@ Esta clasificación no es solo un ejercicio teórico. En IA, cuando entrenamos u
 
 
 
->**Para reflexionar…**
+>**Para reflexionar…**\
 >**¿Qué interpretación intuitiva tiene el hecho de que un sistema sea incompatible? ¿Podría verse como que intentamos imponer a los datos condiciones contradictorias que ningún vector puede cumplir a la vez?**
 
 ### Ejemplos de discusión de sistemas de ecuaciones usando matrices
@@ -251,7 +251,7 @@ En inteligencia artificial, esta discusión se traduce a una pregunta práctica:
 
 
 
->**Para reflexionar…**
+>**Para reflexionar…**\
 >**¿Qué implicaciones crees que tiene, en el contexto de un modelo de IA, que los datos den lugar a un sistema con infinitas soluciones? ¿Y qué significado tendría que el sistema fuera incompatible?**
 
 
@@ -311,7 +311,7 @@ De manera similar, la **descomposición en valores singulares (SVD)** ofrece un 
 
 
 
->**Para reflexionar…**
+>**Para reflexionar…**\
 >**¿Por qué crees que en IA no se utiliza casi nunca la fórmula $\mathbf{x} = \mathbf{A}^{-1}\mathbf{b}$ para resolver sistemas, a pesar de ser la más sencilla en apariencia? ¿Qué ventajas tienen los métodos basados en descomposiciones frente al cálculo directo de la inversa?**
 
 ## Aplicaciones en inteligencia artificial
@@ -336,7 +336,7 @@ La enseñanza que podemos extraer es que, aunque en la práctica rara vez se vea
 
 
 
->**Para reflexionar…**
+>**Para reflexionar…**\
 >**¿Qué implica para un modelo de IA que los datos generen un sistema de ecuaciones que no tiene solución exacta? ¿Por qué puede ser más útil buscar una aproximación mediante mínimos cuadrados que insistir en encontrar una solución perfecta?**
 
 ## Interpretación geométrica avanzada
@@ -353,5 +353,5 @@ Este concepto conecta directamente con algoritmos fundamentales en aprendizaje a
 
 
 
->**Para reflexionar…**
+>**Para reflexionar…**\
 >**¿Qué enseñanza podemos extraer del hecho de que, en la práctica, muchos sistemas no tengan solución exacta? ¿No es esto similar a la forma en que los modelos de IA nunca reproducen los datos de entrenamiento de manera perfecta, sino que buscan una representación aproximada que capte la esencia de los patrones?**
