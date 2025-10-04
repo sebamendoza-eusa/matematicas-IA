@@ -387,18 +387,6 @@ Cuando alguna de estas condiciones no se cumple, hablamos de una matriz **singul
 >
 > donde $a, b, c, d$ son los elementos de $\mathbf{A}$. Aplicando la fórmula:
 >
-> $$
-> \mathbf{A}^{-1} = \frac{1}{-2}
-> \begin{bmatrix}
-> 4 & -2 \\
-> -3 & 1
-> \end{bmatrix}
-> =
-> \begin{bmatrix}
-> -2 & 1 \\
-> 1.5 & -0.5
-> \end{bmatrix}
-> $$
 >
 > Multiplicar $\mathbf{A}$ por $\mathbf{A}^{-1}$ devuelve la matriz identidad $\mathbf{I}_2$.
 >
