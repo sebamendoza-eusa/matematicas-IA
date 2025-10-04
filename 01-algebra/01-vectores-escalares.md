@@ -18,11 +18,9 @@ En el mundo de la IA, los vectores son omnipresentes. Los datos con los que trab
 
 La capacidad de representar información compleja en forma de vectores es lo que permite que los algoritmos de aprendizaje automático puedan procesar y encontrar patrones en los datos. El álgebra lineal nos proporciona las herramientas para manipular estos vectores, permitiéndonos realizar operaciones como la suma, la resta, o el producto escalar, que son fundamentales para los cálculos internos de los modelos.
 
-**Para reflexionar...**
-
+>**Para reflexionar...**
 > **¿Por qué es más útil representar los datos como vectores en lugar de simplemente como una lista de números sin ninguna estructura?**
-> 
-> Considera cómo la estructura de un vector, y la capacidad de realizar operaciones matemáticas con él, nos permite capturar no solo la información individual, sino también las relaciones y distancias entre los distintos puntos de datos. Piensa en cómo calcular la "distancia" entre dos perfiles de usuario, o la "similitud" entre dos imágenes, se convierte en un problema matemático manejable cuando los datos están representados como vectores.
+> *Considera cómo la estructura de un vector, y la capacidad de realizar operaciones matemáticas con él, nos permite capturar no solo la información individual, sino también las relaciones y distancias entre los distintos puntos de datos. Piensa en cómo calcular la "distancia" entre dos perfiles de usuario, o la "similitud" entre dos imágenes, se convierte en un problema matemático manejable cuando los datos están representados como vectores.*
 
 ## Ejemplo práctico: Vectores y escalares en Machine Learning
 
@@ -46,11 +44,9 @@ Este vector, con tres dimensiones, nos da una "huella" numérica del correo elec
 
 Las **operaciones con vectores** nos permiten medir la "distancia" o la "similitud" entre correos electrónicos, lo cual es fundamental para muchos algoritmos de clasificación. El producto escalar, por ejemplo, es una operación que nos permite determinar cuán similares son dos vectores en dirección, lo cual se traduce en qué tan similares son dos correos en sus características. De esta manera, las matemáticas abstractas se convierten en las herramientas prácticas que permiten a la IA tomar decisiones.
 
-**Para reflexionar...**
-
+>**Para reflexionar...**
 > ¿Cómo crees que podríamos representar una imagen en blanco y negro como un vector para que un algoritmo de IA la procese? ¿Y una imagen a color?
-> 
-> Considera cómo los píxeles de una imagen pueden ser vistos como los componentes de un vector. Piensa en qué representa el valor de cada píxel y cómo el color podría añadir más "dimensiones" a este vector.
+> *Considera cómo los píxeles de una imagen pueden ser vistos como los componentes de un vector. Piensa en qué representa el valor de cada píxel y cómo el color podría añadir más "dimensiones" a este vector.*
 
 Operaciones básicas con vectores
 ---
@@ -86,8 +82,7 @@ $$
 
 La normalización es esencial en muchos algoritmos de IA, especialmente en aquellos que utilizan distancias o productos escalares. Al normalizar los vectores, se asegura que la magnitud de los datos no influya indebidamente en el cálculo, haciendo que el modelo se enfoque en la dirección y la relación entre ellos. Esto es crucial para **regular la magnitud de los gradientes** en el *deep learning*, evitando problemas como el **vanishing gradient**.
 
-**Para reflexionar...**
-
+>**Para reflexionar...**
 > **¿Cómo podría el producto escalar ser utilizado para determinar la "similitud" entre dos documentos de texto? ¿Qué desafíos crees que podrían surgir si los vectores de palabras no estuvieran normalizados?**
 > *Considera que los documentos de texto pueden ser representados como vectores donde cada componente es la frecuencia de una palabra. Piensa en cómo el producto escalar mide la similitud direccional y cómo la normalización asegura que un documento más largo no sea automáticamente más "similar" a otro.*
 
@@ -127,8 +122,7 @@ Esta técnica se utiliza, por ejemplo, en los sistemas de recomendación para en
 
 ---
 
-**Para reflexionar...**
-
+>**Para reflexionar...**
 > **¿Qué diferencia fundamental existe entre la similitud de coseno y la distancia euclidiana (la longitud de la línea recta que une los puntos) para medir la similitud entre dos vectores? ¿En qué escenarios de la IA crees que una podría ser más adecuada que la otra?**
 > *Considera que la similitud de coseno se centra en la dirección de los vectores, mientras que la distancia euclidiana considera tanto la dirección como la magnitud. Piensa en el problema de la clasificación de documentos de texto, donde la longitud del documento puede variar enormemente, o en el caso de la detección de anomalías, donde la magnitud de los datos puede ser un factor clave.*
 
@@ -187,11 +181,9 @@ La habilidad de encontrar una nueva base que sea más eficiente para nuestro pro
 
 ---
 
-**Para reflexionar...**
-
-> Si un modelo de machine learning para predecir precios de casas utiliza como características tanto el tamaño de la casa en metros cuadrados como el tamaño en pies cuadrados, ¿qué implicaciones tendría esto en la dependencia lineal de los datos? ¿Por qué los algoritmos de reducción de dimensionalidad, como el Análisis de Componentes Principales (PCA), buscan encontrar una nueva base para los datos?
-> 
-> Considera cómo el tamaño en metros y pies cuadrados son redundantemente lineales. Piensa en cómo una nueva base podría permitirnos capturar la misma información en un espacio de menor dimensión, eliminando esta redundancia y facilitando el trabajo del modelo.
+>**Para reflexionar...**
+> **Si un modelo de machine learning para predecir precios de casas utiliza como características tanto el tamaño de la casa en metros cuadrados como el tamaño en pies cuadrados, ¿qué implicaciones tendría esto en la dependencia lineal de los datos? ¿Por qué los algoritmos de reducción de dimensionalidad, como el Análisis de Componentes Principales (PCA), buscan encontrar una nueva base para los datos?**
+> *Considera cómo el tamaño en metros y pies cuadrados son redundantemente lineales. Piensa en cómo una nueva base podría permitirnos capturar la misma información en un espacio de menor dimensión, eliminando esta redundancia y facilitando el trabajo del modelo.*
 
 #### Cambio de base en espacios vectoriales
 
@@ -276,11 +268,7 @@ Este cambio de perspectiva es esencial en IA porque permite elegir bases que sim
 ---
 
 > **Para reflexionar…**
-> ¿Qué ventajas podría tener usar una base “adaptada a los datos” en lugar de la base canónica? ¿Por qué crees que técnicas como PCA buscan una nueva base que maximice la varianza explicada de los datos?
-
-Perfecto 🙌. Te preparo un **apartado en formato apuntes** sobre las aplicaciones del cambio de base en IA, con el mismo estilo narrativo y didáctico que venimos usando.
-
-------
+> **¿Qué ventajas podría tener usar una base “adaptada a los datos” en lugar de la base canónica? ¿Por qué crees que técnicas como PCA buscan una nueva base que maximice la varianza explicada de los datos?**
 
 #### Aplicaciones del cambio de base en inteligencia artificial
 
@@ -299,9 +287,7 @@ Finalmente, el cambio de base puede favorecer la **interpretabilidad de los mode
 ------
 
 > **Para reflexionar…**
->  Si un modelo de clasificación no logra distinguir entre dos clases en el espacio de características original, ¿cómo podría ayudar un cambio de base a que las clases fueran más separables? ¿Qué papel juega aquí la geometría de los datos?
-
-Perfecto 🙌. Te propongo un **ejemplo práctico muy sencillo**, pensado para alumnos que aún no han visto *machine learning*, pero que les permita **visualizar la utilidad del cambio de base** sin necesidad de algoritmos complejos.
+>  **Si un modelo de clasificación no logra distinguir entre dos clases en el espacio de características original, ¿cómo podría ayudar un cambio de base a que las clases fueran más separables? ¿Qué papel juega aquí la geometría de los datos?**
 
 ---
 
@@ -385,5 +371,5 @@ Así, el cambio de base es un paso consciente: no se trata de cambiar por cambia
 ---
 
 > **Para reflexionar…**
-> Si en lugar de estudiantes quisiéramos analizar dietas (proteínas y carbohidratos), ¿cómo podríamos definir una nueva base que refleje el “total de calorías” y el “equilibrio entre nutrientes”?
+> **Si en lugar de estudiantes quisiéramos analizar dietas (proteínas y carbohidratos), ¿cómo podríamos definir una nueva base que refleje el “total de calorías” y el “equilibrio entre nutrientes”?**
 

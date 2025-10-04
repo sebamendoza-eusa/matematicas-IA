@@ -89,9 +89,9 @@ $$
 
 * La **media** es
 
-  $$
-  \bar{x} = \frac{100+120+150+110+105+300+115}{7} = 157.14
-  $$
+$$
+\bar{x} = \frac{100+120+150+110+105+300+115}{7} = 157.14
+$$
 
 * La **mediana**, al ordenar los datos $[100, 105, 110, 115, 120, 150, 300]$, es $115$.
 
@@ -221,6 +221,7 @@ Vamos a fijar ideas con un ejemplo
 >
 
 > **Para reflexionar…**
+>
 > ¿Por qué puede ser más informativo representar los datos con un diagrama de caja que limitarse a dar la media y la desviación estándar? ¿Qué nos dice un boxplot sobre los valores atípicos que una media nunca revelaría?
 
 Representaciones gráficas en EDA
