@@ -774,13 +774,16 @@ Podemos imaginar que una matriz representa una transformación en el plano: rota
 >
 > Si multiplicamos $\mathbf{A}$ por el vector 
 >
->$$\mathbf{v}_1 =
->\begin{bmatrix}1 \ 0
+>$$
+>\mathbf{v}_1 =
+>\begin{bmatrix}
+>1 \ 0
 >\end{bmatrix}
 >$$
->, obtenemos
 >
-> $$
+>obtenemos
+>
+>$$
 > \mathbf{A}\mathbf{v}_1 =
 > \begin{bmatrix}
 > 2 & 0 \\
@@ -796,20 +799,24 @@ Podemos imaginar que una matriz representa una transformación en el plano: rota
 > 0
 > \end{bmatrix}
 > = 2\mathbf{v}_1
-> $$
+>$$
 >
 > Aquí, $\mathbf{v}_1$ es un autovector y su autovalor es $\lambda = 2$.
 >
-> De manera análoga, para $$\mathbf{v}_2 = \begin{bmatrix}0 \ 1\end{bmatrix}$$:
+> De manera análoga, para
 >
-> $$
+>$$
+>\mathbf{v}_2 = \begin{bmatrix}0 \ 1\end{bmatrix}
+>$$
+>
+>$$
 > \mathbf{A}\mathbf{v}_2 =
 > \begin{bmatrix}
 > 0 \\
 > 3
 > \end{bmatrix}
 > = 3\mathbf{v}_2
-> $$
+>$$
 >
 > Por tanto, $\mathbf{v}_2$ es un autovector y $\lambda = 3$ su autovalor.
 >
