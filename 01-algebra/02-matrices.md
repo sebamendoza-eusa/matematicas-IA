@@ -397,7 +397,7 @@ Cuando alguna de estas condiciones no se cumple, hablamos de una matriz **singul
 > \begin{bmatrix}
 > -2 & 1 \\
 > 1.5 & -0.5
-> \end{bmatrix}.
+> \end{bmatrix}
 > $$
 >
 > Multiplicar $\mathbf{A}$ por $\mathbf{A}^{-1}$ devuelve la matriz identidad $\mathbf{I}_2$.
