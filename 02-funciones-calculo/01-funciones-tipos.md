@@ -21,7 +21,7 @@ Pensar con claridad en dominio, codominio e imagen evita ambigüedades. Si model
 En inteligencia artificial, esta misma estructura describe cualquier modelo. El **espacio de características** hace de dominio: si representamos cada ejemplo como un vector con $d$ atributos numéricos, solemos escribir $X\subseteq\mathbb{R}^d$. El codominio depende de la tarea. En **regresión**, se toma típicamente $Y=\mathbb{R}$ y la imagen son valores reales (por ejemplo, precios). En **clasificación binaria**, podemos definir $Y=\\{0,1\\}$ y la función $f$ devuelve una etiqueta, o bien $Y=[0,1]$ si $f$ devuelve una **probabilidad**; en el caso multiclase, es común trabajar con $Y=\mathbb{R}^K$ antes de la capa *softmax* (logits) o con el **símplex de probabilidad**
 
 $$
-\Delta^{K-1}=\{p\in\mathbb{R}^K:p_i\ge 0,\ \sum_{i=1}^K p_i=1\}
+\Delta^{K-1}=\\{p\in\mathbb{R}^K:p_i\ge 0,\ \sum_{i=1}^K p_i=1\\}
 $$
 
 cuando la salida ya son probabilidades normalizadas.
