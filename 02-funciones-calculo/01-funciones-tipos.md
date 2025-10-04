@@ -13,7 +13,7 @@ En inteligencia artificial, esta idea se convierte en el núcleo de los algoritm
 Es importante entender algunos conceptos asociados a esta definición. Al conjunto $X$ se le denomina **dominio** (el conjunto de entradas para las que la función está definida) e $Y$ es el **codominio** (el conjunto de posibles salidas permitidas por la definición de la función). La **imagen** o **recorrido** de $f$ es el conjunto de salidas que realmente se obtienen al aplicar $f$ a todo su dominio:
 
 $$
-\operatorname{Im}(f)=\{f(x):x\in X\}\subseteq Y.
+\Im(f)=\{f(x):x\in X\}\subseteq Y.
 $$
 
 Pensar con claridad en dominio, codominio e imagen evita ambigüedades. Si modelamos la **nota de un examen** en función de las **horas de estudio**, un dominio razonable sería $X=[0,\infty)$ (no hay horas negativas) y un codominio $Y=\mathbb{R}$ si permitimos cualquier número real como resultado. En la práctica, sabemos que las notas están acotadas, así que la imagen efectiva quedará en un intervalo, por ejemplo $[0,10]$, que es un subconjunto del codominio elegido. Esa diferencia entre “lo permitido por definición” ($Y$) y “lo que realmente ocurre” ($\operatorname{Im}(f)$) es útil al diseñar y analizar modelos.
