@@ -19,11 +19,10 @@ La interpretación geométrica nos ayuda a entender mejor el problema. Cada ecua
 
 Este planteamiento muestra que resolver sistemas lineales es, en esencia, un problema de geometría: buscar la posición en el espacio que satisface simultáneamente todas las restricciones. De este modo, los sistemas lineales se convierten en una herramienta fundamental para modelar situaciones en las que varias condiciones deben cumplirse al mismo tiempo, algo que aparece de forma natural en aplicaciones de la inteligencia artificial.
 
----
 
-**Para reflexionar…**
 
-> ¿Qué significa, desde un punto de vista geométrico, que un sistema no tenga solución? ¿Podría interpretarse como que las restricciones que imponemos a los datos son incompatibles entre sí?
+>**Para reflexionar…**
+>**¿Qué significa, desde un punto de vista geométrico, que un sistema no tenga solución? ¿Podría interpretarse como que las restricciones que imponemos a los datos son incompatibles entre sí?**
 
 ## Representación matricial de un sistema
 
@@ -68,13 +67,12 @@ Esta forma matricial no solo simplifica la escritura, sino que también abre la 
 
 La notación matricial conecta de manera natural con el trabajo en inteligencia artificial, donde la mayoría de los algoritmos se formulan precisamente en términos de productos de matrices y vectores. Así, lo que en un curso introductorio de matemáticas es un método de simplificación, en IA se convierte en la forma natural de pensar los problemas.
 
----
 
-**Para reflexionar…**
 
-> ¿Qué ventajas aporta expresar un sistema en forma matricial frente a mantenerlo como un conjunto de ecuaciones por separado? ¿Cómo puede esto ayudarnos a conectar con los cálculos que ya realizan los ordenadores de manera optimizada?
+>**Para reflexionar…**
+>**¿Qué ventajas aporta expresar un sistema en forma matricial frente a mantenerlo como un conjunto de ecuaciones por separado? ¿Cómo puede esto ayudarnos a conectar con los cálculos que ya realizan los ordenadores de manera optimizada?**
 
----
+
 
 El ejemplo con dos ecuaciones y dos incógnitas nos da una primera intuición, pero el verdadero poder de la notación matricial aparece cuando extendemos el planteamiento a un sistema de **$n$ ecuaciones con $n$ incógnitas**.
 
@@ -127,11 +125,10 @@ La ecuación $\mathbf{A}\mathbf{x} = \mathbf{b}$ condensa en una sola expresión
 
 Esta notación es mucho más que un atajo. Permite aplicar directamente conceptos como determinante, rango o inversa para estudiar la existencia y unicidad de soluciones. Además, conecta con el modo en que los algoritmos de IA manejan la información: cada conjunto de parámetros de un modelo se organiza en matrices, y el entrenamiento consiste en resolver, de forma directa o aproximada, expresiones que no son otra cosa que sistemas lineales de gran tamaño.
 
----
 
-**Para reflexionar…**
 
-> ¿Qué significa, en términos de transformación lineal, que la ecuación $\mathbf{A}\mathbf{x} = \mathbf{b}$ no tenga solución? ¿Podría interpretarse como que el vector $\mathbf{b}$ no pertenece al espacio generado por las columnas de $\mathbf{A}$?
+>**Para reflexionar…**
+>**¿Qué significa, en términos de transformación lineal, que la ecuación $\mathbf{A}\mathbf{x} = \mathbf{b}$ no tenga solución? ¿Podría interpretarse como que el vector $\mathbf{b}$ no pertenece al espacio generado por las columnas de $\mathbf{A}$?**
 
 
 
@@ -151,11 +148,10 @@ Otra herramienta clave es el **determinante** en el caso de matrices cuadradas. 
 
 Esta clasificación no es solo un ejercicio teórico. En IA, cuando entrenamos un modelo, muchas veces estamos resolviendo sistemas enormes. Saber si el sistema tiene solución única, infinitas o ninguna es lo que determina si el modelo puede aprender de los datos, si existen redundancias o si las restricciones que imponemos son imposibles de satisfacer.
 
----
 
-**Para reflexionar…**
 
-> ¿Qué interpretación intuitiva tiene el hecho de que un sistema sea incompatible? ¿Podría verse como que intentamos imponer a los datos condiciones contradictorias que ningún vector puede cumplir a la vez?
+>**Para reflexionar…**
+>**¿Qué interpretación intuitiva tiene el hecho de que un sistema sea incompatible? ¿Podría verse como que intentamos imponer a los datos condiciones contradictorias que ningún vector puede cumplir a la vez?**
 
 ### Ejemplos de discusión de sistemas de ecuaciones usando matrices
 
@@ -196,7 +192,7 @@ La ecuación compacta es $\mathbf{A}\mathbf{x} = \mathbf{b}$.
 
 El determinante de $\mathbf{A}$ es distinto de cero, lo que garantiza que $\mathbf{A}$ es invertible. Por tanto, existe una única solución. Geométricamente, los tres planos definidos por las ecuaciones se cruzan en un único punto del espacio.
 
----
+
 
 #### Caso 2: sistema con infinitas soluciones
 
@@ -227,7 +223,7 @@ $$
 
 Aquí la segunda ecuación es múltiplo de la primera, lo que significa que en realidad solo tenemos dos condiciones independientes para tres incógnitas. El rango de la matriz de coeficientes es menor que el número de variables, lo que implica infinitas soluciones. Geométricamente, los planos se cruzan a lo largo de una recta: cualquier punto de esa recta es solución.
 
----
+
 
 #### Caso 3: sistema sin solución
 
@@ -253,11 +249,10 @@ Estos tres casos muestran cómo la notación matricial simplifica la discusión.
 
 En inteligencia artificial, esta discusión se traduce a una pregunta práctica: ¿tienen los datos la suficiente información para identificar de manera única los parámetros de un modelo? O, por el contrario, ¿existen redundancias o contradicciones que hacen que el sistema sea indeterminado o imposible de resolver?
 
----
 
-**Para reflexionar…**
 
-> ¿Qué implicaciones crees que tiene, en el contexto de un modelo de IA, que los datos den lugar a un sistema con infinitas soluciones? ¿Y qué significado tendría que el sistema fuera incompatible?
+>**Para reflexionar…**
+>**¿Qué implicaciones crees que tiene, en el contexto de un modelo de IA, que los datos den lugar a un sistema con infinitas soluciones? ¿Y qué significado tendría que el sistema fuera incompatible?**
 
 
 
@@ -305,7 +300,7 @@ En contextos más complejos, como los sistemas sobredeterminados (cuando hay má
 
 De manera similar, la **descomposición en valores singulares (SVD)** ofrece un enfoque robusto incluso cuando la matriz de coeficientes es mal condicionada. El SVD no solo permite resolver sistemas, sino que también abre la puerta a técnicas de reducción de dimensionalidad y regularización, muy presentes en IA.
 
----
+
 
 > **Interpretación práctica**
 >
@@ -314,11 +309,10 @@ De manera similar, la **descomposición en valores singulares (SVD)** ofrece un 
 > En inteligencia artificial, donde los sistemas suelen ser muy grandes, no se utiliza la inversa de manera explícita. En su lugar, se recurre a descomposiciones como LU, QR o SVD, que son más estables y se adaptan mejor a los cálculos numéricos. La clave es que, aunque los problemas puedan tener millones de variables, siguen siendo en esencia sistemas de ecuaciones lineales que se resuelven aplicando estas técnicas matriciales.
 >
 
----
 
-**Para reflexionar…**
 
-> ¿Por qué crees que en IA no se utiliza casi nunca la fórmula $\mathbf{x} = \mathbf{A}^{-1}\mathbf{b}$ para resolver sistemas, a pesar de ser la más sencilla en apariencia? ¿Qué ventajas tienen los métodos basados en descomposiciones frente al cálculo directo de la inversa?
+>**Para reflexionar…**
+>**¿Por qué crees que en IA no se utiliza casi nunca la fórmula $\mathbf{x} = \mathbf{A}^{-1}\mathbf{b}$ para resolver sistemas, a pesar de ser la más sencilla en apariencia? ¿Qué ventajas tienen los métodos basados en descomposiciones frente al cálculo directo de la inversa?**
 
 ## Aplicaciones en inteligencia artificial
 
@@ -340,11 +334,10 @@ En **optimización numérica**, que es el motor de muchos algoritmos de aprendiz
 
 La enseñanza que podemos extraer es que, aunque en la práctica rara vez se vean escritas las ecuaciones, **gran parte de la IA consiste en resolver sistemas lineales a gran escala**. Por eso, comprender cómo funcionan y qué significan geométricamente es esencial para interpretar lo que los algoritmos hacen con los datos.
 
----
 
-**Para reflexionar…**
 
-> ¿Qué implica para un modelo de IA que los datos generen un sistema de ecuaciones que no tiene solución exacta? ¿Por qué puede ser más útil buscar una aproximación mediante mínimos cuadrados que insistir en encontrar una solución perfecta?
+>**Para reflexionar…**
+>**¿Qué implica para un modelo de IA que los datos generen un sistema de ecuaciones que no tiene solución exacta? ¿Por qué puede ser más útil buscar una aproximación mediante mínimos cuadrados que insistir en encontrar una solución perfecta?**
 
 ## Interpretación geométrica avanzada
 
@@ -358,8 +351,7 @@ En lugar de exigir una solución exacta, lo que buscamos es el vector $\mathbf{x
 
 Este concepto conecta directamente con algoritmos fundamentales en aprendizaje automático. En la regresión lineal, por ejemplo, no siempre es posible ajustar una recta o un hiperplano que pase por todos los puntos de datos, pero sí podemos encontrar la que minimiza la distancia total a esos puntos. Lo que en geometría es una proyección, en estadística se convierte en un ajuste por mínimos cuadrados.
 
----
 
-**Para reflexionar…**
 
-> ¿Qué enseñanza podemos extraer del hecho de que, en la práctica, muchos sistemas no tengan solución exacta? ¿No es esto similar a la forma en que los modelos de IA nunca reproducen los datos de entrenamiento de manera perfecta, sino que buscan una representación aproximada que capte la esencia de los patrones?
+>**Para reflexionar…**
+>**¿Qué enseñanza podemos extraer del hecho de que, en la práctica, muchos sistemas no tengan solución exacta? ¿No es esto similar a la forma en que los modelos de IA nunca reproducen los datos de entrenamiento de manera perfecta, sino que buscan una representación aproximada que capte la esencia de los patrones?**
