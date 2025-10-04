@@ -13,7 +13,7 @@ La misma lógica se aplica a otros tipos de datos. Un correo electrónico puede 
 
 En todos estos casos, lo esencial es que los datos —independientemente de su naturaleza original— se acaban describiendo como **colecciones de números**. Esta homogeneidad hace posible que los algoritmos de inteligencia artificial operen siempre en el mismo terreno: el de los vectores.
 
----
+
 
 >**Para reflexionar…**
 >**¿Qué ventaja crees que tiene representar datos tan distintos como un texto, una imagen o un audio en la misma forma matemática de un vector? ¿Cómo facilita esto que un mismo tipo de algoritmo pueda aplicarse a problemas aparentemente muy diferentes?**
@@ -52,7 +52,7 @@ Si situamos cada correo como un punto en un espacio tridimensional (una dimensi�
 
 Este ejemplo muestra la esencia de la IA: lo que para nosotros es un texto o una imagen, para el algoritmo es un vector de números en un espacio geométrico.
 
-------
+
 
 >**Para reflexionar…**
 >**¿Cómo crees que cambiaría la precisión del modelo si, en lugar de tres características, usáramos cien o mil? ¿Qué problema podría surgir al aumentar tanto el número de dimensiones?**
@@ -80,7 +80,7 @@ Esta forma matricial no solo es práctica para organizar los datos, sino que tam
 
 La interpretación geométrica de esta representación es especialmente poderosa. Podemos pensar que cada fila de la matriz es un punto en un espacio de características. Al juntar todos esos puntos, obtenemos una nube de datos que revela patrones, agrupaciones y relaciones que, en dimensiones bajas, puede incluso ser visualizada. Sin embargo, en general, se trabaja en espacios de muchas dimensiones, del orden de miles o cientos de miles. En estos casos la geometría sigue siendo la clave para que los algoritmos encuentren patrones y estructuras.
 
----
+
 
 >**Para reflexionar…**
 >**¿Qué ventaja tiene organizar los datos en forma matricial frente a tratar cada vector por separado? ¿Cómo facilita esto que un algoritmo aprenda patrones comunes a partir de muchos ejemplos a la vez?**
@@ -97,7 +97,7 @@ nos da una **nueva representación** de los mismos ejemplos en otro espacio de c
 
 De este modo, las matrices cumplen una doble función: **organizan datos y al mismo tiempo actúan como reglas de transformación**. Esta visión es la que da sentido a muchas operaciones que veremos más adelante en el curso.
 
----
+
 
 >**Para reflexionar…**
 >**¿Qué diferencia hay entre entender una matriz como un simple “contenedor de datos” y verla como un “operador de transformación”? ¿Cómo cambia nuestra forma de pensar sobre el aprendizaje automático si aceptamos esta doble naturaleza?**
@@ -198,7 +198,7 @@ En procesamiento del lenguaje natural, una palabra puede representarse como un v
 
 La idea general es que cada operación matricial acerca los datos un paso más hacia una forma que el algoritmo pueda aprovechar. Así, la matemática no se queda en un cálculo abstracto, sino que se convierte en el mecanismo que hace posible que la máquina **entienda** patrones.
 
----
+
 
 >**Para reflexionar…**
 >**¿Por qué es tan poderoso que una misma operación matricial pueda aplicarse a todo un conjunto de ejemplos a la vez? ¿Cómo crees que influye esto en la rapidez y la eficiencia de los algoritmos de IA modernos?**
@@ -219,12 +219,12 @@ Esta compresión no es solo una cuestión de ahorro computacional. Al eliminar r
 
 Podemos pensar en un ejemplo intuitivo. Imagina un conjunto de datos sobre casas donde registramos la superficie en metros cuadrados y también en pies cuadrados. Ambas características contienen la misma información con distinta escala, de modo que añadir las dos no aporta nada nuevo. El PCA detectaría que una de esas direcciones no añade variabilidad real y nos permitiría prescindir de ella, simplificando el espacio vectorial sin perder información.
 
----
+
 
 >**Para reflexionar…**
 >**¿Qué implicaciones tiene para un algoritmo de IA que los datos se encuentren en un espacio de miles de dimensiones? ¿Cómo ayuda la reducción de dimensionalidad a que la máquina no se “pierda” en ese espacio demasiado amplio?**
 
-------
+
 
 ## Interpretación geométrica de la representación
 
@@ -238,7 +238,7 @@ Junto a la distancia aparece el concepto de **ángulo** entre vectores. Medir el
 
 La interpretación geométrica nos lleva a una conclusión poderosa: los algoritmos de IA no trabajan directamente con “correos”, “imágenes” o “usuarios”, sino con posiciones en un espacio de coordenadas. Clasificar, agrupar o recomendar no es más que buscar relaciones geométricas en esa nube de puntos.
 
-------
+
 
 >**Para reflexionar…**
 >**¿Qué crees que significa, en términos prácticos, que dos vectores de datos sean “ortogonales”, es decir, que formen un ángulo recto en el espacio? ¿Podría interpretarse como que representan ejemplos totalmente distintos, sin relación alguna?**
