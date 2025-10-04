@@ -44,7 +44,7 @@ $$
 P(A \cap B)
 $$
 
-**Ejemplo:** Si $ A $ es obtener un número par y $B$ es obtener un número mayor que 3, la intersección es $A \cap B = \{4, 6\}$. Por la regla de Laplace, $P(A \cap B) = 2/6 = 1/3$.
+**Ejemplo:** Si $A$ es obtener un número par y $B$ es obtener un número mayor que 3, la intersección es $A \cap B = \{4, 6\}$. Por la regla de Laplace, $P(A \cap B) = 2/6 = 1/3$.
 
 #### Complemento de un Evento
 
