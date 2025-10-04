@@ -15,7 +15,7 @@ En todos estos casos, lo esencial es que los datos —independientemente de su n
 
 
 
->**Para reflexionar…**
+>**Para reflexionar…**\
 >**¿Qué ventaja crees que tiene representar datos tan distintos como un texto, una imagen o un audio en la misma forma matemática de un vector? ¿Cómo facilita esto que un mismo tipo de algoritmo pueda aplicarse a problemas aparentemente muy diferentes?**
 
 #### Ejemplo: un correo electrónico como vector
@@ -54,7 +54,7 @@ Este ejemplo muestra la esencia de la IA: lo que para nosotros es un texto o una
 
 
 
->**Para reflexionar…**
+>**Para reflexionar…**\
 >**¿Cómo crees que cambiaría la precisión del modelo si, en lugar de tres características, usáramos cien o mil? ¿Qué problema podría surgir al aumentar tanto el número de dimensiones?**
 
 ## Conjuntos de datos como matrices
@@ -82,7 +82,7 @@ La interpretación geométrica de esta representación es especialmente poderosa
 
 
 
->**Para reflexionar…**
+>**Para reflexionar…**\
 >**¿Qué ventaja tiene organizar los datos en forma matricial frente a tratar cada vector por separado? ¿Cómo facilita esto que un algoritmo aprenda patrones comunes a partir de muchos ejemplos a la vez?**
 
 ### La matriz como transformación
@@ -99,7 +99,7 @@ De este modo, las matrices cumplen una doble función: **organizan datos y al mi
 
 
 
->**Para reflexionar…**
+>**Para reflexionar…**\
 >**¿Qué diferencia hay entre entender una matriz como un simple “contenedor de datos” y verla como un “operador de transformación”? ¿Cómo cambia nuestra forma de pensar sobre el aprendizaje automático si aceptamos esta doble naturaleza?**
 
 ##### Ejemplo: transformación de un conjunto de datos
@@ -200,7 +200,7 @@ La idea general es que cada operación matricial acerca los datos un paso más h
 
 
 
->**Para reflexionar…**
+>**Para reflexionar…**\
 >**¿Por qué es tan poderoso que una misma operación matricial pueda aplicarse a todo un conjunto de ejemplos a la vez? ¿Cómo crees que influye esto en la rapidez y la eficiencia de los algoritmos de IA modernos?**
 
 ## Espacios vectoriales y reducción de dimensionalidad
@@ -221,7 +221,7 @@ Podemos pensar en un ejemplo intuitivo. Imagina un conjunto de datos sobre casas
 
 
 
->**Para reflexionar…**\
+>**Para reflexionar…**\\
 >**¿Qué implicaciones tiene para un algoritmo de IA que los datos se encuentren en un espacio de miles de dimensiones? ¿Cómo ayuda la reducción de dimensionalidad a que la máquina no se “pierda” en ese espacio demasiado amplio?**
 
 
@@ -240,7 +240,7 @@ La interpretación geométrica nos lleva a una conclusión poderosa: los algorit
 
 
 
->**Para reflexionar…**\
+>**Para reflexionar…**\\
 >**¿Qué crees que significa, en términos prácticos, que dos vectores de datos sean “ortogonales”, es decir, que formen un ángulo recto en el espacio? ¿Podría interpretarse como que representan ejemplos totalmente distintos, sin relación alguna?**
 
 
