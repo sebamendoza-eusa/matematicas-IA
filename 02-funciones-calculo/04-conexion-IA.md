@@ -10,5 +10,5 @@ La integral, que comenzó como la idea de calcular un área bajo la curva, en IA
 
 En síntesis, lo que parece matemáticas puramente formales adquiere en IA un carácter práctico: la función se transforma en el modelo, la derivada en la brújula que lo entrena y la integral en la herramienta para medir y razonar sobre la información acumulada. Comprender este puente entre teoría y aplicación es lo que permite ver a la inteligencia artificial no como un conjunto de fórmulas sueltas, sino como un sistema construido sobre principios matemáticos que, bien entendidos, se convierten en técnicas poderosas para aprender del mundo.
 
-> **Para reflexionar…**
+> **Para reflexionar...**\
 > ¿Qué cambia en tu percepción de las matemáticas al ver que conceptos como la pendiente de una curva o el área bajo una función son, en realidad, los engranajes invisibles que hacen posible que un modelo de IA aprenda de los datos?

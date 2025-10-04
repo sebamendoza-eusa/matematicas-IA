@@ -19,7 +19,7 @@ Lo importante es comprender la idea de fondo: **derivar es medir la velocidad de
 
 Geométricamente, si ampliamos mucho la curva alrededor de un punto, esta se parece a una línea recta. Esa recta es la **tangente**, y su pendiente es el valor de la derivada en ese punto. En inteligencia artificial esta idea se vuelve crucial, porque los algoritmos de optimización necesitan saber hacia dónde “moverse” y con qué rapidez ajustar los parámetros. El gradiente, que veremos más adelante, no es otra cosa que la generalización de esta pendiente a funciones de varias variables.
 
-> **Para reflexionar…**
+> **Para reflexionar...**\
 > Cuando piensas en la derivada como una pendiente local, ¿cómo cambia tu forma de ver una función? ¿Qué significa, en términos de comportamiento de un modelo, que la pendiente sea muy grande en una zona concreta o que se anule en otra?
 
 ### La derivada como sensibilidad y herramienta de aprendizaje
@@ -30,7 +30,7 @@ La derivada también actúa como **herramienta de ajuste**. Al conocer la pendie
 
 Aunque hasta ahora hemos trabajado con funciones de una sola variable, en la práctica los modelos dependen de cientos, miles o incluso millones de parámetros. En ese caso, la derivada se generaliza al gradiente, que no es más que un vector donde cada componente recoge la pendiente respecto a uno de los parámetros. El gradiente concentra toda la información de sensibilidad de la función en varias direcciones a la vez y guía las actualizaciones en el espacio multidimensional de parámetros. Esa noción es fundamental para entender cómo se entrenan redes neuronales complejas: cada paso de aprendizaje consiste en calcular el gradiente y usarlo como instrucción para ajustar todos los parámetros en la dirección adecuada.
 
-> **Para reflexionar…**
+> **Para reflexionar...**\
 > ¿Cómo cambia tu percepción de la derivada al pensarla como una brújula práctica que orienta los pasos del aprendizaje automático, en lugar de como un número aislado en un ejercicio de matemáticas?
 
 ## Derivadas parciales y gradiente
@@ -40,17 +40,19 @@ Hasta ahora hemos considerado funciones de una sola variable, pero en la prácti
 En este contexto hablamos de **derivadas parciales**. Para una función de dos variables $f(x,y)$, la derivada parcial respecto a $x$ se escribe $\tfrac{\partial f}{\partial x}$ y nos dice cómo cambia $f$ si variamos $x$ manteniendo fijo $y$. De forma análoga, $\tfrac{\partial f}{\partial y}$ mide el cambio al variar $y$ manteniendo fijo $x$. La idea se extiende a tantas variables como necesitemos: cada derivada parcial captura la **sensibilidad local** de la función a un solo parámetro, con los demás congelados.
 
 Al reunir todas esas derivadas parciales en un único objeto obtenemos el **gradiente**:
+
 $$
 \nabla f(x_1,x_2,\dots,x_n)=
 \left( \frac{\partial f}{\partial x_1},\frac{\partial f}{\partial x_2},\dots,\frac{\partial f}{\partial x_n} \right).
 $$
+
 El gradiente no es un número, sino un vector, y tiene una interpretación geométrica muy clara: **apunta en la dirección en la que la función crece más rápidamente.** Dicho de otro modo, si en el espacio de parámetros das un paso en la dirección del gradiente, $f$ aumentará lo máximo posible; si avanzas en la dirección contraria, $f$ disminuirá lo más rápido posible.
 
 Esta idea tiene una aplicación directa en la IA: el **descenso de gradiente**. Los parámetros de un modelo se actualizan en pasos sucesivos desplazándose en la dirección contraria al gradiente de la función de error. Cada actualización equivale a moverse “cuesta abajo” en el paisaje de la función, buscando valles donde el error sea mínimo. Así, el gradiente actúa como guía que indica hacia dónde y con qué fuerza hay que ajustar los parámetros en cada iteración.
 
 Con un ejemplo sencillo, si la función de error de un modelo depende de dos parámetros $w_1$ y $w_2$, podemos representarla como una superficie en tres dimensiones. En cada punto de esa superficie, el gradiente es una flecha que apunta hacia la máxima pendiente de subida. El algoritmo de optimización simplemente toma el camino opuesto, bajando la ladera hasta llegar a un valle. Ese valle corresponde a los valores de parámetros donde el modelo se ajusta mejor a los datos.
 
-> **Para reflexionar…**
+> **Para reflexionar...**\
 > ¿Por qué crees que en lugar de buscar directamente el mínimo, los algoritmos de aprendizaje se conforman con seguir paso a paso la dirección opuesta al gradiente? ¿Qué ventajas tiene moverse con esta brújula local en problemas con miles o millones de parámetros?
 
 ## Optimización y descenso de gradiente
@@ -67,5 +69,5 @@ En el **entrenamiento de modelos de machine learning**, cada iteración calcula 
 
 Esta estrategia es tan poderosa porque, incluso en espacios con miles o millones de dimensiones, el gradiente sigue siendo una brújula local que señala el camino más prometedor. Aunque no garantiza llegar al valle absoluto más profundo (el mínimo global), en la práctica basta con encontrar un valle suficientemente bajo donde el modelo funcione bien.
 
-> **Para reflexionar…**
+> **Para reflexionar...**\
 > Si el gradiente solo nos da información local, ¿qué problemas pueden surgir al entrenar un modelo en paisajes de error con muchos valles y colinas? ¿Cómo crees que se pueden diseñar estrategias para evitar quedarse atrapado en un valle poco profundo?
