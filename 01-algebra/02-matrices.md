@@ -388,7 +388,7 @@ Cuando alguna de estas condiciones no se cumple, hablamos de una matriz **singul
 > donde $a, b, c, d$ son los elementos de $\mathbf{A}$. Aplicando la fórmula:
 >
 > $$
-> \mathbf{A}^{-1} = \frac{1}{-2}
+> \mathbf{A}^{-1} = 
 > \begin{bmatrix}
 > 4 & -2 \\
 > -3 & 1
