@@ -326,7 +326,7 @@ $$
 El determinante se calcula como
 
 $$
-\det(\mathbf{A}) = (1)(4) - (2)(2) = 0
+|\mathbf{A}| = (1)(4) - (2)(2) = 0
 $$
 
 El resultado nos indica que las dos columnas de $\mathbf{A}$ son dependientes (la segunda es el doble de la primera). No hay, por tanto, dos direcciones realmente independientes en el espacio, y la matriz no puede invertirse.
@@ -372,13 +372,13 @@ Cuando alguna de estas condiciones no se cumple, hablamos de una matriz **singul
 > El determinante de $\mathbf{A}$ es
 >
 > $$
-> \det(\mathbf{A}) = (1)(4) - (2)(3) = -2 \neq 0.
+> |\mathbf{A}| = (1)(4) - (2)(3) = -2 \neq 0.
 > $$
 >
 > Por tanto, $\mathbf{A}$ es invertible. Su inversa puede calcularse con la fórmula para matrices $2 \times 2$:
 >
 > $$
-> \mathbf{A}^{-1} = \frac{1}{\det(\mathbf{A})}
+> \mathbf{A}^{-1} = \frac{1}{|\mathbf{A}|}
 > \begin{bmatrix}
 > d & -b \\
 > -c & a
@@ -463,7 +463,7 @@ El cálculo requiere un procedimiento más general, basado en tres ideas:
 * **División por el determinante**: la inversa se obtiene como
 
 $$
-\mathbf{A}^{-1} = \frac{1}{\det(\mathbf{A})} \cdot \text{adj}(\mathbf{A}).
+\mathbf{A}^{-1} = \frac{1}{|\mathbf{A}|} \cdot \text{adj}(\mathbf{A}).
 $$
 
 Este método, aunque conceptualmente claro, es laborioso de aplicar manualmente para matrices grandes.
@@ -495,10 +495,14 @@ donde $\text{Cof}(\mathbf{A})$ es la matriz de cofactores de $\mathbf{A}$.
 Una vez construida la matriz adjunta, la inversa de $\mathbf{A}$ se puede calcular mediante la fórmula:
 
 $$
-\mathbf{A}^{-1} = \frac{1}{\det(\mathbf{A})}\,\text{adj}(\mathbf{A})
+\mathbf{A}^{-1} = \frac{1}{|\mathbf{A}|}\,\text{adj}(\mathbf{A})
 $$
 
-siempre que $\det(\mathbf{A}) \neq 0$.
+siempre que $|\mathbf{A}| \neq 0$.
+
+---
+
+Perfecto 🙌. Entonces preparo un **ejemplo completo con una matriz $3 \times 3$**, para que los alumnos vean cómo se aplica el método de la adjunta al cálculo de la inversa.
 
 ---
 
@@ -520,7 +524,7 @@ $$
 Para poder calcular la inversa necesitamos que el determinante sea distinto de cero.
 
 $$
-\det(\mathbf{A}) = 1 \cdot (1 \cdot 0 - 4 \cdot 6) - 2 \cdot (0 \cdot 0 - 4 \cdot 5) + 3 \cdot (0 \cdot 6 - 1 \cdot 5)
+|\mathbf{A}| = 1 \cdot (1 \cdot 0 - 4 \cdot 6) - 2 \cdot (0 \cdot 0 - 4 \cdot 5) + 3 \cdot (0 \cdot 6 - 1 \cdot 5)
 $$
 
 $$
@@ -528,35 +532,31 @@ $$
 = -24 + 40 - 15 = 1
 $$
 
-Como $\det(\mathbf{A}) = 1 \neq 0$, la matriz es invertible.
+Como $|\mathbf{A}| = 1 \neq 0$, la matriz es invertible.
 
 ---
 
 **2. Matriz de cofactores**
 
-Ahora calculamos cada cofactor $C_{ij} = (-1)^{i+j} \det(M_{ij})$, donde $M_{ij}$ es la submatriz que se obtiene eliminando la fila $i$ y la columna $j$.
+Ahora calculamos cada cofactor $C_{ij} = (-1)^{i+j} |M_{ij}|$, donde $M_{ij}$ es la submatriz que se obtiene eliminando la fila $i$ y la columna $j$.
 
-$$
-C_{11} = \det(\begin{bmatrix} 1 & 4 \\ 6 & 0 \end{bmatrix}) = (1)(0) - (4)(6) = -24
-$$
+- $C_{11} = |\begin{bmatrix} 1 & 4 \\ 6 & 0 \end{bmatrix}| = (1)(0) - (4)(6) = -24$
 
-- $C_{12} = - \det( \begin{bmatrix} 0 & 4 \\ 5 & 0 \end{bmatrix}) = -[(0)(0) - (4)(5)] = -(-20) = 20$
+- $C_{12} = - \det \begin{bmatrix} 0 & 4 \\ 5 & 0 \end{bmatrix} = -[(0)(0) - (4)(5)] = -(-20) = 20$
 
-- $C_{13} = \det \begin{bmatrix} 0 & 1 \\ 5 & 6 \end{bmatrix} = (0)(6) - (1)(5) = -5$
+- $C_{13} = \det \begin{bmatrix} 0 & 1 \ 5 & 6 \end{bmatrix} = (0)(6) - (1)(5) = -5$
 
-- $C_{21} = - \det \begin{bmatrix} 2 & 3 \\ 6 & 0 \end{bmatrix} = -[(2)(0) - (3)(6)] = -(-18) = 18$
+- $C_{21} = - \det \begin{bmatrix} 2 & 3 \ 6 & 0 \end{bmatrix} = -[(2)(0) - (3)(6)] = -(-18) = 18$
 
-- $C_{22} = \det \begin{bmatrix} 1 & 3 \\ 5 & 0 \end{bmatrix} = (1)(0) - (3)(5) = -15$
+- $C_{22} = \det \begin{bmatrix} 1 & 3 \ 5 & 0 \end{bmatrix} = (1)(0) - (3)(5) = -15$
 
-- $C_{23} = - \det \begin{bmatrix} 1 & 2 \\ 5 & 6 \end{bmatrix} = -[(1)(6) - (2)(5)] = -[6 - 10] = 4$
+- $C_{23} = - \det \begin{bmatrix} 1 & 2 \ 5 & 6 \end{bmatrix} = -[(1)(6) - (2)(5)] = -[6 - 10] = 4$
 
-$$
-C_{31} = \det \begin{bmatrix} 2 & 3 \\ 1 & 4 \end{bmatrix} = (2)(4) - (3)(1) = 8 - 3 = 5
-$$
+- $C_{31} = \det \begin{bmatrix} 2 & 3 \ 1 & 4 \end{bmatrix} = (2)(4) - (3)(1) = 8 - 3 = 5$
 
-- $C_{32} = - \det \begin{bmatrix} 1 & 3 \\ 0 & 4 \end{bmatrix} = -[(1)(4) - (3)(0)] = -4$
+- $C_{32} = - \det \begin{bmatrix} 1 & 3 \ 0 & 4 \end{bmatrix} = -[(1)(4) - (3)(0)] = -4$
 
-- $C_{33} = \det \begin{bmatrix} 1 & 2 \\ 0 & 1 \end{bmatrix} = (1)(1) - (2)(0) = 1$
+- $C_{33} = \det \begin{bmatrix} 1 & 2 \ 0 & 1 \end{bmatrix} = (1)(1) - (2)(0) = 1$
 
 La **matriz de cofactores** es:
 
@@ -591,10 +591,10 @@ $$
 Finalmente, aplicamos la fórmula:
 
 $$
-\mathbf{A}^{-1} = \frac{1}{\det(\mathbf{A})} \, \text{adj}(\mathbf{A}).
+\mathbf{A}^{-1} = \frac{1}{|\mathbf{A}|} \, \text{adj}(\mathbf{A}).
 $$
 
-Como $\det(\mathbf{A}) = 1$, la inversa coincide con la adjunta:
+Como $|\mathbf{A}| = 1$, la inversa coincide con la adjunta:
 
 $$
 \mathbf{A}^{-1} =
@@ -815,7 +815,7 @@ Para que esta ecuación tenga soluciones no triviales (es decir, vectores distin
 De aquí surge la **ecuación característica**:
 
 $$
-\det(\mathbf{A} - \lambda \mathbf{I}) = 0.
+|\mathbf{A} - \lambda \mathbf{I}| = 0.
 $$
 
 Resolver esta ecuación nos da los posibles valores de $\lambda$, que son los **autovalores** de la matriz. Una vez obtenidos, podemos calcular los **autovectores** resolviendo el sistema lineal $(\mathbf{A} - \lambda \mathbf{I})\mathbf{v} = \mathbf{0}$ para cada autovalor.
@@ -974,7 +974,7 @@ Aunque no siempre se presenta explícitamente con el nombre de diagonalización,
 > Partimos de la ecuación característica:
 >
 > $$
-> \det(\mathbf{A} - \lambda \mathbf{I}) = 0.
+> |\mathbf{A} - \lambda \mathbf{I}| = 0.
 > $$
 >
 > Es decir:
