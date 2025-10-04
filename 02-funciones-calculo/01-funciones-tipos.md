@@ -209,7 +209,7 @@ Las **funciones polinómicas** añaden curvatura con términos como $x^2$, $x^3$
 Estas formas no lineales no son solo elegantes: resuelven necesidades concretas en IA. En **crecimiento de datos** (tráfico, usuarios, eventos), la curva exponencial describe fases de adopción temprana; usar escala logarítmica permite comparar series con órdenes de magnitud distintos y detectar cambios de tendencia que en escala lineal pasarían desapercibidos. En **probabilidades**, es habitual movernos entre el espacio de probabilidades $p\in(0,1)$ y una escala no acotada usando el **logit**,
 
 $$
-\operatorname{logit}(p)=\log!\left(\frac{p}{1-p}\right)
+\mathrm{logit}(p)=\log!\left(\frac{p}{1-p}\right)
 $$
 
 porque muchas funciones de pérdida y modelos (como regresión logística) se vuelven lineales en esta coordenada. En **medidas de error**, el uso de logaritmos estabiliza el efecto de grandes desviaciones o hace que multiplicar errores equivalga a sumar en escala log (por ejemplo, al evaluar razones o verosimilitudes con **log-verosimilitud**; a nivel introductorio, basta con recordar que “sumar logs” es “multiplicar probabilidades”).
