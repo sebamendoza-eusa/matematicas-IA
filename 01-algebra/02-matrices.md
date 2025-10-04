@@ -540,23 +540,23 @@ Como $\det(\mathbf{A}) = 1 \neq 0$, la matriz es invertible.
 
 Ahora calculamos cada cofactor $C_{ij} = (-1)^{i+j} \det(M_{ij})$, donde $M_{ij}$ es la submatriz que se obtiene eliminando la fila $i$ y la columna $j$.
 
-- $C_{11} = \det \begin{bmatrix} 1 & 4 \\ 6 & 0 \end{bmatrix} = (1)(0) - (4)(6) = -24$
+- $C_{11} = \det(\begin{bmatrix} 1 & 4 \\ 6 & 0 \end{bmatrix}) = (1)(0) - (4)(6) = -24$
 
-- $C_{12} = - \det \begin{bmatrix} 0 & 4 \\ 5 & 0 \end{bmatrix} = -[(0)(0) - (4)(5)] = -(-20) = 20$
+- $C_{12} = - \det( \begin{bmatrix} 0 & 4 \\ 5 & 0 \end{bmatrix}) = -[(0)(0) - (4)(5)] = -(-20) = 20$
 
-- $C_{13} = \det \begin{bmatrix} 0 & 1 \ 5 & 6 \end{bmatrix} = (0)(6) - (1)(5) = -5$
+- $C_{13} = \det \begin{bmatrix} 0 & 1 \\ 5 & 6 \end{bmatrix} = (0)(6) - (1)(5) = -5$
 
-- $C_{21} = - \det \begin{bmatrix} 2 & 3 \ 6 & 0 \end{bmatrix} = -[(2)(0) - (3)(6)] = -(-18) = 18$
+- $C_{21} = - \det \begin{bmatrix} 2 & 3 \\ 6 & 0 \end{bmatrix} = -[(2)(0) - (3)(6)] = -(-18) = 18$
 
-- $C_{22} = \det \begin{bmatrix} 1 & 3 \ 5 & 0 \end{bmatrix} = (1)(0) - (3)(5) = -15$
+- $C_{22} = \det \begin{bmatrix} 1 & 3 \\ 5 & 0 \end{bmatrix} = (1)(0) - (3)(5) = -15$
 
-- $C_{23} = - \det \begin{bmatrix} 1 & 2 \ 5 & 6 \end{bmatrix} = -[(1)(6) - (2)(5)] = -[6 - 10] = 4$
+- $C_{23} = - \det \begin{bmatrix} 1 & 2 \\ 5 & 6 \end{bmatrix} = -[(1)(6) - (2)(5)] = -[6 - 10] = 4$
 
-- $C_{31} = \det \begin{bmatrix} 2 & 3 \ 1 & 4 \end{bmatrix} = (2)(4) - (3)(1) = 8 - 3 = 5$
+- $C_{31} = \det \begin{bmatrix} 2 & 3 \\ 1 & 4 \end{bmatrix} = (2)(4) - (3)(1) = 8 - 3 = 5$
 
-- $C_{32} = - \det \begin{bmatrix} 1 & 3 \ 0 & 4 \end{bmatrix} = -[(1)(4) - (3)(0)] = -4$
+- $C_{32} = - \det \begin{bmatrix} 1 & 3 \\ 0 & 4 \end{bmatrix} = -[(1)(4) - (3)(0)] = -4$
 
-- $C_{33} = \det \begin{bmatrix} 1 & 2 \ 0 & 1 \end{bmatrix} = (1)(1) - (2)(0) = 1$
+- $C_{33} = \det \begin{bmatrix} 1 & 2 \\ 0 & 1 \end{bmatrix} = (1)(1) - (2)(0) = 1$
 
 La **matriz de cofactores** es:
 
