@@ -69,7 +69,7 @@ La notación matricial conecta de manera natural con el trabajo en inteligencia 
 
 
 
->**Para reflexionar…**\\
+>**Para reflexionar…**\
 >**¿Qué ventajas aporta expresar un sistema en forma matricial frente a mantenerlo como un conjunto de ecuaciones por separado? ¿Cómo puede esto ayudarnos a conectar con los cálculos que ya realizan los ordenadores de manera optimizada?**
 
 
