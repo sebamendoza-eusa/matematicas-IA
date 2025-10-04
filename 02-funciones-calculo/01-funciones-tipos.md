@@ -114,14 +114,15 @@ Interpretativamente, $w_{12}$ mide cómo cambia el efecto de $x_1$ cuando varía
 >
 > Supón que queremos predecir la **nota** a partir de las **horas de estudio** y de si el alumno usa **material de calidad**. Definimos una variable $q$ que vale $0$ si el material es básico y $1$ si es de calidad.
 >
-> | Horas (h) | Calidad (q) | Nota |
-> |  | -- | - |
-> | 1         | 0           | 4.5  |
-> | 2         | 0           | 6.0  |
-> | 3         | 0           | 7.0  |
-> | 1         | 1           | 5.6  |
-> | 2         | 1           | 7.9  |
-> | 3         | 1           | 9.8  |
+>| Horas (h) | Calidad (q) | Nota |
+>|------------|--------------|------|
+>| 1          | 0            | 4.5  |
+>| 2          | 0            | 6.0  |
+>| 3          | 0            | 7.0  |
+>| 1          | 1            | 5.6  |
+>| 2          | 1            | 7.9  |
+>| 3          | 1            | 9.8  |
+>
 >
 > Al dibujar los puntos, verás **dos rectas**, una para $q=0$ y otra para $q=1$. La clave es que **no son paralelas**: con material de calidad, **cada hora extra rinde más**. Eso es una **interacción**: el efecto de “horas” depende del valor de “calidad”.
 >
