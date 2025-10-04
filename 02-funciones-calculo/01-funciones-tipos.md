@@ -13,15 +13,15 @@ En inteligencia artificial, esta idea se convierte en el núcleo de los algoritm
 Es importante entender algunos conceptos asociados a esta definición. Al conjunto $X$ se le denomina **dominio** (el conjunto de entradas para las que la función está definida) e $Y$ es el **codominio** (el conjunto de posibles salidas permitidas por la definición de la función). La **imagen** o **recorrido** de $f$ es el conjunto de salidas que realmente se obtienen al aplicar $f$ a todo su dominio:
 
 $$
-\Im(f)=\{f(x):x\in X\}\subseteq Y.
+\Im(f)=\\{f(x):x\in X\\}\subseteq Y.
 $$
 
 Pensar con claridad en dominio, codominio e imagen evita ambigüedades. Si modelamos la **nota de un examen** en función de las **horas de estudio**, un dominio razonable sería $X=[0,\infty)$ (no hay horas negativas) y un codominio $Y=\mathbb{R}$ si permitimos cualquier número real como resultado. En la práctica, sabemos que las notas están acotadas, así que la imagen efectiva quedará en un intervalo, por ejemplo $[0,10]$, que es un subconjunto del codominio elegido. Esa diferencia entre “lo permitido por definición” ($Y$) y “lo que realmente ocurre” ($\operatorname{Im}(f)$) es útil al diseñar y analizar modelos.
 
-En inteligencia artificial, esta misma estructura describe cualquier modelo. El **espacio de características** hace de dominio: si representamos cada ejemplo como un vector con $d$ atributos numéricos, solemos escribir $X\subseteq\mathbb{R}^d$. El codominio depende de la tarea. En **regresión**, se toma típicamente $Y=\mathbb{R}$ y la imagen son valores reales (por ejemplo, precios). En **clasificación binaria**, podemos definir $Y=\{0,1\}$ y la función $f$ devuelve una etiqueta, o bien $Y=[0,1]$ si $f$ devuelve una **probabilidad**; en el caso multiclase, es común trabajar con $Y=\mathbb{R}^K$ antes de la capa *softmax* (logits) o con el **símplex de probabilidad**
+En inteligencia artificial, esta misma estructura describe cualquier modelo. El **espacio de características** hace de dominio: si representamos cada ejemplo como un vector con $d$ atributos numéricos, solemos escribir $X\subseteq\mathbb{R}^d$. El codominio depende de la tarea. En **regresión**, se toma típicamente $Y=\mathbb{R}$ y la imagen son valores reales (por ejemplo, precios). En **clasificación binaria**, podemos definir $Y=\\{0,1\\}$ y la función $f$ devuelve una etiqueta, o bien $Y=[0,1]$ si $f$ devuelve una **probabilidad**; en el caso multiclase, es común trabajar con $Y=\mathbb{R}^K$ antes de la capa *softmax* (logits) o con el **símplex de probabilidad**
 
 $$
-\Delta^{K-1}={p\in\mathbb{R}^K:p_i\ge 0,\ \sum_{i=1}^K p_i=1}
+\Delta^{K-1}=\\{p\in\mathbb{R}^K:p_i\ge 0,\ \sum_{i=1}^K p_i=1\\}
 $$
 
 cuando la salida ya son probabilidades normalizadas.
