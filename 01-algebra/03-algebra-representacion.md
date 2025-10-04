@@ -221,7 +221,7 @@ Podemos pensar en un ejemplo intuitivo. Imagina un conjunto de datos sobre casas
 
 
 
->**Para reflexionar…**
+>**Para reflexionar…**\
 >**¿Qué implicaciones tiene para un algoritmo de IA que los datos se encuentren en un espacio de miles de dimensiones? ¿Cómo ayuda la reducción de dimensionalidad a que la máquina no se “pierda” en ese espacio demasiado amplio?**
 
 
@@ -240,7 +240,7 @@ La interpretación geométrica nos lleva a una conclusión poderosa: los algorit
 
 
 
->**Para reflexionar…**
+>**Para reflexionar…**\
 >**¿Qué crees que significa, en términos prácticos, que dos vectores de datos sean “ortogonales”, es decir, que formen un ángulo recto en el espacio? ¿Podría interpretarse como que representan ejemplos totalmente distintos, sin relación alguna?**
 
 
