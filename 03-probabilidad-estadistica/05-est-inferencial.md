@@ -87,7 +87,7 @@ El **error estándar** $\tfrac{S}{\sqrt{n}}$ refleja la variabilidad de la media
 
 El **factor crítico** depende de la distribución que usemos para modelar la incertidumbre:
 
-* Si $\sigma$ es conocida o $n$ es grande, usamos la **normal estándar**, y el factor crítico es $z_{1-\alpha/2}$ (por ejemplo, $1.96$ para 95 %).
+* Si $\sigma$ es conocida o $n$ es grande, usamos la **normal estándar**, y el factor crítico es $z_{1-\alpha/2}$ (por ejemplo, $1.96$ para 95%).
 * Si $\sigma$ es desconocida y $n$ es pequeño, usamos la **t de Student**, y el factor crítico es $t_{1-\alpha/2, n-1}$ (ligeramente mayor que 1.96 para reflejar la mayor incertidumbre).
 
 Así que el procedimiento siempre es el mismo: **media muestral ± margen de error**, solo que el margen de error se adapta según el conocimiento que tengamos sobre la variabilidad real y el tamaño de la muestra.
@@ -171,11 +171,13 @@ donde $\mu_{\text{nuevo}}$ es la media de las notas con el método online y $\mu
 La **hipótesis alternativa** ($H_1$), en cambio, expresa lo que nos interesa demostrar. Puede tener varias formas según la pregunta:
 
 * Si queremos comprobar si el método online es mejor, entonces
+
   $$
   H_1:\ \mu_{\text{nuevo}} > \mu_{\text{tradicional}}
   $$
 
 * Si solo queremos saber si existe alguna diferencia, sin importar el sentido, formulamos una alternativa bilateral:
+
   $$
   H_1:\ \mu_{\text{nuevo}} \ne \mu_{\text{tradicional}}
   $$
@@ -281,7 +283,7 @@ Esta comparación nos permite entender dos matices muy importantes sobre el valo
 
 El segundo matiz es justamente ese: **el valor p no mide el tamaño del efecto**. Para conocer la importancia práctica de lo que observamos necesitamos otras herramientas, como calcular la diferencia de medias, proporciones o métricas entre modelos y acompañarlas de su **intervalo de confianza**. Ese intervalo no solo nos da una estimación puntual, sino también un rango de valores plausibles para el parámetro en cuestión.
 
-De hecho, existe una relación directa entre los contrastes y los intervalos de confianza. En problemas habituales, si el **intervalo de confianza al 95 %** para un parámetro no incluye el valor que plantea la hipótesis nula, entonces el contraste bilateral al 5 % será significativo. La diferencia es de enfoque: el valor p mide la “rareza” del dato bajo $H_0$, mientras que el intervalo nos da un rango de valores compatibles con lo observado.
+De hecho, existe una relación directa entre los contrastes y los intervalos de confianza. En problemas habituales, si el **intervalo de confianza al 95%** para un parámetro no incluye el valor que plantea la hipótesis nula, entonces el contraste bilateral al 5% será significativo. La diferencia es de enfoque: el valor p mide la “rareza” del dato bajo $H_0$, mientras que el intervalo nos da un rango de valores compatibles con lo observado.
 
 En inteligencia artificial, esta discusión es especialmente relevante cuando comparamos modelos. Es habitual preguntarse si un aumento en precisión, F1 o AUC refleja una mejora real o si podría explicarse por el azar del muestreo. El valor p puede ayudarnos a responder esa pregunta, pero no debe ser el único criterio. Lo recomendable es acompañarlo siempre de la magnitud de la mejora y de un intervalo de confianza, además de considerar el coste de implementar el nuevo modelo frente al beneficio práctico que aporta.
 
@@ -315,13 +317,13 @@ $$
 
 donde $\bar{X}_1 - \bar{X}_2$ es la diferencia de medias y $SE$ es el **error estándar de la diferencia**, una medida que combina la dispersión de ambos grupos y su tamaño muestral. Si la diferencia entre medias es grande comparada con el error estándar, el estadístico $t$ será alto y nos llevará a rechazar la hipótesis nula.
 
-Supongamos que el cálculo nos da $t = 2.1$. Con 58 grados de libertad, el valor crítico de una t de Student a un nivel del 5 % es aproximadamente 1.67 en un contraste unilateral. Como 2.1 es mayor que 1.67, concluimos que la diferencia observada es lo bastante grande para rechazar la hipótesis nula al 5 %. Dicho en palabras: los datos aportan evidencia de que la app mejora las calificaciones.
+Supongamos que el cálculo nos da $t = 2.1$. Con 58 grados de libertad, el valor crítico de una t de Student a un nivel del 5% es aproximadamente 1.67 en un contraste unilateral. Como 2.1 es mayor que 1.67, concluimos que la diferencia observada es lo bastante grande para rechazar la hipótesis nula al 5%. Dicho en palabras: los datos aportan evidencia de que la app mejora las calificaciones.
 
 Este ejemplo aclara algo importante: el resultado no depende solo de la diferencia de medias, sino también de la variabilidad y del tamaño muestral. Si en lugar de 30 estudiantes por grupo solo tuviéramos 5, la misma diferencia de medias (0.5) se volvería menos concluyente porque el error estándar sería mayor. En cambio, con muestras muy grandes, diferencias incluso menores podrían resultar “significativas”.
 
 ![image-20251004151722104](./assets/image-20251004151722104.png)
 
-El razonamiento es exactamente el mismo que se aplica en la comparación de modelos de IA. Si un algoritmo obtiene un 92 % de aciertos y otro un 90 %, no basta con mirar esos porcentajes: debemos preguntarnos si la diferencia es real o si podría deberse al azar del muestreo. El contraste de hipótesis ofrece un marco formal para responder a esa pregunta, ayudándonos a distinguir entre una mejora aparente y una mejora estadísticamente respaldada.
+El razonamiento es exactamente el mismo que se aplica en la comparación de modelos de IA. Si un algoritmo obtiene un 92% de aciertos y otro un 90%, no basta con mirar esos porcentajes: debemos preguntarnos si la diferencia es real o si podría deberse al azar del muestreo. El contraste de hipótesis ofrece un marco formal para responder a esa pregunta, ayudándonos a distinguir entre una mejora aparente y una mejora estadísticamente respaldada.
 
 
 
@@ -420,14 +422,14 @@ La **validación cruzada** es la herramienta que nos permite responder a esa pre
 La idea es muy similar a la de los intervalos de confianza. Cuando repetimos la validación cruzada, no buscamos un único número, sino una **estimación robusta del desempeño** y un rango dentro del cual es razonable esperar que caiga el verdadero rendimiento en datos nuevos. Así, la validación cruzada puede entenderse como un “muestreo dentro de la muestra”: no conocemos el futuro, pero creamos versiones simuladas del proceso de entrenamiento y prueba para aproximarlo.
 
 > **Ejemplo**
-> Supongamos que entrenamos un modelo para clasificar correos en “spam” o “no spam” con 1000 ejemplos. Si usamos el 80 % de los datos para entrenar y el 20 % para probar, el resultado depende demasiado de qué 200 correos concretos caen en el conjunto de test. Podría ser que, por azar, justo esos correos fueran más fáciles de clasificar. La validación cruzada evita este sesgo: dividimos el dataset en, por ejemplo, 5 pliegues. Cada pliegue actúa como test una vez, mientras los otros cuatro se usan para entrenar. Al final, tenemos 5 estimaciones y su promedio nos da una visión mucho más estable del rendimiento esperado.
+> Supongamos que entrenamos un modelo para clasificar correos en “spam” o “no spam” con 1000 ejemplos. Si usamos el 80% de los datos para entrenar y el 20% para probar, el resultado depende demasiado de qué 200 correos concretos caen en el conjunto de test. Podría ser que, por azar, justo esos correos fueran más fáciles de clasificar. La validación cruzada evita este sesgo: dividimos el dataset en, por ejemplo, 5 pliegues. Cada pliegue actúa como test una vez, mientras los otros cuatro se usan para entrenar. Al final, tenemos 5 estimaciones y su promedio nos da una visión mucho más estable del rendimiento esperado.
 
 La conexión con la inferencia estadística se hace evidente. Mientras que en los apartados anteriores hemos visto cómo usar una muestra para estimar parámetros poblacionales (la media de notas de todos los estudiantes, la proporción de aciertos de un modelo en el mundo real), aquí aplicamos la misma lógica para estimar el **rendimiento de un modelo en datos no observados**.
 
 En resumen, la validación cruzada es un recordatorio de que en IA no basta con entrenar y medir en una sola muestra. Igual que en estadística no nos conformamos con un número puntual, sino que buscamos intervalos y medidas de incertidumbre, en IA necesitamos un procedimiento que nos permita generalizar. La validación cruzada cumple exactamente esa función: **llevar la lógica de la inferencia al terreno de los modelos predictivos**.
 
 > **Para reflexionar…**
-> **Si un modelo alcanza un 95 % de acierto en un único conjunto de test, pero en validación cruzada sus resultados oscilan entre el 85 % y el 95 %, ¿qué conclusión deberíamos sacar?**
+> **Si un modelo alcanza un 95% de acierto en un único conjunto de test, pero en validación cruzada sus resultados oscilan entre el 85% y el 95%, ¿qué conclusión deberíamos sacar?**
 > *Piensa en cómo la validación cruzada refleja la variabilidad del rendimiento y nos alerta de que un número aislado puede ser engañoso. Lo importante no es solo el valor puntual, sino la consistencia del desempeño en distintas particiones de los datos.*
 
 ### Simulaciones y métodos de Monte Carlo para problemas de alta dimensión
@@ -459,7 +461,7 @@ Con un enfoque de Monte Carlo (o más concretamente con **bootstrap**, que es un
 2. Calculas la media de esa muestra simulada.
 3. Repites este proceso miles de veces.
 
-El resultado es una **distribución simulada de medias**, que refleja cómo se comportaría el estimador si pudiéramos repetir el muestreo en la población real. A partir de esta distribución, puedes calcular el intervalo de confianza de la media sin necesidad de fórmulas complicadas: basta con quedarte con los percentiles adecuados (por ejemplo, el 2.5 % y el 97.5 % para un 95 % de confianza).
+El resultado es una **distribución simulada de medias**, que refleja cómo se comportaría el estimador si pudiéramos repetir el muestreo en la población real. A partir de esta distribución, puedes calcular el intervalo de confianza de la media sin necesidad de fórmulas complicadas: basta con quedarte con los percentiles adecuados (por ejemplo, el 2.5% y el 97.5% para un 95% de confianza).
 
 Esto tiene dos ventajas didácticas muy claras:
 
@@ -470,7 +472,7 @@ Veamos numéricamente lo anterior. Supongamos que tenemos las alturas (en cm) de
 
 ![image-20251004165717750](./assets/image-20251004165717750.png)
 
-El gráfico anterior nos muestra la **media muestral** (168.58 cm) y, debajo, el **intervalo de confianza bootstrap al 95 %** para la media: $165.83, 171.42$ cm. El histograma muestra la **distribución de medias re-muestreadas** (10 000 réplicas con reemplazo a partir de la misma muestra). Las líneas verticales marcan la media muestral (discontinua) y los límites del intervalo (punteadas).
+El gráfico anterior nos muestra la **media muestral** (168.58 cm) y, debajo, el **intervalo de confianza bootstrap al 95%** para la media: $165.83, 171.42$ cm. El histograma muestra la **distribución de medias re-muestreadas** (10 000 réplicas con reemplazo a partir de la misma muestra). Las líneas verticales marcan la media muestral (discontinua) y los límites del intervalo (punteadas).
 
 > **Para reflexionar…**
 > **¿Qué aporta este enfoque frente al cálculo analítico del intervalo de confianza con la t de Student?**
@@ -480,7 +482,7 @@ El gráfico anterior nos muestra la **media muestral** (168.58 cm) y, debajo, el
 
 Una vez entendidos los fundamentos de la inferencia estadística, es importante dar un paso atrás y preguntarnos: ¿qué aporta todo esto al campo de la Inteligencia Artificial? Puede parecer que calcular medias, intervalos de confianza o contrastes de hipótesis son técnicas alejadas de los algoritmos modernos, pero en realidad forman la base de su **evaluación rigurosa**.
 
-El primer punto clave es que la inferencia nos recuerda que **los resultados de una muestra no son la realidad completa**. En IA, cuando entrenamos y probamos un modelo, siempre lo hacemos con un conjunto limitado de datos. Si un algoritmo acierta en el 92 % de los ejemplos de un test, ese 92 % no es una verdad absoluta: es una estimación que podría variar con otro conjunto de datos distinto. La inferencia estadística proporciona el marco para **cuantificar esa incertidumbre**, igual que hacíamos con intervalos de confianza o valores p.
+El primer punto clave es que la inferencia nos recuerda que **los resultados de una muestra no son la realidad completa**. En IA, cuando entrenamos y probamos un modelo, siempre lo hacemos con un conjunto limitado de datos. Si un algoritmo acierta en el 92% de los ejemplos de un test, ese 92% no es una verdad absoluta: es una estimación que podría variar con otro conjunto de datos distinto. La inferencia estadística proporciona el marco para **cuantificar esa incertidumbre**, igual que hacíamos con intervalos de confianza o valores p.
 
 Esto conecta directamente con la necesidad de la **validación estadística de resultados**. No basta con reportar un número aislado (como la precisión de un modelo); hay que acompañarlo de información sobre su fiabilidad. ¿Es estable ese resultado o cambia mucho con distintos muestreos? ¿Podemos afirmar con confianza que un modelo es mejor que otro? Igual que en estadística contrastamos hipótesis sobre medias o proporciones, en IA contrastamos hipótesis sobre métricas de modelos.
 
@@ -489,7 +491,7 @@ Otro concepto importante que empieza a vislumbrarse aquí es el **trade-off entr
 Finalmente, la inferencia es esencial en la **selección y evaluación de modelos**. Cuando comparamos dos algoritmos, lo que realmente hacemos es lo mismo que cuando comparamos medias de dos poblaciones: evaluamos si la diferencia observada refleja una ventaja real o es simplemente fruto del muestreo. La lógica de los intervalos de confianza, los contrastes y los métodos de simulación se traslada directamente a este proceso.
 
 > **Ejemplo**
-> Supongamos que probamos dos modelos de clasificación de imágenes. El primero alcanza un 91 % de aciertos en el conjunto de validación y el segundo un 93 %. ¿Podemos afirmar que el segundo es mejor? Si esa diferencia se evaluó solo con 200 imágenes, la incertidumbre es grande y quizá no haya evidencia suficiente para preferirlo. Si en cambio se evaluó con 20 000 imágenes, la inferencia nos dirá que la diferencia es muy probablemente real.
+> Supongamos que probamos dos modelos de clasificación de imágenes. El primero alcanza un 91% de aciertos en el conjunto de validación y el segundo un 93%. ¿Podemos afirmar que el segundo es mejor? Si esa diferencia se evaluó solo con 200 imágenes, la incertidumbre es grande y quizá no haya evidencia suficiente para preferirlo. Si en cambio se evaluó con 20 000 imágenes, la inferencia nos dirá que la diferencia es muy probablemente real.
 
 > **Para reflexionar…**
 > **¿Qué riesgo corremos si adoptamos un nuevo modelo de IA únicamente porque “funciona mejor en nuestra muestra de datos”, sin usar herramientas de inferencia estadística?**

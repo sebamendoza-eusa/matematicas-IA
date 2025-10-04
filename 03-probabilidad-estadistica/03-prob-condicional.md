@@ -4,9 +4,9 @@
 
 En teoría de la probabilidad, la **probabilidad condicional** describe cómo se modifica la probabilidad de un suceso cuando disponemos de información adicional. No se trata de cambiar el fenómeno en sí, sino de **ajustar nuestra medida de incertidumbre** en función de lo que sabemos.
 
-Un ejemplo cotidiano lo aclara. Supongamos que la probabilidad de que llueva mañana en una ciudad es del 20 %. Sin embargo, si recibimos la información de que hoy ha descendido bruscamente la presión atmosférica, esa probabilidad puede aumentar al 60 %. El suceso “llueva mañana” no cambia, lo que cambia es la **información disponible** que nos permite evaluar de forma más precisa la incertidumbre asociada.
+Un ejemplo cotidiano lo aclara. Supongamos que la probabilidad de que llueva mañana en una ciudad es del 20%. Sin embargo, si recibimos la información de que hoy ha descendido bruscamente la presión atmosférica, esa probabilidad puede aumentar al 60%. El suceso “llueva mañana” no cambia, lo que cambia es la **información disponible** que nos permite evaluar de forma más precisa la incertidumbre asociada.
 
-Otro ejemplo es el de los diagnósticos médicos. Antes de una prueba, la probabilidad de que un paciente tenga una enfermedad puede ser baja, digamos del 1 %. Pero si el test resulta positivo, la probabilidad de que esté enfermo se incrementa, porque ahora estamos condicionando el cálculo al resultado de la prueba.
+Otro ejemplo es el de los diagnósticos médicos. Antes de una prueba, la probabilidad de que un paciente tenga una enfermedad puede ser baja, digamos del 1%. Pero si el test resulta positivo, la probabilidad de que esté enfermo se incrementa, porque ahora estamos condicionando el cálculo al resultado de la prueba.
 
 Formalmente, se habla de la probabilidad de un evento $A$ dado que se conoce la ocurrencia de otro evento $B$, y se representa como $P(A|B)$. La clave es entender que la información $B$ reduce el espacio de incertidumbre: ya no consideramos todos los casos posibles, sino solo aquellos en los que $B$ ocurre. En ese nuevo marco, recalculamos la proporción de casos en que ocurre $A$.
 
@@ -15,27 +15,27 @@ En términos prácticos, la probabilidad condicional es la herramienta que nos p
 ## Definición formal: regla de la probabilidad condicional y multiplicación de probabilidades
 
 Hasta ahora hemos visto la idea de forma intuitiva: la **probabilidad condicional** es la manera de ajustar la probabilidad de un suceso cuando tenemos nueva información. Matemáticamente, esta idea se expresa con la fórmula:
+
 $$
- P(A|B) = \frac{P(A \cap B)}{P(B)} \quad \text{si } P(B) > 0
- 
+ P(A|B) = \frac{P(A \cap B)}{P(B)} \quad \text{si } P(B) > 0 
 $$
+
 Aquí, $P(A|B)$ representa la probabilidad de que ocurra $A$ sabiendo que $B$ ha ocurrido. En el numerador aparece $P(A \cap B)$, la probabilidad de que ambos sucesos ocurran conjuntamente. En el denominador está $P(B)$, que limita el cálculo al universo de casos donde $B$ ya se cumple.
 
 La interpretación es clara: la probabilidad condicional se obtiene al **restringir el espacio muestral** a los casos en los que $B$ ocurre y calcular qué fracción de esos casos corresponde también a $A$.
 
 A partir de esta definición surge la **regla de la multiplicación de probabilidades**:
+
 $$
  P(A \cap B) = P(A|B),P(B)
- 
 $$
 
 
 Esta fórmula nos dice que la probabilidad conjunta de dos sucesos se puede calcular como la probabilidad de uno de ellos (por ejemplo $B$) multiplicada por la probabilidad del otro condicionado al primero. Simétricamente, también se cumple:
+
 $$
  P(A \cap B) = P(B|A),P(A)
- 
 $$
-
 
 Esta simetría es fundamental, porque permite expresar relaciones entre sucesos desde diferentes puntos de vista, y será precisamente la base del **Teorema de Bayes** que veremos más adelante.
 
@@ -47,21 +47,27 @@ En el análisis de datos y en la Inteligencia Artificial, estas expresiones se c
 >
 > **Probabilidad simple**
 > Sin información adicional, la probabilidad de sacar el as de corazones es
+> 
 > $$
 >  P(A) = \frac{1}{52}.
 > $$
+> 
 > **Probabilidad condicional**
 > Supongamos ahora que alguien nos dice que la carta robada es de corazones. El espacio muestral ya no son 52 cartas, sino solo las 13 de corazones. En ese nuevo contexto, la probabilidad de que sea el as de corazones se recalcula como
+> 
 > $$
 >  P(A|B) = \frac{P(A \cap B)}{P(B)} = \frac{1/52}{13/52} = \frac{1}{13}.
 > $$
+> 
 > Aquí $B$ representa “la carta es de corazones”. El numerador es $P(A \cap B)$, la probabilidad de que la carta sea el as de corazones (evento conjunto). El denominador es $P(B)$, la probabilidad de que la carta sea de corazones.
 >
 > **Multiplicación de probabilidades**
 > Podemos recuperar la probabilidad conjunta $P(A \cap B)$ usando la regla de multiplicación:
-> $$
+> 
+>$$
 >  P(A \cap B) = P(A|B),P(B) = \frac{1}{13} \cdot \frac{13}{52} = \frac{1}{52}.
 > $$
+>
 > Este resultado coincide con el cálculo directo de $P(A)$, lo que confirma la consistencia de la regla.
 >
 > Este ejemplo deja ver claramente la lógica: al conocer información adicional (que la carta es de corazones), **actualizamos la probabilidad** del suceso que nos interesa (que sea el as de corazones). La probabilidad condicional siempre se entiende como un **recalculo dentro de un espacio reducido**.
@@ -167,19 +173,19 @@ Este esquema es esencial en estadística y en Inteligencia Artificial. Cada vez 
 
 ## Interpretación en términos de *prior*, verosimilitud y *posterior*
 
-El **Teorema de Bayes** se interpreta como un mecanismo de actualización de probabilidades. En primer lugar aparece el **prior**, que expresa lo que sabemos antes de observar nada. Por ejemplo, si en una población solo el 1 % de las personas padece cierta enfermedad, esa proporción es la creencia inicial sobre la probabilidad de que un individuo cualquiera esté enfermo.
+El **Teorema de Bayes** se interpreta como un mecanismo de actualización de probabilidades. En primer lugar aparece el **prior**, que expresa lo que sabemos antes de observar nada. Por ejemplo, si en una población solo el 1% de las personas padece cierta enfermedad, esa proporción es la creencia inicial sobre la probabilidad de que un individuo cualquiera esté enfermo.
 
-Cuando incorporamos nueva información entramos en el terreno de la **verosimilitud**, que mide hasta qué punto la evidencia es coherente con la hipótesis. Si la enfermedad genera un resultado positivo en una prueba diagnóstica en el 95 % de los casos, la presencia de un test positivo resulta altamente compatible con la hipótesis de enfermedad.
+Cuando incorporamos nueva información entramos en el terreno de la **verosimilitud**, que mide hasta qué punto la evidencia es coherente con la hipótesis. Si la enfermedad genera un resultado positivo en una prueba diagnóstica en el 95% de los casos, la presencia de un test positivo resulta altamente compatible con la hipótesis de enfermedad.
 
-El resultado de este proceso es el **posterior**, una probabilidad revisada que surge de combinar el prior con la verosimilitud. Así, después de observar un test positivo, la probabilidad de que la persona esté enferma ya no se mantiene en el 1 % inicial, sino que aumenta a un valor mayor, calculado de forma precisa con el Teorema de Bayes.
+El resultado de este proceso es el **posterior**, una probabilidad revisada que surge de combinar el prior con la verosimilitud. Así, después de observar un test positivo, la probabilidad de que la persona esté enferma ya no se mantiene en el 1% inicial, sino que aumenta a un valor mayor, calculado de forma precisa con el Teorema de Bayes.
 
 Este mecanismo no se limita a una sola actualización. Cada vez que aparece nueva evidencia, el posterior pasa a convertirse en el nuevo prior, y el ciclo se repite. De este modo, Bayes formaliza un proceso de aprendizaje progresivo en el que nuestras creencias se ajustan de manera sistemática a medida que la información disponible crece.
 
 ## Ejemplo ilustrativo con datos sencillos: detección de spam con palabras clave
 
-Para entender cómo funciona el **Teorema de Bayes** en la práctica, consideremos el caso de un filtro de spam muy simple. Supongamos que en una bandeja de correo, el 20 % de los mensajes son spam y el 80 % son legítimos. Esa proporción inicial actúa como el **prior**, pues refleja la probabilidad de que un mensaje cualquiera sea spam antes de observar nada más.
+Para entender cómo funciona el **Teorema de Bayes** en la práctica, consideremos el caso de un filtro de spam muy simple. Supongamos que en una bandeja de correo, el 20% de los mensajes son spam y el 80% son legítimos. Esa proporción inicial actúa como el **prior**, pues refleja la probabilidad de que un mensaje cualquiera sea spam antes de observar nada más.
 
-Ahora introducimos una evidencia: la palabra “gratis” aparece en el asunto del correo. A partir de observaciones previas, sabemos que el 60 % de los correos de spam contienen la palabra “gratis”, mientras que solo el 5 % de los correos legítimos la incluyen. Esta es la **verosimilitud**, ya que mide qué tan consistente es la aparición de la palabra “gratis” con la hipótesis de que un mensaje sea spam.
+Ahora introducimos una evidencia: la palabra “gratis” aparece en el asunto del correo. A partir de observaciones previas, sabemos que el 60% de los correos de spam contienen la palabra “gratis”, mientras que solo el 5% de los correos legítimos la incluyen. Esta es la **verosimilitud**, ya que mide qué tan consistente es la aparición de la palabra “gratis” con la hipótesis de que un mensaje sea spam.
 
 El Teorema de Bayes nos permite calcular la probabilidad **posterior**, es decir, la probabilidad de que el mensaje sea spam dado que contiene la palabra “gratis”. La fórmula se aplica de la siguiente manera:
 
@@ -205,7 +211,7 @@ $$
 P(\text{Spam}|\text{Gratis}) = \frac{0.6 \cdot 0.2}{0.16} = \frac{0.12}{0.16} = 0.75.
 $$
 
-El resultado es que un mensaje que contiene la palabra “gratis” tiene un 75 % de probabilidad de ser spam, una cifra muy superior al 20 % de probabilidad inicial.
+El resultado es que un mensaje que contiene la palabra “gratis” tiene un 75% de probabilidad de ser spam, una cifra muy superior al 20% de probabilidad inicial.
 
 Este ejemplo sencillo muestra el poder del Teorema de Bayes: a partir de un conocimiento previo y de la evidencia observada, se logra **actualizar la probabilidad** de forma rigurosa. Así, la información que parecía anecdótica (una sola palabra en un correo) se convierte en un factor decisivo para la clasificación.
 

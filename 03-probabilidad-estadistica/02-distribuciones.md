@@ -61,12 +61,15 @@ El siguiente ejemplo ilustra la diferencia entre la **distribución de probabili
 > $$
 > f(t) = \lambda e^{-\lambda t} \quad \text{para } t \geq 0
 > $$
+>
 > Esta fórmula **no nos da la probabilidad de que la inferencia tarde exactamente $t$ milisegundos** (esa probabilidad es cero). En cambio, nos permite calcular la probabilidad de que el tiempo de inferencia caiga dentro de un rango específico, por ejemplo, entre 100 ms y 150 ms.
 
 > **Ejemplo numérico:**
 > Queremos saber la probabilidad de que el tiempo de inferencia exceda nuestro umbral máximo de 200 ms. Para calcular $P(T > 200)$, integramos la **función de densidad de probabilidad** $f(t)$ desde 200 hasta infinito:
 >
-> $$P(T > 200) = \int_{200}^{\infty} f(t) dt$$
+>$$
+> P(T > 200) = \int_{200}^{\infty} f(t) dt
+>$$
 >
 > La **distribución de probabilidad** nos da la pregunta ("¿Cuál es la probabilidad de exceder el umbral?") y la **función de densidad de probabilidad** nos da la fórmula para obtener la respuesta.
 
@@ -90,7 +93,6 @@ Para una variable aleatoria discreta, el valor esperado se calcula sumando el pr
 $$
 E[X] = \mu = \sum_i x_i P(x_i)
 $$
-
 
 Para una variable aleatoria continua, la suma se reemplaza por una integral, donde multiplicamos cada valor $x$ por su función de densidad de probabilidad $f(x)$:
 
@@ -256,9 +258,11 @@ En síntesis, la distribución normal funciona como un **lenguaje común de la i
 La **Distribución Binomial** aparece siempre que nos interesa contar cuántas veces ocurre un determinado resultado dentro de una secuencia de intentos independientes. Se trata del modelo natural de los **ensayos de Bernoulli**, donde cada prueba solo puede dar dos resultados: éxito o fracaso. El supuesto clave es que el número de intentos $n$ es fijo y que la probabilidad de éxito $p$ se mantiene constante en cada repetición.
 
 En términos sencillos, la binomial responde a preguntas del tipo: *si la probabilidad de que un evento ocurra es $p$, ¿cuál es la probabilidad de observar exactamente $k$ éxitos tras $n$ intentos?* Matemáticamente, la probabilidad se expresa como:
+
 $$
  P(X=k) = \binom{n}{k} p^k (1-p)^{n-k}
 $$
+
 donde $X$ es la variable aleatoria que cuenta el número de éxitos.
 
 ### La distribución binomial en Inteligencia Artificial
@@ -271,9 +275,9 @@ Más allá de la evaluación de clasificadores, la binomial también es esencial
 
 > **Ejemplo:**
 >
-> Imagina un sistema de detección de fraudes en transacciones bancarias. El modelo acierta en un **95 % de los casos** al identificar correctamente si una transacción es legítima o fraudulenta. Si analizamos un bloque de **100 transacciones nuevas**, la binomial nos permite calcular la probabilidad de que el sistema falle exactamente en 7 casos, o de que falle en más de 10.
+> Imagina un sistema de detección de fraudes en transacciones bancarias. El modelo acierta en un **95% de los casos** al identificar correctamente si una transacción es legítima o fraudulenta. Si analizamos un bloque de **100 transacciones nuevas**, la binomial nos permite calcular la probabilidad de que el sistema falle exactamente en 7 casos, o de que falle en más de 10.
 >
-> Esto es muy valioso porque transforma una métrica de rendimiento aparentemente estática (95 % de precisión) en una **distribución de posibles resultados**. Así podemos responder a preguntas más profundas: ¿qué tan probable es que este modelo falle más de lo aceptable en un lote real de transacciones? ¿qué margen de error podemos esperar en condiciones normales de operación?
+> Esto es muy valioso porque transforma una métrica de rendimiento aparentemente estática (95% de precisión) en una **distribución de posibles resultados**. Así podemos responder a preguntas más profundas: ¿qué tan probable es que este modelo falle más de lo aceptable en un lote real de transacciones? ¿qué margen de error podemos esperar en condiciones normales de operación?
 
 En resumen, la **distribución binomial** aporta a la Inteligencia Artificial una forma rigurosa de conectar el rendimiento observado de un modelo con la incertidumbre inherente al muestreo. Nos permite pasar de un número aislado de precisión a un marco probabilístico que explica cómo se comportará un clasificador en distintos escenarios. Esa es la razón por la que, aunque a veces pase desapercibida, la binomial está en el corazón de cómo entendemos y evaluamos los sistemas inteligentes.
 
@@ -283,9 +287,9 @@ En resumen, la **distribución binomial** aporta a la Inteligencia Artificial un
 >
 > ![image-20251003215810084](./assets/image-20251003215810084.png)
 >
-> Aquí se muestra la comparación entre la **distribución binomial teórica** (en azul marino) y los **resultados simulados** (en naranja) para un clasificador con un 90 % de precisión evaluado en lotes de 50 predicciones.
+> Aquí se muestra la comparación entre la **distribución binomial teórica** (en azul marino) y los **resultados simulados** (en naranja) para un clasificador con un 90% de precisión evaluado en lotes de 50 predicciones.
 >
-> Se aprecia claramente que la mayor parte de la masa de probabilidad se concentra entre 2 y 7 fallos, con un valor más probable alrededor de 5. Esto refleja que, aunque la tasa de error esperada es del 10 %, en cada lote el número real de errores fluctúa. La coincidencia entre la forma teórica y los resultados simulados muestra cómo la distribución binomial describe con precisión la variabilidad del rendimiento del modelo.
+> Se aprecia claramente que la mayor parte de la masa de probabilidad se concentra entre 2 y 7 fallos, con un valor más probable alrededor de 5. Esto refleja que, aunque la tasa de error esperada es del 10%, en cada lote el número real de errores fluctúa. La coincidencia entre la forma teórica y los resultados simulados muestra cómo la distribución binomial describe con precisión la variabilidad del rendimiento del modelo.
 
 ## Distribución de Poisson: modelar eventos raros en intervalos
 

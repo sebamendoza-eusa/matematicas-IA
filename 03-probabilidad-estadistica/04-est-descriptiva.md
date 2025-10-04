@@ -88,6 +88,7 @@ $$
 $$
 
 * La **media** es
+
   $$
   \bar{x} = \frac{100+120+150+110+105+300+115}{7} = 157.14
   $$
@@ -176,9 +177,11 @@ Los cuartiles dividen los datos en cuatro partes iguales. El primer cuartil (Q1)
 Los percentiles siguen la misma lógica, pero dividen los datos en cien partes iguales. El percentil 90, por ejemplo, es el valor que deja por debajo al 90% de los datos. Esta medida se utiliza mucho en contextos donde interesa entender los extremos de la distribución. Un ejemplo cercano para un alumno sería el cálculo de notas de admisión: estar en el percentil 95 de una prueba significa haber obtenido mejor resultado que el 95% de los participantes.
 
 Esta idea intuitiva se puede formalizar con el concepto de **cuantil**. Si $X$ es una variable y $F(x)$ su función de distribución acumulada (la proporción de datos $\le x$), el **cuantil de nivel** $p\in(0,1)$ es cualquier valor $q$ tal que
+
 $$
 F(q);\ge;p\quad\text{y}\quad F(q^-);\le;p.
 $$
+
 En datos finitos, con valores ordenados $x_{(1)}\le \cdots \le x_{(n)}$, el cuantil empírico $Q(p)$ se suele obtener por **posición fraccionaria**: $k=(n+1)p$ y, si $k$ no es entero, se interpola entre $x_{(\lfloor k\rfloor)}$ y $x_{(\lceil k\rceil)}$. Los **cuartiles** son los cuantiles $Q(0{.}25), Q(0{.}50), Q(0{.}75)$; el segundo cuartil coincide con la **mediana**. Los **percentiles** son los cuantiles $Q(p)$ con $p$ expresado en tanto por ciento (p. ej., el percentil 90 es $Q(0{.}90)$).
 
 Vamos a fijar ideas con un ejemplo
@@ -186,23 +189,32 @@ Vamos a fijar ideas con un ejemplo
 > 
 >
 > Tomemos una lista de “visitas diarias” (ordenada ya de menor a mayor)
+>
 > $$
 > \boxed{2,\ 3,\ 4,\ 6,\ 7,\ 9,\ 13,\ 15,\ 21,\ 50}\qquad (n=10)
 > $$
+>
 > La **mediana** es el punto medio entre las posiciones 5 y 6: $Q(0{.}5)=\tfrac{7+9}{2}=8$.
 > Para el **primer cuartil**, $k=(n+1),0{.}25=2{.}75$. Interpolamos entre $x_{(2)}=3$ y $x_{(3)}=4$ con fracción $0{.}75$:
+>
 > $$
 > Q(0{.}25)=3+0{.}75,(4-3)=3{.}75.
 > $$
+>
 > Para el **tercer cuartil**, $k=(n+1),0{.}75=8{.}25$. Interpolamos entre $x_{(8)}=15$ y $x_{(9)}=21$ con fracción $0{.}25$:
+>
 > $$
 > Q(0{.}75)=15+0{.}25,(21-15)=16{.}5.
 > $$
+>
 > El **rango intercuartílico** (IQR) mide la “anchura” de la mitad central:
+>
 > $$
 > \mathrm{IQR}=Q(0{.}75)-Q(0{.}25)=16{.}5-3{.}75=12{.}75.
 > $$
+>
 > Con estos números, el **percentil 90** (posición $k=0{.}9\cdot 11=9{.}9$) estará casi en el máximo, muy cerca de $x_{(10)}=50$:
+>
 > $$
 > Q(0{.}90)\approx x_{(9)} + 0{.}9,(x_{(10)}-x_{(9)}) = 21 + 0{.}9,(50-21)=47{.}1.
 > $$
@@ -264,13 +276,10 @@ Para comprender la magnitud de la relación lineal observada en el diagrama de d
 $$
 \rho_{X,Y} = \frac{\sum_{i=1}^n (x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum_{i=1}^n (x_i - \bar{x})^2}\sqrt{\sum_{i=1}^n (y_i - \bar{y})^2}}
 $$
+
 Donde $x_i$ e $y_i$ son los valores observados de las variables $X$ e $Y$, y $\bar{x}$ e $\bar{y}$ son sus respectivas medias. El valor de $\rho$ siempre se sitúa entre $-1$ (correlación negativa perfecta) y $1$ (correlación positiva perfecta), siendo $0$ la ausencia de correlación lineal. Un diagrama de dispersión nos da una idea visual del signo y la magnitud de este coeficiente antes de calcularlo.
 
-
-
 <img src="./assets/Scatter-Plots-and-Correlation-Examples.png" alt="The Scatter Plot as a QC Tool for Quality Professionals" />
-
-
 
 > **Para reflexionar...**
 >
@@ -350,7 +359,6 @@ La fórmula del MSE se expresa de la siguiente manera:
 $$
 MSE = \frac{1}{n}\sum_{i=1}^n (\hat{y}_i - y_i)^2
 $$
-
 
 En esta ecuación, la media actúa como el **resumen final del rendimiento global** del modelo sobre el conjunto de datos de prueba o entrenamiento. Si el valor del MSE es bajo, significa que el error promedio del modelo es pequeño.
 

@@ -12,7 +12,7 @@ Por ejemplo, lanzar una moneda es un experimento aleatorio. El **espacio muestra
 
 ### **Cálculo de Probabilidad: La Regla de Laplace**
 
-La forma más sencilla y común de calcular la probabilidad de un evento ($ A $) es a través de la **regla de Laplace**, que se aplica cuando todos los resultados en el espacio muestral son igualmente probables. 
+La forma más sencilla y común de calcular la probabilidad de un evento ($A$) es a través de la **regla de Laplace**, que se aplica cuando todos los resultados en el espacio muestral son igualmente probables. 
 
 $$
 P(A) = \frac{\text{Número de casos favorables}}{\text{Número total de resultados posibles}}
@@ -61,18 +61,18 @@ En probabilidad, no todos los eventos están relacionados entre sí. A veces la 
 #### Independencia de eventos
 
 Decimos que dos eventos son **independientes** cuando la probabilidad de que ambos ocurran es simplemente el producto de sus probabilidades individuales:
+
 $$
- P(A \cap B) = P(A) \cdot P(B)
- 
+ P(A \cap B) = P(A) \cdot P(B) 
 $$
 
 
 En términos intuitivos, saber que ocurrió uno no cambia nuestra estimación de que ocurra el otro.
 
 > **Ejemplo:** al lanzar dos dados distintos, el resultado del primero no afecta al segundo. La probabilidad de obtener un 3 en el primero y un 5 en el segundo es
+
 > $$
 >  \frac{1}{6} \cdot \frac{1}{6} = \frac{1}{36}.
->  
 > $$
 > 
 
@@ -93,9 +93,11 @@ Cuando hablamos de probabilidad, solemos pensar en una medida de incertidumbre. 
 #### Interpretación clásica
 
 La visión clásica, formulada por Laplace, entiende la probabilidad como una relación entre casos favorables y casos posibles, siempre que todos sean igualmente probables.
+
 $$
 P(A) = \frac{\text{número de casos favorables}}{\text{número de casos posibles}}
 $$
+
 Por ejemplo, la probabilidad de sacar un 4 al lanzar un dado justo es $1/6$, pues hay un solo resultado favorable de seis posibles.
 
 Esta interpretación funciona bien en juegos de azar y situaciones simétricas, pero presenta límites cuando los resultados no son equiprobables. En un dado cargado, por ejemplo, algunos resultados tienen más probabilidad que otros, y el razonamiento clásico deja de ser aplicable.
@@ -106,6 +108,7 @@ Esta interpretación funciona bien en juegos de azar y situaciones simétricas, 
 #### Interpretación frecuentista
 
 En la interpretación frecuentista, la probabilidad de un evento se entiende como la frecuencia relativa que se observa al repetir el experimento muchas veces:
+
 $$
 P(A) = \lim_{n \to \infty} \frac{\text{número de veces que ocurre } A}{n}
 $$
@@ -156,9 +159,11 @@ En inteligencia artificial, esta formalización resulta indispensable. Cuando un
 ### Axiomas de Kolmogorov
 
 De manera formal, si $\Omega$ es el **espacio muestral** (el conjunto de todos los resultados posibles) y $\mathcal{F}$ es la colección de **eventos** (subconjuntos de $\Omega$), una **función de probabilidad** es una aplicación
+
 $$
  P : \mathcal{F} \longrightarrow [0,1]
 $$
+
 que asigna a cada evento $A \in \mathcal{F}$ un número real entre 0 y 1. Esta función cumple tres reglas básicas o **axiomas:**
 
 1. **No negatividad:**
@@ -193,6 +198,7 @@ $$
 > La **normalización** garantiza que la probabilidad total de obtener “algún número” es 1.
 >
 > La **aditividad** nos dice que la probabilidad de obtener un número par es
+>
 > $$
 > P({2,4,6}) = P(2) + P(4) + P(6) = \tfrac{1}{6}+\tfrac{1}{6}+\tfrac{1}{6} = \tfrac{3}{6}.
 > $$
@@ -209,25 +215,31 @@ En IA, esto asegura que nunca asignemos probabilidad positiva a un evento “imp
 #### Complemento de un evento
 
 Si $A$ es un evento, su complemento $A^c$ representa que “$A$ no ocurre”. De los axiomas se deduce que:
+
 $$
 P(A^c) = 1 - P(A).
 $$
+
 Este resultado, sencillo pero poderoso, aparece constantemente en aplicaciones. Por ejemplo, si un modelo de lenguaje asigna probabilidad 0.8 a que la próxima palabra sea “hola”, entonces la probabilidad de que sea “cualquier otra palabra” debe ser 0.2. No necesitamos calcular la suma de todas las demás posibilidades; basta con usar el complemento.
 
 #### Unión de dos eventos cualesquiera
 
 Cuando los eventos no son disjuntos, la probabilidad de la unión se corrige restando la intersección:
+
 $$
 P(A \cup B) = P(A) + P(B) - P(A \cap B).
 $$
+
 Este principio se utiliza en tareas como la detección de spam, donde puede interesarnos calcular la probabilidad de que un correo contenga la palabra “gratis” o la palabra “premio”. Si simplemente sumáramos ambas probabilidades, estaríamos contando dos veces los correos que incluyen ambas palabras.
 
 #### Monotonía de la probabilidad
 
 Si un evento $A$ está contenido en otro evento $B$ ($A \subseteq B$), entonces su probabilidad es menor o igual:
+
 $$
 P(A) \leq P(B).
 $$
+
 Esto refleja que ampliar las condiciones de un evento nunca puede reducir la probabilidad de que ocurra. En IA, este principio se ve en modelos jerárquicos: la probabilidad de que “una imagen contenga un perro de raza labrador” siempre será menor o igual que la probabilidad de que “contenga un perro”.
 
 #### Cotas de probabilidad y consistencia
