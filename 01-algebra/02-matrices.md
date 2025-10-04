@@ -502,10 +502,6 @@ siempre que $\det(\mathbf{A}) \neq 0$.
 
 ---
 
-Perfecto 🙌. Entonces preparo un **ejemplo completo con una matriz $3 \times 3$**, para que los alumnos vean cómo se aplica el método de la adjunta al cálculo de la inversa.
-
----
-
 #### Ejemplo: cálculo de la inversa de una matriz $3 \times 3$ usando la adjunta
 
 Consideremos la matriz
@@ -540,7 +536,9 @@ Como $\det(\mathbf{A}) = 1 \neq 0$, la matriz es invertible.
 
 Ahora calculamos cada cofactor $C_{ij} = (-1)^{i+j} \det(M_{ij})$, donde $M_{ij}$ es la submatriz que se obtiene eliminando la fila $i$ y la columna $j$.
 
-- $C_{11} = \det(\begin{bmatrix} 1 & 4 \\ 6 & 0 \end{bmatrix}) = (1)(0) - (4)(6) = -24$
+$$
+C_{11} = \det(\begin{bmatrix} 1 & 4 \\ 6 & 0 \end{bmatrix}) = (1)(0) - (4)(6) = -24
+$$
 
 - $C_{12} = - \det( \begin{bmatrix} 0 & 4 \\ 5 & 0 \end{bmatrix}) = -[(0)(0) - (4)(5)] = -(-20) = 20$
 
@@ -552,7 +550,9 @@ Ahora calculamos cada cofactor $C_{ij} = (-1)^{i+j} \det(M_{ij})$, donde $M_{ij}
 
 - $C_{23} = - \det \begin{bmatrix} 1 & 2 \\ 5 & 6 \end{bmatrix} = -[(1)(6) - (2)(5)] = -[6 - 10] = 4$
 
-- $C_{31} = \det \begin{bmatrix} 2 & 3 \\ 1 & 4 \end{bmatrix} = (2)(4) - (3)(1) = 8 - 3 = 5$
+$$
+C_{31} = \det \begin{bmatrix} 2 & 3 \\ 1 & 4 \end{bmatrix} = (2)(4) - (3)(1) = 8 - 3 = 5
+$$
 
 - $C_{32} = - \det \begin{bmatrix} 1 & 3 \\ 0 & 4 \end{bmatrix} = -[(1)(4) - (3)(0)] = -4$
 
