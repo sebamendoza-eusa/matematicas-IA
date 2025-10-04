@@ -32,7 +32,8 @@ $$
 P(A \cup B) = P(A) + P(B) - P(A \cap B)
 $$
 
-> **Ejemplo:** En un dado, sea $A$: obtener un número par ($A=\{2,4,6\}$) y $B$: obtener un número mayor que 4 ($B=\{5,6\}$). La **intersección** es $A \cap B = \{6\}$.
+> **Ejemplo:**\
+> En un dado, sea $A$: obtener un número par ($A=\{2,4,6\}$) y $B$: obtener un número mayor que 4 ($B=\{5,6\}$). La **intersección** es $A \cap B = \{6\}$.
 > Usando la regla de Laplace, $P(A) = 3/6$, $P(B) = 2/6$, y $P(A \cap B) = 1/6$.
 > Entonces,
 >
@@ -48,7 +49,8 @@ $$
 P(A \cap B)
 $$
 
-**Ejemplo:** Si $A$ es obtener un número par y $B$ es obtener un número mayor que 3, la intersección es $A \cap B = \{4, 6\}$. Por la regla de Laplace, $P(A \cap B) = 2/6 = 1/3$.
+>**Ejemplo:**\
+>Si $A$ es obtener un número par y $B$ es obtener un número mayor que 3, la intersección es $A \cap B = \{4, 6\}$. Por la regla de Laplace, $P(A \cap B) = 2/6 = 1/3$.
 
 #### Complemento de un Evento
 
@@ -73,7 +75,8 @@ $$
 
 En términos intuitivos, saber que ocurrió uno no cambia nuestra estimación de que ocurra el otro.
 
-> **Ejemplo:**\Al lanzar dos dados distintos, el resultado del primero no afecta al segundo. La probabilidad de obtener un 3 en el primero y un 5 en el segundo es
+>**Ejemplo:**\
+>Al lanzar dos dados distintos, el resultado del primero no afecta al segundo. La probabilidad de obtener un 3 en el primero y un 5 en el segundo es
 >
 > $$
 >  \frac{1}{6} \cdot \frac{1}{6} = \frac{1}{36}.
@@ -84,7 +87,8 @@ En términos intuitivos, saber que ocurrió uno no cambia nuestra estimación de
 
 En contraste, dos eventos son **dependientes** cuando la ocurrencia de uno modifica la probabilidad del otro.
 
-> **Ejemplo:**\Si tenemos una bolsa con 5 bolas rojas y 5 azules y sacamos una sin reemplazo, la probabilidad de la segunda extracción depende de lo que ocurrió en la primera. Si la primera bola fue roja, habrá menos rojas disponibles en la segunda extracción y, por tanto, la probabilidad de cada color habrá cambiado.
+> **Ejemplo:**\
+>Si tenemos una bolsa con 5 bolas rojas y 5 azules y sacamos una sin reemplazo, la probabilidad de la segunda extracción depende de lo que ocurrió en la primera. Si la primera bola fue roja, habrá menos rojas disponibles en la segunda extracción y, por tanto, la probabilidad de cada color habrá cambiado.
 > Este concepto de independencia no solo es importante para cálculos sencillos, sino que será clave en inteligencia artificial. Muchos modelos probabilísticos hacen suposiciones de independencia para simplificar problemas muy complejos. Más adelante veremos cómo esta idea reaparece en el **Teorema de Bayes** y en algoritmos como **Naive Bayes**, donde se asume que ciertas variables se comportan como si fueran independientes para poder construir modelos eficientes.
 
 
