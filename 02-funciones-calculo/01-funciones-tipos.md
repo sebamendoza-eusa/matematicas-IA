@@ -13,15 +13,15 @@ En inteligencia artificial, esta idea se convierte en el núcleo de los algoritm
 Es importante entender algunos conceptos asociados a esta definición. Al conjunto $X$ se le denomina **dominio** (el conjunto de entradas para las que la función está definida) e $Y$ es el **codominio** (el conjunto de posibles salidas permitidas por la definición de la función). La **imagen** o **recorrido** de $f$ es el conjunto de salidas que realmente se obtienen al aplicar $f$ a todo su dominio:
 
 $$
-Im(f)=\\{f(x):x\in X\\}\subseteq Y.
+\mathrm{Im}(f)=\{f(x):x\in X\}\subseteq Y.
 $$
 
-Pensar con claridad en dominio, codominio e imagen evita ambigüedades. Si modelamos la **nota de un examen** en función de las **horas de estudio**, un dominio razonable sería $X=[0,\infty)$ (no hay horas negativas) y un codominio $Y=\mathbb{R}$ si permitimos cualquier número real como resultado. En la práctica, sabemos que las notas están acotadas, así que la imagen efectiva quedará en un intervalo, por ejemplo $[0,10]$, que es un subconjunto del codominio elegido. Esa diferencia entre “lo permitido por definición”, $Y$, y “lo que realmente ocurre”, $Im(f)$, es útil al diseñar y analizar modelos.
+Pensar con claridad en dominio, codominio e imagen evita ambigüedades. Si modelamos la **nota de un examen** en función de las **horas de estudio**, un dominio razonable sería $X=[0,\infty)$ (no hay horas negativas) y un codominio $Y=\mathbb{R}$ si permitimos cualquier número real como resultado. En la práctica, sabemos que las notas están acotadas, así que la imagen efectiva quedará en un intervalo, por ejemplo $[0,10]$, que es un subconjunto del codominio elegido. Esa diferencia entre “lo permitido por definición”, $Y$, y “lo que realmente ocurre”, $\mathrm{Im}(f)$, es útil al diseñar y analizar modelos.
 
-En inteligencia artificial, esta misma estructura describe cualquier modelo. El **espacio de características** hace de dominio: si representamos cada ejemplo como un vector con $d$ atributos numéricos, solemos escribir $X\subseteq\mathbb{R}^d$. El codominio depende de la tarea. En **regresión**, se toma típicamente $Y=\mathbb{R}$ y la imagen son valores reales (por ejemplo, precios). En **clasificación binaria**, podemos definir $Y=\\{0,1\\}$ y la función $f$ devuelve una etiqueta, o bien $Y=[0,1]$ si $f$ devuelve una **probabilidad**; en el caso multiclase, es común trabajar con $Y=\mathbb{R}^K$ antes de la capa *softmax* (logits) o con el **símplex de probabilidad**
+En inteligencia artificial, esta misma estructura describe cualquier modelo. El **espacio de características** hace de dominio: si representamos cada ejemplo como un vector con $d$ atributos numéricos, solemos escribir $X\subseteq\mathbb{R}^d$. El codominio depende de la tarea. En **regresión**, se toma típicamente $Y=\mathbb{R}$ y la imagen son valores reales (por ejemplo, precios). En **clasificación binaria**, podemos definir $Y=\{0,1\}$ y la función $f$ devuelve una etiqueta, o bien $Y=[0,1]$ si $f$ devuelve una **probabilidad**; en el caso multiclase, es común trabajar con $Y=\mathbb{R}^K$ antes de la capa *softmax* (logits) o con el **símplex de probabilidad**
 
 $$
-\Delta^{K-1}=\\{p\in\mathbb{R}^K:p_i\ge 0,\ \sum_{i=1}^K p_i=1\\}
+\Delta^{K-1}=\{p\in\mathbb{R}^K:p_i\ge 0,\ \sum_{i=1}^K p_i=1\}
 $$
 
 cuando la salida ya son probabilidades normalizadas.
@@ -34,8 +34,8 @@ Dominar estos conceptos básicos —dominio, codominio, imagen y representación
 
 
 
->**Para reflexionar...**
->**Si defines un clasificador con salida de probabilidad como $f:X\to[0,1]$, ¿qué ventajas te da declarar explícitamente ese codominio frente a decir solo $f\:X\to\mathbb{R}$? ¿Cómo condiciona esa decisión el diseño de la función de pérdida y la interpretación de los resultados?**
+>**Para reflexionar...**\
+>**Si defines un clasificador con salida de probabilidad como $f:X\to[0,1]$, ¿qué ventajas te da declarar explícitamente ese codominio frente a decir solo “$f:X\to\mathbb{R}$”? ¿Cómo condiciona esa decisión el diseño de la función de pérdida y la interpretación de los resultados?**
 
 
 
@@ -114,15 +114,14 @@ Interpretativamente, $w_{12}$ mide cómo cambia el efecto de $x_1$ cuando varía
 >
 > Supón que queremos predecir la **nota** a partir de las **horas de estudio** y de si el alumno usa **material de calidad**. Definimos una variable $q$ que vale $0$ si el material es básico y $1$ si es de calidad.
 >
->| Horas (h) | Calidad (q) | Nota |
->|------------|--------------|------|
->| 1          | 0            | 4.5  |
->| 2          | 0            | 6.0  |
->| 3          | 0            | 7.0  |
->| 1          | 1            | 5.6  |
->| 2          | 1            | 7.9  |
->| 3          | 1            | 9.8  |
->
+> | Horas (h) | Calidad (q) | Nota |
+> |  | -- | - |
+> | 1         | 0           | 4.5  |
+> | 2         | 0           | 6.0  |
+> | 3         | 0           | 7.0  |
+> | 1         | 1           | 5.6  |
+> | 2         | 1           | 7.9  |
+> | 3         | 1           | 9.8  |
 >
 > Al dibujar los puntos, verás **dos rectas**, una para $q=0$ y otra para $q=1$. La clave es que **no son paralelas**: con material de calidad, **cada hora extra rinde más**. Eso es una **interacción**: el efecto de “horas” depende del valor de “calidad”.
 >
@@ -174,7 +173,7 @@ Pensar primero en rectas no es una limitación, es una **ventaja pedagógica y p
 
 
 
->**Para reflexionar...**
+>**Para reflexionar...**\
 >**¿Qué preferirías ante un conjunto de datos real: empezar con un modelo lineal bien interpretado y aumentar complejidad solo si es necesario, o saltar directamente a un modelo muy flexible? ¿Cómo influye esa elección en la explicabilidad, el riesgo de sobreajuste y el coste computacional?**
 
 
@@ -185,7 +184,7 @@ En este punto es donde la inteligencia artificial va más allá de lo lineal. La
 
 
 
->**Para reflexionar...**
+>**Para reflexionar...**\
 >**¿Por qué crees que la regresión lineal, siendo un modelo tan simple, sigue utilizándose hoy en día como herramienta fundamental en estadística y aprendizaje automático? ¿Qué aporta su simplicidad frente a modelos más sofisticados, y en qué momentos sus limitaciones se hacen evidentes?**
 
 
@@ -220,7 +219,7 @@ Considera un ejemplo sencillo. Queremos predecir el gasto mensual en datos móvi
 
 Normalizar y transformar no es un adorno; es un paso que decide qué estructura ve el modelo. Al comprimir, centrar o curvar adecuadamente, se logra que la frontera de decisión o la superficie de predicción sea más simple en el espacio transformado. A partir de ahí, podemos optar por modelos lineales con buenas propiedades o, si hace falta más flexibilidad, introducir no linealidad en el propio modelo (activaciones) sabiendo que ya hemos hecho gran parte del trabajo al **elegir bien las coordenadas**.
 
->**Para reflexionar...**
+>**Para reflexionar...**\
 >**Cuando una relación parece “explosiva” en escala lineal, ¿por qué mirar los datos en escala logarítmica suele revelar una estructura más simple? ¿En qué casos preferirías transformar las entradas (log, potencias, estandarización) antes de pasar a un modelo más complejo?**
 
 ## Funciones de activación
