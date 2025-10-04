@@ -568,7 +568,7 @@ $$
 
 $$
 C_{21} = 
-- \begin{vmatrix}
+-\begin{vmatrix}
 2 & 3 \\
 6 & 0
 \end{vmatrix}
@@ -586,7 +586,7 @@ $$
 
 $$
 C_{23} = 
-- \begin{vmatrix}
+-\begin{vmatrix}
 1 & 2 \\
 5 & 6
 \end{vmatrix}
@@ -604,7 +604,7 @@ $$
 
 $$
 C_{32} = 
-- \begin{vmatrix}
+-\begin{vmatrix}
 1 & 3 \\
 0 & 4
 \end{vmatrix}
