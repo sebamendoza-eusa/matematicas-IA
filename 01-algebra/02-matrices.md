@@ -393,7 +393,7 @@ Cuando alguna de estas condiciones no se cumple, hablamos de una matriz **singul
 > 4 & -2 \\
 > -3 & 1
 > \end{bmatrix}
-> =
+> =\\
 > \begin{bmatrix}
 > -2 & 1 \\
 > 1.5 & -0.5
