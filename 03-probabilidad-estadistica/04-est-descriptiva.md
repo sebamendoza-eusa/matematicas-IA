@@ -1,8 +1,7 @@
-Fundamentos de estadística descriptiva 
-===
+# Fundamentos de estadística descriptiva 
 
-Concepto general de estadística descriptiva
----
+## Concepto general de estadística descriptiva
+
 
 Cuando trabajamos con datos, lo primero que nos encontramos suele ser una colección enorme de números. Pueden ser las calificaciones de una clase, los ingresos de una empresa, las mediciones de sensores o la cantidad de interacciones que recibe una publicación en redes sociales. En bruto, esa información resulta difícil de comprender: una tabla con miles de registros no nos dice nada a simple vista. La mente humana necesita **resúmenes** que nos permitan captar la esencia de los datos sin perdernos en el detalle.
 
@@ -14,11 +13,11 @@ En inteligencia artificial este paso inicial es crucial. Antes de entrenar un mo
 
 Podemos pensar en ella como la diferencia entre hojear un resumen ejecutivo y leer un informe de cien páginas. El detalle completo siempre está ahí, pero lo que guía la acción es esa síntesis que capta lo fundamental. En el caso de los datos, la estadística descriptiva es ese resumen: un puente entre la complejidad del mundo real y la claridad que necesita la mente —y, por extensión, los modelos de IA— para aprender de él.
 
-> **Para reflexionar…**
+> **Para reflexionar...**\
 >  ¿Hasta qué punto crees que es seguro tomar decisiones basadas únicamente en resúmenes estadísticos? ¿En qué situaciones sería suficiente trabajar con medidas agregadas, y en cuáles podría ocultar detalles importantes que cambian la interpretación de los datos?
 
-Medidas de tendencia central
----
+## Medidas de tendencia central
+
 
 Al enfrentarnos a un conjunto de datos, una de las primeras preguntas que surge es: **¿dónde está el centro?**. En otras palabras, ¿cuál es el valor típico que resume la colección? Las medidas de tendencia central buscan responder a esa cuestión ofreciendo distintos modos de definir lo “central”. Cada una lo hace con una lógica distinta y, por ello, conviene comprender sus matices y cuándo resulta más adecuada.
 
@@ -30,7 +29,7 @@ La tercera medida de tendencia central es la **moda**, el valor que más veces s
 
 Cada una de estas medidas responde a una visión distinta de lo que significa ser “típico”. La media busca el equilibrio numérico, la mediana apunta al punto que divide en dos y la moda resalta la frecuencia. En conjunto forman un tríptico que, utilizado con criterio, permite describir con precisión el centro de un conjunto de datos y anticipar cómo estos resúmenes influyen en la construcción de modelos de IA.
 
-> **Para reflexionar…**
+> **Para reflexionar...**\
 >  Si tuvieras que resumir los resultados de un examen para informar a los alumnos, ¿qué medida escogerías? ¿La media, que da un promedio general, la mediana, que refleja la posición central, o la moda, que muestra la nota más repetida? ¿Crees que cada una transmitiría un mensaje distinto sobre el mismo grupo?
 
 ### Fórmulas y ejemplos
@@ -99,11 +98,11 @@ $$
 
 ¿Qué aprendemos? La media está claramente arrastrada hacia arriba por el día con 300 visitas (un valor atípico). La mediana refleja mejor el comportamiento típico de la mayoría de los días. Esto es exactamente lo que ocurre en IA al analizar variables con outliers: según la métrica elegida, el modelo se verá más o menos influido por esos extremos.
 
-> **Para reflexionar…**
+> **Para reflexionar...**\
 > En un sistema de recomendación, ¿crees que sería más útil calcular la media de las calificaciones de un usuario, o la mediana? ¿Qué pasaría si ese usuario tiende a dar puntuaciones extremas (muy bajas o muy altas) que podrían distorsionar la media?
 
 Medidas de dispersión
----
+
 
 Las medidas de dispersión nos cuentan una parte de la historia que la media, la mediana o la moda no alcanzan a revelar. Saber que la nota media de una clase es un 7 no es lo mismo si casi todos los estudiantes rondan ese valor, o si en realidad hay una mezcla de sobresalientes y suspensos que se compensan. La dispersión mide justamente ese “grado de acuerdo” entre los datos: cuando es baja, los valores son parecidos y describen un comportamiento homogéneo; cuando es alta, los datos se dispersan por todo el rango posible y muestran gran diversidad.
 
@@ -161,9 +160,8 @@ El CV permite comparar dispersión relativa. Supongamos dos variables: en un gru
 
 En IA, el coeficiente de variación se conecta con la idea de **estabilidad de los modelos**. En problemas de validación cruzada, comparar la media del rendimiento de un modelo con la variabilidad de ese rendimiento puede ayudarnos a decidir si un modelo es consistente o si depende demasiado de la partición de los datos.
 
----
 
-> **Para reflexionar…**
+> **Para reflexionar...**\
 > ¿Qué pasaría si entrenas un modelo con una variable que tiene un rango enorme y otra con un rango diminuto? ¿Por qué normalizar los datos (restando la media y dividiendo por la desviación estándar) ayuda a que el entrenamiento sea más equilibrado y estable?
 
 ## Medidas de posición
@@ -220,12 +218,12 @@ Vamos a fijar ideas con un ejemplo
 > $$
 >
 
-> **Para reflexionar…**
+> **Para reflexionar...**\
 >
 > ¿Por qué puede ser más informativo representar los datos con un diagrama de caja que limitarse a dar la media y la desviación estándar? ¿Qué nos dice un boxplot sobre los valores atípicos que una media nunca revelaría?
 
 Representaciones gráficas en EDA
----
+
 
 Hasta ahora hemos trabajado con números: medias, medianas, desviaciones y cuartiles. Pero los datos, además de resumirse, también se **visualizan**. La representación gráfica es uno de los pilares del análisis exploratorio de datos (EDA), porque permite captar patrones, tendencias y anomalías de un vistazo, mucho antes de aplicar algoritmos complejos.
 
@@ -282,7 +280,7 @@ Donde $x_i$ e $y_i$ son los valores observados de las variables $X$ e $Y$, y $\b
 
 <img src="./assets/Scatter-Plots-and-Correlation-Examples.png" alt="The Scatter Plot as a QC Tool for Quality Professionals" />
 
-> **Para reflexionar...**
+> **Para reflexionar...**\
 >
 > **¿Cómo podría un diagrama de dispersión ayudarte a justificar la elección de un modelo de *Machine Learning* sobre otro?**
 > *Piensa en dos variables que, al ser representadas, muestran claramente una forma curva (no lineal). ¿Qué le diría esto a un científico de datos sobre el uso de un modelo de Regresión Lineal? Reflexiona sobre cómo la visualización de una relación no lineal te obligaría a considerar modelos como Árboles de Decisión o Redes Neuronales que pueden capturar dependencias más complejas.*
@@ -325,7 +323,7 @@ Si las cajas se superponen ampliamente, indica que la característica tiene un b
 > 3. **Los bigotes** se extienden desde el mínimo no atípico (2) hasta el máximo no atípico (21). Son los valores que todavía se consideran dentro del rango habitual según la regla de Tukey (1.5 veces el IQR).
 > 4. **El punto aislado en naranja** representa el día con 50 visitas. El boxplot lo detecta como **outlier**, porque se aleja demasiado del comportamiento normal. Visualmente, se resalta que es un día excepcional.
 
-> **Para reflexionar...**
+> **Para reflexionar...**\
 >
 > **Imagina que observas un *boxplot* donde la mediana está muy cerca de $Q_1$ y el bigote superior es extremadamente largo, con muchos *outliers* en el extremo superior. ¿Qué tipo de transformación sugerirías para esta variable (por ejemplo, en un modelo de Regresión)?**
 > *Reflexiona sobre cómo esta visualización revela un **fuerte sesgo positivo**. Piensa en transformaciones matemáticas (como la transformación logarítmica) que se utilizan comúnmente en EDA para reducir la asimetría y mitigar el impacto de los valores extremos.*
@@ -340,7 +338,7 @@ Es posible detectar escalas muy distintas entre variables, lo que justificaría 
 
 Visto así, las visualizaciones estadísticas actúan como los **“rayos X” de los datos**: una exploración preliminar que revela la salud, la estructura interna y los posibles puntos débiles del *dataset* antes de ponerlo en manos de un algoritmo. Este paso asegura que el entrenamiento comience sobre una base de datos limpia y bien comprendida, maximizando las posibilidades de obtener un modelo de IA preciso y robusto.
 
-> **Para reflexionar...**
+> **Para reflexionar...**\
 >
 > **Si un modelo de clasificación falla al distinguir dos clases, ¿crees que un diagrama de dispersión entre las variables clave podría mostrar visualmente por qué ocurre esa confusión? ¿Cómo cambiaría tu estrategia de modelado si descubrieras que las clases se solapan fuertemente en el plano de esas variables?**
 > *Reflexiona sobre si el problema es la complejidad del modelo o la falta de separación intrínseca de los datos. Piensa en qué implicaciones tendría visualmente el solapamiento de clases para la precisión de cualquier algoritmo, y qué medidas de ingeniería de características podrías considerar.*
@@ -380,7 +378,7 @@ Este paso no solo asegura que ninguna característica domine a las demás simple
 
 Intuitivamente, la estandarización nos permite comparar **manzanas con manzanas** al medir cada valor no por su unidad original (euros, metros, segundos), sino por la distancia que tiene respecto a la media de su propia distribución, medida en términos de desviaciones estándar. Un valor estandarizado de $1.5$ significa que ese dato está $1.5$ desviaciones estándar por encima de la media, independientemente de si la variable original medía salarios o temperaturas.
 
-> **Ejemplo**:
+> **Ejemplo**:\
 > Imagina que tenemos dos características en un *dataset* para predecir el rendimiento de un servidor: el **Tiempo de Respuesta** (media de $200\,\text{ms}$, $\sigma$ de $50\,\text{ms}$) y el **Uso de CPU** (media de $50\%$, $\sigma$ de $10\%$). Un servidor tiene un tiempo de respuesta de $300\,\text{ms}$ y un uso de CPU del $75\%$.
 >
 > 1.  **Tiempo de Respuesta:** $x'_{\text{TR}} = \frac{300 - 200}{50} = 2$.
@@ -398,13 +396,11 @@ $$
 x'' = \frac{x - \min(X)}{\max(X) - \min(X)}
 $$
 
-
 El uso de una u otra técnica depende del algoritmo y de la distribución de los datos. La estandarización es preferible si la variable sigue una distribución aproximadamente normal o si el modelo que se va a usar asume una distribución normal (como la regresión lineal o logística). La normalización Min-Max, por otro lado, es útil cuando se necesitan límites bien definidos (como en algunas redes neuronales que usan funciones de activación acotadas) o cuando la distribución original no importa tanto como la relación lineal entre los límites.
 
 Sin embargo, la estandarización tiende a ser más **resistente a los *outliers*** que la normalización Min-Max. Si un único valor atípico eleva el valor máximo, la normalización Min-Max comprimirá todo el resto de los datos en un rango muy estrecho. La estandarización, aunque también se ve afectada, distribuye el impacto de los *outliers* de forma más suave a través de la media y la desviación estándar.
 
-> **Para reflexionar...**
->
+> **Para reflexionar...**\
 > **Si tienes una variable con diez mil registros entre 0 y 100, pero un único *outlier* en 10,000, ¿qué método de escalado (Estandarización Z-Score o Normalización Min-Max) crees que comprimiría más los datos que no son atípicos? ¿Por qué la elección correcta de escalado es crucial para un modelo que usa una métrica basada en la distancia euclidiana?**
 > *Reflexiona sobre cómo el valor máximo influye desproporcionadamente en la fórmula del Min-Max. Piensa en cómo el escalado afecta a la noción de "cercanía" en un espacio multidimensional.*
 
@@ -422,8 +418,7 @@ La **moda**, que identifica el valor o clase que aparece con mayor frecuencia, e
 
 Cuando se utiliza $k$-NN para clasificar una nueva observación, el algoritmo busca los $k$ puntos de entrenamiento más próximos a esa nueva observación. Una vez identificados estos vecinos, el algoritmo asigna a la nueva observación la **clase más frecuente** entre esos $k$ vecinos. En este proceso, el algoritmo está aplicando la lógica de la moda en un contexto local. La decisión final de la clasificación no es un promedio, sino la clase que "gana por mayoría de votos" entre los vecinos inmediatos. Así, la moda se convierte en el mecanismo de decisión subyacente que define la predicción de este popular clasificador.
 
-> **Para reflexionar...**
->
+> **Para reflexionar...**\
 > **Si estuvieras diseñando un modelo para un sistema de detección de intrusiones de red, donde el 99% de las transacciones son normales y el 1% son ataques (*outliers*), ¿sería una buena idea usar el MSE como métrica de rendimiento? ¿Por qué la robustez de la mediana es crucial para la imputación en un escenario donde los valores atípicos (los ataques) son, precisamente, la información más importante que debes detectar?**
 > *Reflexiona sobre cómo el MSE tiende a minimizar el error general, ignorando errores en clases pequeñas (como el 1% de ataques), y cómo la mediana ayuda a mantener la integridad de los datos de entrenamiento a pesar de la presencia de valores extremos, que en este caso son los datos valiosos.*
 

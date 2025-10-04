@@ -1,8 +1,8 @@
-Distribuciones de probabilidad
-===
+# Distribuciones de probabilidad
 
-Concepto de variable aleatoria y función de probabilidad
----
+
+## Concepto de variable aleatoria y función de probabilidad
+
 
 El estudio de la **probabilidad** es la piedra angular para el desarrollo y la interpretación de los modelos de **Inteligencia Artificial**. Para poder manejar la incertidumbre y predecir resultados, necesitamos introducir el concepto de **variable aleatoria**. Una variable aleatoria es, simplemente, una función que asigna un valor numérico a cada posible resultado de un experimento o proceso aleatorio. En lugar de trabajar directamente con los resultados cualitativos del azar, convertimos esos resultados en números que el ordenador puede procesar.
 
@@ -23,9 +23,8 @@ Para una variable aleatoria continua, el concepto cambia ligeramente. Dado que h
 >
 > A pertir de ahora ten en cuenta que **“en variables continuas, la probabilidad vive en los intervalos, no en los puntos”**.
 
----
-**Para reflexionar...**
 
+>**Para reflexionar...**\
 > **¿Por qué la suma de las probabilidades debe ser 1 para una variable aleatoria discreta, mientras que para una variable continua la integral de la función de densidad debe ser 1?**
 > *Considera el concepto de que la probabilidad total de que ocurra cualquier evento posible es la certeza. Piensa en cómo el concepto de "sumar" todos los resultados se traduce al concepto de "área bajo la curva" para las variables continuas.*
 
@@ -37,7 +36,7 @@ En primera aproximación, podríamos entender una **distribución de probabilida
 
 La conexión fundamental entre la **función de probabilidad** y la **distribución de probabilidad** es que la función es el *instrumento matemático* que define y describe completamente a la distribución. La distribución es el concepto teórico, mientras que la función es la fórmula que cuantifica ese concepto.
 
-> **Ejemplo:**
+> **Ejemplo:**\
 > Consideremos un **clasificador binario** de *machine learning* que predice si una transacción es fraudulenta (1) o no (0). La variable aleatoria $X$ es el resultado de la predicción. La distribución de probabilidad podría ser: $P(X=0) = 0.98$ (98% de probabilidad de ser no fraudulenta) y $P(X=1) = 0.02$ (2% de probabilidad de ser fraudulenta). Esta distribución es un mapa simple de la probabilidad de cada resultado de la predicción.
 
 El siguiente ejemplo ilustra la diferencia entre la **distribución de probabilidad** (el modelo teórico) y su **función de probabilidad** (la fórmula de cálculo) utilizando un escenario común en la **Inteligencia Artificial**.
@@ -75,8 +74,7 @@ El siguiente ejemplo ilustra la diferencia entre la **distribución de probabili
 
 Comprender la distribución de los datos y de los errores de un modelo es fundamental en la **IA**. Si conocemos la distribución, podemos tomar decisiones informadas, como establecer umbrales de alerta en un sistema de detección de anomalías o seleccionar la función de pérdida más adecuada para entrenar un modelo que se ajuste mejor a la naturaleza probabilística de los datos.
 
-> **Para reflexionar...**
->
+> **Para reflexionar...**\
 > **Si un equipo de MLOps te reporta que el tiempo de inferencia de tu modelo no sigue una Distribución Exponencial, sino una Distribución Normal, ¿cómo cambiaría la interpretación práctica del riesgo de latencia?**
 > *Considera que la Distribución Exponencial solo tiene valores positivos y decae rápidamente (es asimétrica), mientras que la Distribución Normal es simétrica y puede tener valores negativos (aunque en tiempo esto no tenga sentido). Piensa en cómo la asimetría de la Exponencial modela mejor los tiempos mínimos y el riesgo de colas largas (latencia extrema), mientras que la Normal asume que las desviaciones por encima o por debajo de la media son igualmente probables.*
 
@@ -124,8 +122,7 @@ $$
 
 La CDF es fundamental porque nos permite calcular fácilmente la probabilidad de cualquier intervalo. En un proyecto de IA, se puede utilizar, por ejemplo, para determinar la probabilidad de que un error del modelo esté por debajo de un umbral específico, lo cual es vital para establecer métricas de confianza.
 
-> **Para reflexionar...**
->
+> **Para reflexionar...**\
 > **¿Cómo utilizarías los conceptos de media y desviación estándar para evaluar la calidad de un modelo de *machine learning* que predice el tiempo de entrega de paquetes?**
 > *Piensa en la media como la predicción de tiempo promedio y en la desviación estándar como la variabilidad o incertidumbre de esa predicción. Considera cómo una desviación estándar grande afectaría la fiabilidad del servicio y por qué un cliente preferiría una predicción con una media exacta pero una desviación estándar pequeña.*
 
@@ -197,7 +194,7 @@ En otras palabras: la media de muchas muestras se comporta como si viniera de un
 >
 > Esto muestra de manera clara cómo **a medida que aumenta el tamaño de la muestra, la distribución de las medias converge hacia una normal**, independientemente de la forma de la distribución original.
 
----
+
 
 #### El papel del Teorema Central del Límite
 
@@ -273,8 +270,7 @@ Cuando evaluamos un clasificador, solemos hablar de métricas como la **precisi�
 
 Más allá de la evaluación de clasificadores, la binomial también es esencial en tareas de **muestreo y validación cruzada**. Cada vez que dividimos los datos en conjuntos de entrenamiento y validación, los aciertos que el modelo obtiene en una muestra concreta siguen la lógica de una binomial. De ahí que la estadística binomial sirva para interpretar qué parte del desempeño se debe al azar y qué parte refleja una verdadera capacidad de generalización.
 
-> **Ejemplo:**
->
+> **Ejemplo:**\
 > Imagina un sistema de detección de fraudes en transacciones bancarias. El modelo acierta en un **95% de los casos** al identificar correctamente si una transacción es legítima o fraudulenta. Si analizamos un bloque de **100 transacciones nuevas**, la binomial nos permite calcular la probabilidad de que el sistema falle exactamente en 7 casos, o de que falle en más de 10.
 >
 > Esto es muy valioso porque transforma una métrica de rendimiento aparentemente estática (95% de precisión) en una **distribución de posibles resultados**. Así podemos responder a preguntas más profundas: ¿qué tan probable es que este modelo falle más de lo aceptable en un lote real de transacciones? ¿qué margen de error podemos esperar en condiciones normales de operación?
@@ -323,8 +319,7 @@ En **sistemas de visión por computador**, por ejemplo, puede usarse para estima
 
 Lo relevante es que no se requiere conocer el número de oportunidades para que ocurran los eventos (a diferencia de la binomial), basta con conocer la tasa promedio. Esto simplifica la modelización en situaciones donde el número de intentos es tan grande que resulta inabarcable, pero la frecuencia media es medible.
 
-> **Para reflexionar…**
->
+> **Para reflexionar...**\
 > **Si estuvieras construyendo un sistema de detección de intrusos en una red, ¿cuándo tendría más sentido aplicar la Binomial y cuándo la distribución de Poisson?**
 > Considera que la Binomial describe un conjunto fijo de intentos (por ejemplo, analizar 100 conexiones e identificar cuántas son maliciosas), mientras que la distribución de Poisson modela la frecuencia con la que saltan las alarmas en intervalos continuos de tiempo (por ejemplo, cuántos intentos de intrusión se detectan en un día).
 

@@ -70,7 +70,7 @@ $$
 En términos intuitivos, saber que ocurrió uno no cambia nuestra estimación de que ocurra el otro.
 
 > **Ejemplo:** al lanzar dos dados distintos, el resultado del primero no afecta al segundo. La probabilidad de obtener un 3 en el primero y un 5 en el segundo es
-
+>
 > $$
 >  \frac{1}{6} \cdot \frac{1}{6} = \frac{1}{36}.
 > $$
@@ -137,7 +137,7 @@ En IA, este enfoque es central: los modelos bayesianos asignan probabilidades in
 > **Para reflexionar…**
 > Imagina que un sistema de recomendación te sugiere una película con una probabilidad del 85% de que te guste. ¿Crees que esa probabilidad refleja una frecuencia observada en muchos “tus iguales”, o más bien una creencia actualizada del sistema sobre ti en particular?
 
----
+
 
 Cada interpretación de la probabilidad ilumina un aspecto distinto de esta: la **clásica** en escenarios equiprobables, la **frecuentista** en situaciones repetibles con grandes muestras, y la **bayesiana** en contextos de incertidumbre y actualización de información.
 

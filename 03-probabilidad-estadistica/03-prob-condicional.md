@@ -152,7 +152,7 @@ $$
 De aquí podemos despejar $P(A|B)$ en función de $P(B|A)$:
 
 $$
-P(A|B) = \frac{P(B|A),P(A)}{P(B)}.
+P(A|B) = \frac{P(B|A),P(A)}{P(B)}
 $$
 
 Esta fórmula es el **Teorema de Bayes**. Lo que nos dice es que la probabilidad de que ocurra un evento $A$ dado que hemos observado $B$ se calcula como el producto entre:
@@ -196,7 +196,7 @@ $$
 Sabemos que $P(\text{Spam}) = 0.2$ y $P(\text{Gratis}|\text{Spam}) = 0.6$. La probabilidad total de que aparezca la palabra “gratis” se obtiene considerando los dos tipos de correos:
 
 $$
-P(\text{Gratis}) = P(\text{Gratis}|\text{Spam}) \cdot P(\text{Spam}) + P(\text{Gratis}|\text{No Spam}) \cdot P(\text{No Spam}).
+P(\text{Gratis}) = P(\text{Gratis}|\text{Spam}) \cdot P(\text{Spam}) + P(\text{Gratis}|\text{No Spam}) \cdot P(\text{No Spam})
 $$
 
 Reemplazando valores:

@@ -16,7 +16,7 @@ En inteligencia artificial esta lógica se repite una y otra vez. Cuando entrena
 
 Un algoritmo que clasifica perfectamente los ejemplos del entrenamiento, pero falla estrepitosamente en datos nuevos, es el equivalente a una muestra engañosa en estadística: nos da conclusiones que no representan bien la realidad. Por eso, conceptos como el **sesgo**, la **varianza**, o la noción de “confianza en una estimación”, son tan importantes en ambos campos. La estadística inferencial nos ofrece el marco formal para entender estas cuestiones y trasladarlas al lenguaje de la IA.
 
-> **Ejemplo:**
+> **Ejemplo:**\
 > Imagina que una empresa quiere lanzar una nueva aplicación entre estudiantes universitarios y desea saber qué porcentaje estaría dispuesto a pagar una suscripción mensual. La población son miles de jóvenes en una ciudad, pero la empresa solo puede hacer una encuesta a 100 de ellos.
 >
 > Si 40 de los encuestados responden que sí pagarían, la proporción muestral es 40/100 = 0.40, es decir, un 40%. Ahora bien, ¿significa esto que exactamente el 40% de toda la población de estudiantes estará dispuesto a pagar? Seguramente no. Lo que podemos decir es que nuestra mejor estimación puntual es 40%, pero además debemos acompañarla de un **intervalo de confianza**, que tal vez vaya del 30% al 50%. Esto significa que, con un nivel de confianza estadístico (por ejemplo, del 95%), el verdadero porcentaje poblacional se encuentra en ese rango.
@@ -25,10 +25,8 @@ Un algoritmo que clasifica perfectamente los ejemplos del entrenamiento, pero fa
 
 
 
-> **Para reflexionar…**
->
-> **Si entrenamos un modelo de IA con 1000 imágenes de perros y gatos, y el modelo obtiene un 95% de acierto en esa muestra, ¿qué podemos decir sobre su rendimiento en el mundo real, con millones de imágenes posibles? ¿Es razonable pensar que también acertará en el 95% de los casos, o deberíamos tener un margen de incertidumbre?**
->
+> **Para reflexionar**\
+> **Si entrenamos un modelo de IA con 1000 imágenes de perros y gatos, y el modelo obtiene un 95% de acierto en esa muestra, ¿qué podemos decir sobre su rendimiento en el mundo real, con millones de imágenes posibles? ¿Es razonable pensar que también acertará en el 95% de los casos, o deberíamos tener un margen de incertidumbre?**\
 > *Piensa cómo la lógica de la inferencia estadística, que nos permite pasar de la muestra a la población, es exactamente la misma que necesitamos para evaluar la capacidad de generalización de un modelo de aprendizaje automático.*
 
 ## Muestreo y estimación
@@ -113,8 +111,8 @@ En lugar de quedarnos con un único número, el intervalo nos obliga a pensar en
 
 Además, los intervalos son la base de la conexión con los contrastes de hipótesis. Si el intervalo al 95% para una media no contiene el valor supuesto por $H_0$, decimos que la prueba sería significativa al nivel del 5%. Esto ofrece dos miradas complementarias: el valor p nos dice “qué raro” es lo observado bajo $H_0$, y el intervalo nos dice “qué valores del parámetro son consistentes con los datos”.
 
-> **Para reflexionar…**
-> **Si calculamos la precisión de un clasificador de imágenes con una muestra de 200 ejemplos y obtenemos un 92%, ¿qué transmite más confianza: reportar ese 92% exacto o afirmar que la precisión se encuentra entre el 89% y el 95% con un 95% de confianza?**
+> **Para reflexionar...**\
+> **Si calculamos la precisión de un clasificador de imágenes con una muestra de 200 ejemplos y obtenemos un 92%, ¿qué transmite más confianza: reportar ese 92% exacto o afirmar que la precisión se encuentra entre el 89% y el 95% con un 95% de confianza?**\
 > *Piensa en la diferencia entre presentar un valor único o un rango que refleja la incertidumbre. ¿Cómo cambia la interpretación para alguien que deba decidir si el modelo está listo para usarse en un entorno real?*
 
 ### El método bootstrap
@@ -127,9 +125,11 @@ Esa distribución simulada nos da dos cosas muy valiosas: una medida de **variab
 
 > **Ejemplo**
 > Imaginemos que tenemos una muestra pequeña de 10 alumnos con sus notas:
+>
 > $$
 > \{6, 7, 5, 8, 7, 9, 6, 8, 7, 10\}
 > $$
+>
 > La media es 7,3. Si aplicamos el bootstrap, generamos miles de réplicas de 10 notas elegidas al azar con reemplazo de este mismo conjunto. Para cada réplica calculamos la media, y así obtenemos una distribución de medias. A partir de ella podemos calcular, por ejemplo, que el 95% central de esas medias cae entre 6,9 y 7,7. Ese rango se convierte en un intervalo de confianza empírico para la media poblacional.
 
 La fuerza del bootstrap está en que no necesitamos asumir que las notas siguen una distribución normal ni derivar fórmulas para el error estándar: el propio remuestreo nos da la información.
@@ -142,8 +142,8 @@ En **validación de modelos**, cuando los conjuntos de datos son pequeños, el b
 
 En **ensembles**, el bootstrap es la base del método conocido como *bagging* (Bootstrap Aggregating). La idea es entrenar múltiples modelos sobre réplicas bootstrap del conjunto de datos y luego combinar sus predicciones, generalmente mediante un voto mayoritario o un promedio. Los bosques aleatorios (random forests), uno de los algoritmos más exitosos de la práctica, se construyen exactamente así: cada árbol de decisión se entrena sobre un conjunto bootstrap distinto, y la diversidad entre árboles es la clave de la potencia del modelo.
 
-> **Para reflexionar…**
-> **Si un modelo entrenado en un solo conjunto de datos parece dar buenos resultados, ¿cómo podemos estar seguros de que no está sobreajustado a esa muestra concreta? ¿En qué medida la idea de volver a entrenarlo en múltiples réplicas bootstrap nos ayuda a evaluar su robustez?**
+> **Para reflexionar...**\
+> **Si un modelo entrenado en un solo conjunto de datos parece dar buenos resultados, ¿cómo podemos estar seguros de que no está sobreajustado a esa muestra concreta? ¿En qué medida la idea de volver a entrenarlo en múltiples réplicas bootstrap nos ayuda a evaluar su robustez?**\
 > *Piensa en cómo el bootstrap actúa como un laboratorio en miniatura: simula qué ocurriría si hubiéramos tenido diferentes muestras, y así nos da una medida de la estabilidad del modelo.*
 
 ## Contraste de hipótesis
@@ -187,8 +187,8 @@ Así, la nula funciona como el “estado de conservación” y la alternativa co
 > **Ejemplo**
 > Supongamos que con el método tradicional la media histórica de calificaciones es de 6.5 sobre 10. El equipo docente aplica el nuevo método a 50 estudiantes y obtiene una media de 7.0 con desviación típica 0.6. La hipótesis nula sería $H_0:\ \mu=6.5$, mientras que la alternativa podría ser $H_1:\ \mu>6.5$. El contraste nos permitirá evaluar si esa diferencia de 0.5 puntos es simplemente fruto del azar en la muestra o una señal de mejora real.
 
-> **Para reflexionar…**
-> **¿Por qué crees que en estadística se parte siempre de la hipótesis nula y no de la alternativa?**
+> **Para reflexionar...**\
+> **¿Por qué crees que en estadística se parte siempre de la hipótesis nula y no de la alternativa?**\
 > *Piensa en cómo el contraste exige una postura conservadora: primero asumimos que no hay efecto y solo lo rechazamos si los datos aportan evidencia suficiente. Esta lógica evita que demos por ciertos cambios que en realidad podrían deberse al azar.*
 
 ### Errores y potencia
@@ -213,8 +213,8 @@ El **error de tipo II**, en cambio, ocurre cuando no rechazamos la hipótesis nu
 > La clave está en que ambos errores no pueden eliminarse a la vez: si bajamos el nivel de significación (por ejemplo, de 0.05 a 0.01) reducimos la probabilidad de cometer un error de tipo I, pero al mismo tiempo aumentamos la probabilidad de cometer un error de tipo II. Por eso en la práctica hay que equilibrar el nivel de exigencia con la potencia, lo que suele implicar trabajar con muestras suficientemente grandes.
 >
 
-> **Para reflexionar…**
-> **Si subimos el nivel de exigencia a $\alpha = 0.01$ para estar muy seguros de que un filtro realmente mejora al anterior, ¿qué riesgo asumimos respecto al error de tipo II?**
+> **Para reflexionar...**\
+> **Si subimos el nivel de exigencia a $\alpha = 0.01$ para estar muy seguros de que un filtro realmente mejora al anterior, ¿qué riesgo asumimos respecto al error de tipo II?**\
 > *Piensa en cómo una prueba demasiado estricta puede hacer que pasemos por alto mejoras reales, mientras que una prueba demasiado laxa puede hacernos aceptar mejoras inexistentes. En IA, este equilibrio es esencial cuando evaluamos y comparamos modelos.*
 
 ### El valor p: qué es, cómo se calcula y qué NO significa
@@ -231,8 +231,8 @@ En cambio, en un **contraste unilateral**, la pregunta es más específica: nos 
 
 La elección entre un contraste bilateral y uno unilateral depende de la **pregunta inicial**. Si lo que se quiere es comprobar si un nuevo modelo de IA es diferente a otro, el planteamiento natural es bilateral, porque puede rendir mejor o peor. Si lo que interesa es comprobar específicamente si mejora, entonces el contraste será unilateral.
 
-> **Para reflexionar…**
-> **Si comparas un modelo antiguo y uno nuevo de clasificación de imágenes, y el nuevo obtiene un 92% de precisión frente al 90% del antiguo, ¿plantearías un contraste bilateral o unilateral?**
+> **Para reflexionar...**\
+> **Si comparas un modelo antiguo y uno nuevo de clasificación de imágenes, y el nuevo obtiene un 92% de precisión frente al 90% del antiguo, ¿plantearías un contraste bilateral o unilateral?**\
 > *Piensa en cómo cambia la hipótesis alternativa según lo que quieras demostrar: ¿te basta con que el rendimiento sea distinto o quieres evidenciar que es mejor?*
 
 Es importante entender que el valor p **no es un juicio definitivo sobre la verdad o falsedad de la hipótesis nula**, sino un indicador de coherencia entre lo que esperaríamos bajo ese supuesto y lo que realmente hemos observado en la muestra.
@@ -275,8 +275,8 @@ Para verlo mejor, pensemos en repetir el experimento con 1000 lanzamientos. Supo
 
 Esto muestra una idea fundamental: **el mismo efecto relativo puede generar más o menos evidencia según el tamaño de la muestra**. Con 100 lanzamientos, un 60% de caras puede parecer sospechoso pero aún posible. Con 1000, ese mismo 60% prácticamente descarta la hipótesis de una moneda justa.
 
-> **Para reflexionar…**
-> **¿Qué crees que ocurriría si, en vez de 100 o 1000 lanzamientos, repitiéramos el experimento con 10 000? ¿Cambiaría el valor p aunque la proporción siguiera siendo la misma?**
+> **Para reflexionar...**\
+> **¿Qué crees que ocurriría si, en vez de 100 o 1000 lanzamientos, repitiéramos el experimento con 10 000? ¿Cambiaría el valor p aunque la proporción siguiera siendo la misma?**\
 > *Piensa en cómo el tamaño de la muestra influye en la fuerza de la evidencia. Cuantos más datos tenemos, más fácil es detectar pequeñas desviaciones con gran seguridad.*
 
 Esta comparación nos permite entender dos matices muy importantes sobre el valor p. El primero es que **el valor p depende del tamaño de la muestra**. Si contamos con muchos datos, incluso diferencias muy pequeñas respecto a la hipótesis nula pueden dar lugar a valores p extremadamente bajos y aparecer como “significativas”. En cambio, con muestras pequeñas, diferencias que sí son relevantes en la práctica pueden pasar desapercibidas porque el test carece de potencia para detectarlas. Esto quiere decir que el valor p no nos habla directamente de la magnitud de un efecto, sino de cuán improbable resulta bajo el supuesto de $H_0$.
@@ -287,10 +287,8 @@ De hecho, existe una relación directa entre los contrastes y los intervalos de 
 
 En inteligencia artificial, esta discusión es especialmente relevante cuando comparamos modelos. Es habitual preguntarse si un aumento en precisión, F1 o AUC refleja una mejora real o si podría explicarse por el azar del muestreo. El valor p puede ayudarnos a responder esa pregunta, pero no debe ser el único criterio. Lo recomendable es acompañarlo siempre de la magnitud de la mejora y de un intervalo de confianza, además de considerar el coste de implementar el nuevo modelo frente al beneficio práctico que aporta.
 
-> **Para reflexionar…**
->
-> **Si pasas de F1 = 0.910 a F1 = 0.918 con $p=0.03$ gracias a más datos de entrenamiento, ¿es una mejora que merece el cambio de modelo? ¿Y si con el doble de datos obtienes $p<10^{-6}$ para una mejora de solo 0.003?**
->
+> **Para reflexionar...**\
+> **Si pasas de F1 = 0.910 a F1 = 0.918 con $p=0.03$ gracias a más datos de entrenamiento, ¿es una mejora que merece el cambio de modelo? ¿Y si con el doble de datos obtienes $p<10^{-6}$ para una mejora de solo 0.003?**\
 > *Piensa en el equilibrio entre significación estadística, tamaño de efecto y relevancia práctica: el valor p te habla de evidencia contra $H_0$, no de utilidad real del cambio.*
 
 Para concluir volvamos a insistir **qué es y qué no es el valor p**. A menudo se interpreta como la probabilidad de que la hipótesis nula sea cierta, es decir, $P(H_0|\text{datos})$, y **esto no es así**. En realidad el valor p mide otra cosa: es la probabilidad de observar unos datos tan extremos como los obtenidos, o incluso más, **suponiendo que la hipótesis nula es cierta**. Matemáticamente, hablamos de $P(\text{datos extremos}|H_0)$.
@@ -327,8 +325,8 @@ El razonamiento es exactamente el mismo que se aplica en la comparación de mode
 
 
 
-> **Para reflexionar…**
-> **Si un modelo de clasificación obtiene una precisión del 92% y otro del 90%, pero ambos fueron evaluados con apenas 200 ejemplos, ¿podemos estar seguros de que el primero es realmente mejor?**
+> **Para reflexionar...**\
+> **Si un modelo de clasificación obtiene una precisión del 92% y otro del 90%, pero ambos fueron evaluados con apenas 200 ejemplos, ¿podemos estar seguros de que el primero es realmente mejor?**\
 > *Piensa en cómo el contraste de hipótesis introduce la noción de incertidumbre y nos recuerda que no basta con mirar una diferencia de porcentajes: necesitamos preguntarnos si esa diferencia es estadísticamente significativa y si la muestra es suficiente para confiar en la conclusión.*
 
 ## Correlación y dependencia
@@ -355,8 +353,8 @@ donde $\text{cov}(X,Y)$ es la **covarianza** entre $X$ e $Y$, y $\sigma_X$, $\si
 
 En inteligencia artificial, la correlación se convierte en una primera herramienta para **explorar relaciones entre variables** en datasets. Por ejemplo, antes de entrenar un modelo de predicción de precios de viviendas, calcular las correlaciones entre el precio y atributos como superficie, número de habitaciones o distancia al centro nos da una idea preliminar de qué factores parecen tener mayor impacto.
 
-> **Para reflexionar…**
-> **Si en un conjunto de datos de entrenamiento descubrimos que dos variables tienen una correlación muy alta, ¿qué implicaciones puede tener para un modelo de IA?**
+> **Para reflexionar...**\
+> **Si en un conjunto de datos de entrenamiento descubrimos que dos variables tienen una correlación muy alta, ¿qué implicaciones puede tener para un modelo de IA?**\
 > *Piensa en la redundancia de información y cómo podría afectar al rendimiento del modelo, ya sea dificultando la interpretación de los parámetros en una regresión o introduciendo problemas de multicolinealidad en algoritmos más complejos.*
 
 A continuación se presenta un gráfico ilustrativo de tres escenarios distintos de correlación: En primer lugar, una **correlación positiva**, en la que los puntos se alinean con una pendiente ascendente e indicando que al aumentar $X$ también aumenta $Y$. En segundo lugar, una **correlación negativa**, en la que los puntos siguen una pendiente descendente de modo que al crecer $X$, $Y$ tiende a disminuir. Por último, un gráfico en el que no se aprecia **correlación**, en el que los puntos aparecen dispersos al azar, sin ninguna tendencia clara.
@@ -378,8 +376,8 @@ Matemáticamente, una correlación elevada significa que dos variables se mueven
 > **Ejemplo**
 > Imaginemos que en un dataset de recomendación de música observamos que la edad de los usuarios está correlacionada con el número de canciones de un cierto género que escuchan. ¿Significa eso que cumplir años causa que alguien escuche más jazz o reguetón? No necesariamente. Puede que lo que realmente influya sea la **cohorte generacional**: haber crecido en un contexto cultural concreto explica tanto la edad como la preferencia musical.
 
-> **Para reflexionar…**
-> **Si un modelo de IA se entrena en un dataset con correlaciones espurias, como la relación entre hospital y enfermedad, ¿qué podría ocurrir cuando se despliegue en un entorno nuevo?**
+> **Para reflexionar...**\
+> **Si un modelo de IA se entrena en un dataset con correlaciones espurias, como la relación entre hospital y enfermedad, ¿qué podría ocurrir cuando se despliegue en un entorno nuevo?**\
 > *Piensa en cómo la falta de causalidad puede hacer que el modelo se equivoque sistemáticamente cuando cambian las condiciones del entorno, mostrando la importancia de distinguir entre patrones aparentes y relaciones reales.*
 
 ### Independencia condicional: concepto clave en modelos probabilísticos
@@ -403,8 +401,8 @@ También en el aprendizaje por refuerzo, aparece bajo otra forma muy conocida: l
 > **Ejemplo**
 > Imaginemos un sistema de recomendación de películas. A simple vista puede parecer que la variable “género de la última película vista” y la variable “próxima película elegida” están directamente relacionadas. Pero si añadimos la variable “preferencias generales del usuario”, el vínculo directo desaparece: una vez que sabemos que el usuario en general prefiere la ciencia ficción, tanto la última película vista como la siguiente elección se explican por esa preferencia de fondo.
 
-> **Para reflexionar…**
-> **¿Por qué es tan útil la independencia condicional en IA?**
+> **Para reflexionar...**\
+> **¿Por qué es tan útil la independencia condicional en IA?**\
 > *Piensa en cómo permite descomponer problemas intratables en partes más pequeñas, facilitando el diseño de modelos probabilísticos que serían imposibles de calcular de manera directa.*
 
 ## Métodos computacionales en inferencia
@@ -417,7 +415,7 @@ Hemos visto ya como en la estadística clásica, la inferencia tiene un objetivo
 
 Cuando pasamos al terreno de la inteligencia artificial, la pregunta cambia ligeramente, pero la lógica es la misma. Aquí no nos interesa tanto estimar parámetros poblacionales como **evaluar el desempeño de un modelo predictivo**. Dicho en otras palabras: *¿qué tan bien funcionará este algoritmo en datos que todavía no hemos visto?*
 
-La **validación cruzada** es la herramienta que nos permite responder a esa pregunta con el mismo espíritu inferencial que conocimos en estadística. Consiste en dividir los datos disponibles en varias partes, entrenar el modelo en una porción y evaluarlo en la parte restante, rotando este procedimiento varias veces. Al final obtenemos una colección de resultados (precisiones, errores, AUC…), que nos permiten estimar no solo un valor medio de rendimiento, sino también su variabilidad.
+La **validación cruzada** es la herramienta que nos permite responder a esa pregunta con el mismo espíritu inferencial que conocimos en estadística. Consiste en dividir los datos disponibles en varias partes, entrenar el modelo en una porción y evaluarlo en la parte restante, rotando este procedimiento varias veces. Al final obtenemos una colección de resultados (precisiones, errores, AUC...), que nos permiten estimar no solo un valor medio de rendimiento, sino también su variabilidad.
 
 La idea es muy similar a la de los intervalos de confianza. Cuando repetimos la validación cruzada, no buscamos un único número, sino una **estimación robusta del desempeño** y un rango dentro del cual es razonable esperar que caiga el verdadero rendimiento en datos nuevos. Así, la validación cruzada puede entenderse como un “muestreo dentro de la muestra”: no conocemos el futuro, pero creamos versiones simuladas del proceso de entrenamiento y prueba para aproximarlo.
 
@@ -428,8 +426,8 @@ La conexión con la inferencia estadística se hace evidente. Mientras que en lo
 
 En resumen, la validación cruzada es un recordatorio de que en IA no basta con entrenar y medir en una sola muestra. Igual que en estadística no nos conformamos con un número puntual, sino que buscamos intervalos y medidas de incertidumbre, en IA necesitamos un procedimiento que nos permita generalizar. La validación cruzada cumple exactamente esa función: **llevar la lógica de la inferencia al terreno de los modelos predictivos**.
 
-> **Para reflexionar…**
-> **Si un modelo alcanza un 95% de acierto en un único conjunto de test, pero en validación cruzada sus resultados oscilan entre el 85% y el 95%, ¿qué conclusión deberíamos sacar?**
+> **Para reflexionar...**\
+> **Si un modelo alcanza un 95% de acierto en un único conjunto de test, pero en validación cruzada sus resultados oscilan entre el 85% y el 95%, ¿qué conclusión deberíamos sacar?**\
 > *Piensa en cómo la validación cruzada refleja la variabilidad del rendimiento y nos alerta de que un número aislado puede ser engañoso. Lo importante no es solo el valor puntual, sino la consistencia del desempeño en distintas particiones de los datos.*
 
 ### Simulaciones y métodos de Monte Carlo para problemas de alta dimensión
@@ -447,8 +445,8 @@ En inteligencia artificial, los métodos de Monte Carlo son especialmente útile
 
 Un aspecto importante es que Monte Carlo se conecta directamente con la lógica de la inferencia. Igual que un intervalo de confianza nos dice que un parámetro es “plausible” dentro de un rango, las simulaciones Monte Carlo nos ofrecen un rango de posibles resultados para un modelo o un algoritmo. No buscamos la certeza absoluta, sino una estimación con su margen de incertidumbre, construida a base de repetición y aleatoriedad controlada.
 
-> **Para reflexionar…**
-> **Si entrenamos un modelo de IA y lo evaluamos una sola vez, obtenemos un número. Pero si repetimos el proceso de entrenamiento y evaluación miles de veces con distintas particiones de datos (o con ruido añadido), ¿qué información adicional obtenemos sobre el modelo?**
+> **Para reflexionar...**\
+> **Si entrenamos un modelo de IA y lo evaluamos una sola vez, obtenemos un número. Pero si repetimos el proceso de entrenamiento y evaluación miles de veces con distintas particiones de datos (o con ruido añadido), ¿qué información adicional obtenemos sobre el modelo?**\
 > *Piensa en cómo Monte Carlo nos permite no solo estimar el valor esperado del rendimiento, sino también observar su distribución: qué tan estable es, qué variabilidad tiene, y si hay escenarios en los que el modelo falla más de lo esperado.*
 
 #### Ejemplo de método Montecarlo aplicado a la inferencia estadística clásica: Altura de los estudiantes de un instituto
@@ -474,8 +472,8 @@ Veamos numéricamente lo anterior. Supongamos que tenemos las alturas (en cm) de
 
 El gráfico anterior nos muestra la **media muestral** (168.58 cm) y, debajo, el **intervalo de confianza bootstrap al 95%** para la media: $165.83, 171.42$ cm. El histograma muestra la **distribución de medias re-muestreadas** (10 000 réplicas con reemplazo a partir de la misma muestra). Las líneas verticales marcan la media muestral (discontinua) y los límites del intervalo (punteadas).
 
-> **Para reflexionar…**
-> **¿Qué aporta este enfoque frente al cálculo analítico del intervalo de confianza con la t de Student?**
+> **Para reflexionar...**\
+> **¿Qué aporta este enfoque frente al cálculo analítico del intervalo de confianza con la t de Student?**\
 > *Piensa en que Monte Carlo no necesita suposiciones fuertes sobre la distribución de la población, y además nos da una visión visual y experimental de la incertidumbre, más cercana a la lógica de la simulación en IA.*
 
 ## Conexiones de la estadística inferencial con la inteligencia artificial
@@ -490,11 +488,11 @@ Otro concepto importante que empieza a vislumbrarse aquí es el **trade-off entr
 
 Finalmente, la inferencia es esencial en la **selección y evaluación de modelos**. Cuando comparamos dos algoritmos, lo que realmente hacemos es lo mismo que cuando comparamos medias de dos poblaciones: evaluamos si la diferencia observada refleja una ventaja real o es simplemente fruto del muestreo. La lógica de los intervalos de confianza, los contrastes y los métodos de simulación se traslada directamente a este proceso.
 
-> **Ejemplo**
+> **Ejemplo**\
 > Supongamos que probamos dos modelos de clasificación de imágenes. El primero alcanza un 91% de aciertos en el conjunto de validación y el segundo un 93%. ¿Podemos afirmar que el segundo es mejor? Si esa diferencia se evaluó solo con 200 imágenes, la incertidumbre es grande y quizá no haya evidencia suficiente para preferirlo. Si en cambio se evaluó con 20 000 imágenes, la inferencia nos dirá que la diferencia es muy probablemente real.
 
-> **Para reflexionar…**
-> **¿Qué riesgo corremos si adoptamos un nuevo modelo de IA únicamente porque “funciona mejor en nuestra muestra de datos”, sin usar herramientas de inferencia estadística?**
+> **Para reflexionar...**\
+> **¿Qué riesgo corremos si adoptamos un nuevo modelo de IA únicamente porque “funciona mejor en nuestra muestra de datos”, sin usar herramientas de inferencia estadística?**\
 > *Piensa en cómo la muestra puede engañarnos y cómo la inferencia nos ayuda a distinguir entre mejoras aparentes y mejoras sólidas, con capacidad de generalización.*
 
 En este capítulo hemos dado un salto fundamental: pasamos de **describir datos** a **sacar conclusiones más allá de la muestra**. Ese es el núcleo de la estadística inferencial. Lo que nos enseñan estas herramientas no es solo a calcular medias o porcentajes, sino a reconocer que toda conclusión basada en datos conlleva **incertidumbre** y que necesitamos un marco para medirla y comunicarla.
@@ -509,7 +507,7 @@ Finalmente, vinculamos todos estos conceptos con la IA. La inferencia estadísti
 
 En conclusión, la estadística inferencial es la pieza que nos recuerda constantemente que trabajar con datos significa trabajar con incertidumbre. Y que la diferencia entre un experimento afortunado y una conclusión sólida está en aplicar estas herramientas que nos permiten **razonar más allá de lo observado**. En inteligencia artificial, esa capacidad de inferir y generalizar es lo que separa a los modelos que funcionan solo en el laboratorio de los que realmente pueden desplegarse en el mundo real.
 
-> **Para reflexionar…**
+> **Para reflexionar...**\
 > **Si el corazón de la IA es aprender de los datos, y la estadística inferencial es el arte de ir más allá de los datos observados, ¿no es acaso la inferencia el lenguaje común que une las matemáticas clásicas con la práctica moderna de los algoritmos de aprendizaje?**
 
 
