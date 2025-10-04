@@ -866,7 +866,7 @@ Resolver esta ecuación nos da los posibles valores de $\lambda$, que son los **
 > x \\
 > y
 > \end{bmatrix}
-> = 
+> = \\
 > \begin{bmatrix}
 > 0 \\
 > 0
@@ -890,7 +890,7 @@ Resolver esta ecuación nos da los posibles valores de $\lambda$, que son los **
 > x \\
 > y
 > \end{bmatrix}
-> = 
+> = \\
 > \begin{bmatrix}
 > 0 \\
 > 0
@@ -1073,6 +1073,6 @@ Aunque no siempre se presenta explícitamente con el nombre de diagonalización,
 
 ---
 
->**Para reflexionar**
+>**Para reflexionar...**
 > **¿Qué significa, desde un punto de vista práctico, que una matriz se pueda “resumir” como una diagonal en la base de sus autovectores? ¿Cómo facilita esto la interpretación de un conjunto de datos o de un modelo en IA?**
 
