@@ -2,7 +2,7 @@ Vectores y escalares: la base del lenguaje de la IA
 ===
 
 Definiciones
----
+
 
 Los conceptos de **vectores** y **escalares**, aunque parezcan abstractos, son la base sobre la que se construyen los modelos de *machine learning* y *deep learning*.
 
@@ -18,7 +18,7 @@ En el mundo de la IA, los vectores son omnipresentes. Los datos con los que trab
 
 La capacidad de representar información compleja en forma de vectores es lo que permite que los algoritmos de aprendizaje automático puedan procesar y encontrar patrones en los datos. El álgebra lineal nos proporciona las herramientas para manipular estos vectores, permitiéndonos realizar operaciones como la suma, la resta, o el producto escalar, que son fundamentales para los cálculos internos de los modelos.
 
->**Para reflexionar...**
+>**Para reflexionar...**\
 > **¿Por qué es más útil representar los datos como vectores en lugar de simplemente como una lista de números sin ninguna estructura?**
 > *Considera cómo la estructura de un vector, y la capacidad de realizar operaciones matemáticas con él, nos permite capturar no solo la información individual, sino también las relaciones y distancias entre los distintos puntos de datos. Piensa en cómo calcular la "distancia" entre dos perfiles de usuario, o la "similitud" entre dos imágenes, se convierte en un problema matemático manejable cuando los datos están representados como vectores.*
 
@@ -44,12 +44,12 @@ Este vector, con tres dimensiones, nos da una "huella" numérica del correo elec
 
 Las **operaciones con vectores** nos permiten medir la "distancia" o la "similitud" entre correos electrónicos, lo cual es fundamental para muchos algoritmos de clasificación. El producto escalar, por ejemplo, es una operación que nos permite determinar cuán similares son dos vectores en dirección, lo cual se traduce en qué tan similares son dos correos en sus características. De esta manera, las matemáticas abstractas se convierten en las herramientas prácticas que permiten a la IA tomar decisiones.
 
->**Para reflexionar...**
+>**Para reflexionar...**\
 > ¿Cómo crees que podríamos representar una imagen en blanco y negro como un vector para que un algoritmo de IA la procese? ¿Y una imagen a color?
 > *Considera cómo los píxeles de una imagen pueden ser vistos como los componentes de un vector. Piensa en qué representa el valor de cada píxel y cómo el color podría añadir más "dimensiones" a este vector.*
 
 Operaciones básicas con vectores
----
+
 
 Ahora que hemos comprendido el concepto de vector como una representación de datos, es crucial entender cómo podemos manipularlos a través de operaciones matemáticas. Estas operaciones están en la base de la gran mayoría de algoritmos usados en IA.
 
@@ -82,7 +82,7 @@ $$
 
 La normalización es esencial en muchos algoritmos de IA, especialmente en aquellos que utilizan distancias o productos escalares. Al normalizar los vectores, se asegura que la magnitud de los datos no influya indebidamente en el cálculo, haciendo que el modelo se enfoque en la dirección y la relación entre ellos. Esto es crucial para **regular la magnitud de los gradientes** en el *deep learning*, evitando problemas como el **vanishing gradient**.
 
->**Para reflexionar...**
+>**Para reflexionar...**\
 > **¿Cómo podría el producto escalar ser utilizado para determinar la "similitud" entre dos documentos de texto? ¿Qué desafíos crees que podrían surgir si los vectores de palabras no estuvieran normalizados?**
 > *Considera que los documentos de texto pueden ser representados como vectores donde cada componente es la frecuencia de una palabra. Piensa en cómo el producto escalar mide la similitud direccional y cómo la normalización asegura que un documento más largo no sea automáticamente más "similar" a otro.*
 
@@ -120,9 +120,9 @@ Esta interpretación es la clave para entender por qué el producto escalar se u
 
 Esta técnica se utiliza, por ejemplo, en los sistemas de recomendación para encontrar elementos similares a los que un usuario ya ha valorado positivamente, o en el procesamiento del lenguaje natural para medir la similitud semántica entre palabras o documentos.
 
----
 
->**Para reflexionar...**
+
+>**Para reflexionar...**\
 > **¿Qué diferencia fundamental existe entre la similitud de coseno y la distancia euclidiana (la longitud de la línea recta que une los puntos) para medir la similitud entre dos vectores? ¿En qué escenarios de la IA crees que una podría ser más adecuada que la otra?**
 > *Considera que la similitud de coseno se centra en la dirección de los vectores, mientras que la distancia euclidiana considera tanto la dirección como la magnitud. Piensa en el problema de la clasificación de documentos de texto, donde la longitud del documento puede variar enormemente, o en el caso de la detección de anomalías, donde la magnitud de los datos puede ser un factor clave.*
 
@@ -130,7 +130,7 @@ Esta técnica se utiliza, por ejemplo, en los sistemas de recomendación para en
 > Imaginemos que queremos predecir el precio de una casa. El vector de características de la casa podría ser $\mathbf{c} = [\text{metros}^2, \text{habitaciones}, \text{baños}]$ y el modelo de regresión lineal tiene un vector de pesos $\mathbf{w} = [w_1, w_2, w_3]$. La predicción del precio $\hat{y}$ se calcula como el producto escalar de ambos vectores, más un término de sesgo (bias): $\hat{y} = \mathbf{w} \cdot \mathbf{c} + b$.
 
 Espacios Vectoriales: la estructura del universo de datos de la IA
----
+
 
 Para que la **Inteligencia Artificial** pueda procesar y aprender de la información, los datos deben estar estructurados en un marco matemático coherente. Este marco constituye un concepto fundamental conocido como **espacio vectorial**. Formalmente, un espacio vectorial es un conjunto de elementos, a los que llamamos **vectores**, en el que se definen dos operaciones: la suma de vectores y la multiplicación de un vector por un escalar. En el ámbito del *machine learning*, nos referimos a este espacio como el **espacio de características**, donde cada instancia de datos (como un documento de texto o una imagen) es un vector cuya posición está determinada por los valores de sus características.
 
@@ -179,9 +179,9 @@ La comprensión de la independencia lineal nos lleva a un concepto crucial: la *
 
 La habilidad de encontrar una nueva base que sea más eficiente para nuestro problema es la clave de las técnicas de **reducción de dimensionalidad**, como el **Análisis de Componentes Principales (PCA)**. Estos algoritmos buscan una nueva base que capture la mayor varianza de los datos con el menor número de dimensiones. Al proyectar nuestros datos en esta nueva base, eliminamos la redundancia y comprimimos la información, lo que no solo mejora la eficiencia computacional de los modelos, sino que también puede reducir el ruido y mejorar su rendimiento.
 
----
 
->**Para reflexionar...**
+
+>**Para reflexionar...**\
 > **Si un modelo de machine learning para predecir precios de casas utiliza como características tanto el tamaño de la casa en metros cuadrados como el tamaño en pies cuadrados, ¿qué implicaciones tendría esto en la dependencia lineal de los datos? ¿Por qué los algoritmos de reducción de dimensionalidad, como el Análisis de Componentes Principales (PCA), buscan encontrar una nueva base para los datos?**
 > *Considera cómo el tamaño en metros y pies cuadrados son redundantemente lineales. Piensa en cómo una nueva base podría permitirnos capturar la misma información en un espacio de menor dimensión, eliminando esta redundancia y facilitando el trabajo del modelo.*
 
@@ -203,7 +203,7 @@ $$
 
 donde $(x_1, x_2)$ y $(y_1, y_2)$ son las coordenadas del mismo vector en bases distintas.
 
----
+
 
 ##### Ejemplo en dos dimensiones
 
@@ -265,7 +265,7 @@ El vector $\mathbf{v}$ sigue ocupando la misma posición en el plano, pero depen
 
 Este cambio de perspectiva es esencial en IA porque permite elegir bases que simplifiquen los cálculos o eliminen redundancias en los datos, como ocurre en métodos de reducción de dimensionalidad (por ejemplo, PCA).
 
----
+
 
 > **Para reflexionar…**
 > **¿Qué ventajas podría tener usar una base “adaptada a los datos” en lugar de la base canónica? ¿Por qué crees que técnicas como PCA buscan una nueva base que maximice la varianza explicada de los datos?**
@@ -284,12 +284,12 @@ En el ámbito de la **extracción de características latentes**, el cambio de b
 
 Finalmente, el cambio de base puede favorecer la **interpretabilidad de los modelos**. En visión por computador, por ejemplo, es habitual que tras una transformación los ejes del nuevo espacio se alineen con patrones visuales concretos, como bordes, texturas o colores. Estos nuevos ejes no solo simplifican el cálculo, sino que también facilitan la comprensión del proceso interno por el que un modelo toma sus decisiones.
 
-------
+
 
 > **Para reflexionar…**
 >  **Si un modelo de clasificación no logra distinguir entre dos clases en el espacio de características original, ¿cómo podría ayudar un cambio de base a que las clases fueran más separables? ¿Qué papel juega aquí la geometría de los datos?**
 
----
+
 
 ##### Ejemplo práctico: cambio de base en un espacio de características bidimensional
 
@@ -368,8 +368,8 @@ Elegir una base es como elegir el **punto de vista matemático** desde el que mi
 
 Así, el cambio de base es un paso consciente: no se trata de cambiar por cambiar, sino de **alinear la representación de los datos con el objetivo del análisis o del modelo**.
 
----
 
-> **Para reflexionar…**
+
+> **Para reflexionar...**\
 > **Si en lugar de estudiantes quisiéramos analizar dietas (proteínas y carbohidratos), ¿cómo podríamos definir una nueva base que refleje el “total de calorías” y el “equilibrio entre nutrientes”?**
 

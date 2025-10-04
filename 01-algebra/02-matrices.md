@@ -2,7 +2,7 @@ Matrices: Operaciones básicas y tipos especiales
 ===
 
 Definición
----
+
 
 Continuamos nuestro recorrido por el **álgebra lineal** orientada al uso en **Inteligencia Artificial**. Si los vectores nos permiten representar datos individuales, las **matrices** nos ofrecen la capacidad de estructurar y manipular grandes colecciones de datos de manera eficiente.
 
@@ -80,7 +80,7 @@ Esta operación es fundamental en las **redes neuronales**, donde la informació
 > \end{bmatrix}.
 > $$
 >
-> ---
+> 
 >
 > #### Interpretación
 >
@@ -121,14 +121,14 @@ Esta operación es fundamental en las **redes neuronales**, donde la informació
 \end{bmatrix}
 > $$
 
----
+
 
 >**Para reflexionar**
 > **¿Por qué la multiplicación de matrices es una operación tan importante en el Deep Learning?**
 > *Considera cómo los pesos de una capa neuronal y las entradas de la misma se organizan en matrices y cómo la multiplicación de estas matrices permite calcular de manera paralela y eficiente las activaciones de todas las neuronas de la siguiente capa. Piensa en la diferencia en la complejidad computacional entre realizar los cálculos uno por uno frente a usar una operación matricial única.*
 
 Tipos especiales de matrices
----
+
 
 Existen matrices con propiedades particulares que son de gran importancia en la IA. Conocerlas y comprender su comportamiento permite simplificar cálculos y entender mejor los algoritmos que dependen de operaciones matriciales.
 
@@ -156,7 +156,7 @@ $$
 
 En IA, esta matriz aparece de manera natural al inicializar parámetros o al representar la ausencia total de información en un conjunto de características.
 
----
+
 
 ### Matrices diagonales
 
@@ -172,7 +172,7 @@ $$
 
 El interés de las matrices diagonales reside en que simplifican enormemente las operaciones: multiplicar por una matriz diagonal equivale a escalar cada componente de un vector. Este comportamiento es clave en algoritmos de reducción de dimensionalidad y en transformaciones lineales simples.
 
----
+
 
 ### Matrices simétricas
 
@@ -200,13 +200,13 @@ Las matrices simétricas tienen propiedades muy importantes:
 
 En IA, aparecen de forma recurrente en estadística y aprendizaje automático, ya que las matrices de covarianzas y correlaciones son siempre simétricas, y constituyen la base de técnicas como el PCA.
 
-> **Para reflexionar…**
+> **Para reflexionar...**
 > **¿Por qué crees que resulta tan útil que las matrices de covarianzas sean simétricas en algoritmos de aprendizaje? ¿Qué implicaciones tiene que sus autovalores sean siempre reales?**
 
----
+
 
 El concepto de rango en matrices
----
+
 
 El **rango de una matriz** es una medida de la cantidad de información independiente que contiene. Dicho de otra manera, nos dice cuántas filas o columnas de la matriz aportan realmente algo nuevo y cuántas son redundantes.
 
@@ -244,7 +244,7 @@ En consecuencia, solo la primera y la tercera fila son independientes.
 
 El rango de $\mathbf{A}$ es, por tanto, **2**.
 
----
+
 
 ##### Interpretación en términos de datos
 
@@ -265,11 +265,11 @@ Supongamos que en una base de datos de viviendas tenemos las siguientes columnas
 
 Aunque parecen tres características, en realidad solo hay dos distintas: los metros cuadrados y el número de habitaciones. La columna de pies cuadrados es solo una versión escalada de los metros cuadrados. El rango de esta matriz de datos sería 2, no 3, porque una de las columnas no aporta información independiente.
 
-> **Para reflexionar…**
+> **Para reflexionar...**
 > **¿Por qué crees que es problemático almacenar muchas características que en el fondo dicen lo mismo? ¿Qué ventajas tendría identificar estas redundancias antes de trabajar con los datos?**
 > **Si quisieras entrenar un modelo con estos datos, ¿qué problemas crees que surgirían al incluir una característica que es exactamente proporcional a otra? ¿Por qué sería más razonable quedarse solo con dos columnas?**
 
----
+
 
 ## Matrices cuadradas y determinante de una matriz
 
@@ -296,12 +296,12 @@ En otras palabras:
 
 Esta relación es muy útil en la práctica, porque el rango nos ofrece una medida general de la independencia (aplicable a cualquier matriz, cuadrada o no), mientras que el determinante actúa como un “test rápido” que confirma si una matriz cuadrada tiene independencia completa o si, por el contrario, está degenerada.
 
----
 
-> **Para reflexionar…**
+
+> **Para reflexionar...**
 > **¿Por qué crees que en el análisis de datos resulta más flexible trabajar con el rango que con el determinante? ¿Qué ventaja ofrece el rango cuando tratamos matrices rectangulares que no son cuadradas?**
 
----
+
 
 ### Relación con la IA
 
@@ -309,7 +309,7 @@ En el análisis de datos, este concepto conecta directamente con la **independen
 
 Esta situación refleja la conocida **multicolinealidad**, un problema serio en algoritmos de aprendizaje automático, porque confunde al modelo e impide determinar la contribución individual de cada característica. El resultado suele ser un rendimiento inestable y una interpretación poco fiable.
 
----
+
 
 ### Ejemplo sencillo
 
@@ -331,12 +331,12 @@ $$
 
 El resultado nos indica que las dos columnas de $\mathbf{A}$ son dependientes (la segunda es el doble de la primera). No hay, por tanto, dos direcciones realmente independientes en el espacio, y la matriz no puede invertirse.
 
----
 
-> **Para reflexionar…**
+
+> **Para reflexionar...**
 > **¿Por qué crees que es peligroso entrenar un modelo con variables redundantes? ¿Qué pasaría si intentamos resolver un sistema de ecuaciones con datos que contienen esta dependencia oculta?**
 
----
+
 
 ## Matriz Inversa: el equivalente a la división en el mundo de las matrices
 
@@ -419,9 +419,9 @@ $$
 
 En IA, aunque rara vez se calcula la inversa de manera explícita en la práctica (porque es costoso computacionalmente), el concepto es clave para entender cómo los modelos ajustan parámetros o encuentran soluciones únicas. La existencia o no de inversa nos habla de si los datos contienen suficiente información independiente para llegar a una solución estable.
 
----
 
-> **Para reflexionar…**
+
+> **Para reflexionar...**
 > **¿Por qué crees que en problemas con datos redundantes (donde las características no son independientes) no podemos calcular una solución única usando la matriz inversa? ¿Qué alternativas podrían usarse en esos casos?**
 
 ### Cómo calcular la inversa de una matriz: Método formal
@@ -453,7 +453,7 @@ $$
 
 siempre que $ad - bc \neq 0$.
 
----
+
 
 **2. Para matrices de mayor dimensión**
 El cálculo requiere un procedimiento más general, basado en tres ideas:
@@ -468,7 +468,7 @@ $$
 
 Este método, aunque conceptualmente claro, es laborioso de aplicar manualmente para matrices grandes.
 
----
+
 
 **3. Métodos algorítmicos**
 En la práctica, cuando se trabaja con matrices de tamaño elevado, se utilizan métodos de cálculo basados en **descomposiciones matriciales** (como la eliminación de Gauss-Jordan o la descomposición LU). Estos procedimientos son más eficientes y estables numéricamente, y son los que implementan las bibliotecas de álgebra lineal que se emplean en IA.
@@ -501,7 +501,7 @@ $$
 siempre que $|\mathbf{A}| \neq 0$.
 
 
----
+
 
 #### Ejemplo: cálculo de la inversa de una matriz $3 \times 3$ usando la adjunta
 
@@ -531,7 +531,7 @@ $$
 
 Como $|\mathbf{A}| = 1 \neq 0$, la matriz es invertible.
 
----
+
 
 **2. Matriz de cofactores**
 
@@ -628,7 +628,7 @@ $$
 \end{bmatrix}.
 $$
 
----
+
 
 **3. Matriz adjunta**
 
@@ -643,7 +643,7 @@ $$
 \end{bmatrix}.
 $$
 
----
+
 
 **4. Inversa de la matriz**
 
@@ -664,9 +664,9 @@ $$
 \end{bmatrix}.
 $$
 
----
 
-> **Para reflexionar…**
+
+> **Para reflexionar...**
 > **Si en este ejemplo el determinante hubiera resultado ser cero, ¿qué habría significado en términos de independencia de las filas y columnas de la matriz? ¿Cómo se relaciona esto con la imposibilidad de calcular la inversa?**
 
 #### Interpretación práctica
@@ -676,18 +676,18 @@ Más allá de la técnica concreta, lo importante es comprender que el cálculo 
 * Si el determinante es cero, no podremos obtener una inversa, sin importar el método.
 * Si el determinante es distinto de cero, siempre existirá una estrategia para calcularla, aunque en la práctica lo haremos con un ordenador.
 
----
 
-> **Para reflexionar…**
+
+> **Para reflexionar...**
 > **Si en un proyecto de IA tuviéramos que invertir una matriz de datos de tamaño muy grande, ¿crees que sería práctico hacerlo a mano con el método de cofactores? ¿Qué ventajas ofrecen entonces las bibliotecas computacionales frente a los métodos teóricos?**
 
----
+
 
 ### Métodos alternativos para el cálculo de la matriz inversa
 
 El cálculo de la inversa de una matriz puede hacerse de varias maneras. Aunque la definición formal mediante la **matriz adjunta** y el **determinante** es útil para matrices pequeñas, en la práctica existen otros métodos más eficientes y aplicables a matrices de mayor dimensión. Estos métodos son importantes porque, en el contexto de la inteligencia artificial, solemos trabajar con datos de gran tamaño y necesitamos estrategias que sean estables y rápidas.
 
----
+
 
 #### El método de Gauss-Jordan
 
@@ -727,9 +727,9 @@ En la práctica, calcular la inversa de una matriz de manera explícita es algo 
 
 Por esto, aunque el concepto de inversa es crucial desde el punto de vista teórico, los algoritmos prácticos en IA suelen **evitar calcularla directamente**.
 
----
 
-> **Para reflexionar…**
+
+> **Para reflexionar...**\
 > **Si las herramientas computacionales modernas nos permiten resolver sistemas lineales sin necesidad de invertir matrices, ¿por qué sigue siendo importante entender qué es la matriz inversa y cuáles son sus propiedades teóricas?**
 
 ## Autovalores y autovectores: una nueva forma de ver las matrices
@@ -744,7 +744,7 @@ $$
 
 donde $\lambda$ es el **autovalor** asociado a $\mathbf{v}$.
 
----
+
 
 ### Interpretación geométrica
 
@@ -818,7 +818,7 @@ Podemos imaginar que una matriz representa una transformación en el plano: rota
 > Por tanto, $\mathbf{v}_2$ es un autovector y $\lambda = 3$ su autovalor.
 >
 
----
+
 
 ### Relevancia en inteligencia artificial
 
@@ -859,9 +859,9 @@ Por ejemplo, imagina el caso concreto de un modelo dinámico que describe cómo 
 - Si algún autovalor es mayor que 1, el sistema crece sin control (una epidemia que se expande rápidamente).
 - Si los autovalores son negativos o complejos, el sistema puede mostrar oscilaciones o comportamientos más imprevisibles.
 
-------
 
->**Para reflexionar**
+
+>**Para reflexionar...**\
 > ¿Por qué es tan útil poder identificar direcciones privilegiadas en un conjunto de datos o en la dinámica de un sistema? ¿Cómo nos ayuda esta visión a simplificar problemas que, a primera vista, parecen demasiado complejos
 >
 > ¿Por qué es útil identificar vectores que no cambian de orientación bajo la acción de una matriz? ¿Qué nos dice un autovalor grande sobre la importancia de esa dirección en los datos?
@@ -975,7 +975,7 @@ Resolver esta ecuación nos da los posibles valores de $\lambda$, que son los **
 > \mathbf{v}_2 = \begin{bmatrix}1 \\ 1\end{bmatrix}.
 > $$
 >
-> ---
+> 
 >
 > **Interpretación del ejemplo**
 >
@@ -984,12 +984,12 @@ Resolver esta ecuación nos da los posibles valores de $\lambda$, que son los **
 > Este ejemplo muestra cómo los autovalores y autovectores revelan las **direcciones privilegiadas de una transformación lineal** y el **factor de escala** aplicado en cada una.
 >
 
----
 
->**Para reflexionar**
+
+>**Para reflexionar...**\
 > Si tuviéramos un conjunto de datos que se extiende principalmente a lo largo de la dirección $(1,1)$, ¿qué nos diría que esa dirección tenga un autovalor grande? ¿Cómo podríamos usar esta información para representar los datos de manera más simple?
 
----
+
 
 #### Relación entre autovalores, autovectores y la diagonalización de una matriz
 
@@ -1143,8 +1143,8 @@ Aunque no siempre se presenta explícitamente con el nombre de diagonalización,
 > La diagonalización revela que la transformación definida por $\mathbf{A}$ es, en el fondo, muy simple: en la base original parece mezclar coordenadas, pero en la base de autovectores solo estira en una dirección y encoge en otra. Esto es lo que hace que el análisis de problemas complejos se vuelva más comprensible y manejable.
 >
 
----
 
->**Para reflexionar...**
+
+>**Para reflexionar...**\
 > **¿Qué significa, desde un punto de vista práctico, que una matriz se pueda “resumir” como una diagonal en la base de sus autovectores? ¿Cómo facilita esto la interpretación de un conjunto de datos o de un modelo en IA?**
 
