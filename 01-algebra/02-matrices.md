@@ -500,9 +500,6 @@ $$
 
 siempre que $|\mathbf{A}| \neq 0$.
 
----
-
-Perfecto 🙌. Entonces preparo un **ejemplo completo con una matriz $3 \times 3$**, para que los alumnos vean cómo se aplica el método de la adjunta al cálculo de la inversa.
 
 ---
 
