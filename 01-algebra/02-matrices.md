@@ -123,8 +123,7 @@ Esta operación es fundamental en las **redes neuronales**, donde la informació
 
 ---
 
-**Para reflexionar...**
-
+>**Para reflexionar**
 > **¿Por qué la multiplicación de matrices es una operación tan importante en el Deep Learning?**
 > *Considera cómo los pesos de una capa neuronal y las entradas de la misma se organizan en matrices y cómo la multiplicación de estas matrices permite calcular de manera paralela y eficiente las activaciones de todas las neuronas de la siguiente capa. Piensa en la diferencia en la complejidad computacional entre realizar los cálculos uno por uno frente a usar una operación matricial única.*
 
@@ -136,6 +135,7 @@ Existen matrices con propiedades particulares que son de gran importancia en la 
 ### **Matriz de Identidad**
 
 Es una matriz cuadrada (mismo número de filas y columnas) con unos en la diagonal principal y ceros en el resto. Es el equivalente matricial del número 1, ya que multiplicar cualquier matriz por la matriz de identidad no la altera. Por ejemplo, una matriz identidad de dimensión tres sería:
+
 $$
 \mathbf{I} = \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix}
 $$
@@ -201,7 +201,7 @@ Las matrices simétricas tienen propiedades muy importantes:
 En IA, aparecen de forma recurrente en estadística y aprendizaje automático, ya que las matrices de covarianzas y correlaciones son siempre simétricas, y constituyen la base de técnicas como el PCA.
 
 > **Para reflexionar…**
-> ¿Por qué crees que resulta tan útil que las matrices de covarianzas sean simétricas en algoritmos de aprendizaje? ¿Qué implicaciones tiene que sus autovalores sean siempre reales?
+> **¿Por qué crees que resulta tan útil que las matrices de covarianzas sean simétricas en algoritmos de aprendizaje? ¿Qué implicaciones tiene que sus autovalores sean siempre reales?**
 
 ---
 
@@ -266,9 +266,8 @@ Supongamos que en una base de datos de viviendas tenemos las siguientes columnas
 Aunque parecen tres características, en realidad solo hay dos distintas: los metros cuadrados y el número de habitaciones. La columna de pies cuadrados es solo una versión escalada de los metros cuadrados. El rango de esta matriz de datos sería 2, no 3, porque una de las columnas no aporta información independiente.
 
 > **Para reflexionar…**
-> ¿Por qué crees que es problemático almacenar muchas características que en el fondo dicen lo mismo? ¿Qué ventajas tendría identificar estas redundancias antes de trabajar con los datos?
->
-> Si quisieras entrenar un modelo con estos datos, ¿qué problemas crees que surgirían al incluir una característica que es exactamente proporcional a otra? ¿Por qué sería más razonable quedarse solo con dos columnas?
+> **¿Por qué crees que es problemático almacenar muchas características que en el fondo dicen lo mismo? ¿Qué ventajas tendría identificar estas redundancias antes de trabajar con los datos?**
+> **Si quisieras entrenar un modelo con estos datos, ¿qué problemas crees que surgirían al incluir una característica que es exactamente proporcional a otra? ¿Por qué sería más razonable quedarse solo con dos columnas?**
 
 ---
 
@@ -300,7 +299,7 @@ Esta relación es muy útil en la práctica, porque el rango nos ofrece una medi
 ---
 
 > **Para reflexionar…**
-> ¿Por qué crees que en el análisis de datos resulta más flexible trabajar con el rango que con el determinante? ¿Qué ventaja ofrece el rango cuando tratamos matrices rectangulares que no son cuadradas?
+> **¿Por qué crees que en el análisis de datos resulta más flexible trabajar con el rango que con el determinante? ¿Qué ventaja ofrece el rango cuando tratamos matrices rectangulares que no son cuadradas?**
 
 ---
 
@@ -335,7 +334,7 @@ El resultado nos indica que las dos columnas de $\mathbf{A}$ son dependientes (l
 ---
 
 > **Para reflexionar…**
-> ¿Por qué crees que es peligroso entrenar un modelo con variables redundantes? ¿Qué pasaría si intentamos resolver un sistema de ecuaciones con datos que contienen esta dependencia oculta?
+> **¿Por qué crees que es peligroso entrenar un modelo con variables redundantes? ¿Qué pasaría si intentamos resolver un sistema de ecuaciones con datos que contienen esta dependencia oculta?**
 
 ---
 
@@ -346,6 +345,7 @@ En el álgebra lineal, la **matriz inversa** ocupa un lugar equivalente al de la
 ### Definición
 
 Formalmente, una matriz cuadrada $\mathbf{A}$ es **invertible** si existe otra matriz $\mathbf{A}^{-1}$ tal que
+
 $$
 \mathbf{A} \cdot \mathbf{A}^{-1} = \mathbf{A}^{-1} \cdot \mathbf{A} = \mathbf{I}.
 $$
@@ -422,7 +422,7 @@ En IA, aunque rara vez se calcula la inversa de manera explícita en la práctic
 ---
 
 > **Para reflexionar…**
-> ¿Por qué crees que en problemas con datos redundantes (donde las características no son independientes) no podemos calcular una solución única usando la matriz inversa? ¿Qué alternativas podrían usarse en esos casos?
+> **¿Por qué crees que en problemas con datos redundantes (donde las características no son independientes) no podemos calcular una solución única usando la matriz inversa? ¿Qué alternativas podrían usarse en esos casos?**
 
 ### Cómo calcular la inversa de una matriz: Método formal
 
@@ -608,7 +608,7 @@ $$
 ---
 
 > **Para reflexionar…**
-> Si en este ejemplo el determinante hubiera resultado ser cero, ¿qué habría significado en términos de independencia de las filas y columnas de la matriz? ¿Cómo se relaciona esto con la imposibilidad de calcular la inversa?
+> **Si en este ejemplo el determinante hubiera resultado ser cero, ¿qué habría significado en términos de independencia de las filas y columnas de la matriz? ¿Cómo se relaciona esto con la imposibilidad de calcular la inversa?**
 
 #### Interpretación práctica
 
@@ -620,7 +620,7 @@ Más allá de la técnica concreta, lo importante es comprender que el cálculo 
 ---
 
 > **Para reflexionar…**
-> Si en un proyecto de IA tuviéramos que invertir una matriz de datos de tamaño muy grande, ¿crees que sería práctico hacerlo a mano con el método de cofactores? ¿Qué ventajas ofrecen entonces las bibliotecas computacionales frente a los métodos teóricos?
+> **Si en un proyecto de IA tuviéramos que invertir una matriz de datos de tamaño muy grande, ¿crees que sería práctico hacerlo a mano con el método de cofactores? ¿Qué ventajas ofrecen entonces las bibliotecas computacionales frente a los métodos teóricos?**
 
 ---
 
@@ -671,7 +671,7 @@ Por esto, aunque el concepto de inversa es crucial desde el punto de vista teór
 ---
 
 > **Para reflexionar…**
-> Si las herramientas computacionales modernas nos permiten resolver sistemas lineales sin necesidad de invertir matrices, ¿por qué sigue siendo importante entender qué es la matriz inversa y cuáles son sus propiedades teóricas?
+> **Si las herramientas computacionales modernas nos permiten resolver sistemas lineales sin necesidad de invertir matrices, ¿por qué sigue siendo importante entender qué es la matriz inversa y cuáles son sus propiedades teóricas?**
 
 ## Autovalores y autovectores: una nueva forma de ver las matrices
 
@@ -701,6 +701,7 @@ Podemos imaginar que una matriz representa una transformación en el plano: rota
 > **Ejemplo:**
 >
 > Consideremos la matriz
+>
 > $$
 > \mathbf{A} =
 > \begin{bmatrix}
@@ -788,8 +789,7 @@ Por ejemplo, imagina el caso concreto de un modelo dinámico que describe cómo 
 
 ------
 
-**Para reflexionar…**
-
+>**Para reflexionar**
 > ¿Por qué es tan útil poder identificar direcciones privilegiadas en un conjunto de datos o en la dinámica de un sistema? ¿Cómo nos ayuda esta visión a simplificar problemas que, a primera vista, parecen demasiado complejos
 >
 > ¿Por qué es útil identificar vectores que no cambian de orientación bajo la acción de una matriz? ¿Qué nos dice un autovalor grande sobre la importancia de esa dirección en los datos?
@@ -914,8 +914,7 @@ Resolver esta ecuación nos da los posibles valores de $\lambda$, que son los **
 
 ---
 
-**Para reflexionar…**
-
+>**Para reflexionar**
 > Si tuviéramos un conjunto de datos que se extiende principalmente a lo largo de la dirección $(1,1)$, ¿qué nos diría que esa dirección tenga un autovalor grande? ¿Cómo podríamos usar esta información para representar los datos de manera más simple?
 
 ---
@@ -1074,7 +1073,6 @@ Aunque no siempre se presenta explícitamente con el nombre de diagonalización,
 
 ---
 
-**Para reflexionar…**
-
-> ¿Qué significa, desde un punto de vista práctico, que una matriz se pueda “resumir” como una diagonal en la base de sus autovectores? ¿Cómo facilita esto la interpretación de un conjunto de datos o de un modelo en IA?
+>**Para reflexionar**
+> **¿Qué significa, desde un punto de vista práctico, que una matriz se pueda “resumir” como una diagonal en la base de sus autovectores? ¿Cómo facilita esto la interpretación de un conjunto de datos o de un modelo en IA?**
 
