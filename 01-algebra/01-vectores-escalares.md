@@ -2,9 +2,10 @@ Vectores y escalares: la base del lenguaje de la IA
 ===
 
 Definiciones
+---
 
 
-Los conceptos de **vectores** y **escalares**, aunque parezcan abstractos, son la base sobre la que se construyen los modelos de *machine learning* y *deep learning*.
+Los conceptos de **vector** y **escalar**, aunque parezcan abstractos, son la base sobre la que se construyen los modelos de *machine learning* y *deep learning*.
 
 Para empezar, imaginemos que **los escalares son los "números"** con los que estamos familiarizados, es decir, una magnitud única. Un escalar representa una sola cantidad. Por ejemplo, la temperatura de una habitación (25°C), el precio de un producto (50€) o la edad de una persona (30 años) son todos ejemplos de escalares. En el contexto de la programación, podríamos pensarlo simplemente como una variable que almacena un valor numérico. En un modelo de IA, un escalar podría ser un único *hiperparámetro*, como la tasa de aprendizaje.
 
@@ -18,11 +19,11 @@ En el mundo de la IA, los vectores son omnipresentes. Los datos con los que trab
 
 La capacidad de representar información compleja en forma de vectores es lo que permite que los algoritmos de aprendizaje automático puedan procesar y encontrar patrones en los datos. El álgebra lineal nos proporciona las herramientas para manipular estos vectores, permitiéndonos realizar operaciones como la suma, la resta, o el producto escalar, que son fundamentales para los cálculos internos de los modelos.
 
->**Para reflexionar...**\
+>**Para reflexionar...**
 >**¿Por qué es más útil representar los datos como vectores en lugar de simplemente como una lista de números sin ninguna estructura?**
 >*Considera cómo la estructura de un vector, y la capacidad de realizar operaciones matemáticas con él, nos permite capturar no solo la información individual, sino también las relaciones y distancias entre los distintos puntos de datos. Piensa en cómo calcular la "distancia" entre dos perfiles de usuario, o la "similitud" entre dos imágenes, se convierte en un problema matemático manejable cuando los datos están representados como vectores.*
 
-## Ejemplo práctico: Vectores y escalares en Machine Learning
+### Ejemplo práctico: Vectores y escalares en Machine Learning
 
 Para entender mejor cómo estos conceptos se aplican en la práctica, pensemos en un problema común en el campo del *machine learning*: la clasificación. Supongamos que estamos construyendo un modelo para predecir si un correo electrónico es spam o no.
 
@@ -49,6 +50,7 @@ Las **operaciones con vectores** nos permiten medir la "distancia" o la "similit
 > *Considera cómo los píxeles de una imagen pueden ser vistos como los componentes de un vector. Piensa en qué representa el valor de cada píxel y cómo el color podría añadir más "dimensiones" a este vector.*
 
 Operaciones básicas con vectores
+---
 
 
 Ahora que hemos comprendido el concepto de vector como una representación de datos, es crucial entender cómo podemos manipularlos a través de operaciones matemáticas. Estas operaciones están en la base de la gran mayoría de algoritmos usados en IA.
@@ -66,23 +68,75 @@ En el contexto de la IA, estas operaciones pueden ser útiles para combinar o aj
 > **Ejemplo**:
 > En un sistema de recomendación, si un usuario está representado por un vector de preferencias $\mathbf{u}$ y la película que ve está representada por un vector de características $\mathbf{p}$, un ajuste en la preferencia del usuario después de ver la película podría modelarse como $\mathbf{u}_{\text{nueva}} = \mathbf{u} + \mathbf{p}_{\text{ajuste}}$, donde $\mathbf{p}_{\text{ajuste}}$ es un pequeño vector que modifica las preferencias del usuario.
 
+### Multiplicación por un escalar
+
+La **multiplicación de un vector por un escalar** es la operación que nos permite cambiar la magnitud (longitud) del vector, manteniendo su dirección original (o invirtiéndola si el escalar es negativo). Un escalar ($\alpha$) es simplemente un número real, mientras que el vector $\mathbf{v}$ es una colección ordenada de números.
+
+Para multiplicar un vector $\mathbf{v}$ por un escalar $\alpha$, se multiplica cada componente del vector por dicho escalar:
+
+
+$$
+\alpha \mathbf{v} = \begin{bmatrix} \alpha v_1 \\ \alpha v_2 \\ \vdots \\ \alpha v_n \end{bmatrix}
+$$
+
+
+> **Ejemplo**:
+> Si un vector de datos $\mathbf{v} = [2, 4]$ es escalado por $\alpha = 0.5$, el nuevo vector $\mathbf{w} = 0.5 \cdot \mathbf{v} = [1, 2]$. El vector se ha encogido a la mitad de su longitud original, pero sigue apuntando en la misma dirección. En un modelo de IA, esto podría representar la reducción de la contribución de una característica a la mitad.
+
 ### Normalización de vectores
 
-La normalización de un vector es el proceso de ajustar su longitud a una unidad, sin cambiar su dirección. Esto se logra dividiendo cada componente del vector por su **norma** (su longitud). La norma, o magnitud, de un vector $\mathbf{v}$ se calcula como la raíz cuadrada de la suma de los cuadrados de sus componentes.
+El **álgebra lineal** en **Inteligencia Artificial** requiere herramientas que nos permitan cuantificar el "tamaño", la "magnitud" de un vector de datos o el "error" entre una predicción y el valor real. Para esto, utilizamos el concepto matemático de **norma**. Una norma es, esencialmente, una función que asigna una longitud o tamaño a un vector o una matriz, estableciendo una medida consistente y útil.
+
+La norma de un vector v, denotada como $\Vert\mathbf{v}\Vert$, es fundamental en el *machine learning* porque permite establecer métricas de distancia, evaluar la calidad de las predicciones y, de manera crucial, controlar la complejidad de los modelos a través de la **regularización**. En la práctica de la IA, dominan dos tipos de normas: la Norma L2 y la Norma L1, cada una con una interpretación geométrica y un impacto en la optimización radicalmente distintos.
+
+#### La norma euclídea o norma $L_2$: Distancia y magnitud
+
+La que hemos visto en la definición anterior es la norma más común, y la que utilizamos intuitivamente. Se denomina  **norma Euclídea** o **norma $L_2$**. Esta norma mide la longitud de un vector desde el origen en el espacio, o la distancia "en línea recta" entre dos vectores. Es una extensión directa del **Teorema de Pitágoras**.
+
+Como se ha comentado, para un vector $\mathbf{v}$ de $n$ componentes, su Norma $L_2$ se calcula como la raíz cuadrada de la suma de sus componentes al cuadrado:
 
 $$
-\Vert\mathbf{v}\Vert = \sqrt{v_1^2 + v_2^2 + \dots + v_n^2}
+||\mathbf{v}|| = \sqrt{v_1^2 + v_2^2 + \dots + v_n^2} = \sqrt{\sum_{i=1}^n v_i^2}
 $$
 
-El vector normalizado $\hat{\mathbf{v}}$ es:
+En **Inteligencia Artificial**, el cuadrado de esta norma ($||\mathbf{v}||^2$) es de gran relevancia, pues define la **pérdida cuadrática media** (*Mean Squared Error* - MSE), la función de pérdida más utilizada en los modelos de **regresión**. Además, la Norma $L_2$ se utiliza en la **Regularización *Ridge*** (o penalización $L_2$), una técnica para evitar el sobreajuste al penalizar fuertemente los pesos (los elementos del vector de parámetros) que son muy grandes. Lo veremos en el tema dedicado a los modelos de **regresión lineal**
+
+Un vez definida la norma podemos conseguir un **vector normalizado** dividiendo cada componente de un vector por su norma $L_2$
+
+En el caso de un vector $\mathbf{v}$ se podría calcular como la raíz cuadrada de la suma de los cuadrados de sus componentes.
+
+El vector normalizado $\hat{\mathbf{v}}$ sería entonces:
 
 $$
 \hat{\mathbf{v}} = \frac{\mathbf{v}}{\Vert\mathbf{v}\Vert}
 $$
 
-La normalización es esencial en muchos algoritmos de IA, especialmente en aquellos que utilizan distancias o productos escalares. Al normalizar los vectores, se asegura que la magnitud de los datos no influya indebidamente en el cálculo, haciendo que el modelo se enfoque en la dirección y la relación entre ellos. Esto es crucial para **regular la magnitud de los gradientes** en el *deep learning*, evitando problemas como el **vanishing gradient**.
 
->**Para reflexionar...**\
+
+
+#### La norma $L_1$: Suma de valores absolutos y escasez
+
+Otra norma de gran importancia es la **Norma $L_1$**, también conocida como la **distancia de Manhattan** o distancia del "taxista", pues mide la distancia que se recorrería si solo se pudiera mover en direcciones paralelas a los ejes de coordenadas.
+
+Se calcula como la suma de los valores absolutos de las componentes del vector:
+
+$$
+||\mathbf{v}|| = |v_1| + |v_2| + \dots + |v_n| = \sum_{i=1}^n |v_i|
+$$
+En contraste con la Norma $L_2$, la Norma $L_1$ tiene una propiedad fundamental que la hace valiosa en el *machine learning*: promueve la **escasez (*sparsity*)**. Cuando se aplica como término de penalización (**Regularización *Lasso***), la optimización tiende a forzar a que muchos de los pesos del modelo sean exactamente cero. Esto resulta ser un mecanismo efectivo de **selección de características**, ya que los pesos nulos eliminan la contribución de las características irrelevantes.
+
+> **Ejemplo**:
+> Al optimizar una **red neuronal**, el vector de pesos $\mathbf{w}$ podría ser sometido a una penalización $L_2$. Si un peso es $w_i=10$, su penalización $L_2$ es $100$. Si otro peso es $w_j=1$, su penalización es $1$. El modelo se ve forzado a distribuir los pesos de manera más uniforme. En cambio, si usamos la penalización $L_1$, es más probable que el peso $w_j$ se fuerce a cero, simplificando el modelo.
+
+> **Para reflexionar...**
+> **Si un modelo de *machine learning* tiene miles de características de entrada, pero solo unas pocas son realmente relevantes, ¿qué tipo de regularización, $L_1$ o $L_2$, sería más efectiva para eliminar automáticamente las características irrelevantes y por qué?**
+> *Considera el efecto de cada norma sobre los pesos pequeños y grandes. Piensa en cómo la Norma $L_1$ es capaz de llevar los pesos a cero (escasez) mientras que la $L_2$ simplemente los acerca a cero, pero rara vez los elimina por completo.*
+
+---
+
+La normalización es esencial en muchos algoritmos de IA, especialmente en aquellos que utilizan distancias o productos escalares. Al normalizar los vectores, se asegura que la magnitud de los datos no influya indebidamente en el cálculo, haciendo que el modelo se enfoque en la dirección y la relación entre ellos. Esto es crucial para **regular la magnitud de los gradientes** en el *deep learning*, evitando problemas como el **desvanecimiento del gradiente**.
+
+>**Para reflexionar...**
 > **¿Cómo podría el producto escalar ser utilizado para determinar la "similitud" entre dos documentos de texto? ¿Qué desafíos crees que podrían surgir si los vectores de palabras no estuvieran normalizados?**
 > *Considera que los documentos de texto pueden ser representados como vectores donde cada componente es la frecuencia de una palabra. Piensa en cómo el producto escalar mide la similitud direccional y cómo la normalización asegura que un documento más largo no sea automáticamente más "similar" a otro.*
 
@@ -98,7 +152,7 @@ Podemos imaginar el valor del producto escalar como una medida de la relación g
 
 Esta propiedad es fundamental en los algoritmos de **regresión lineal** y en las **redes neuronales**. En una neurona, el producto escalar entre el vector de entradas y el vector de pesos determina la activación de la neurona, es decir, el grado en que las entradas influyen en la salida. También es una operación crucial en el procesamiento del lenguaje natural.
 
-### Interpretación geométrica del producto escalar
+#### Interpretación geométrica del producto escalar
 
 Para ser más rigurosos, profundicemos en la interpretación geométrica del **producto escalar**. Más allá de ser una simple operación algebraica, el producto escalar de dos vectores, $\mathbf{v}$ y $\mathbf{w}$, está íntimamente relacionado con la longitud de estos vectores y el ángulo que se forma entre ellos.
 
@@ -122,7 +176,7 @@ Esta técnica se utiliza, por ejemplo, en los sistemas de recomendación para en
 
 
 
->**Para reflexionar...**\
+>**Para reflexionar...**
 > **¿Qué diferencia fundamental existe entre la similitud de coseno y la distancia euclidiana (la longitud de la línea recta que une los puntos) para medir la similitud entre dos vectores? ¿En qué escenarios de la IA crees que una podría ser más adecuada que la otra?**
 > *Considera que la similitud de coseno se centra en la dirección de los vectores, mientras que la distancia euclidiana considera tanto la dirección como la magnitud. Piensa en el problema de la clasificación de documentos de texto, donde la longitud del documento puede variar enormemente, o en el caso de la detección de anomalías, donde la magnitud de los datos puede ser un factor clave.*
 
@@ -134,20 +188,21 @@ Espacios Vectoriales: la estructura del universo de datos de la IA
 
 Para que la **Inteligencia Artificial** pueda procesar y aprender de la información, los datos deben estar estructurados en un marco matemático coherente. Este marco constituye un concepto fundamental conocido como **espacio vectorial**. Formalmente, un espacio vectorial es un conjunto de elementos, a los que llamamos **vectores**, en el que se definen dos operaciones: la suma de vectores y la multiplicación de un vector por un escalar. En el ámbito del *machine learning*, nos referimos a este espacio como el **espacio de características**, donde cada instancia de datos (como un documento de texto o una imagen) es un vector cuya posición está determinada por los valores de sus características.
 
-> Ejemplo:
+> **Ejemplo:**
 > 
 > Imagina un modelo que clasifica el sentimiento de reseñas de películas. El espacio de características podría tener una dimensión para la frecuencia de la palabra "genial", otra para "aburrido", y otra para "increíble". Una reseña, como "La película fue genial y muy increíble", sería representada como un vector como [1,0,1]. Este vector es un punto en el espacio de características que representa la reseña.
 
-### Espacio vectorial: una definición formal
+## Espacio vectorial: una definición formal
 
-Un **espacio vectorial** es una estructura matemática fundamental que organiza el trabajo con vectores de manera coherente. No basta con entender un vector como “una lista de números”: necesitamos un marco que establezca reglas claras sobre cómo interactúan esos vectores entre sí y con los escalares que los multiplican.
+Un **espacio vectorial** es la estructura matemática fundamental que dota a los vectores de un contexto y unas reglas de comportamiento perfectamente definidas. No basta con entender un vector como "una simple lista de números"; para que el álgebra lineal funcione y sea predictiva en la **Inteligencia Artificial**, necesitamos un **marco** que establezca cómo interactúan esos vectores entre sí y cómo se comportan al ser escalados. Piensa en el espacio vectorial como el **taller donde todas las transformaciones y combinaciones entre vectores tienen sentido y son válidas**.
 
-Formalmente, un espacio vectorial es un conjunto $V$ cuyos elementos son vectores, definido sobre un **cuerpo** (o campo) $\mathbb{K}$ —generalmente los números reales $\mathbb{R}$ o los complejos $\mathbb{C}$—, junto con dos operaciones:
+Formalmente, un espacio vectorial es un conjunto $\mathbf{V}$ (cuyos elementos podrían ser los vectores), definido sobre un **cuerpo (o campo)** $\mathbb{K}$ —que en el ámbito de la IA es casi siempre el conjunto de los **números reales** $\mathbb{R}$—, junto con dos operaciones bien definidas:
 
-1. **Suma de vectores:** una aplicación $+: V \times V \to V$ que combina dos vectores de $V$ y devuelve otro vector de $V$.
-2. **Multiplicación por escalares:** una aplicación $\cdot : \mathbb{K} \times V \to V$ que toma un escalar $a \in \mathbb{K}$ y un vector $\mathbf{v} \in V$, y produce otro vector $a\mathbf{v} \in V$.
+La primera es la **suma de vectores**: Una regla que combina dos vectores de $\mathbf{V}$ para obtener un tercer vector que también pertenece a $\mathbf{V}$.
 
-Para que $(V, +, \cdot)$ sea un espacio vectorial, estas operaciones deben cumplir **ocho axiomas fundamentales**:
+La segunda es la **multiplicación por escalares**: Una regla que toma un número real (escalar) de $\mathbb{K}$ y un vector de $\mathbf{V}$ para producir un vector escalado que, de nuevo, pertenece a $\mathbf{V}$.
+
+Para que un conjunto $(\mathbf{V}, +, \cdot)$ sea considerado un espacio vectorial, estas dos operaciones deben cumplir un conjunto de ocho **axiomas fundamentales**. Estos axiomas no son opcionales; son las leyes que garantizan que el espacio es coherente, predecible y que cualquier operación que realicemos en el ámbito del *machine learning* será matemáticamente consistente.
 
 * **Clausura bajo la suma y la multiplicación escalar:** la suma de dos vectores y el producto de un vector por un escalar permanecen en $V$. Es decir, son **operaciones de composición interna**
 * **Asociatividad y conmutatividad de la suma:** $(\mathbf{u} + \mathbf{v}) + \mathbf{w} = \mathbf{u} + (\mathbf{v} + \mathbf{w})$, y $\mathbf{u} + \mathbf{v} = \mathbf{v} + \mathbf{u}$.
@@ -158,14 +213,58 @@ Para que $(V, +, \cdot)$ sea un espacio vectorial, estas operaciones deben cumpl
 * **Distributividad de la multiplicación escalar respecto a la suma de escalares:** $(a+b)\mathbf{v} = a\mathbf{v} + b\mathbf{v}$.
 * **Distributividad de la multiplicación escalar respecto a la suma de vectores:** $a(\mathbf{u} + \mathbf{v}) = a\mathbf{u} + a\mathbf{v}$.
 
-Con estas reglas, el espacio vectorial se convierte en un entorno robusto donde cualquier combinación lineal de vectores tiene sentido y se mantiene dentro del conjunto $V$.
+Estos ocho axiomas se pueden agrupar en tres leyes que definen la robustez del espacio:
 
-> **Ejemplo:**
-> El conjunto $\mathbb{R}^n$ de todas las $n$-tuplas de números reales, con la suma y multiplicación definidas componente a componente, es el espacio vectorial más habitual en *machine learning*. Cada vector representa un dato con $n$ características, y $\mathbb{R}$ es el cuerpo de escalares que lo acompaña.
+### Ley de la Clausura: Permanencia en el Sistema
 
-### Dependencia lineal, base y cambio de base
+La ley más intuitiva y crucial es la **clausura** (o composición interna). Simplemente establece que si tomamos elementos del espacio y realizamos las operaciones permitidas (suma o multiplicación escalar), el resultado **nunca saldrá del espacio original** $\mathbf{V}$. Es decir, la suma de dos vectores es un vector, y el escalado de un vector es otro vector. Esta ley es vital, ya que garantiza que las transformaciones de datos en una red neuronal, por ejemplo, siempre producirán un vector que puede ser procesado por la siguiente capa.
 
-Dentro de este espacio, la noción de **dependencia lineal** es de suma importancia. Un conjunto de vectores es linealmente dependiente si al menos uno de ellos puede ser expresado como una **combinación lineal** de los demás. Una combinación lineal no es más que una suma de vectores multiplicados por escalares. Si podemos construir un vector a partir de otros, esto nos indica que ese vector no contiene información nueva y, por lo tanto, es redundante. . Esta redundancia es un problema serio para los algoritmos, a menudo manifestado como **multicolinealidad**, que confunde a los modelos y puede llevar a soluciones inestables.
+### Leyes de la Suma: Las Reglas de la Geometría
+
+Estas leyes aseguran que la combinación de datos es ordenada y consistente, sin importar el orden en que se haga:
+
+* **Asociatividad y Conmutatividad:** Nos dicen que podemos sumar vectores en cualquier orden que queramos (el orden de los sumandos no altera el resultado).
+* **Existencia del Neutro y el Opuesto:** Garantizan la reversibilidad. El **vector neutro** ($\mathbf{0}$) nos permite sumar sin cambiar el vector original (el "cero" del espacio), y el **opuesto** ($-\mathbf{v}$) nos permite deshacer cualquier suma, asegurando que las operaciones sean totalmente controlables.
+
+### Leyes de la Escala: El Comportamiento Lineal
+
+Estas leyes describen cómo los escalares interactúan con los vectores, definiendo la naturaleza **lineal** del espacio:
+
+Por un lado la **distributividad**. La multiplicación escalar se distribuye correctamente, tanto si sumamos dos escalares antes de multiplicar un vector, como si sumamos dos vectores antes de multiplicar por un escalar. Esto es lo que permite que las combinaciones lineales se expandan y simplifiquen.
+
+Por otro la **compatibilidad y Neutro Escalar.** Existe un escalar que debe dejar al vector inalterado ($1 \cdot \mathbf{v} = \mathbf{v}$), y la multiplicación de escalares debe ser asociativa (el orden en que escalamos es irrelevante, $(ab)\mathbf{v} = a(b\mathbf{v})$).
+
+Con estas leyes, el espacio vectorial se convierte en un entorno robusto y confiable donde cualquier **combinación lineal** de vectores tiene sentido y se mantiene dentro del conjunto $\mathbf{V}$. En esencia, estas ocho reglas son las que nos permiten asegurar que la **Regresión Lineal**, las **Redes Neuronales** y el **PCA** funcionen tal como esperamos.
+
+> **Ejemplo**:
+> El conjunto $\mathbb{R}^n$ de todas las $n$-tuplas de números reales, junto con la suma y multiplicación definidas componente a componente, es el **espacio vectorial canónico** del *machine learning*. Cada vector de $\mathbb{R}^n$ representa un dato con $n$ características, y los escalares $\mathbb{R}$ nos permiten ajustar su peso o magnitud.
+
+> **Para reflexionar...**
+> **La ley de clausura es esencial para las redes neuronales. Si una operación en una capa neuronal violara la clausura (por ejemplo, al aplicar una función que produce un vector que ya no es compatible con el espacio de entrada de la siguiente capa), ¿qué tipo de error fundamental surgiría en el proceso de *forward propagation*?**
+> *Piense en cómo las dimensiones de los vectores se convierten en la interfaz entre las capas. Si una operación produce un vector con una dimensión diferente a la esperada, la multiplicación matricial de la siguiente capa fallaría automáticamente.*
+
+### La necesidad de un espacio vectorial en Inteligencia Artificial
+
+Para entender por qué los **espacios vectoriales** son tan importantes en inteligencia artificial, no hace falta empezar por las matemáticas, sino por una idea mucho más simple: las máquinas necesitan una forma coherente de **representar el mundo con números**. Todo modelo de IA, por muy sofisticado que sea, se alimenta de datos, y esos datos deben tener una estructura que permita compararlos, transformarlos y combinarlos. Esa estructura es precisamente la que nos da un **espacio vectorial**.
+
+Podemos pensarlo así: un vector no es solo una lista de números, sino una **forma ordenada de describir algo**. Una imagen, un texto o una grabación de voz pueden convertirse en un vector. En ese momento, cada objeto —una palabra, una foto, un sonido— se transforma en un punto dentro de un espacio matemático. Y ese espacio tiene una propiedad maravillosa: podemos **medir distancias**, **sumar puntos**, **calcular direcciones** y **descubrir patrones geométricos**.
+
+Un espacio vectorial, entonces, actúa como el escenario donde los algoritmos de IA pueden operar. Sin él, los datos serían solo colecciones desconectadas de valores. En cambio, al organizarlos dentro de un espacio con reglas claras (como la posibilidad de sumar vectores o multiplicarlos por un número), el modelo puede “moverse” entre ellos, ajustarse, aprender trayectorias y detectar regularidades.
+
+> **Ejemplo**
+> Imagina que representamos a cada estudiante por dos características: horas de estudio y nota media. Cada estudiante es un punto en un plano. Si dibujamos todos esos puntos, el conjunto forma una nube de datos. En ese espacio, conceptos como la “distancia” entre estudiantes o la “dirección” en la que aumentan las notas adquieren significado matemático. Un modelo puede aprender que moverse hacia la derecha (más horas) suele implicar moverse hacia arriba (mejores notas).
+
+En IA, esta idea se multiplica en miles de dimensiones. Una palabra en un modelo de lenguaje no está definida por dos o tres números, sino por cientos, cada uno reflejando un matiz de su significado. Pero la esencia sigue siendo la misma: **vivimos dentro de un espacio donde los datos se comportan como vectores**.
+
+La estructura de espacio vectorial también nos da una forma unificada de trabajar. Todos los modelos —desde la regresión lineal hasta las redes neuronales profundas— se basan en operaciones vectoriales. Multiplicar matrices, calcular productos escalares o encontrar combinaciones lineales son, en realidad, maneras de explorar el espacio en busca de las regiones donde los datos se separan mejor, donde los errores son menores o donde la predicción se ajusta al patrón que buscamos.
+
+> **Para reflexionar…**
+> **¿Qué pasaría si los datos de un modelo de IA no se pudieran representar como vectores? ¿Cómo podríamos medir similitudes, direcciones o distancias sin una estructura común?**
+> *Piensa en cómo el espacio vectorial no es solo una herramienta matemática, sino el lenguaje compartido que permite a los algoritmos aprender, comparar y generalizar entre datos tan distintos como imágenes, textos o sonidos.*
+
+## Dependencia lineal, base y cambio de base
+
+Dentro de esta estructura matemática a la que hemos llamado espacio vectorial, la noción de **dependencia lineal** es de suma importancia. Un conjunto de vectores es linealmente dependiente si al menos uno de ellos puede ser expresado como una **combinación lineal** de los demás. Una combinación lineal no es más que una suma de vectores multiplicados por escalares. Si podemos construir un vector a partir de otros, esto nos indica que ese vector no contiene información nueva y, por lo tanto, es redundante. Esta redundancia es un problema serio para los algoritmos, a menudo manifestado como **multicolinealidad**, que confunde a los modelos y puede llevar a soluciones inestables.
 
 > Ejemplo:
 > 
@@ -179,9 +278,7 @@ La comprensión de la independencia lineal nos lleva a un concepto crucial: la *
 
 La habilidad de encontrar una nueva base que sea más eficiente para nuestro problema es la clave de las técnicas de **reducción de dimensionalidad**, como el **Análisis de Componentes Principales (PCA)**. Estos algoritmos buscan una nueva base que capture la mayor varianza de los datos con el menor número de dimensiones. Al proyectar nuestros datos en esta nueva base, eliminamos la redundancia y comprimimos la información, lo que no solo mejora la eficiencia computacional de los modelos, sino que también puede reducir el ruido y mejorar su rendimiento.
 
-
-
->**Para reflexionar...**\
+>**Para reflexionar...**
 > **Si un modelo de machine learning para predecir precios de casas utiliza como características tanto el tamaño de la casa en metros cuadrados como el tamaño en pies cuadrados, ¿qué implicaciones tendría esto en la dependencia lineal de los datos? ¿Por qué los algoritmos de reducción de dimensionalidad, como el Análisis de Componentes Principales (PCA), buscan encontrar una nueva base para los datos?**
 > *Considera cómo el tamaño en metros y pies cuadrados son redundantemente lineales. Piensa en cómo una nueva base podría permitirnos capturar la misma información en un espacio de menor dimensión, eliminando esta redundancia y facilitando el trabajo del modelo.*
 
@@ -265,8 +362,6 @@ El vector $\mathbf{v}$ sigue ocupando la misma posición en el plano, pero depen
 
 Este cambio de perspectiva es esencial en IA porque permite elegir bases que simplifiquen los cálculos o eliminen redundancias en los datos, como ocurre en métodos de reducción de dimensionalidad (por ejemplo, PCA).
 
-
-
 > **Para reflexionar…**
 > **¿Qué ventajas podría tener usar una base “adaptada a los datos” en lugar de la base canónica? ¿Por qué crees que técnicas como PCA buscan una nueva base que maximice la varianza explicada de los datos?**
 
@@ -284,12 +379,8 @@ En el ámbito de la **extracción de características latentes**, el cambio de b
 
 Finalmente, el cambio de base puede favorecer la **interpretabilidad de los modelos**. En visión por computador, por ejemplo, es habitual que tras una transformación los ejes del nuevo espacio se alineen con patrones visuales concretos, como bordes, texturas o colores. Estos nuevos ejes no solo simplifican el cálculo, sino que también facilitan la comprensión del proceso interno por el que un modelo toma sus decisiones.
 
-
-
 > **Para reflexionar…**
 >  **Si un modelo de clasificación no logra distinguir entre dos clases en el espacio de características original, ¿cómo podría ayudar un cambio de base a que las clases fueran más separables? ¿Qué papel juega aquí la geometría de los datos?**
-
-
 
 ##### Ejemplo práctico: cambio de base en un espacio de características bidimensional
 
@@ -367,8 +458,6 @@ Elegir una base es como elegir el **punto de vista matemático** desde el que mi
 - Si el objetivo es interpretar mejor, podemos escoger ejes que se correspondan con factores significativos (por ejemplo, “total de horas” y “equilibrio”).
 
 Así, el cambio de base es un paso consciente: no se trata de cambiar por cambiar, sino de **alinear la representación de los datos con el objetivo del análisis o del modelo**.
-
-
 
 > **Para reflexionar...**\
 > **Si en lugar de estudiantes quisiéramos analizar dietas (proteínas y carbohidratos), ¿cómo podríamos definir una nueva base que refleje el “total de calorías” y el “equilibrio entre nutrientes”?**

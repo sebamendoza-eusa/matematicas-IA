@@ -13,8 +13,6 @@ La misma lógica se aplica a otros tipos de datos. Un correo electrónico puede 
 
 En todos estos casos, lo esencial es que los datos —independientemente de su naturaleza original— se acaban describiendo como **colecciones de números**. Esta homogeneidad hace posible que los algoritmos de inteligencia artificial operen siempre en el mismo terreno: el de los vectores.
 
-
-
 >**Para reflexionar…**\
 >**¿Qué ventaja crees que tiene representar datos tan distintos como un texto, una imagen o un audio en la misma forma matemática de un vector? ¿Cómo facilita esto que un mismo tipo de algoritmo pueda aplicarse a problemas aparentemente muy diferentes?**
 
@@ -52,8 +50,6 @@ Si situamos cada correo como un punto en un espacio tridimensional (una dimensi�
 
 Este ejemplo muestra la esencia de la IA: lo que para nosotros es un texto o una imagen, para el algoritmo es un vector de números en un espacio geométrico.
 
-
-
 >**Para reflexionar…**\
 >**¿Cómo crees que cambiaría la precisión del modelo si, en lugar de tres características, usáramos cien o mil? ¿Qué problema podría surgir al aumentar tanto el número de dimensiones?**
 
@@ -79,8 +75,6 @@ Aquí, cada fila es un correo y cada columna una característica. La primera col
 Esta forma matricial no solo es práctica para organizar los datos, sino que también permite aplicar directamente operaciones algebraicas. Sumar, escalar o multiplicar matrices equivale a transformar simultáneamente todo el conjunto de ejemplos, lo que es esencial cuando entrenamos modelos.
 
 La interpretación geométrica de esta representación es especialmente poderosa. Podemos pensar que cada fila de la matriz es un punto en un espacio de características. Al juntar todos esos puntos, obtenemos una nube de datos que revela patrones, agrupaciones y relaciones que, en dimensiones bajas, puede incluso ser visualizada. Sin embargo, en general, se trabaja en espacios de muchas dimensiones, del orden de miles o cientos de miles. En estos casos la geometría sigue siendo la clave para que los algoritmos encuentren patrones y estructuras.
-
-
 
 >**Para reflexionar…**\
 >**¿Qué ventaja tiene organizar los datos en forma matricial frente a tratar cada vector por separado? ¿Cómo facilita esto que un algoritmo aprenda patrones comunes a partir de muchos ejemplos a la vez?**
@@ -197,8 +191,6 @@ Por ejemplo, si en un dataset de viviendas una columna mide metros cuadrados y o
 En procesamiento del lenguaje natural, una palabra puede representarse como un vector (embedding). Cuando aplicamos una matriz de transformación a estos embeddings, estamos proyectando las palabras en un nuevo espacio semántico, donde las relaciones resultan más fáciles de detectar. Lo mismo ocurre en visión por computador: los píxeles de una imagen se combinan mediante matrices para generar representaciones más compactas y ricas.
 
 La idea general es que cada operación matricial acerca los datos un paso más hacia una forma que el algoritmo pueda aprovechar. Así, la matemática no se queda en un cálculo abstracto, sino que se convierte en el mecanismo que hace posible que la máquina **entienda** patrones.
-
-
 
 >**Para reflexionar…**\
 >**¿Por qué es tan poderoso que una misma operación matricial pueda aplicarse a todo un conjunto de ejemplos a la vez? ¿Cómo crees que influye esto en la rapidez y la eficiencia de los algoritmos de IA modernos?**

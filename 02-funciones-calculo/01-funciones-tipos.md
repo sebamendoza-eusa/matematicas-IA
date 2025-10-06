@@ -13,31 +13,28 @@ En inteligencia artificial, esta idea se convierte en el núcleo de los algoritm
 Es importante entender algunos conceptos asociados a esta definición. Al conjunto $X$ se le denomina **dominio** (el conjunto de entradas para las que la función está definida) e $Y$ es el **codominio** (el conjunto de posibles salidas permitidas por la definición de la función). La **imagen** o **recorrido** de $f$ es el conjunto de salidas que realmente se obtienen al aplicar $f$ a todo su dominio:
 
 $$
-\mathrm{Im}(f)=\\{f(x):x\in X\\}\subseteq Y.
+\mathrm{Im}(f)={f(x):x\in X\\}\subseteq Y.
 $$
 
 Pensar con claridad en dominio, codominio e imagen evita ambigüedades. Si modelamos la **nota de un examen** en función de las **horas de estudio**, un dominio razonable sería $X=[0,\infty)$ (no hay horas negativas) y un codominio $Y=\mathbb{R}$ si permitimos cualquier número real como resultado. En la práctica, sabemos que las notas están acotadas, así que la imagen efectiva quedará en un intervalo, por ejemplo $[0,10]$, que es un subconjunto del codominio elegido. Esa diferencia entre “lo permitido por definición”, $Y$, y “lo que realmente ocurre”, $\mathrm{Im}(f)$, es útil al diseñar y analizar modelos.
 
-En inteligencia artificial, esta misma estructura describe cualquier modelo. El **espacio de características** hace de dominio: si representamos cada ejemplo como un vector con $d$ atributos numéricos, solemos escribir $X\subseteq\mathbb{R}^d$. El codominio depende de la tarea. En **regresión**, se toma típicamente $Y=\mathbb{R}$ y la imagen son valores reales (por ejemplo, precios). En **clasificación binaria**, podemos definir $Y=\\{0,1\\}$ y la función $f$ devuelve una etiqueta, o bien $Y=[0,1]$ si $f$ devuelve una **probabilidad**; en el caso multiclase, es común trabajar con $Y=\mathbb{R}^K$ antes de la capa *softmax* (logits) o con el **símplex de probabilidad**
+En inteligencia artificial, esta misma estructura describe cualquier modelo. El **espacio de características** hace de dominio: si representamos cada ejemplo como un vector con $d$ atributos numéricos, solemos escribir $X\subseteq\mathbb{R}^d$. El codominio depende de la tarea.
 
+En **regresión**, se toma típicamente $Y=\mathbb{R}$ y la imagen son valores reales (por ejemplo, precios). 
+
+En **clasificación binaria**, podemos definir $Y={0,1\\}$ y la función $f$ devuelve una etiqueta, o bien $Y=[0,1]$ si $f$ devuelve una **probabilidad**; en el caso multiclase, es común trabajar con $Y=\mathbb{R}^K$ antes de la capa *softmax* (logits) o con el **símplex de probabilidad**
 $$
-\Delta^{K-1}=\\{p\in\mathbb{R}^K:p_i\ge 0,\ \sum_{i=1}^K p_i=1\\}
+\Delta^{K-1}={p\in\mathbb{R}^K:p_i\ge 0,\ \sum_{i=1}^K p_i=1\\}
 $$
 
 cuando la salida ya son probabilidades normalizadas.
 
 Esta lectura como “máquina de transformar entradas en salidas” se visualiza con el **gráfico de la función**: cada punto $(x,f(x))$ muestra cómo una entrada concreta se convierte en una salida. En una dimensión, si el gráfico es una recta, la relación es lineal; si es curvilínea, la transformación es no lineal. En más dimensiones, la función define una **superficie** en la que cada punto del espacio de características tiene asociada una salida; en IA, esa superficie actúa como **frontera de decisión** o **paisaje de predicción** sobre la nube de datos.
 
-Hay un matiz práctico relevante: que un modelo “genere” probabilidades o incorpore ruido no contradice la definición de función. El propio modelo sigue siendo una aplicación determinista $f_\theta(x)$ (fijados sus parámetros $\theta$); cuando queremos muestrear decisiones estocásticas, lo que hacemos es **componer** con otra función que toma como entrada $f_\theta(x)$ y una fuente de aleatoriedad. Desde el punto de vista matemático, seguimos trabajando con funciones bien definidas cuyo dominio y codominio hemos especificado.
-
 Dominar estos conceptos básicos —dominio, codominio, imagen y representación gráfica— prepara el terreno para lo que viene a continuación: estudiar **cómo cambian** las funciones (derivadas), cómo **se ajustan** para acercarse a los datos (gradiente y optimización) y cómo **acumulan** información (integrales y expectativas). Esa es, en esencia, la ruta que conecta las funciones con el aprendizaje automático.
-
-
 
 >**Para reflexionar...**\
 >**Si defines un clasificador con salida de probabilidad como $f:X\to[0,1]$, ¿qué ventajas te da declarar explícitamente ese codominio frente a decir solo “$f:X\to\mathbb{R}$”? ¿Cómo condiciona esa decisión el diseño de la función de pérdida y la interpretación de los resultados?**
-
-
 
 ## Funciones lineales y modelos simples
 
@@ -65,8 +62,7 @@ que ya no es una recta sino un **hiperplano** en $\mathbb{R}^d$. El vector $\mat
 
 Las rectas son transparentes, rápidas y sorprendentemente eficientes cuando la relación es aproximadamente proporcional o cuando la dimensionalidad es alta pero la estructura subyacente es simple. Sin embargo, su **expresividad** es limitada en algunos escenarios. Vamos tres limitaciones concretas.
 
-La primera grieta aparece cuando la relación subyacente **se curva**. Piensa de nuevo en las horas de estudio y la nota: al principio, cada hora extra marca una diferencia notable; sin embargo, a partir de cierto punto, añadir más horas apenas mejora el resultado. Esa **saturación** es natural en muchos procesos (aprendizaje, rendimiento físico, respuesta biológica). Una recta no puede abrazar esa forma en “S” o en “techo”; forzará un compromiso: irá por el medio, acertará en promedio y fallará en los extremos. La salida práctica es **cambiar la mirada sobre las entradas** para devolver la linealidad “por dentro”: introducir curvatura mediante nuevas características. Si trabajamos con una sola variable, basta con ampliar el diseño a potencias o transformaciones suaves, por ejemplo
-
+**La primera grieta** aparece cuando la relación subyacente **se curva**. Piensa de nuevo en las horas de estudio y la nota: al principio, cada hora extra marca una diferencia notable; sin embargo, a partir de cierto punto, añadir más horas apenas mejora el resultado. Esa **saturación** es natural en muchos procesos (aprendizaje, rendimiento físico, respuesta biológica). Una recta no puede abrazar esa forma en “S” o en “techo”; forzará un compromiso: irá por el medio, acertará en promedio y fallará en los extremos. La salida práctica es **cambiar la mirada sobre las entradas** para devolver la linealidad “por dentro”: introducir curvatura mediante nuevas características. Si trabajamos con una sola variable, basta con ampliar el diseño a potencias o transformaciones suaves, por ejemplo
 $$
 \phi(x)=\big(x,\ x^2\big)\quad \text{o}\quad \phi(x)=\big(\log x,\ \sqrt{x}\big),
 $$
@@ -102,10 +98,9 @@ de modo que el modelo siga siendo lineal en los parámetros, pero capaz de dibuj
 > La enseñanza es doble. Una recta es un excelente punto de partida por su claridad e interpretabilidad, pero cuando el fenómeno presenta **saturación** conviene cambiar de coordenadas (polinomios, transformaciones suaves) o usar una forma con techo natural. Así evitamos sesgos sistemáticos y mantenemos las predicciones dentro de rangos plausibles.
 >
 
-El segundo límite aparece cuando los efectos no son meramente **aditivos**, sino que **interactúan**. Un modelo lineal puro asume que cada característica suma su contribución de manera independiente: duplicar “horas de estudio” siempre suma lo mismo, sea cual sea la “calidad del material”, y aumentar “ingresos” tiene el mismo efecto prediciendo gasto, tengas “20” o “60” años. En muchos fenómenos reales, la influencia de una variable **depende del valor de otra**. Esa dependencia cruzada se captura introduciendo **términos de interacción** en el propio espacio de características. Si $\mathbf{x}=(x_1,x_2)$, añadimos una nueva columna $x_1x_2$ y ajustamos
-
+**El segundo límite** aparece cuando los efectos no son meramente **aditivos**, sino que **interactúan**. Un modelo lineal puro asume que cada característica suma su contribución de manera independiente: duplicar “horas de estudio” siempre suma lo mismo, sea cual sea la “calidad del material”, y aumentar “ingresos” tiene el mismo efecto prediciendo gasto, tengas “20” o “60” años. En muchos fenómenos reales, la influencia de una variable **depende del valor de otra**. Esa dependencia cruzada se captura introduciendo **términos de interacción** en el propio espacio de características. Si $\mathbf{x}=(x_1,x_2)$, añadimos una nueva columna $x_1x_2$ y ajustamos
 $$
-\hat y = w_1 x_1 + w_2 x_2 + w_{12},(x_1x_2) + b.
+\hat y = w_1 x_1 + w_2 x_2 + w_{12}(x_1x_2) + b.
 $$
 
 Interpretativamente, $w_{12}$ mide cómo cambia el efecto de $x_1$ cuando varía $x_2$ (y viceversa). Con un único gesto —multiplicar columnas— el modelo lineal aprende efectos “si... entonces...” y sinergias que una suma simple nunca podría reflejar. Este mismo principio se extiende a más variables y a interacciones de orden superior cuando el fenómeno lo exige.
@@ -141,7 +136,7 @@ Interpretativamente, $w_{12}$ mide cómo cambia el efecto de $x_1$ cuando varía
 >
 > Ahora, si $q=0$, la pendiente es $w_1$; si $q=1$, la pendiente pasa a ser $w_1+w_3$. El modelo aprende que con material de calidad, **cada hora cuenta más** (pendiente mayor). Misma herramienta lineal, pero en un **espacio de características enriquecido**: hemos convertido un “no puedo” en un “sí, con interacción”.
 
-El tercer tropiezo es geométrico: **la separación no lineal**. En clasificación, un modelo lineal dibuja un hiperplano que divide el espacio en dos mitades. Si los datos forman dos racimos alargados en direcciones opuestas, un hiperplano los separa con elegancia. Pero si los positivos rodean a los negativos en un **anillo concéntrico**, ninguna recta —ni ningún hiperplano— logrará trazar una frontera limpia. La salida, de nuevo, consiste en **re-describir el espacio** para que la frontera “curva” se haga lineal en coordenadas adecuadas. En dos dimensiones, basta añadir la variable radial $r^2=x_1^2+x_2^2$ y trabajar con $\phi(x)=(x_1,x_2,r^2)$: en este nuevo sistema, una superficie plana (lineal en $x_1,x_2,r^2$) puede cortar el anillo con precisión. Esta es la intuición que hay detrás de los **métodos de base** (crear características no lineales a mano), los **kernels** (crear productos internos no lineales sin construir explícitamente las nuevas variables) y las **redes neuronales** (encadenar escorados lineales con funciones de activación que curvan la frontera de decisión).
+**El tercer tropiezo** es geométrico: **la separación no lineal**. En clasificación, un modelo lineal dibuja un hiperplano que divide el espacio en dos mitades. Si los datos forman dos racimos alargados en direcciones opuestas, un hiperplano los separa con elegancia. Pero si los positivos rodean a los negativos en un **anillo concéntrico**, ninguna recta —ni ningún hiperplano— logrará trazar una frontera limpia. La salida, de nuevo, consiste en **re-describir el espacio** para que la frontera “curva” se haga lineal en coordenadas adecuadas. En dos dimensiones, basta añadir la variable radial $r^2=x_1^2+x_2^2$ y trabajar con $\phi(x)=(x_1,x_2,r^2)$: en este nuevo sistema, una superficie plana (lineal en $x_1,x_2,r^2$) puede cortar el anillo con precisión. Esta es la intuición que hay detrás de los **métodos de base** (crear características no lineales a mano), los **kernels** (crear productos internos no lineales sin construir explícitamente las nuevas variables) y las **redes neuronales** (encadenar escorados lineales con funciones de activación que curvan la frontera de decisión).
 
 > **Ejemplo**
 >
@@ -171,112 +166,322 @@ Hay dos caminos habituales para salvar estas barreras sin abandonar la claridad 
 
 Pensar primero en rectas no es una limitación, es una **ventaja pedagógica y práctica**: da una referencia clara, ofrece una base geométrica sólida (hiperplanos, proyecciones, distancias) y conecta de forma directa con cómo se entrenan los modelos mediante gradiente. A partir de ahí, cuando lo lineal ya no alcanza, las extensiones no lineales resultan mucho más comprensibles.
 
-
-
 >**Para reflexionar...**\
 >**¿Qué preferirías ante un conjunto de datos real: empezar con un modelo lineal bien interpretado y aumentar complejidad solo si es necesario, o saltar directamente a un modelo muy flexible? ¿Cómo influye esa elección en la explicabilidad, el riesgo de sobreajuste y el coste computacional?**
 
-
-
-Aun así,  no todo en la realidad se comporta de manera lineal. Los modelos lineales son poderosos por su simplicidad, pero también están limitados: no pueden capturar curvas, saturaciones ni relaciones complejas entre variables. Un clasificador lineal, por ejemplo, no puede distinguir correctamente dos grupos de datos que se organizan en forma de círculo, porque ninguna recta —ni siquiera un hiperplano en dimensiones mayores— consigue separarlos.
-
-En este punto es donde la inteligencia artificial va más allá de lo lineal. La introducción de **funciones no lineales** (cuadráticas, exponenciales, logarítmicas o funciones de activación en redes neuronales) permite modelar fenómenos más realistas. Aun así, la función lineal sigue siendo esencial: no solo como base histórica y conceptual, sino porque muchas técnicas más complejas se construyen sobre combinaciones lineales de entradas, enriquecidas después con transformaciones no lineales.
-
-
+En cualquier caso, aunque la introducción de **funciones no lineales** (cuadráticas, exponenciales, logarítmicas o funciones de activación en redes neuronales) permite modelar fenómenos más realistas, la función lineal sigue siendo esencial: no solo como base histórica y conceptual, sino porque muchas técnicas más complejas se construyen sobre combinaciones lineales de entradas, enriquecidas después con transformaciones no lineales.
 
 >**Para reflexionar...**\
 >**¿Por qué crees que la regresión lineal, siendo un modelo tan simple, sigue utilizándose hoy en día como herramienta fundamental en estadística y aprendizaje automático? ¿Qué aporta su simplicidad frente a modelos más sofisticados, y en qué momentos sus limitaciones se hacen evidentes?**
 
-
-
 ## Funciones no lineales en la modelización
 
-La realidad rara vez sigue una recta. Muchos fenómenos crecen rápido al principio y luego se frenan, otros se disparan a un ritmo que aumenta con el tiempo, y no pocos dependen del producto de varias variables más que de su suma. Para captar estas formas, entran en escena las **funciones no lineales**. Tres familias aparecen una y otra vez en modelización: exponenciales, logarítmicas y polinómicas. Cada una aporta una “curvatura” distinta y una forma de pensar diferente.
+Como se ha comentado, la realidad rara vez sigue una recta. Muchos fenómenos crecen rápido al principio y luego se frenan, otros se disparan a un ritmo que aumenta con el tiempo, y no pocos dependen del producto de varias variables más que de su suma. Para captar estas formas, entran en escena las **funciones no lineales**. Tres familias aparecen una y otra vez en modelización: exponenciales, logarítmicas y polinómicas. Cada una aporta una “curvatura” distinta y una forma de pensar diferente.
 
-La **función exponencial** describe procesos cuyo ritmo de cambio es proporcional al valor actual. Si $g(t)=g_0,a^{t}$ (o $g(t)=g_0,e^{kt}$), duplicar $t$ no suma una cantidad fija, multiplica. Ese comportamiento explica por qué ciertos conteos (descargas, visualizaciones, compartidos) parecen despegar repentinamente: al crecer de manera multiplicativa, durante un tiempo “no pasa nada” y, de pronto, la curva se acelera. Como regla rápida, un crecimiento que se curva hacia arriba y cuyo “incremento por unidad” también crece sugiere una forma exponencial. A la inversa, si representas los datos en escala logarítmica y la nube se vuelve casi una recta, estás viendo un crecimiento exponencial “linealizado” por el logaritmo.
+### El crecimiento exponencial: cuando el ritmo de cambio se acelera
 
-La **función logarítmica** es la compañera natural de la exponencial y modela **rendimientos decrecientes**: $h(x)=\log(x)$ crece siempre, pero cada paso aporta menos que el anterior. Es una forma útil cuando los cambios relativos importan más que los absolutos. En práctica de datos, aplicar $\log$ a una variable positiva “comprime” valores grandes, reduce asimetrías y convierte relaciones multiplicativas en aditivas:
+La **función exponencial** (o su prima, la función potencial) es fundamental para describir procesos cuyo **ritmo de cambio** es directamente proporcional al valor que ya poseen. Esta relación se formaliza en expresiones como $g(t)=g_0 a^t$ (o $g(t)=g_0 e^{kt}$), donde el crecimiento es *multiplicativo*, no aditivo. Duplicar el tiempo $t$ no añade una cantidad fija; en su lugar, multiplica el resultado. Esta naturaleza multiplicativa explica por qué ciertos conteos de la era digital —como descargas virales, visualizaciones en una red social o usuarios activos— parecen "despegar" repentinamente: durante las primeras fases, la base es pequeña y el crecimiento es lento, pero a medida que el valor actual aumenta, el ritmo de cambio se acelera de forma dramática. La clave es que el incremento por unidad de tiempo también crece progresivamente, dando a la curva su característica forma de **curva de palo de *hockey*** que se dobla hacia arriba. Para identificar este tipo de comportamiento, una regla rápida es observar la gráfica: si, al representar los datos en su escala natural, la curva se dobla hacia arriba cada vez más rápido, sugiere una forma exponencial.
 
-$$
-y = c,x_1^{\alpha}x_2^{\beta} \quad \Longrightarrow \quad \log y = \log c + \alpha,\log x_1 + \beta,\log x_2
-$$
+![image-20251006200620029](./assets/image-20251006200620029.png)
 
-De repente, una relación de productos se vuelve “lineal en las transformaciones”, lo que permite usar modelos lineales con interpretaciones en términos de **elasticidades** (cuánto cambia $\log y$ ante un cambio en $\log x$).
+> **Ejemplo**:
+> Imagina un modelo de IA que predice la adopción de una tecnología. Si el crecimiento fuera **lineal** (aditivo), se añadirían 100 usuarios cada día, sin importar cuántos haya ya. Si el crecimiento es **exponencial** (multiplicativo) con una tasa de $10\%$:
+>
+> * Día 1 (100 usuarios): el incremento es $10\% \cdot 100 = 10$ usuarios.
+> * Día 10 (aprox. 236 usuarios): el incremento es $10\% \cdot 236 \approx 24$ usuarios.
+> * Día 20 (aprox. 673 usuarios): el incremento es $10\% \cdot 673 \approx 67$ usuarios.
+> El número de usuarios ganados cada día es cada vez mayor, demostrando que **la tasa de cambio crece con el valor**.
 
-Las **funciones polinómicas** añaden curvatura con términos como $x^2$, $x^3$ o, en varias variables, potencias y productos cruzados. Con pocos términos se capturan máximos, mínimos y flexiones suaves. Por ejemplo, una respuesta con rendimientos decrecientes puede modelarse como $f(x)=w_0+w_1 x+w_2 x^2$ con $w_2<0$. En más dimensiones, incorporar $x_1x_2$ deja que el efecto de $x_1$ dependa de $x_2$, introduciendo **interacciones** sin abandonar la linealidad en los parámetros. Esa combinación —lineal “por dentro”, curva “por fuera”— es una de las claves de la modelización práctica.
+### Función logarítmica: rendimientos decrecientes
 
-Estas formas no lineales no son solo elegantes: resuelven necesidades concretas en IA. En **crecimiento de datos** (tráfico, usuarios, eventos), la curva exponencial describe fases de adopción temprana; usar escala logarítmica permite comparar series con órdenes de magnitud distintos y detectar cambios de tendencia que en escala lineal pasarían desapercibidos. En **probabilidades**, es habitual movernos entre el espacio de probabilidades $p\in(0,1)$ y una escala no acotada usando el **logit**,
+La **función logarítmica** es la compañera natural de la exponencial y nos ayuda a describir fenómenos donde los incrementos tienen **rendimientos decrecientes**. En una función como $h(x) = \log(x)$, el valor crece continuamente, pero cada paso aporta menos que el anterior: pasar de 1 a 10 supone un gran salto, pero pasar de 1000 a 1010 apenas cambia el resultado.
 
-$$
-\mathrm{logit}(p)=\log!\left(\frac{p}{1-p}\right)
-$$
+Esto refleja situaciones muy comunes en la realidad, donde lo que importa no es el cambio absoluto sino el **cambio proporcional**. Por ejemplo, duplicar las ventas de 1 000 € a 2 000 € tiene el mismo efecto relativo que pasar de 10 000 € a 20 000 €, aunque las cifras sean distintas.
 
-porque muchas funciones de pérdida y modelos (como regresión logística) se vuelven lineales en esta coordenada. En **medidas de error**, el uso de logaritmos estabiliza el efecto de grandes desviaciones o hace que multiplicar errores equivalga a sumar en escala log (por ejemplo, al evaluar razones o verosimilitudes con **log-verosimilitud**; a nivel introductorio, basta con recordar que “sumar logs” es “multiplicar probabilidades”).
+![image-20251006200645312](./assets/image-20251006200645312.png)
 
-Una herramienta cotidiana que une todo esto son las **transformaciones de funciones** sobre los datos de entrada. Aplicar $\log(x+1)$ a una característica positiva reduce asimetría y mitiga la influencia de valores extremos; estandarizar $z=(x-\mu)/\sigma$ centra y escala, favoreciendo que un mismo paso de aprendizaje afecte por igual a todas las dimensiones; elevar a potencias suaves o añadir términos cuadráticos introduce la curvatura necesaria sin complicar el entrenamiento. El objetivo no es “forzar” al modelo, sino **colocar el problema en coordenadas en las que una regla simple funcione bien**.
 
-Considera un ejemplo sencillo. Queremos predecir el gasto mensual en datos móviles ($y$) a partir del número de vídeos vistos ($x$). Una recta sobre $(x,y)$ penaliza mucho los usuarios intensivos: cada vídeo extra parece desproporcionado. Si, en cambio, trabajamos con $(\log x,\log y)$, la nube se alinea y un modelo lineal explica que “un 10% más de vídeos se asocia con aproximadamente un 10% más de gasto”, una relación más estable y fácil de generalizar. Lo que ha cambiado no es el modelo, sino el **punto de vista**.
 
-Normalizar y transformar no es un adorno; es un paso que decide qué estructura ve el modelo. Al comprimir, centrar o curvar adecuadamente, se logra que la frontera de decisión o la superficie de predicción sea más simple en el espacio transformado. A partir de ahí, podemos optar por modelos lineales con buenas propiedades o, si hace falta más flexibilidad, introducir no linealidad en el propio modelo (activaciones) sabiendo que ya hemos hecho gran parte del trabajo al **elegir bien las coordenadas**.
+#### Escala logarítmica: comprimir para ver mejor
 
->**Para reflexionar...**\
->**Cuando una relación parece “explosiva” en escala lineal, ¿por qué mirar los datos en escala logarítmica suele revelar una estructura más simple? ¿En qué casos preferirías transformar las entradas (log, potencias, estandarización) antes de pasar a un modelo más complejo?**
+Cuando los datos varían en órdenes de magnitud muy distintos, una **escala lineal** deja de ser útil: los valores grandes “aplastan” visualmente a los pequeños. En esos casos, usamos una **escala logarítmica**, que representa multiplicaciones como sumas y “comprime” los valores grandes, haciendo más fácil ver patrones.
 
-## Funciones de activación
+Imagina que medimos el número de usuarios de distintas redes sociales, desde una aplicación local con 1.000 usuarios hasta una plataforma global con 1.000 millones. En una escala lineal, el primer valor ni siquiera se distinguiría: todos los puntos pequeños se agrupan cerca del cero. Pero si representamos los datos en **escala logarítmica**, cada salto de multiplicación (de mil a un millón, de un millón a mil millones) se convierte en una misma distancia.
 
-Imagina una app que decide **si recomendar o no un pack mixto de ocio (cine + gaming)** a sus usuarios. La lógica del producto es clara: el pack compensa cuando el usuario está **descompensado** en intereses —por ejemplo, **muy fan del cine** pero **poco del gaming**, o **muy fan del gaming** pero **poco del cine**. En cambio, si **le encantan ambas cosas** ya suele tener ambos servicios por separado, y si **no le interesa ninguna**, el pack no le aporta.
+En términos matemáticos, el logaritmo transforma relaciones **multiplicativas** en **aditivas**. Esto es especialmente útil en IA cuando tratamos con variables que crecen exponencialmente, como el tamaño de un dataset, el número de parámetros de un modelo o el coste de entrenamiento. Usar una escala logarítmica permite comparar y analizar el comportamiento de algoritmos en distintos órdenes de magnitud sin que los valores grandes dominen el gráfico.
 
-Representamos a cada usuario con dos puntajes normalizados: $x_1$ = interés en cine, $x_2$ = interés en gaming (valores entre 0 y 1). La decisión es binaria: **recomendar pack mixto** (sí/no).
-
-Cuando la regla es del tipo “si la **media** de intereses sube de cierto umbral, recomienda”, basta una **frontera recta** en el plano $(x_1,x_2)$: todo lo que quede por encima de la línea es “sí”, lo que quede por debajo es “no”. Pero en la regla de **descompensación** ocurre lo contrario: queremos decir “sí” justo en las **esquinas cruzadas** (alto en cine y bajo en gaming; bajo en cine y alto en gaming) y “no” en **ambos altos** y **ambos bajos**. Dibujado en el plano, los “sí” están en las esquinas opuestas del cuadrado y los “no” en las otras dos. **Ninguna línea recta** puede separar esos dos grupos a la vez: cualquier recta que agrupe las esquinas cruzadas se llevará por delante una de las otras esquinas. Es la versión cotidiana del patrón **XOR**.
-
-¿Cómo lo resolvemos sin renunciar a reglas simples? La idea es ***doblar* el espacio** entre pasos con una **función de activación**. En lugar de buscar una única línea imposible, construimos **dos piezas** sencillas y luego las combinamos. Por ejemplo, dos “tests” lineales:
-
-* “¿cine supera a gaming?” (mirar $x_1 - x_2$),
-* “¿gaming supera a cine?” (mirar $x_2 - x_1$).
-
-Si tras cada test aplicamos una activación (como ReLU) que deja pasar lo positivo y anula lo negativo, obtenemos dos señales no lineales:
+Por ejemplo, una relación de este tipo:
 
 $$
-h_1=\mathrm{ReLU}(x_1 - x_2), \qquad h_2=\mathrm{ReLU}(x_2 - x_1).
+y = cx_1^{\alpha}x_2^{\beta}
 $$
 
-Luego sumamos $h_1+h_2$ y ponemos un umbral (o una sigmoide) para decidir. Geométricamente, cada $h_i$ define medio plano; su combinación crea una **frontera en forma de V** que separa justo a los usuarios “descompensados” de los “ambos altos/ambos bajos”. Ya no es una sola recta: es una **frontera no lineal por tramos** construida encadenando “suma + activación + suma”.
-
-La función de activación nos permite que un modelo sencillo llegue a una **frontera que una recta jamás puede dibujar**.
-
-Desde un punto de vista mas formal. Imagina una cadena de “capas” que toman un vector de entrada, lo multiplican por una matriz, le suman un sesgo y lo pasan a la siguiente capa. Si todas esas capas fueran estrictamente lineales, toda la cadena se podría **comprimir** en una sola operación lineal. Es como apilar filtros de cristal perfectamente planos: por mucho que apiles, sigues viendo una transformación plana. Matemáticamente, componer dos capas lineales produce otra capa lineal:
+se transforma mediante logaritmos en:
 
 $$
-\mathbf{W}_2(\mathbf{W}_1\mathbf{x}+\mathbf{b}_1)+\mathbf{b}_2 = \mathbf{W}\mathbf{x}+\mathbf{b}.
+\log y = \log c + \alpha\log x_1 + \beta\log x_2
 $$
 
-Sin un ingrediente extra, esta sucesión de capas de transformación no sería más expresiva que un modelo lineal. No podría curvar fronteras de decisión, describir saturaciones ni capturar interacciones complejas. Ese ingrediente extra es la **función de activación**: una pequeña no linealidad aplicada tras cada escor lineal que “dobla” el espacio y permite a la red modelar formas que una recta jamás alcanzaría. Con activación, apilar capas deja de ser redundante: cada capa puede corregir y curvar lo que hizo la anterior, construyendo representaciones cada vez más ricas.
+De esta forma, una ecuación basada en productos pasa a expresarse con sumas, lo que permite usar métodos lineales para analizarla. Además, el coeficiente $\alpha$ se interpreta fácilmente: indica **cuánto cambia $\log y$ (o el porcentaje de cambio de $y$)** cuando $\log x_1$ cambia una unidad, es decir, cuando $x_1$ se multiplica por un factor constante.
 
-### Tipos
+> **Ejemplo**
+>
+> En una tarea de entrenamiento de redes neuronales, el **error** del modelo puede disminuir de 1.0 a 0.1 y luego a 0.01. En una escala lineal, los dos últimos cambios parecen pequeños, pero en realidad cada uno representa una mejora de **diez veces**. Si usamos una escala logarítmica en el eje vertical, cada reducción por un factor de 10 se ve como una misma distancia, revelando que la mejora es constante en términos relativos.
 
-La **sigmoide** introduce una S suave que comprime cualquier escalar en el intervalo $(0,1)$:
+![image-20251006201107766](./assets/image-20251006201107766.png)
 
+> **Para reflexionar…**
+>
+> **¿Por qué crees que los avances en IA suelen representarse en gráficos logarítmicos, tanto en rendimiento como en número de parámetros?**
+> *Piensa cómo esta escala permite comparar progresos que se multiplican por miles sin perder legibilidad y cómo refleja mejor el ritmo exponencial del desarrollo tecnológico.*
+
+#### El logaritmo en el tratamiento de probabilidades y errores
+
+Hasta ahora hemos visto que la función logarítmica transforma crecimientos multiplicativos en sumas, y que comprime valores muy grandes haciendo más fácil su manejo. Esta propiedad cobra un significado especialmente útil cuando pasamos al terreno de la **Inteligencia Artificial**, donde muchas veces los modelos trabajan con **probabilidades**.
+
+Las probabilidades son números comprendidos entre 0 y 1. Esto significa que, por definición, están **acotadas**: nunca pueden ser menores que 0 ni mayores que 1. Sin embargo, muchos modelos matemáticos —especialmente los lineales— funcionan mejor en espacios donde las variables pueden tomar cualquier valor real, positivo o negativo. Para salvar ese obstáculo se utiliza una transformación que traslada las probabilidades al eje real completo: la **función logit**.
 $$
-\sigma(z)=\frac{1}{1+e^{-z}}.
-$$
-
-Es natural cuando la salida se interpreta como probabilidad en clasificación binaria. Al aplicar $\sigma$ a un escor lineal, obtenemos un valor acotado y diferenciable. Su inconveniente en capas ocultas es la **saturación**: para $z$ muy positivos o muy negativos, la derivada $\sigma'(z)=\sigma(z)!\big(1-\sigma(z)\big)$ se aproxima a 0 y el gradiente se atenúa al retropropagar, además de no estar centrada en cero.
-
-La **tangente hiperbólica** es una alternativa “centrada” alrededor de 0:
-
-$$
-\tanh(z)=\frac{e^{z}-e^{-z}}{e^{z}+e^{-z}},
-$$
-
-con rango $(-1,1)$. Suele facilitar la optimización frente a sigmoide por esa centralidad, aunque comparte el problema de saturación en las colas: si $|z|$ es grande, la derivada casi desaparece y el aprendizaje se vuelve lento.
-
-La **ReLU** cambia el guion con una regla simple y efectiva:
-
-$$
-\mathrm{ReLU}(z)=\max(0,z).
+ \mathrm{logit}(p) = \log\left(\frac{p}{1 - p}\right)
+ 
 $$
 
-No satura en la parte positiva (derivada $=1$ para $z>0$), lo que favorece que el gradiente fluya incluso en redes profundas y acelera el entrenamiento. Además induce representaciónes dispersas (muchas activaciones quedan exactamente en 0), algo parecido a una regularización implícita y eficiente en cómputo. Su riesgo son las “ReLUs muertas”: neuronas que quedan atrapadas en $z\le 0$ y dejan de actualizarse; variantes como *Leaky ReLU*, *ELU* o *GELU* mantienen buena dinámica de gradiente y suavizan ese problema.
 
-Más allá de la fórmula, lo esencial es su efecto en la **capacidad de aprendizaje**. Con activaciones no lineales, una red neuronal puede aproximar funciones que un modelo lineal no puede. Bajo condiciones suaves, una sola capa oculta suficientemente ancha ya aproxima funciones continuas sobre conjuntos compactos. Aun así, la **profundidad** aporta algo distinto a la mera anchura: permite **componer** transformaciones simples en estructuras jerárquicas, donde capas tempranas capturan patrones elementales y capas posteriores combinan esos patrones en conceptos más abstractos. La activación influye directamente en cómo fluye el gradiente por esa jerarquía, en la estabilidad numérica de las actualizaciones y en la rapidez con que se alcanza un buen ajuste.
+Esta función convierte probabilidades cercanas a 0 en valores negativos grandes, probabilidades cercanas a 1 en valores positivos grandes, y deja las probabilidades próximas a 0.5 cerca del 0. En otras palabras, el logit “desacota” la probabilidad y la transforma en una **escala simétrica** alrededor del cero.
+
+Esta idea es clave en la **regresión logística**, un modelo clásico de clasificación binaria. Allí no se predice directamente una probabilidad, sino el logit de esa probabilidad, que sí puede ajustarse mediante una combinación lineal de variables. Luego, al aplicar la función inversa (la sigmoide), se recupera la probabilidad final. Gracias a este cambio de perspectiva, el modelo sigue siendo lineal en su interior, aunque trabaje con probabilidades no lineales en su salida.
+
+La utilidad del logaritmo no termina ahí. En la práctica de la IA, las operaciones con probabilidades suelen implicar **productos de muchos términos pequeños**. Multiplicar números próximos a cero puede hacer que el resultado se vuelva tan pequeño que se pierda precisión numérica (lo que se conoce como *underflow*). El logaritmo resuelve este problema: al transformar productos en sumas, evita la acumulación de errores de redondeo y hace los cálculos más estables.
+
+Un ejemplo claro aparece en la **función de log-verosimilitud**, que evalúa qué tan bien se ajusta un modelo a los datos observados. En lugar de multiplicar las probabilidades de cada observación (una operación que se vuelve rápidamente inmanejable), se suman sus logaritmos, lo que preserva la información y simplifica el cálculo.
+
+Imagínate que tu modelo de *spam* calcula la probabilidad de que una secuencia de 100 palabras ocurra en un correo no deseado. La probabilidad conjunta $P_{total}$ es el producto de las probabilidades individuales $p_i$:
+
+$$
+P_{total} = p_1 \times p_2 \times p_3 \times \dots \times p_{100}
+$$
+Si cada probabilidad individual $p_i$ es, por ejemplo, $10^{-5}$ (una probabilidad de una en cien mil), al multiplicarlas 100 veces obtienes:
+
+$$
+P_{total} = (10^{-5})^{100} = 10^{-500}
+$$
+
+
+Aquí está la clave: el valor $10^{-500}$ es tan increíblemente pequeño que excede la capacidad de representación de la aritmética de punto flotante de la mayoría de los ordenadores (que solo pueden manejar números hasta aproximadamente $10^{-308}$). El ordenador no es capaz de almacenar $10^{-500}$ y, en su lugar, lo redondea al **cero absoluto**. Este fenómeno se llama **_underflow_** y, cuando ocurre, **pierdes toda la información** de tu cálculo. El modelo no puede diferenciar entre una verosimilitud muy baja y una verosimilitud prácticamente nula.
+
+El logaritmo resuelve mágicamente este problema gracias a una de sus propiedades más útiles:
+$$
+\log(a \cdot b) = \log(a) + \log(b)
+$$
+En lugar de calcular el producto inestable, calculamos el **logaritmo de la probabilidad total** (la log-verosimilitud):
+
+$$
+\log(P_{total}) = \log(p_1 \times p_2 \times \dots \times p_{100})
+$$
+
+
+Aplicando la propiedad logarítmica, la secuencia de multiplicaciones inestables se convierte en una simple **suma estable**:
+
+$$
+\log(P_{total}) = \log(p_1) + \log(p_2) + \dots + \log(p_{100})
+$$
+Volviendo al ejemplo numérico, si tomas el logaritmo de $10^{-5}$ (que es $-5$), y sumas este valor 100 veces:
+
+$$
+\log(P_{total}) = \sum_{i=1}^{100} \log(10^{-5}) = \sum_{i=1}^{100} (-5) = -500
+$$
+El resultado es el valor **$-500$**, un número perfectamente manejable y estable. Al transformar los productos en sumas, el logaritmo no solo evita el _underflow_ y la pérdida de información, sino que también **simplifica la complejidad computacional**, lo que es esencial para optimizar modelos a gran escala. Una vez calculado este valor, para obtener la probabilidad real de vuelta, solo tienes que aplicar la **función matemática inversa** del logaritmo, que es la **exponenciación**. Es importante tener en cuenta que el valor final, $10^{-500}$, sigue siendo un número increíblemente pequeño y **aún excede la capacidad de representación del ordenador**, por lo que seguirá siendo redondeado a cero si intentas almacenarlo. Sin embargo, el objetivo principal del *logaritmo* **nunca fue obtener un $P_{total}$ almacenable**, sino **garantizar que el proceso de optimización intermedio fuera preciso**. Al trabajar con el valor estable de **$-500$** durante, por ejemplo, el entrenamiento de un modelo, el sistema puede comparar y ajustar los pesos con precisión. Solo aplicas la exponenciación al final si necesitas reportar el valor de la probabilidad en el formato tradicional, pero para la optimización interna, trabajarás siempre con el valor logarítmico.
+
+> **Para reflexionar...**
+> **Si el logaritmo transforma productos en sumas para ganar estabilidad, ¿qué problema numérico similar al _underflow_ ayuda a mitigar la suma logarítmica en el extremo opuesto del espectro (con números muy grandes) y por qué es igualmente importante en el *Deep Learning*?**
+> *Considera el fenómeno del _overflow_ (cuando un número es demasiado grande para ser representado) y cómo el logaritmo ayuda a mantener la escala de los resultados dentro de un rango manejable.*
+
+### Funciones polinómicas: curvatura e interacciones en los modelos
+
+Las **funciones polinómicas** son una de las herramientas más simples y potentes para introducir **curvatura** en una relación entre variables. Frente a las funciones lineales, que solo pueden representar rectas, las polinómicas permiten describir comportamientos más realistas: curvas con máximos, mínimos, o trayectorias que se doblan suavemente.
+
+Podemos imaginar una situación cotidiana. Supón que medimos el rendimiento académico de un estudiante en función de las horas de estudio. Al principio, cada hora adicional produce una mejora notable; sin embargo, llega un punto en el que el cansancio hace que el rendimiento crezca cada vez menos e incluso decaiga. Este tipo de comportamiento no puede representarse con una recta, pero sí con una **parábola**, es decir, con una función de segundo grado:
+
+$$
+f(x) = w_0 + w_1 x + w_2 x^2,
+$$
+
+donde el signo del coeficiente $w_2$ controla la forma de la curva. Si $w_2 < 0$, la función tiene una concavidad hacia abajo, y describe bien un proceso con **rendimientos decrecientes**.
+
+![image-20251006201631328](./assets/image-20251006201631328.png)
+
+Lo interesante es que, aunque la gráfica sea curva, el modelo sigue siendo **lineal en sus parámetros** ($w_0$, $w_1$, $w_2$). Esto significa que las técnicas lineales de estimación (como los mínimos cuadrados) siguen aplicándose sin dificultad. Es un detalle crucial, porque permite extender los modelos lineales sin abandonar su simplicidad matemática.
+
+En problemas con varias variables, los términos polinómicos permiten capturar **interacciones** entre características. Si añadimos un término como $x_1x_2$, estamos diciendo que el efecto de una variable depende del nivel de otra. Por ejemplo, en un modelo que predice la probabilidad de compra, el impacto de la “publicidad” puede depender del “nivel de ingresos”: no basta con sumar ambos efectos por separado, hay que considerar cómo se potencian entre sí.
+
+Esta combinación —una estructura algebraica lineal “por dentro” pero con forma curva “por fuera”— constituye una de las claves de la modelización moderna. Permite representar relaciones no lineales de manera sencilla, sin renunciar a los métodos de ajuste y análisis del álgebra lineal.
+
+> **Para reflexionar…**
+> **Si un modelo lineal es tan fácil de ajustar, pero a menudo demasiado rígido, ¿por qué no hacerlo más flexible añadiendo términos polinómicos?**
+> *Piensa cómo al introducir curvatura o interacciones aumentamos la capacidad del modelo para adaptarse a los datos, pero también el riesgo de sobreajustar —de explicar demasiado bien lo que ya hemos visto, y no tan bien lo nuevo.*
+
+### Transformaciones de funciones: ver el problema desde otro ángulo
+
+Una de las ideas más poderosas —y menos intuitivas al principio— en el trabajo con datos es que **no siempre es el modelo lo que debe cambiar, sino el modo en que representamos los datos**. Las funciones no lineales como el logaritmo o la exponenciación no sirven solo para evitar problemas numéricos (como el *underflow*) o para describir fenómenos de crecimiento acelerado: son, sobre todo, **herramientas para transformar la perspectiva del problema**.
+
+En esencia, transformar una variable significa **buscar un sistema de coordenadas donde la relación entre las variables sea más simple**. No se trata de “forzar” al modelo, sino de **darle una geometría más adecuada**, una en la que una recta o una separación lineal basten para capturar el patrón subyacente. Cuando se acierta con la transformación, el aprendizaje posterior se vuelve más fácil, más rápido y más estable.
+
+#### Reducción de asimetrías y valores extremos
+
+En la práctica, muchas variables del mundo real presentan distribuciones muy asimétricas. Pensemos, por ejemplo, en los ingresos mensuales de una población: la mayoría gana cifras cercanas al promedio, pero unos pocos individuos tienen valores extremadamente altos. Si representamos estos datos tal cual, esos pocos valores “tirarán” del modelo, haciendo que se ajuste más a ellos que al resto.
+
+Una solución común es aplicar la transformación logarítmica $\log(x+1)$, que **comprime la escala** de los valores grandes y **reduce la influencia de los valores extremos**. En lugar de tratar los cambios absolutos, el modelo pasa a concentrarse en los cambios relativos. Así, un incremento del 10% tiene el mismo peso, tanto para un valor pequeño como para uno grande. Esta simple transformación puede convertir una relación altamente curvada en una línea casi recta.
+
+#### Estandarización y equilibrio de escalas
+
+Otra transformación esencial en IA es la **estandarización**, que convierte cualquier variable en una versión centrada y escalada según su media y desviación típica:
+
+$$
+z = \frac{x - \mu}{\sigma}
+$$
+
+De este modo, todas las variables comparten la misma escala y contribuyen de manera equilibrada al proceso de aprendizaje. Esto es especialmente importante en algoritmos basados en gradientes, donde una variable con valores mucho más grandes que las demás puede dominar el ajuste y dificultar la convergencia. La estandarización garantiza que **todas las características “avancen” al mismo ritmo** durante el entrenamiento.
+
+> **Ejemplo:**
+> Imagina que quieres predecir el **gasto mensual en datos móviles** ($y$) a partir del **número de vídeos vistos** ($x$). Si representas los datos en una escala lineal, verás que los usuarios intensivos —que ven cientos de vídeos— distorsionan la relación: el modelo tiende a sobreajustarse a ellos y pierde precisión en el resto.
+>
+> Sin embargo, si transformas las variables y trabajas con $(\log x, \log y)$, la nube de puntos se alinea casi perfectamente. De pronto, la relación se vuelve lineal: cada aumento del 10 % en el número de vídeos implica, aproximadamente, un aumento del 10 % en el gasto. Has pasado de un patrón irregular a uno predecible sin cambiar de modelo: **la misma recta ahora explica mucho más, porque la ves desde las coordenadas adecuadas**.
+>
+
+#### Transformar antes de modelar
+
+Elegir una buena transformación es, en realidad, una forma de **preprocesamiento inteligente**. Al comprimir, centrar o escalar los datos, ayudas al modelo a “ver” estructuras más limpias. Esto puede ser suficiente para usar un modelo lineal simple, o bien preparar el terreno para introducir **no linealidades** más adelante (por ejemplo, mediante funciones de activación en una red neuronal). En ambos casos, la transformación actúa como un puente entre los datos brutos y la forma matemática que el modelo necesita para aprender con eficacia.
+
+> **Para reflexionar…**
+>
+> **Cuando una relación parece “explosiva” o caótica en escala lineal, ¿por qué representarla en escala logarítmica suele revelar una estructura más simple y estable? ¿Qué te dice eso sobre la naturaleza del fenómeno?**
+>
+> *Piensa en cómo muchas relaciones reales —crecimiento poblacional, propagación de información o rendimiento acumulado— son multiplicativas por naturaleza. El logaritmo convierte esos procesos en aditivos, lo que permite analizarlos con herramientas lineales más sencillas y comprensibles.*
+
+## Funciones de activación: dar flexibilidad a los modelos
+
+### Funciones definidas por tramos: la primera ruptura de la linealidad
+
+Hasta ahora hemos trabajado con funciones **lineales**, como $f(x) = 2x + 1$, que tienen una pendiente constante. Esto significa que su comportamiento es siempre el mismo: si aumentas $x$ en una unidad, la función crece exactamente 2 unidades, sin importar en qué punto estés.
+
+Las funciones lineales son predecibles, elegantes y fáciles de manejar, pero también muy limitadas. En la vida real, casi nada responde con la misma intensidad ante cualquier cambio: un sistema puede reaccionar fuerte al principio y luego estabilizarse, o bien no responder hasta superar cierto umbral.
+
+Para capturar este tipo de comportamientos necesitamos **romper la linealidad**. Y la forma más sencilla de hacerlo no tiene porque ser con curvas complicadas, sino introduciendo **funciones definidas por tramos**, es decir, funciones que se comportan de una manera en una región del dominio y de otra distinta en otra.
+
+Por ejemplo, consideremos la función
+$$
+f(x) =
+ \begin{cases}
+ x, & \text{si } x \ge 0 \\
+ -x, & \text{si } x < 0
+ \end{cases}
+$$
+A la izquierda del cero la pendiente es negativa, y a la derecha, positiva. Si la representamos gráficamente, vemos una especie de “V” abierta hacia arriba.
+
+![image-20251006224143808](./assets/image-20251006224143808.png)
+
+Esta función no es lineal, pero tampoco es complicada: está formada por dos **tramos lineales** unidos en un punto de cambio.
+
+Esta idea de que una función puede comportarse de modo diferente según el tramo del eje en el que estemos es fundamental en el aprendizaje automático. En cierto sentido, es el primer paso hacia la **no linealidad controlada**, que es justo lo que las redes neuronales explotan para modelar patrones complejos.
+
+Las funciones definidas por tramos aparecen en multitud de contextos reales. Por ejemplo, el **impuesto sobre la renta** se calcula con una tarifa que cambia por tramos: a partir de cierto nivel de ingreso, el porcentaje de impuestos aumenta. También un **sensor de luz** puede tener una salida que vale cero hasta que la iluminación supera un umbral, y luego empieza a crecer linealmente.
+
+Matemáticamente, estas funciones representan un comportamiento que **cambia de régimen**. En IA, ese cambio de régimen permite distinguir entre zonas donde una característica tiene efecto y zonas donde no.
+
+> **Para reflexionar…**
+> **¿Por qué una función con tramos lineales puede considerarse no lineal? ¿Qué tipo de fenómenos crees que podrían describirse mejor con una función que cambia de comportamiento en distintos rangos del eje?**
+> *Piensa en un músculo que solo se activa a partir de cierta tensión, o en un sensor que “despierta” cuando la señal supera un umbral. Esa discontinuidad en la respuesta es lo que una función definida por tramos puede modelar perfectamente.*
+
+### Ejemplo: Problemas "separables" y "no separables" linealmente
+
+Imagina que queremos diseñar un modelo que recomiende si un estudiante debe **asistir a clases de refuerzo en matemáticas**. Usamos dos características:
+
+- $x$: número de horas de estudio semanal.
+- $y$: nota media actual.
+
+Los alumnos con **pocas horas de estudio y baja nota** forman un grupo (clase “sí, necesita refuerzo”), mientras que los que **estudian mucho y tienen buena nota** forman otro (clase “no necesita refuerzo”). Al representarlos en el plano $(x_1, x_2)$, los dos grupos aparecen a ambos lados de una **frontera lineal**: cuanto más estudia alguien y mejor nota obtiene, menos probable es que necesite ayuda extra.
+
+Matemáticamente, una frontera del tipo
+$$
+y = -x
+$$
+separa perfectamente las dos regiones. El modelo puede resolver este problema con una **única regla lineal**, sin necesidad de transformaciones complejas.
+
+![image-20251006234329536](./assets/image-20251006234329536.png)
+
+Ahora cambiemos de contexto. Imagina el siguiente ejemplo donde las distintas observaciones se situan el plano tal y como vemos en la siguiente gráfica.
+
+![image-20251006235439739](./assets/image-20251006235439739.png)
+
+En este escenario es imposible separar ambos grupos con una sola recta. Ne cesitamos una funcion en forma de "V" que resuelva el problema. Eso lo podriamos conseguir con una funcion definida por tramos. En este caso seria
+$$
+f(x) =
+ \begin{cases}
+ x+1, & \text{si } x \ge 0 \\
+ -x+1, & \text{si } x < 0
+ \end{cases}
+$$
+En otras palabras, al **componer funciones lineales por tramos** conseguimos una **frontera no lineal**.
+Y esa es precisamente la idea detrás de las **funciones de activación**: usar pequeñas piezas lineales separadas por puntos de quiebre para construir superficies complejas que los modelos lineales, por sí solos, no pueden trazar.
+
+## Doblar el espacio: la geometría detrás de las funciones por tramos
+
+Hasta ahora hemos visto las funciones de activación desde una perspectiva algebraica, como fórmulas o curvas. Pero hay una interpretación aún más intuitiva y poderosa: las funciones por tramos, como el valor absoluto, **doblan el espacio** en el que viven los datos.
+
+Cuando un modelo es puramente lineal, toda transformación que aplica —por muchas capas que tenga— puede representarse como **una única matriz**. Es decir, el modelo solo puede **rotar, escalar o trasladar** los datos, pero nunca curvarlos ni separarlos si están entrelazados.
+Geométricamente, esto significa que el modelo vive en un mundo **plano**, donde todo se mueve con reglas de proporcionalidad estricta.
+
+Imagina que tienes una hoja de papel con los puntos azules y naranjas distribuidos de forma que ninguna línea recta pueda separarlos (como en el patrón "V"). Mientras el papel esté plano, no hay nada que hacer: ninguna recta podrá dividirlos correctamente. Pero si **doblas el papel**, puedes hacer que las regiones de distinto color queden en lados opuestos de la nueva superficie.
+
+Eso es exactamente lo que hace una **función no lineal**: transforma el espacio de entrada para que una frontera que antes era imposible (por ejemplo, una línea recta) **se vuelva posible en el nuevo espacio transformado**.
+
+Matemáticamente, cada activación introduce una **curvatura local**: La función $|x|$ dobla el plano como si lo cerrara por la mitad en el eje vertical.
+
+> **Para reflexionar…**
+> **¿Qué te dice este ejemplo sobre los límites de las líneas rectas como herramientas de clasificación?**
+> *Piensa en cómo, con solo un par de “pliegues” o cambios de tramo, una función puede aprender a distinguir regiones que antes eran imposibles de separar. Las funciones de activación en redes neuronales hacen exactamente eso, solo que en espacios de muchas más dimensiones.*
+
+### De las funciones por tramos a las funciones de activación
+
+A lo largo de este recorrido hemos visto que las **funciones definidas por tramos** permiten resolver problemas que una función lineal no puede. En esencia, lo que hacen es **aplicar una regla distinta según la zona del dominio**, generando curvas o quiebros donde antes solo había rectas. Este simple gesto —cambiar de comportamiento según el valor de la entrada— es la base de lo que en aprendizaje automático llamamos **funciones de activación**.
+
+En el fondo, una función de activación es una **versión suavizada o parametrizada** de esas funciones por tramos. Su objetivo no es otro que introducir **no linealidad controlada** en las redes neuronales, de forma que estas puedan modelar relaciones complejas. Sin activaciones, las capas lineales se “colapsarían” en una sola, y todo el modelo sería equivalente a una única transformación lineal.
+
+#### La ReLU: simplicidad y efectividad
+
+La **ReLU** (*Rectified Linear Unit*) es la heredera directa de la función $y = |x|$ que acabamos de estudiar, pero con una particularidad: solo deja pasar los valores positivos y “apaga” los negativos. Se define como:
+
+$$
+\mathrm{ReLU}(x) = \max(0, x)
+$$
+
+En otras palabras, la ReLU es una **función lineal por tramos** que vale cero en la mitad negativa y crece de forma lineal en la positiva. Este comportamiento convierte a la ReLU en una forma sencilla y muy eficiente de introducir no linealidad: conserva lo lineal donde importa y evita que los valores negativos influyan. Es como tener un “interruptor” matemático que decide cuándo una neurona se activa.
+
+![image-20251007000253225](./assets/image-20251007000253225.png)
+
+#### Funciones suavizadas: Sigmoide y Tangente hiperbólica
+
+Existen otras funciones de activación que no quiebran de manera brusca, sino que **suavizan la transición** entre regiones. La más conocida es la **sigmoide**, definida como:
+
+$$
+\sigma(x) = \frac{1}{1 + e^{-x}}
+$$
+
+La sigmoide convierte cualquier número real en un valor entre 0 y 1, lo que la hace ideal para representar **probabilidades**. Su forma es una S suave: para valores grandes de $x$ se aproxima a 1, y para valores muy negativos, a 0.
+
+![image-20251007000417958](./assets/image-20251007000417958.png)
+
+Una variante muy usada es la **tangente hiperbólica**:
+
+$$
+\tanh(x) = \frac{e^{x} - e^{-x}}{e^{x} + e^{-x}}
+$$
+
+que tiene un rango entre -1 y 1, y mantiene una forma similar, aunque centrada en el origen. Estas funciones aportan una transición más gradual que la ReLU, evitando saltos bruscos y facilitando el aprendizaje cuando los datos requieren continuidad o simetría.
+
+![image-20251007000648354](./assets/image-20251007000648354.png)
+
+#### Una misma idea con distintos matices
+
+Todas las funciones de activación comparten un principio común: **aplicar un comportamiento diferente en distintos tramos del dominio**. La funcion **ReLU** lo hace con un quiebre claro y simple. Por su parte la funcion **sigmoide** y la **tangente hiperbólica** lo logran con una curva suave y continua.
+
+El resultado, en todos los casos, es el mismo: la posibilidad de doblar el espacio, generar fronteras curvas, y representar relaciones complejas de una forma que las funciones puramente lineales nunca alcanzarían.

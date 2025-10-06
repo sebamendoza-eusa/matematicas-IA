@@ -2,6 +2,7 @@ Matrices: Operaciones básicas y tipos especiales
 ===
 
 Definición
+---
 
 
 Continuamos nuestro recorrido por el **álgebra lineal** orientada al uso en **Inteligencia Artificial**. Si los vectores nos permiten representar datos individuales, las **matrices** nos ofrecen la capacidad de estructurar y manipular grandes colecciones de datos de manera eficiente.
@@ -128,6 +129,7 @@ Esta operación es fundamental en las **redes neuronales**, donde la informació
 > *Considera cómo los pesos de una capa neuronal y las entradas de la misma se organizan en matrices y cómo la multiplicación de estas matrices permite calcular de manera paralela y eficiente las activaciones de todas las neuronas de la siguiente capa. Piensa en la diferencia en la complejidad computacional entre realizar los cálculos uno por uno frente a usar una operación matricial única.*
 
 Tipos especiales de matrices
+---
 
 
 Existen matrices con propiedades particulares que son de gran importancia en la IA. Conocerlas y comprender su comportamiento permite simplificar cálculos y entender mejor los algoritmos que dependen de operaciones matriciales.
@@ -200,12 +202,39 @@ Las matrices simétricas tienen propiedades muy importantes:
 
 En IA, aparecen de forma recurrente en estadística y aprendizaje automático, ya que las matrices de covarianzas y correlaciones son siempre simétricas, y constituyen la base de técnicas como el PCA.
 
-> **Para reflexionar...**\
+> **Para reflexionar...**
 > **¿Por qué crees que resulta tan útil que las matrices de covarianzas sean simétricas en algoritmos de aprendizaje? ¿Qué implicaciones tiene que sus autovalores sean siempre reales?**
 
+### Matrices ortogonales
 
+Dentro de la tipología de matrices cuadradas (aquellas en las que numero de filas y columnas coinciden), las **matrices ortogonales** ocupan un lugar de fundamental importancia por su profundo significado geométrico y su estabilidad en el cálculo numérico. Una matriz se define como ortogonal, denotada usualmente como $\mathbf{Q}$, si sus **vectores columna** (y, por extensión, sus vectores fila) constituyen un conjunto **ortonormal**. Esto significa que cada vector tiene una **Norma $L_2$ unitaria** y es **perpendicular** a todos los demás vectores del conjunto.
+
+Esta condición de ortonormalidad se cristaliza en una propiedad algebraica excepcionalmente elegante: la **transpuesta de una matriz ortogonal es igual a su inversa**. Es decir, $\mathbf{Q}^{-1} = \mathbf{Q}^T$. Esta igualdad simplifica enormemente cualquier cálculo que involucre la inversión, ya que nos permite obtener la inversa de la matriz simplemente transponiéndola. El resultado directo de esta relación es la identidad definitoria de la matriz ortogonal: **cuando la matriz se multiplica por su transpuesta, el resultado es la matriz identidad,**
+$$
+\mathbf{Q}\mathbf{Q}^T = \mathbf{I}
+$$
+El verdadero valor de estas matrices en la **Inteligencia Artificial** radica en que representan **transformaciones que preservan la geometría del espacio** de características. Al multiplicar un vector de datos por una matriz ortogonal, su **longitud (Norma $L_2$) y los ángulos** entre él y otros vectores permanecen inalterados. Una matriz ortogonal solo puede ejecutar **rotaciones o reflexiones** del espacio, sin distorsionarlo mediante estiramientos o compresiones.
+
+Esta invariancia geométrica tiene implicaciones cruciales en el análisis de datos. Por ejemplo, en el **Análisis de Componentes Principales (PCA)**, la matriz de autovectores que define los nuevos ejes de coordenadas es, por construcción, ortogonal. Esto garantiza que la nueva base a la que proyectamos los datos sea una simple rotación de la base original, sin alterar las distancias relativas entre los puntos de datos. Además, al ser numéricamente estables, estas matrices son la base de descomposiciones y factorizaciones que veremos en un apartado posterior, como la **QR** y la **SVD**, ofreciendo robustez en la resolución precisa de sistemas lineales con grandes volúmenes de datos. Incluso en arquitecturas de *Deep Learning*, especialmente en el diseño de Redes Neuronales Recurrentes, la inicialización del algoritmo con matrices ortogonales es una técnica utilizada para mitigar el problema del ***desvanecimiento del gradiente***, asegurando que la magnitud de la señal se mantenga estable a lo largo de las capas temporales.
+
+> **Ejemplo**:
+> Consideremos la matriz de **rotación** en el plano $2 \times 2$ que gira un vector $90^{\circ}$ en sentido antihorario:
+>
+> $$
+> \mathbf{Q} = \begin{bmatrix}
+> 0 & -1 \\
+> 1 & 0
+> \end{bmatrix}
+> $$
+>
+> Los vectores columna $[0, 1]^T$ y $[-1, 0]^T$ son perpendiculares y tienen Norma $L_2$ unitaria, confirmando su ortogonalidad. Si esta matriz se aplica a un conjunto de datos, las muestras girarán $90^{\circ}$, pero la distancia Euclídea entre ellas —el error subyacente— no se modificará, lo cual es esencial si el algoritmo subsiguiente (como K-Means) depende de la fidelidad de esa distancia.
+
+> **Para reflexionar...**
+> *Si un algoritmo de reducción de dimensionalidad utilizara una matriz de transformación que no fuera ortogonal, ¿qué problemas geométricos podrían surgir en los datos transformados y cómo afectaría esto a un algoritmo de *clustering* basado en distancias como K-Means?**
+> *Considere que la falta de ortogonalidad implica que la matriz estira o comprime el espacio de forma desigual. Piense en cómo esta distorsión alteraría las distancias Euclídeas de manera arbitraria, llevando a que el algoritmo K-Means agrupe incorrectamente puntos que estaban distantes en el espacio original o separe aquellos que eran vecinos cercanos, invalidando la representación de los datos.*
 
 El concepto de rango en matrices
+---
 
 
 El **rango de una matriz** es una medida de la cantidad de información independiente que contiene. Dicho de otra manera, nos dice cuántas filas o columnas de la matriz aportan realmente algo nuevo y cuántas son redundantes.
@@ -269,7 +298,76 @@ Aunque parecen tres características, en realidad solo hay dos distintas: los me
 > **¿Por qué crees que es problemático almacenar muchas características que en el fondo dicen lo mismo? ¿Qué ventajas tendría identificar estas redundancias antes de trabajar con los datos?**\
 > **Si quisieras entrenar un modelo con estos datos, ¿qué problemas crees que surgirían al incluir una característica que es exactamente proporcional a otra? ¿Por qué sería más razonable quedarse solo con dos columnas?**
 
+## Norma de una matriz: Midiendo la magnitud y el error global
 
+Aunque las normas de vectores nos permiten cuantificar la longitud y el error de los datos individuales, en la **Inteligencia Artificial** a menudo necesitamos medir el "tamaño" o la magnitud de una matriz completa, como la matriz de pesos en una capa de una red neuronal o la matriz de errores de una aproximación. Para lograr esta cuantificación global, recurrimos a las **normas de matrices**.
+
+La norma más fundamental y utilizada para este propósito es la **Norma de Frobenius** ($||\mathbf{A}||_F$). Esta norma es el equivalente natural de la Norma Euclídea ($L_2$) para las matrices. Para determinar el tamaño de una matriz, la Norma de Frobenius se calcula tomando la raíz cuadrada de la suma de los cuadrados de todos y cada uno de sus elementos.
+
+Para una matriz $\mathbf{A}$ de $m \times n$, la expresión matemática de su Norma de Frobenius es:
+
+$$
+||\mathbf{A}||_F = \sqrt{\sum_{i=1}^m \sum_{j=1}^n a_{ij}^2}
+$$
+
+> **Ejemplo Numérico Sencillo para una Matriz** $3 \times 3$:
+>
+> Supongamos que estamos analizando la matriz de pesos $\mathbf{W}$ de la primera capa oculta de una red neuronal. Esta matriz es $3 \times 3$ y sus valores representan la fuerza de las conexiones entre las neuronas de entrada y la primera capa.
+>
+> La matriz de pesos $\mathbf{W}$ es:
+>
+> $$
+> \mathbf{W} = \begin{bmatrix}
+> 1 & 2 & 0 \\
+> -1 & 3 & 4 \\
+> 2 & 0 & -2
+> \end{bmatrix}
+> $$
+>
+> Para calcular su Norma de Frobenius, debemos elevar al cuadrado cada elemento, sumar los resultados y finalmente tomar la raíz cuadrada.
+>
+> Así pues elevamos cada elemento de $\mathbf{W}$ al cuadrado:
+>
+> $$
+> \mathbf{W}^2 = \begin{bmatrix}
+> 1^2 & 2^2 & 0^2 \\
+> (-1)^2 & 3^2 & 4^2 \\
+> 2^2 & 0^2 & (-2)^2
+> \end{bmatrix}
+> =
+> \begin{bmatrix}
+> 1 & 4 & 0 \\
+> 1 & 9 & 16 \\
+> 4 & 0 & 4
+> \end{bmatrix}
+> $$
+>
+> Ahora sumamos todos estos valores:
+>
+> $$
+> \sum_{i=1}^3 \sum_{j=1}^3 w_{ij}^2 = 1 + 4 + 0 + 1 + 9 + 16 + 4 + 0 + 4 = 39
+> $$
+> Finalmente, calculamos la Norma de Frobenius tomando la raíz cuadrada de la suma:
+>
+> $$
+> ||\mathbf{W}||_F = \sqrt{39} \approx 6.245
+> $$
+> El resultado, $6.245$, representa la **magnitud** o "tamaño" de la matriz de pesos $\mathbf{W}$. En un contexto de **regularización** $L_2$, este valor sería el que se penalizaría en la función de coste del modelo para evitar que los pesos crezcan sin control. Un modelo tendería a buscar matrices $\mathbf{W}$ con una Norma de Frobenius pequeña para minimizar el coste total.
+
+En el desarrollo de modelos de **Inteligencia Artificial**, esta norma es indispensable, ya que funciona como un cuantificador directo del error global. Es el estándar para medir la diferencia entre dos matrices. En algoritmos cruciales como la **Factorización de Matrices**, el objetivo de la optimización es lograr que la matriz de error ($\mathbf{E}$), que es la diferencia entre la matriz original y la matriz aproximada, tenga una Norma de Frobenius mínima. Al reducir el valor de esta norma, aseguramos que la aproximación sea la más precisa posible. De igual manera, se utiliza en arquitecturas avanzadas de *Deep Learning* para penalizar el tamaño global de las matrices de pesos en una capa específica, un mecanismo de **regularización** que ayuda a evitar el sobreajuste al controlar la complejidad del modelo.
+
+> **Ejemplo**:
+> En el entrenamiento de un modelo de recomendación basado en la **Factorización de Matrices Latentes**, si la matriz original de interacciones es $\mathbf{M}$ y nuestra aproximación obtenida mediante la factorización es $\mathbf{M}'$, la función de coste del algoritmo buscará minimizar la siguiente expresión:
+>
+> $$
+> \text{Costo} = ||\mathbf{M} - \mathbf{M}'||_F
+> $$
+>
+> La minimización de esta norma garantiza que los errores de predicción, que se encuentran dispersos en la matriz de residuos $\mathbf{M} - \mathbf{M}'$, sean globalmente lo más pequeños posible.
+
+> **Para reflexionar...**
+> **La Norma de Frobenius de la matriz de pesos en una capa de una red neuronal (regularización) y la Norma $L_2$ de un vector de pesos (regularización vectorial) persiguen el mismo objetivo (evitar el sobreajuste). ¿Qué ventaja práctica ofrece la Norma de Frobenius en el contexto de las matrices de pesos de *Deep Learning* sobre la Norma $L_2$ aplicada a los vectores?**
+> *Considera que la Norma de Frobenius mide la magnitud en todas las dimensiones de la matriz de una sola vez. Piensa en cómo esto simplifica la penalización de una capa neuronal completa sin necesidad de aplanar o vectorizar la matriz, manteniendo la consistencia estructural.*
 
 ## Matrices cuadradas y determinante de una matriz
 
@@ -453,8 +551,6 @@ $$
 
 siempre que $ad - bc \neq 0$.
 
-
-
 **2. Para matrices de mayor dimensión**
 El cálculo requiere un procedimiento más general, basado en tres ideas:
 
@@ -467,8 +563,6 @@ $$
 $$
 
 Este método, aunque conceptualmente claro, es laborioso de aplicar manualmente para matrices grandes.
-
-
 
 **3. Métodos algorítmicos**
 En la práctica, cuando se trabaja con matrices de tamaño elevado, se utilizan métodos de cálculo basados en **descomposiciones matriciales** (como la eliminación de Gauss-Jordan o la descomposición LU). Estos procedimientos son más eficientes y estables numéricamente, y son los que implementan las bibliotecas de álgebra lineal que se emplean en IA.
@@ -1142,8 +1236,46 @@ Aunque no siempre se presenta explícitamente con el nombre de diagonalización,
 > La diagonalización revela que la transformación definida por $\mathbf{A}$ es, en el fondo, muy simple: en la base original parece mezclar coordenadas, pero en la base de autovectores solo estira en una dirección y encoge en otra. Esto es lo que hace que el análisis de problemas complejos se vuelva más comprensible y manejable.
 >
 
+>**Para reflexionar...**
+>**¿Qué significa, desde un punto de vista práctico, que una matriz se pueda “resumir” como una diagonal en la base de sus autovectores? ¿Cómo facilita esto la interpretación de un conjunto de datos o de un modelo en IA?**
 
+Factorización de matrices: descubrimiento de estructuras latentes
+---
 
->**Para reflexionar...**\
-> **¿Qué significa, desde un punto de vista práctico, que una matriz se pueda “resumir” como una diagonal en la base de sus autovectores? ¿Cómo facilita esto la interpretación de un conjunto de datos o de un modelo en IA?**
+### Concepto
 
+La **diagonalización** que hemos estudiado es una herramienta poderosa, pero tiene una limitación fundamental: solo es aplicable a matrices cuadradas que son diagonalizables. En el mundo de la **Inteligencia Artificial**, la gran mayoría de nuestras matrices de datos son **rectangulares** (por ejemplo, 1000 usuarios por 50 características), incompletas y, a menudo, ruidosas. Para desentrañar la estructura subyacente de este tipo de matrices, necesitamos una técnica de descomposición más general y robusta: la **factorización de matrices**.
+
+La factorización de matrices es el proceso de tomar una matriz compleja $\mathbf{A}$ y expresarla como el producto de dos o más matrices más simples, de menor rango, $\mathbf{U}$, $\mathbf{\Sigma}$, $\mathbf{V}^T$, de modo que se cumpla $\mathbf{A} \approx \mathbf{U} \mathbf{\Sigma} \mathbf{V}^T$. La idea central es que la información contenida en la matriz original no es puramente aleatoria, sino el resultado de la interacción de un conjunto mucho más pequeño de **factores latentes** o características ocultas. La forma más importante y generalizada de esta técnica es la **Descomposición en Valores Singulares (Singular Value Decomposition - SVD)**.
+
+### La Descomposición en Valores Singulares (SVD)
+
+La SVD es aplicable a **cualquier matriz** $\mathbf{A}$ ($m \times n$) y proporciona la mejor aproximación de rango reducido. Esta técnica descompone la matriz en el producto de tres componentes:
+
+$$
+\mathbf{A} = \mathbf{U} \mathbf{\Sigma} \mathbf{V}^T
+$$
+Donde cada componente tiene un significado geométrico y funcional directo:
+
+La matriz **$\mathbf{U}$ (Matriz de Rotación de Filas)** es una matriz **ortogonal** que contiene los **vectores singulares izquierdos**. Estos vectores forman una base ortogonal para el espacio de filas de la matriz, capturando las direcciones principales de las *instancias de datos* (ej. los usuarios o documentos).
+
+La matriz **$\mathbf{V}^T$ (Matriz de Rotación de Columnas)**es  una matriz **ortogonal** que contiene los **vectores singulares derechos**. Estos vectores forman **una base ortogonal** para el espacio de columnas de la matriz, capturando las direcciones principales de las *características*.
+
+Por último, la matriz **$\mathbf{\Sigma}$ (Matriz Diagonal de Escalamiento)** es una matriz **diagonal** que contiene los **valores singulares** ($\sigma_i$), ordenados de mayor a menor. Estos valores son cruciales, ya que indican la **importancia o la varianza** que explica cada par de direcciones.
+
+### Aplicación en la IA: Descubrimiento de factores latentes
+
+La potencia de la SVD reside en su capacidad para **truncar** la información, eliminando los valores singulares pequeños que representan el ruido, y quedándose solo con los $k$ valores singulares más grandes. Esto tiene tres aplicaciones cruciales que ya veremos a lo largo del curso.
+
+En primer lugar, en los **sistemas de recomendación.** Al descomponer la matriz de interacciones Usuario-Ítem ($\mathbf{M}$), la SVD revela los **factores latentes** que realmente impulsan las preferencias. Los vectores de $\mathbf{U}$ se convierten en los *perfiles latentes de usuario*, y los vectores de $\mathbf{V}$ en las *características latentes de los ítems*. El producto de estas matrices de menor rango permite predecir los huecos de la matriz original con alta precisión.
+
+En segundo lugar, en el proceso de **reducción de dimensionalidad (PCA)**, siendo la  SVD su núcleo matemático. Los **vectores singulares derechos** ($\mathbf{V}$) son, de hecho, los **componentes principales** que maximizan la varianza. Al truncar la SVD y quedarnos solo con las $k$ primeras componentes (las que tienen los valores singulares más grandes), logramos la representación de los datos con menor dimensión que mejor se aproxima a la original.
+
+Por último, en el **procesamiento de Lenguaje Natural (NLP)**, cuando usemos el modelo **Latent Semantic Analysis (LSA)**, la SVD se aplica a la matriz Término-Documento, extrayendo **temas** o **conceptos semánticos** como factores latentes, lo que permite a los sistemas comprender el significado del texto más allá de la mera coincidencia de palabras.
+
+> **Ejemplo**:
+> Si aplicamos SVD a una matriz de datos $1000 \times 500$ y observamos que los valores singulares caen drásticamente después del componente $k=20$, podemos afirmar que el $99\%$ de la información útil de nuestros 500 características se puede representar con solo **20 factores latentes**. Truncar la SVD a $k=20$ reduce la complejidad computacional $25$ veces (de 500 a 20 dimensiones) sin perder información significativa.
+
+> **Para reflexionar...**
+> **La diagonalización solo funciona para matrices cuadradas y diagonalizables, mientras que la SVD funciona para cualquier matriz. Considerando esto, ¿por qué es tan importante para un modelo de *Deep Learning* trabajar con la SVD en lugar de intentar forzar la diagonalización de la matriz de datos de entrada?**
+> *Piense que la matriz de datos no es cuadrada ni simétrica, y que la SVD es la única descomposición que garantiza una solución óptima y estable para la reducción de rango, que es clave para la eficiencia del modelo. La SVD es el método para encontrar los autovalores y autovectores de la matriz de covarianza sin calcularla explícitamente, lo cual es más robusto.*
