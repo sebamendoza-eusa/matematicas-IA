@@ -14,7 +14,6 @@ $$
 \frac{d}{dx} \left[ \int_a^x f(t)\,dt \right] = f(x)
 $$
 
-
 Esta formulación verifica que la derivación "deshace" la integración, estableciendo una relación inversa directa.
 
 Por su parte, la **Segunda Parte del TFC** proporciona la herramienta computacional más importante para la práctica. Nos permite calcular la integral definida —el valor exacto de la acumulación entre dos puntos $a$ y $b$— a través de la **antiderivada** o primitiva $F(x)$, una función cuya derivada es $f(x)$. En lugar de recurrir al tedioso límite de las sumas de Riemann para calcular el área, simplemente evaluamos la primitiva en los límites de integración y restamos los resultados:
@@ -22,7 +21,6 @@ Por su parte, la **Segunda Parte del TFC** proporciona la herramienta computacio
 $$
 \int_a^b f(x)\,dx = F(b) - F(a)
 $$
-
 
 En el contexto de la inteligencia artificial, esta dualidad es fundamental. La **función de pérdida** o de error de un modelo, que intentamos minimizar, representa el error **acumulado** (o sumado, que es la versión discreta de la integral) sobre el conjunto de datos. El algoritmo de **Descenso de Gradiente** requiere la derivada parcial de esa función de pérdida. El TFC garantiza la coherencia de este proceso: el ajuste local de los parámetros que viene determinado por el gradiente (tasa de cambio instantáneo) se convierte en un mecanismo riguroso para la optimización del error total (acumulación).
 
@@ -49,7 +47,6 @@ El procedimiento para calcular una Suma de Riemann es directo y se basa en una a
 $$
 S_N = \sum_{i=1}^N f(x_i^*) \Delta x
 $$
-
 
 
 Esta suma $S_N$ proporciona una estimación del área total bajo la curva.
@@ -99,6 +96,7 @@ Trasladado a la integración, si la integral que queremos calcular puede interpr
 $$
 \mathbb{E}[g(X)] \approx \frac{1}{N} \sum_{i=1}^N g(x_i)
 $$
+
 Aquí, $\{x_i\}$ son las **muestras aleatorias** extraídas del dominio de integración, y $N$ es el número total de muestras. La integral se transforma de un complejo problema de suma continua en un simple problema de promedio.
 
 La gran ventaja de este enfoque, y por lo que es la piedra angular de la IA en alta dimensionalidad, es que la **precisión de la estimación solo depende del número de muestras ($N$) y no del número de dimensiones ($d$)** del espacio. No importa si la función tiene $100$ o $100.000$ variables; si duplicamos el número de muestras $N$, el error se reduce de manera predecible, independientemente de la complejidad geométrica del espacio.

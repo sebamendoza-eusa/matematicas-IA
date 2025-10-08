@@ -67,10 +67,13 @@ Por tanto, la derivada no solo describe el cambio, sino que **nos orienta para e
 En muchas situaciones, una cantidad no depende directamente de una sola variable, sino de otra que, a su vez, depende de una tercera. Dicho de otro modo: las funciones pueden estar **encadenadas**. La **regla de la cadena** nos permite calcular cómo cambia una función cuando sus variables están relacionadas de esta manera.
 
 Imaginemos que tenemos dos funciones, una dentro de otra:
+
 $$
 y = f(u) \quad \text{y} \quad u = g(x)
 $$
+
 Si sustituimos la segunda en la primera, obtenemos una función compuesta:
+
 $$
 y = f(g(x))
 $$

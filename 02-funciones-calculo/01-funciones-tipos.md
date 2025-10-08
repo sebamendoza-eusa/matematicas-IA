@@ -13,7 +13,7 @@ En inteligencia artificial, esta idea se convierte en el núcleo de los algoritm
 Es importante entender algunos conceptos asociados a esta definición. Al conjunto $X$ se le denomina **dominio** (el conjunto de entradas para las que la función está definida) e $Y$ es el **codominio** (el conjunto de posibles salidas permitidas por la definición de la función). La **imagen** o **recorrido** de $f$ es el conjunto de salidas que realmente se obtienen al aplicar $f$ a todo su dominio:
 
 $$
-\mathrm{Im}(f)={f(x):x\in X\\}\subseteq Y.
+\mathrm{Im}(f)=\{f(x):x\in X\} \subseteq Y.
 $$
 
 Pensar con claridad en dominio, codominio e imagen evita ambigüedades. Si modelamos la **nota de un examen** en función de las **horas de estudio**, un dominio razonable sería $X=[0,\infty)$ (no hay horas negativas) y un codominio $Y=\mathbb{R}$ si permitimos cualquier número real como resultado. En la práctica, sabemos que las notas están acotadas, así que la imagen efectiva quedará en un intervalo, por ejemplo $[0,10]$, que es un subconjunto del codominio elegido. Esa diferencia entre “lo permitido por definición”, $Y$, y “lo que realmente ocurre”, $\mathrm{Im}(f)$, es útil al diseñar y analizar modelos.
@@ -22,7 +22,8 @@ En inteligencia artificial, esta misma estructura describe cualquier modelo. El 
 
 En **regresión**, se toma típicamente $Y=\mathbb{R}$ y la imagen son valores reales (por ejemplo, precios). 
 
-En **clasificación binaria**, podemos definir $Y={0,1\\}$ y la función $f$ devuelve una etiqueta, o bien $Y=[0,1]$ si $f$ devuelve una **probabilidad**; en el caso multiclase, es común trabajar con $Y=\mathbb{R}^K$ antes de la capa *softmax* (logits) o con el **símplex de probabilidad**
+En **clasificación binaria**, podemos definir $Y=\{0,1\}$ y la función $f$ devuelve una etiqueta, o bien $Y=[0,1]$ si $f$ devuelve una **probabilidad**; en el caso multiclase, es común trabajar con $Y=\mathbb{R}^K$ antes de la capa *softmax* (logits) o con el **símplex de probabilidad**
+
 $$
 \Delta^{K-1}={p\in\mathbb{R}^K:p_i\ge 0,\ \sum_{i=1}^K p_i=1\\}
 $$
@@ -33,7 +34,8 @@ Esta lectura como “máquina de transformar entradas en salidas” se visualiza
 
 Dominar estos conceptos básicos —dominio, codominio, imagen y representación gráfica— prepara el terreno para lo que viene a continuación: estudiar **cómo cambian** las funciones (derivadas), cómo **se ajustan** para acercarse a los datos (gradiente y optimización) y cómo **acumulan** información (integrales y expectativas). Esa es, en esencia, la ruta que conecta las funciones con el aprendizaje automático.
 
->**Para reflexionar...**\
+>**Para reflexionar...**
+>
 >**Si defines un clasificador con salida de probabilidad como $f:X\to[0,1]$, ¿qué ventajas te da declarar explícitamente ese codominio frente a decir solo “$f:X\to\mathbb{R}$”? ¿Cómo condiciona esa decisión el diseño de la función de pérdida y la interpretación de los resultados?**
 
 ## Funciones lineales y modelos simples
@@ -63,6 +65,7 @@ que ya no es una recta sino un **hiperplano** en $\mathbb{R}^d$. El vector $\mat
 Las rectas son transparentes, rápidas y sorprendentemente eficientes cuando la relación es aproximadamente proporcional o cuando la dimensionalidad es alta pero la estructura subyacente es simple. Sin embargo, su **expresividad** es limitada en algunos escenarios. Vamos tres limitaciones concretas.
 
 **La primera grieta** aparece cuando la relación subyacente **se curva**. Piensa de nuevo en las horas de estudio y la nota: al principio, cada hora extra marca una diferencia notable; sin embargo, a partir de cierto punto, añadir más horas apenas mejora el resultado. Esa **saturación** es natural en muchos procesos (aprendizaje, rendimiento físico, respuesta biológica). Una recta no puede abrazar esa forma en “S” o en “techo”; forzará un compromiso: irá por el medio, acertará en promedio y fallará en los extremos. La salida práctica es **cambiar la mirada sobre las entradas** para devolver la linealidad “por dentro”: introducir curvatura mediante nuevas características. Si trabajamos con una sola variable, basta con ampliar el diseño a potencias o transformaciones suaves, por ejemplo
+
 $$
 \phi(x)=\big(x,\ x^2\big)\quad \text{o}\quad \phi(x)=\big(\log x,\ \sqrt{x}\big),
 $$
@@ -99,6 +102,7 @@ de modo que el modelo siga siendo lineal en los parámetros, pero capaz de dibuj
 >
 
 **El segundo límite** aparece cuando los efectos no son meramente **aditivos**, sino que **interactúan**. Un modelo lineal puro asume que cada característica suma su contribución de manera independiente: duplicar “horas de estudio” siempre suma lo mismo, sea cual sea la “calidad del material”, y aumentar “ingresos” tiene el mismo efecto prediciendo gasto, tengas “20” o “60” años. En muchos fenómenos reales, la influencia de una variable **depende del valor de otra**. Esa dependencia cruzada se captura introduciendo **términos de interacción** en el propio espacio de características. Si $\mathbf{x}=(x_1,x_2)$, añadimos una nueva columna $x_1x_2$ y ajustamos
+
 $$
 \hat y = w_1 x_1 + w_2 x_2 + w_{12}(x_1x_2) + b.
 $$
@@ -166,12 +170,14 @@ Hay dos caminos habituales para salvar estas barreras sin abandonar la claridad 
 
 Pensar primero en rectas no es una limitación, es una **ventaja pedagógica y práctica**: da una referencia clara, ofrece una base geométrica sólida (hiperplanos, proyecciones, distancias) y conecta de forma directa con cómo se entrenan los modelos mediante gradiente. A partir de ahí, cuando lo lineal ya no alcanza, las extensiones no lineales resultan mucho más comprensibles.
 
->**Para reflexionar...**\
+>**Para reflexionar...**
+>
 >**¿Qué preferirías ante un conjunto de datos real: empezar con un modelo lineal bien interpretado y aumentar complejidad solo si es necesario, o saltar directamente a un modelo muy flexible? ¿Cómo influye esa elección en la explicabilidad, el riesgo de sobreajuste y el coste computacional?**
 
 En cualquier caso, aunque la introducción de **funciones no lineales** (cuadráticas, exponenciales, logarítmicas o funciones de activación en redes neuronales) permite modelar fenómenos más realistas, la función lineal sigue siendo esencial: no solo como base histórica y conceptual, sino porque muchas técnicas más complejas se construyen sobre combinaciones lineales de entradas, enriquecidas después con transformaciones no lineales.
 
->**Para reflexionar...**\
+>**Para reflexionar...**
+>
 >**¿Por qué crees que la regresión lineal, siendo un modelo tan simple, sigue utilizándose hoy en día como herramienta fundamental en estadística y aprendizaje automático? ¿Qué aporta su simplicidad frente a modelos más sofisticados, y en qué momentos sus limitaciones se hacen evidentes?**
 
 ## Funciones no lineales en la modelización
@@ -240,9 +246,9 @@ De esta forma, una ecuación basada en productos pasa a expresarse con sumas, lo
 Hasta ahora hemos visto que la función logarítmica transforma crecimientos multiplicativos en sumas, y que comprime valores muy grandes haciendo más fácil su manejo. Esta propiedad cobra un significado especialmente útil cuando pasamos al terreno de la **Inteligencia Artificial**, donde muchas veces los modelos trabajan con **probabilidades**.
 
 Las probabilidades son números comprendidos entre 0 y 1. Esto significa que, por definición, están **acotadas**: nunca pueden ser menores que 0 ni mayores que 1. Sin embargo, muchos modelos matemáticos —especialmente los lineales— funcionan mejor en espacios donde las variables pueden tomar cualquier valor real, positivo o negativo. Para salvar ese obstáculo se utiliza una transformación que traslada las probabilidades al eje real completo: la **función logit**.
+
 $$
  \mathrm{logit}(p) = \log\left(\frac{p}{1 - p}\right)
- 
 $$
 
 
@@ -259,6 +265,7 @@ Imagínate que tu modelo de *spam* calcula la probabilidad de que una secuencia 
 $$
 P_{total} = p_1 \times p_2 \times p_3 \times \dots \times p_{100}
 $$
+
 Si cada probabilidad individual $p_i$ es, por ejemplo, $10^{-5}$ (una probabilidad de una en cien mil), al multiplicarlas 100 veces obtienes:
 
 $$
@@ -269,29 +276,33 @@ $$
 Aquí está la clave: el valor $10^{-500}$ es tan increíblemente pequeño que excede la capacidad de representación de la aritmética de punto flotante de la mayoría de los ordenadores (que solo pueden manejar números hasta aproximadamente $10^{-308}$). El ordenador no es capaz de almacenar $10^{-500}$ y, en su lugar, lo redondea al **cero absoluto**. Este fenómeno se llama **_underflow_** y, cuando ocurre, **pierdes toda la información** de tu cálculo. El modelo no puede diferenciar entre una verosimilitud muy baja y una verosimilitud prácticamente nula.
 
 El logaritmo resuelve mágicamente este problema gracias a una de sus propiedades más útiles:
+
 $$
 \log(a \cdot b) = \log(a) + \log(b)
 $$
+
 En lugar de calcular el producto inestable, calculamos el **logaritmo de la probabilidad total** (la log-verosimilitud):
 
 $$
 \log(P_{total}) = \log(p_1 \times p_2 \times \dots \times p_{100})
 $$
 
-
 Aplicando la propiedad logarítmica, la secuencia de multiplicaciones inestables se convierte en una simple **suma estable**:
 
 $$
 \log(P_{total}) = \log(p_1) + \log(p_2) + \dots + \log(p_{100})
 $$
+
 Volviendo al ejemplo numérico, si tomas el logaritmo de $10^{-5}$ (que es $-5$), y sumas este valor 100 veces:
 
 $$
 \log(P_{total}) = \sum_{i=1}^{100} \log(10^{-5}) = \sum_{i=1}^{100} (-5) = -500
 $$
+
 El resultado es el valor **$-500$**, un número perfectamente manejable y estable. Al transformar los productos en sumas, el logaritmo no solo evita el _underflow_ y la pérdida de información, sino que también **simplifica la complejidad computacional**, lo que es esencial para optimizar modelos a gran escala. Una vez calculado este valor, para obtener la probabilidad real de vuelta, solo tienes que aplicar la **función matemática inversa** del logaritmo, que es la **exponenciación**. Es importante tener en cuenta que el valor final, $10^{-500}$, sigue siendo un número increíblemente pequeño y **aún excede la capacidad de representación del ordenador**, por lo que seguirá siendo redondeado a cero si intentas almacenarlo. Sin embargo, el objetivo principal del *logaritmo* **nunca fue obtener un $P_{total}$ almacenable**, sino **garantizar que el proceso de optimización intermedio fuera preciso**. Al trabajar con el valor estable de **$-500$** durante, por ejemplo, el entrenamiento de un modelo, el sistema puede comparar y ajustar los pesos con precisión. Solo aplicas la exponenciación al final si necesitas reportar el valor de la probabilidad en el formato tradicional, pero para la optimización interna, trabajarás siempre con el valor logarítmico.
 
 > **Para reflexionar...**
+> 
 > **Si el logaritmo transforma productos en sumas para ganar estabilidad, ¿qué problema numérico similar al _underflow_ ayuda a mitigar la suma logarítmica en el extremo opuesto del espectro (con números muy grandes) y por qué es igualmente importante en el *Deep Learning*?**
 > *Considera el fenómeno del _overflow_ (cuando un número es demasiado grande para ser representado) y cómo el logaritmo ayuda a mantener la escala de los resultados dentro de un rango manejable.*
 
@@ -368,6 +379,7 @@ Las funciones lineales son predecibles, elegantes y fáciles de manejar, pero ta
 Para capturar este tipo de comportamientos necesitamos **romper la linealidad**. Y la forma más sencilla de hacerlo no tiene porque ser con curvas complicadas, sino introduciendo **funciones definidas por tramos**, es decir, funciones que se comportan de una manera en una región del dominio y de otra distinta en otra.
 
 Por ejemplo, consideremos la función
+
 $$
 f(x) =
  \begin{cases}
@@ -375,6 +387,7 @@ f(x) =
  -x, & \text{si } x < 0
  \end{cases}
 $$
+
 A la izquierda del cero la pendiente es negativa, y a la derecha, positiva. Si la representamos gráficamente, vemos una especie de “V” abierta hacia arriba.
 
 ![image-20251006224143808](./assets/image-20251006224143808.png)
@@ -401,9 +414,11 @@ Imagina que queremos diseñar un modelo que recomiende si un estudiante debe **a
 Los alumnos con **pocas horas de estudio y baja nota** forman un grupo (clase “sí, necesita refuerzo”), mientras que los que **estudian mucho y tienen buena nota** forman otro (clase “no necesita refuerzo”). Al representarlos en el plano $(x_1, x_2)$, los dos grupos aparecen a ambos lados de una **frontera lineal**: cuanto más estudia alguien y mejor nota obtiene, menos probable es que necesite ayuda extra.
 
 Matemáticamente, una frontera del tipo
+
 $$
 y = -x
 $$
+
 separa perfectamente las dos regiones. El modelo puede resolver este problema con una **única regla lineal**, sin necesidad de transformaciones complejas.
 
 ![image-20251006234329536](./assets/image-20251006234329536.png)
@@ -413,6 +428,7 @@ Ahora cambiemos de contexto. Imagina el siguiente ejemplo donde las distintas ob
 ![image-20251006235439739](./assets/image-20251006235439739.png)
 
 En este escenario es imposible separar ambos grupos con una sola recta. Ne cesitamos una funcion en forma de "V" que resuelva el problema. Eso lo podriamos conseguir con una funcion definida por tramos. En este caso seria
+
 $$
 f(x) =
  \begin{cases}
@@ -420,6 +436,7 @@ f(x) =
  -x+1, & \text{si } x < 0
  \end{cases}
 $$
+
 En otras palabras, al **componer funciones lineales por tramos** conseguimos una **frontera no lineal**.
 Y esa es precisamente la idea detrás de las **funciones de activación**: usar pequeñas piezas lineales separadas por puntos de quiebre para construir superficies complejas que los modelos lineales, por sí solos, no pueden trazar.
 
