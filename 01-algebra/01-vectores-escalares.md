@@ -69,7 +69,7 @@ En el contexto de la IA, estas operaciones pueden ser útiles para combinar o aj
 > En un sistema de recomendación, si un usuario está representado por un vector de preferencias $\mathbf{u}$ y la película que ve está representada por un vector de características $\mathbf{p}$, un ajuste en la preferencia del usuario después de ver la película podría modelarse como
 > 
 > $$
-> \mathbf{u}_{\text{nueva}} = \mathbf{u} + \mathbf{p}_{\text{ajuste}}
+> \mathbf{u}_{nueva} \= \mathbf{u} + \mathbf{p}_{ajuste}
 > $$,
 > 
 > donde
