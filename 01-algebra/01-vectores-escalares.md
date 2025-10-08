@@ -76,7 +76,12 @@ Para multiplicar un vector $\mathbf{v}$ por un escalar $\alpha$, se multiplica c
 
 
 $$
-\alpha \mathbf{v} = \begin{bmatrix} \alpha v_1 \\ \alpha v_2 \\ \vdots \\ \alpha v_n \end{bmatrix}
+\alpha \mathbf{v} = \begin{bmatrix}
+\alpha v_1 \\
+\alpha v_2 \\
+\vdots \\
+\alpha v_n
+\end{bmatrix}
 $$
 
 
