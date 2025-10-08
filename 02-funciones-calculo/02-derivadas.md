@@ -4,7 +4,30 @@
 
 La derivada es una de las ideas más potentes del cálculo porque pone números a algo que percibimos a simple vista: **cómo cambia una cantidad cuando varía otra**. Si una función relaciona una entrada $x$ con una salida $f(x)$, la derivada nos dice qué tan rápido se modifica $f(x)$ cuando damos un pequeño paso en $x$.
 
-La imagen más intuitiva es la de una **pendiente**. Si dibujamos la función en un gráfico, en cada punto podemos imaginar una recta tangente que toca la curva en ese lugar. La pendiente de esa recta es precisamente la derivada en ese punto. Si la pendiente es positiva, la función crece; si es negativa, decrece; si es cero, nos encontramos en un máximo, un mínimo o un punto de inflexión.
+Cuando hablamos de cómo cambia algo, usamos palabras como “aumenta”, “disminuye” o “se mantiene constante”. En la vida diaria, eso basta. Pero en matemáticas necesitamos una manera **precisa** de describir ese cambio. La herramienta que permite hacerlo es la **derivada**, y su definición formal se basa en el concepto de **límite**.
+
+Imaginemos una función $f(x)$, que asigna a cada número $x$ un valor $f(x)$. Si queremos saber **cómo cambia** $f(x)$ cuando $x$ varía un poco, podemos comparar dos valores de la función: el valor en $x$ y el valor en $x+h$, donde $h$ es una pequeña diferencia.
+
+La variación de la función entre esos dos puntos es $f(x+h) - f(x)$, y el cambio correspondiente en $x$ es $h$. Si dividimos ambos, obtenemos la **tasa de variación media**:
+
+$$
+\frac{f(x+h) - f(x)}{h}
+$$
+
+Este cociente nos dice cuánto cambia la función por cada unidad que cambia $x$, pero solo de forma aproximada, ya que depende de un $h$ concreto.
+Para conocer el cambio **instantáneo** en un punto —es decir, la pendiente exacta de la función en $x$— debemos observar qué ocurre **cuando $h$ se hace cada vez más pequeño**, acercándose a cero.
+
+Ese es precisamente el papel del **límite**. La **derivada de $f$ en el punto $x$**, que se escribe $f'(x)$, se define como:
+
+$$
+f'(x) = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h}
+$$
+
+Esta expresión resume la idea de cambio instantáneo: no nos interesa el salto entre dos puntos lejanos, sino la tendencia que sigue la función cuando la diferencia entre ellos es infinitesimal.
+
+Geométricamente, este límite nos da la **pendiente de la recta tangente** a la curva de $f$ en el punto $(x, f(x))$. Si la derivada es positiva, la función sube; si es negativa, baja; y si vale cero, la función se aplana momentáneamente.
+
+![image-20251007214743124](./assets/image-20251007214743124.png)
 
 Un ejemplo sencillo es el de una recta $f(x)=2x+1$. Su pendiente es siempre $2$, y la derivada, en cualquier punto, es constante: $f'(x)=2$. En cambio, si tomamos una parábola como $f(x)=x^2$, la pendiente no es la misma en todas partes: en $x=1$ la curva sube con pendiente $2$, en $x=2$ sube con pendiente $4$, y en $x=-1$ baja con pendiente $-2$. La derivada $f'(x)=2x$ refleja exactamente esa variación.
 
@@ -19,19 +42,77 @@ Lo importante es comprender la idea de fondo: **derivar es medir la velocidad de
 
 Geométricamente, si ampliamos mucho la curva alrededor de un punto, esta se parece a una línea recta. Esa recta es la **tangente**, y su pendiente es el valor de la derivada en ese punto. En inteligencia artificial esta idea se vuelve crucial, porque los algoritmos de optimización necesitan saber hacia dónde “moverse” y con qué rapidez ajustar los parámetros. El gradiente, que veremos más adelante, no es otra cosa que la generalización de esta pendiente a funciones de varias variables.
 
-> **Para reflexionar...**\
+> **Para reflexionar...**
+>
 > Cuando piensas en la derivada como una pendiente local, ¿cómo cambia tu forma de ver una función? ¿Qué significa, en términos de comportamiento de un modelo, que la pendiente sea muy grande en una zona concreta o que se anule en otra?
 
-### La derivada como sensibilidad y herramienta de aprendizaje
+## La derivada como sensibilidad y herramienta de aprendizaje
 
 La derivada, además de ser una herramienta que refleja como cambia una función, en el contexto de la inteligencia artificial es una forma de medir **sensibilidad**. Si tenemos una función $f(x)$, su derivada $f'(x)$ en un punto nos dice cuánto cambia la salida al variar ligeramente la entrada. En términos más cotidianos, es como comprobar cuánto afecta girar un poco un mando de volumen: ¿el sonido cambia mucho o apenas nada? Esa idea es la misma en los modelos de IA: la derivada nos indica cuánto se altera la predicción del modelo si modificamos un poco uno de sus parámetros. Una derivada grande implica que ese parámetro influye fuertemente en el resultado; una derivada pequeña, que apenas lo hace.
 
-La derivada también actúa como **herramienta de ajuste**. Al conocer la pendiente de la función en un punto, sabemos en qué dirección movernos para reducir su valor. Si la pendiente es positiva, al desplazarnos hacia la izquierda la función disminuye; si es negativa, el descenso ocurre hacia la derecha. Este principio se traduce directamente en el descenso de gradiente, el algoritmo de optimización más utilizado en aprendizaje automático: los parámetros del modelo “caminan” paso a paso en la dirección contraria a la pendiente, acercándose a un mínimo de error. Así, la derivada funciona como una brújula que siempre señala hacia dónde movernos para mejorar.
+La derivada también actúa como **herramienta de ajuste**. De hecho es la base del concepto de  **optimización**, que en matemáticas viene a significar habitualmente **encontrar los valores máximos o mínimos de una función**
 
-Aunque hasta ahora hemos trabajado con funciones de una sola variable, en la práctica los modelos dependen de cientos, miles o incluso millones de parámetros. En ese caso, la derivada se generaliza al gradiente, que no es más que un vector donde cada componente recoge la pendiente respecto a uno de los parámetros. El gradiente concentra toda la información de sensibilidad de la función en varias direcciones a la vez y guía las actualizaciones en el espacio multidimensional de parámetros. Esa noción es fundamental para entender cómo se entrenan redes neuronales complejas: cada paso de aprendizaje consiste en calcular el gradiente y usarlo como instrucción para ajustar todos los parámetros en la dirección adecuada.
+En este contexto, la derivada actúa como una especie de guía. Al observar el signo de la derivada podemos saber hacia qué lado movernos para que el valor de la función disminuya. Si la derivada es positiva, significa que la función está creciendo, por lo que conviene moverse en la dirección contraria. Si la derivada es negativa, la función está decreciendo, y moverse en esa dirección nos acerca al mínimo.
 
-> **Para reflexionar...**\
-> ¿Cómo cambia tu percepción de la derivada al pensarla como una brújula práctica que orienta los pasos del aprendizaje automático, en lugar de como un número aislado en un ejercicio de matemáticas?
+El proceso de **optimizar** una función puede imaginarse como el de una pequeña bola que rueda por una colina. En cada punto, la inclinación del terreno (la derivada) le indica hacia dónde moverse. La bola seguirá desplazándose mientras haya pendiente, hasta detenerse en el punto más bajo, donde la derivada se hace cero. Ese punto de equilibrio corresponde al **mínimo de la función**.
+
+Por tanto, la derivada no solo describe el cambio, sino que **nos orienta para encontrar los puntos de equilibrio de una función**, donde ya no hay variación. Más adelante, cuando estudiemos cómo aprenden los modelos de inteligencia artificial, veremos que esos procesos de entrenamiento se basan exactamente en esta misma idea: **ajustar valores para reducir un error**, descendiendo poco a poco por una función, guiados en todo momento por el valor de su derivada.
+
+> **Para reflexionar...**
+> ¿Por qué crees que la derivada tiene que hacerse cero en un punto máximo o mínimo?
+> Visualízalo: solo cuando la pendiente de la curva desaparece, la función deja de cambiar. Ese punto de “reposo” es el lugar donde la función alcanza su mejor valor posible
+
+## La regla de la cadena: cómo derivar funciones compuestas
+
+En muchas situaciones, una cantidad no depende directamente de una sola variable, sino de otra que, a su vez, depende de una tercera. Dicho de otro modo: las funciones pueden estar **encadenadas**. La **regla de la cadena** nos permite calcular cómo cambia una función cuando sus variables están relacionadas de esta manera.
+
+Imaginemos que tenemos dos funciones, una dentro de otra:
+$$
+y = f(u) \quad \text{y} \quad u = g(x)
+$$
+Si sustituimos la segunda en la primera, obtenemos una función compuesta:
+$$
+y = f(g(x))
+$$
+
+En este caso, $y$ depende de $u$, y $u$ depende de $x$. Si queremos saber **cómo varía $y$ cuando cambia $x$**, debemos tener en cuenta ambas relaciones al mismo tiempo. Aquí es donde entra en juego la regla de la cadena, que establece que:
+
+$$
+\frac{dy}{dx} = \frac{dy}{du} \cdot \frac{du}{dx}
+$$
+
+Es decir, el cambio total de $y$ respecto a $x$ se obtiene **multiplicando el cambio de $y$ respecto a $u$** por el **cambio de $u$ respecto a $x$**.
+
+Esta regla refleja una idea sencilla: si $y$ cambia cuando cambia $u$, y $u$ cambia cuando cambia $x$, entonces el cambio de $y$ con respecto a $x$ es el resultado acumulado de ambos efectos.
+
+
+
+>
+> **Ejemplo:**
+> Supongamos que la temperatura $T$ depende de la altitud $h$ (a mayor altitud, menor temperatura), y que la altitud depende de la distancia $x$ recorrida en una montaña (al avanzar, subimos). Si queremos saber **cómo cambia la temperatura con respecto a la distancia recorrida**, debemos combinar ambos efectos: el cambio de temperatura con la altitud, y el cambio de altitud con la distancia.
+>
+> La regla de la cadena nos da precisamente esa combinación. Matemáticamente sería:
+>
+> $$
+> \frac{dT}{dx} = \frac{dT}{dh} \cdot \frac{dh}{dx}
+> $$
+>
+> Así, si sabemos que la temperatura desciende $6.5$ grados por cada kilómetro de altitud ($dT/dh = -6.5$) y que la altitud aumenta $0.3$ km por cada kilómetro horizontal ($dh/dx = 0.3$), entonces:
+>
+> $$
+> \frac{dT}{dx} = (-6.5) \times 0.3 = -1.95
+> $$
+>
+> Esto significa que la temperatura disminuye $1.95$ grados por cada kilómetro que avanzamos.
+>
+
+#### Interpretación geométrica
+
+Desde un punto de vista gráfico, la regla de la cadena puede verse como **una composición de pendientes**. Cada derivada mide una inclinación local: la primera ($du/dx$) indica la pendiente de una función intermedia, y la segunda ($dy/du$) mide la pendiente de la función exterior. Su producto nos da la pendiente combinada, o dicho de otra forma, **la inclinación final resultante del encadenamiento de ambas funciones**.
+
+> **Para reflexionar...**
+> ¿Por qué tiene sentido que las pendientes se multipliquen y no se sumen?
+> Piensa que el cambio de $y$ con respecto a $x$ se produce “a través” de $u$. Cada pequeño cambio en $x$ se amplifica o atenúa según cómo $u$ reaccione, y luego según cómo $y$ responde al cambio en $u$. El efecto total es el resultado encadenado de ambos.
 
 ## Derivadas parciales y gradiente
 
@@ -46,28 +127,19 @@ $$
 \left( \frac{\partial f}{\partial x_1},\frac{\partial f}{\partial x_2},\dots,\frac{\partial f}{\partial x_n} \right).
 $$
 
-El gradiente no es un número, sino un vector, y tiene una interpretación geométrica muy clara: **apunta en la dirección en la que la función crece más rápidamente.** Dicho de otro modo, si en el espacio de parámetros das un paso en la dirección del gradiente, $f$ aumentará lo máximo posible; si avanzas en la dirección contraria, $f$ disminuirá lo más rápido posible.
+El gradiente no es un número, sino un vector, y tiene una interpretación geométrica muy clara: **apunta en la dirección en la que la función crece más rápidamente.** Dicho de otro modo, si en el espacio de variables das un paso en la dirección del gradiente, $f$ aumentará lo máximo posible; si avanzas en la dirección contraria, $f$ disminuirá lo más rápido posible.
 
-Esta idea tiene una aplicación directa en la IA: el **descenso de gradiente**. Los parámetros de un modelo se actualizan en pasos sucesivos desplazándose en la dirección contraria al gradiente de la función de error. Cada actualización equivale a moverse “cuesta abajo” en el paisaje de la función, buscando valles donde el error sea mínimo. Así, el gradiente actúa como guía que indica hacia dónde y con qué fuerza hay que ajustar los parámetros en cada iteración.
+Esta idea tiene una aplicación directa en el aprendizaje automático. Cuando un modelo “aprende”, lo que realmente está haciendo es **ajustar poco a poco sus parámetros** para que el error entre sus predicciones y los datos reales sea cada vez menor. Para lograrlo, el modelo utiliza un método llamado **descenso de gradiente**. El gradiente no es más que una extensión del concepto de derivada cuando la función depende de muchas variables. Indica **en qué dirección la función crece más rápido**, igual que una pendiente nos dice hacia dónde sube una montaña.
 
-Con un ejemplo sencillo, si la función de error de un modelo depende de dos parámetros $w_1$ y $w_2$, podemos representarla como una superficie en tres dimensiones. En cada punto de esa superficie, el gradiente es una flecha que apunta hacia la máxima pendiente de subida. El algoritmo de optimización simplemente toma el camino opuesto, bajando la ladera hasta llegar a un valle. Ese valle corresponde a los valores de parámetros donde el modelo se ajusta mejor a los datos.
+El truco consiste en hacer lo contrario: **movernos en la dirección contraria al gradiente**, es decir, “cuesta abajo”, hacia donde la función disminuye. En este caso, la función que queremos hacer bajar es la **función de error**, que mide qué tan mal está funcionando el modelo.
 
-> **Para reflexionar...**\
+Cada vez que el modelo da un paso en esa dirección, los parámetros se ajustan un poco y el error se reduce. Si repite este proceso muchas veces, va descendiendo suavemente por la superficie del error, igual que una bola que rueda por una colina hasta detenerse en el punto más bajo posible. Ese punto representa el momento en que el modelo ha aprendido lo mejor que puede a partir de los datos. En la siguiente gráfica puedes ver de modo intuitivo como funciona el descenso del gradiente
+
+![image-20251007214132203](./assets/image-20251007214132203.png)
+
+
+
+> **Para reflexionar...**
+>
 > ¿Por qué crees que en lugar de buscar directamente el mínimo, los algoritmos de aprendizaje se conforman con seguir paso a paso la dirección opuesta al gradiente? ¿Qué ventajas tiene moverse con esta brújula local en problemas con miles o millones de parámetros?
 
-## Optimización y descenso de gradiente
-
-El concepto de derivada nos conduce de manera natural a la idea de **optimización**, es decir, a encontrar el punto en el que una función alcanza su mínimo o su máximo. En inteligencia artificial lo que nos interesa es, casi siempre, el mínimo: buscamos los valores de los parámetros de un modelo que reducen al máximo el **error** entre lo que el modelo predice y lo que los datos muestran.
-
-La intuición más clara es imaginar la función de error como un **paisaje montañoso**. Cada punto del terreno representa un conjunto de parámetros, y la altura en ese punto representa el error. El objetivo es descender hasta un valle lo más profundo posible, porque allí el error es bajo y el modelo se ajusta bien a los datos.
-
-Aquí es donde la derivada y el gradiente desempeñan su papel. En una dimensión, la derivada te indica si la función sube o baja al mover ligeramente el parámetro, y cuánto cambia. En varias dimensiones, el **gradiente** es la flecha que apunta hacia la subida más pronunciada del terreno. Si seguimos el gradiente subimos la montaña; si caminamos en la dirección contraria, bajamos. Este es el principio del **descenso de gradiente**.
-
-El algoritmo consiste en moverse paso a paso en dirección contraria al gradiente, con un tamaño de paso controlado por la llamada **tasa de aprendizaje**. Un paso demasiado grande puede hacer que “rebotemos” y salgamos del valle; uno demasiado pequeño nos hará avanzar con lentitud. El equilibrio entre ambos es lo que determina la eficacia del entrenamiento.
-
-En el **entrenamiento de modelos de machine learning**, cada iteración calcula el gradiente de la función de error con respecto a todos los parámetros y luego actualiza cada uno en la dirección contraria. Repetido muchas veces, este proceso ajusta la red de manera que el error desciende y el modelo aprende los patrones de los datos.
-
-Esta estrategia es tan poderosa porque, incluso en espacios con miles o millones de dimensiones, el gradiente sigue siendo una brújula local que señala el camino más prometedor. Aunque no garantiza llegar al valle absoluto más profundo (el mínimo global), en la práctica basta con encontrar un valle suficientemente bajo donde el modelo funcione bien.
-
-> **Para reflexionar...**\
-> Si el gradiente solo nos da información local, ¿qué problemas pueden surgir al entrenar un modelo en paisajes de error con muchos valles y colinas? ¿Cómo crees que se pueden diseñar estrategias para evitar quedarse atrapado en un valle poco profundo?
