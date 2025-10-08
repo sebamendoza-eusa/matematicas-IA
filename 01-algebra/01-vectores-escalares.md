@@ -73,7 +73,6 @@ En el contexto de la IA, estas operaciones pueden ser útiles para combinar o aj
 > $$,
 > 
 > donde
-> 
 > $$
 > \mathbf{p}_{\text{ajuste}}
 > $$
@@ -127,9 +126,6 @@ El vector normalizado $\hat{\mathbf{v}}$ sería entonces:
 $$
 \hat{\mathbf{v}} = \frac{\mathbf{v}}{\Vert\mathbf{v}\Vert}
 $$
-
-
-
 
 #### La norma $L_1$: Suma de valores absolutos y escasez
 
@@ -410,7 +406,8 @@ Imaginemos que tenemos un conjunto de puntos en el plano, cada uno representando
 Así, un estudiante que estudia 4 horas y descansa 6 se representaría como el vector:
 
 $$
-\mathbf{v} = \begin{bmatrix}4 \\ 6\end{bmatrix}.
+\mathbf{v} = \begin{bmatrix}4 \\
+6\end{bmatrix}.
 $$
 
 En la **base canónica** (los ejes habituales $x$ e $y$), este vector se describe como “4 hacia la derecha y 6 hacia arriba”.
@@ -418,25 +415,37 @@ En la **base canónica** (los ejes habituales $x$ e $y$), este vector se describ
 Ahora pensemos que queremos analizar la relación entre el **equilibrio** entre estudio y descanso, y la **carga total** de horas. Para ello, definimos una **nueva base** con dos vectores:
 
 $$
-\mathbf{b}_1 = \begin{bmatrix}1 \\ 1\end{bmatrix}, \quad
-\mathbf{b}_2 = \begin{bmatrix}1 \\ -1\end{bmatrix}.
+\mathbf{b}_1 = \begin{bmatrix}1 \\
+1\end{bmatrix}, \quad
+\mathbf{b}_2 = \begin{bmatrix}1 \\
+-1\end{bmatrix}.
 $$
 
 * $\mathbf{b}_1$ representa el eje “total de horas” (suma de estudio y descanso).
 * $\mathbf{b}_2$ representa el eje “diferencia entre estudio y descanso”.
 
-Queremos expresar el vector $\mathbf{v} = \begin{bmatrix}4 \ 6\end{bmatrix}$ en esta nueva base. Buscamos $y_1, y_2$ tales que:
+Queremos expresar el vector 
+
+$$
+\mathbf{v} = \begin{bmatrix}4 \\ 6\end{bmatrix}
+$$ 
+
+en esta nueva base. Buscamos $y_1, y_2$ tales que:
 
 $$
 \mathbf{v} = y_1 \mathbf{b}_1 + y_2 \mathbf{b}_2
-= y_1 \begin{bmatrix}1 \\ 1\end{bmatrix} + y_2 \begin{bmatrix}1 \\ -1\end{bmatrix}.
+= y_1 \begin{bmatrix}1 \\
+1\end{bmatrix} + y_2 \begin{bmatrix}1 \\
+-1\end{bmatrix}.
 $$
 
 Esto equivale a resolver:
 
 $$
-\begin{bmatrix}4 \\ 6\end{bmatrix} =
-\begin{bmatrix} y_1 + y_2 \\ y_1 - y_2 \end{bmatrix}.
+\begin{bmatrix}4 \\
+6\end{bmatrix} =
+\begin{bmatrix} y_1 + y_2 \\
+y_1 - y_2 \end{bmatrix}.
 $$
 
 De donde obtenemos el sistema:
@@ -457,7 +466,8 @@ $$
 En la nueva base, el mismo vector se representa como:
 
 $$
-[\mathbf{v}]_{B'} = \begin{bmatrix}5 \\ -1\end{bmatrix}.
+[\mathbf{v}]_{B'} = \begin{bmatrix}5 \\
+-1\end{bmatrix}.
 $$
 
 Es decir, en la base original, veíamos al estudiante como “4 horas de estudio, 6 horas de descanso”. En la nueva base, lo vemos como “5 horas totales, con un desequilibrio de -1 (más descanso que estudio)”.
