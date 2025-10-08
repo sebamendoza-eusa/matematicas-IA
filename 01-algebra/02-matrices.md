@@ -354,7 +354,7 @@ $$
 > (-1)^2 & 3^2 & 4^2 \\
 > 2^2 & 0^2 & (-2)^2
 > \end{bmatrix}
-> =
+> \=
 > \begin{bmatrix}
 > 1 & 4 & 0 \\
 > 1 & 9 & 16 \\
@@ -373,6 +373,7 @@ $$
 > $$
 > ||\mathbf{W}||_F = \sqrt{39} \approx 6.245
 > $$
+> 
 > El resultado, $6.245$, representa la **magnitud** o "tamaño" de la matriz de pesos $\mathbf{W}$. En un contexto de **regularización** $L_2$, este valor sería el que se penalizaría en la función de coste del modelo para evitar que los pesos crezcan sin control. Un modelo tendería a buscar matrices $\mathbf{W}$ con una Norma de Frobenius pequeña para minimizar el coste total.
 
 En el desarrollo de modelos de **Inteligencia Artificial**, esta norma es indispensable, ya que funciona como un cuantificador directo del error global. Es el estándar para medir la diferencia entre dos matrices. En algoritmos cruciales como la **Factorización de Matrices**, el objetivo de la optimización es lograr que la matriz de error ($\mathbf{E}$), que es la diferencia entre la matriz original y la matriz aproximada, tenga una Norma de Frobenius mínima. Al reducir el valor de esta norma, aseguramos que la aproximación sea la más precisa posible. De igual manera, se utiliza en arquitecturas avanzadas de *Deep Learning* para penalizar el tamaño global de las matrices de pesos en una capa específica, un mecanismo de **regularización** que ayuda a evitar el sobreajuste al controlar la complejidad del modelo.
