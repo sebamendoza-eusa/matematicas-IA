@@ -427,7 +427,8 @@ $$
 Queremos expresar el vector 
 
 $$
-\mathbf{v} = \begin{bmatrix}4 \\ 6\end{bmatrix}
+\mathbf{v} = \begin{bmatrix}4 \\
+6\end{bmatrix}
 $$ 
 
 en esta nueva base. Buscamos $y_1, y_2$ tales que:
