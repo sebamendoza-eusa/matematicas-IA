@@ -36,7 +36,7 @@ Dominar estos conceptos básicos —dominio, codominio, imagen y representación
 
 >**Para reflexionar...**
 >
->**Si defines un clasificador con salida de probabilidad como $f:X\to[0,1]$, ¿qué ventajas te da declarar explícitamente ese codominio frente a decir solo “$f:X\to\mathbb{R}$”? ¿Cómo condiciona esa decisión el diseño de la función de pérdida y la interpretación de los resultados?**
+>**Si defines un clasificador con salida de probabilidad como $f:X\to[0,1]$, ¿qué ventajas te da declarar explícitamente ese codominio frente a decir solo $f:X\to\mathbb{R}$? ¿Cómo condiciona esa decisión el diseño de la función de pérdida y la interpretación de los resultados?**
 
 ## Funciones lineales y modelos simples
 
