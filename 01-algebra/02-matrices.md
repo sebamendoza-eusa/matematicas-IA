@@ -881,7 +881,8 @@ Podemos imaginar que una matriz representa una transformación en el plano: rota
 >$$
 >\mathbf{v}_1 =
 >\begin{bmatrix}
->1 \ 0
+>1 \\
+> 0
 >\end{bmatrix}
 >$$
 >
@@ -910,7 +911,11 @@ Podemos imaginar que una matriz representa una transformación en el plano: rota
 > De manera análoga, para
 >
 >$$
->\mathbf{v}_2 = \begin{bmatrix}0 \ 1\end{bmatrix}
+>\mathbf{v}_2 = 
+>\begin{bmatrix}
+>0 \\
+>1
+>\end{bmatrix}
 >$$
 >
 >$$
