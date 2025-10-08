@@ -66,7 +66,7 @@ $$
 En el contexto de la IA, estas operaciones pueden ser útiles para combinar o ajustar representaciones de datos. Por ejemplo, en el **procesamiento del lenguaje natural (NLP)**, la suma de vectores de palabras (**word embeddings**) puede capturar relaciones semánticas. El vector de la palabra "Rey" más el vector de "Mujer" podría ser similar al vector de "Reina".
 
 > **Ejemplo**:
-> En un sistema de recomendación, si un usuario está representado por un vector de preferencias $\mathbf{u}$ y la película que ve está representada por un vector de características $\mathbf{p}$, un ajuste en la preferencia del usuario después de ver la película podría modelarse como $\mathbf{u}_{\text{nueva}} = \mathbf{u} + \mathbf{p}_{\text{ajuste}}$, donde $\mathbf{p}_{\text{ajuste}}$ es un pequeño vector que modifica las preferencias del usuario.
+> En un sistema de recomendación, si un usuario está representado por un vector de preferencias $\mathbf{u}$ y la película que ve está representada por un vector de características $\mathbf{p}$, un ajuste en la preferencia del usuario después de ver la película podría modelarse como $\mathbf{u_{\text{nueva}}} = \mathbf{u} + \mathbf{p}_{\text{ajuste}}$, donde $\mathbf{p}_{\text{ajuste}}$ es un pequeño vector que modifica las preferencias del usuario.
 
 ### Multiplicación por un escalar
 
