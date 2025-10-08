@@ -66,7 +66,19 @@ $$
 En el contexto de la IA, estas operaciones pueden ser útiles para combinar o ajustar representaciones de datos. Por ejemplo, en el **procesamiento del lenguaje natural (NLP)**, la suma de vectores de palabras (**word embeddings**) puede capturar relaciones semánticas. El vector de la palabra "Rey" más el vector de "Mujer" podría ser similar al vector de "Reina".
 
 > **Ejemplo**:
-> En un sistema de recomendación, si un usuario está representado por un vector de preferencias $\mathbf{u}$ y la película que ve está representada por un vector de características $\mathbf{p}$, un ajuste en la preferencia del usuario después de ver la película podría modelarse como $\mathbf{u_{\text{nueva}}} = \mathbf{u} + \mathbf{p}_{\text{ajuste}}$, donde $\mathbf{p}_{\text{ajuste}}$ es un pequeño vector que modifica las preferencias del usuario.
+> En un sistema de recomendación, si un usuario está representado por un vector de preferencias $\mathbf{u}$ y la película que ve está representada por un vector de características $\mathbf{p}$, un ajuste en la preferencia del usuario después de ver la película podría modelarse como
+> 
+> $$
+> \mathbf{u_{\text{nueva}}} = \mathbf{u} + \mathbf{p}_{\text{ajuste}}
+> $$,
+> 
+> donde
+> 
+> $$
+> \mathbf{p}_{\text{ajuste}}
+> $$
+> 
+> es un pequeño vector que modifica las preferencias del usuario.
 
 ### Multiplicación por un escalar
 
@@ -128,6 +140,7 @@ Se calcula como la suma de los valores absolutos de las componentes del vector:
 $$
 ||\mathbf{v}|| = |v_1| + |v_2| + \dots + |v_n| = \sum_{i=1}^n |v_i|
 $$
+
 En contraste con la Norma $L_2$, la Norma $L_1$ tiene una propiedad fundamental que la hace valiosa en el *machine learning*: promueve la **escasez (*sparsity*)**. Cuando se aplica como término de penalización (**Regularización *Lasso***), la optimización tiende a forzar a que muchos de los pesos del modelo sean exactamente cero. Esto resulta ser un mecanismo efectivo de **selección de características**, ya que los pesos nulos eliminan la contribución de las características irrelevantes.
 
 > **Ejemplo**:
