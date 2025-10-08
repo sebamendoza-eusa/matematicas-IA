@@ -803,13 +803,13 @@ El método de **Gauss-Jordan** es un procedimiento algorítmico que permite calc
 El proceso comienza construyendo una **matriz aumentada** en la que a la derecha de la matriz $\mathbf{A}$ se coloca la matriz identidad $\mathbf{I}$:
 
 $$
-[\mathbf{A} \,|\, \mathbf{I}]
+[\mathbf{A} |\mathbf{I}]
 $$
 
 El objetivo es aplicar transformaciones por filas que reduzcan la parte izquierda hasta convertirla en la matriz identidad. Cuando esto ocurre, la parte derecha se habrá transformado en la matriz inversa $\mathbf{A}^{-1}$:
 
 $$
-[\mathbf{I} \,|\, \mathbf{A}^{-1}]
+[\mathbf{I} | \mathbf{A}^{-1}]
 $$
 
 Este método resulta especialmente útil porque es **mecánico y sistemático**: basta con seguir una secuencia de operaciones sin necesidad de calcular determinantes ni cofactores. Por este motivo es un enfoque mucho más práctico para la enseñanza y la programación de algoritmos.
