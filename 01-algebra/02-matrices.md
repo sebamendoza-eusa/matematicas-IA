@@ -1278,11 +1278,11 @@ $$
 
 Donde cada componente tiene un significado geométrico y funcional directo:
 
-La matriz **$\mathbf{U}$ (Matriz de Rotación de Filas)** es una matriz **ortogonal** que contiene los **vectores singulares izquierdos**. Estos vectores forman una base ortogonal para el espacio de filas de la matriz, capturando las direcciones principales de las *instancias de datos* (ej. los usuarios o documentos).
+La matriz $\mathbf{U}$ (Matriz de Rotación de Filas) es una matriz **ortogonal** que contiene los **vectores singulares izquierdos**. Estos vectores forman una base ortogonal para el espacio de filas de la matriz, capturando las direcciones principales de las *instancias de datos* (ej. los usuarios o documentos).
 
-La matriz **$\mathbf{V}^T$ (Matriz de Rotación de Columnas)**es  una matriz **ortogonal** que contiene los **vectores singulares derechos**. Estos vectores forman **una base ortogonal** para el espacio de columnas de la matriz, capturando las direcciones principales de las *características*.
+La matriz $\mathbf{V}^T$ (Matriz de Rotación de Columnas) es  una matriz **ortogonal** que contiene los **vectores singulares derechos**. Estos vectores forman **una base ortogonal** para el espacio de columnas de la matriz, capturando las direcciones principales de las *características*.
 
-Por último, la matriz **$\mathbf{\Sigma}$ (Matriz Diagonal de Escalamiento)** es una matriz **diagonal** que contiene los **valores singulares** ($\sigma_i$), ordenados de mayor a menor. Estos valores son cruciales, ya que indican la **importancia o la varianza** que explica cada par de direcciones.
+Por último, la matriz $\mathbf{\Sigma}$ (Matriz Diagonal de Escalamiento) es una matriz **diagonal** que contiene los **valores singulares** ($\sigma_i$), ordenados de mayor a menor. Estos valores son cruciales, ya que indican la **importancia o la varianza** que explica cada par de direcciones.
 
 ### Aplicación en la IA: Descubrimiento de factores latentes
 
