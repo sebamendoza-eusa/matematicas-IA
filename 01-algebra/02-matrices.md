@@ -21,13 +21,23 @@ Las operaciones con matrices nos permiten transformar y combinar datos a gran es
 **Suma y Resta**: La suma y resta de matrices se realiza elemento a elemento, de manera similar a los vectores. Para que la operación sea posible, ambas matrices deben tener las mismas dimensiones.
 
 $$
-\mathbf{A} + \mathbf{B} = \begin{bmatrix} a_{11}+b_{11} & \dots & a_{1n}+b_{1n} \\ \vdots & \ddots & \vdots \\ a_{m1}+b_{m1} & \dots & a_{mn}+b_{mn} \end{bmatrix}
+\mathbf{A} + \mathbf{B} = 
+\begin{bmatrix}
+a_{11}+b_{11} & \dots & a_{1n}+b_{1n} \\
+\vdots & \ddots & \vdots \\
+a_{m1}+b_{m1} & \dots & a_{mn}+b_{mn} 
+\end{bmatrix}
 $$
 
 **Multiplicación por un Escalar**: Multiplicar una matriz por un escalar implica multiplicar cada elemento de la matriz por ese escalar. Esta operación es útil para escalar o normalizar todo un conjunto de datos.
 
 $$
-c\mathbf{A} = \begin{bmatrix} ca_{11} & \dots & ca_{1n} \\ \vdots & \ddots & \vdots \\ ca_{m1} & \dots & ca_{mn} \end{bmatrix}
+c\mathbf{A} =
+\begin{bmatrix}
+ca_{11} & \dots & ca_{1n} \\
+\vdots & \ddots & \vdots \\
+ca_{m1} & \dots & ca_{mn} 
+\end{bmatrix}
 $$
 
 **Multiplicación de Matrices**: La multiplicación de matrices es la operación más compleja y, al mismo tiempo, una de las más cruciales en el **Deep Learning**. El resultado de multiplicar una matriz $\mathbf{A}$ de $m \times n$ por una matriz $\mathbf{B}$ de $n \times p$ es una nueva matriz $\mathbf{C}$ de $m \times p$. **La condición es que el número de columnas de la primera matriz ($n$) debe ser igual al número de filas de la segunda matriz ($n$).**
@@ -139,7 +149,12 @@ Existen matrices con propiedades particulares que son de gran importancia en la 
 Es una matriz cuadrada (mismo número de filas y columnas) con unos en la diagonal principal y ceros en el resto. Es el equivalente matricial del número 1, ya que multiplicar cualquier matriz por la matriz de identidad no la altera. Por ejemplo, una matriz identidad de dimensión tres sería:
 
 $$
-\mathbf{I} = \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix}
+\mathbf{I} = 
+\begin{bmatrix}
+1 & 0 & 0 \\ 
+0 & 1 & 0 \\ 
+0 & 0 & 1 
+\end{bmatrix}
 $$
 
 ### La matriz nula
@@ -149,7 +164,8 @@ La **matriz nula** es aquella cuyos elementos son todos iguales a cero. Se denot
 Ejemplo en dimensión $3 \times 3$:
 
 $$
-\mathbf{0} = \begin{bmatrix}
+\mathbf{0} = 
+\begin{bmatrix}
 0 & 0 & 0 \\
 0 & 0 & 0 \\
 0 & 0 & 0
@@ -165,7 +181,8 @@ En IA, esta matriz aparece de manera natural al inicializar parámetros o al rep
 Una **matriz diagonal** es aquella en la que todos los elementos fuera de la diagonal principal son cero. Formalmente:
 
 $$
-\mathbf{D} = \begin{bmatrix}
+\mathbf{D} = 
+\begin{bmatrix}
 d_{11} & 0 & 0 \\
 0 & d_{22} & 0 \\
 0 & 0 & d_{33}
@@ -210,9 +227,11 @@ En IA, aparecen de forma recurrente en estadística y aprendizaje automático, y
 Dentro de la tipología de matrices cuadradas (aquellas en las que numero de filas y columnas coinciden), las **matrices ortogonales** ocupan un lugar de fundamental importancia por su profundo significado geométrico y su estabilidad en el cálculo numérico. Una matriz se define como ortogonal, denotada usualmente como $\mathbf{Q}$, si sus **vectores columna** (y, por extensión, sus vectores fila) constituyen un conjunto **ortonormal**. Esto significa que cada vector tiene una **Norma $L_2$ unitaria** y es **perpendicular** a todos los demás vectores del conjunto.
 
 Esta condición de ortonormalidad se cristaliza en una propiedad algebraica excepcionalmente elegante: la **transpuesta de una matriz ortogonal es igual a su inversa**. Es decir, $\mathbf{Q}^{-1} = \mathbf{Q}^T$. Esta igualdad simplifica enormemente cualquier cálculo que involucre la inversión, ya que nos permite obtener la inversa de la matriz simplemente transponiéndola. El resultado directo de esta relación es la identidad definitoria de la matriz ortogonal: **cuando la matriz se multiplica por su transpuesta, el resultado es la matriz identidad,**
+
 $$
 \mathbf{Q}\mathbf{Q}^T = \mathbf{I}
 $$
+
 El verdadero valor de estas matrices en la **Inteligencia Artificial** radica en que representan **transformaciones que preservan la geometría del espacio** de características. Al multiplicar un vector de datos por una matriz ortogonal, su **longitud (Norma $L_2$) y los ángulos** entre él y otros vectores permanecen inalterados. Una matriz ortogonal solo puede ejecutar **rotaciones o reflexiones** del espacio, sin distorsionarlo mediante estiramientos o compresiones.
 
 Esta invariancia geométrica tiene implicaciones cruciales en el análisis de datos. Por ejemplo, en el **Análisis de Componentes Principales (PCA)**, la matriz de autovectores que define los nuevos ejes de coordenadas es, por construcción, ortogonal. Esto garantiza que la nueva base a la que proyectamos los datos sea una simple rotación de la base original, sin alterar las distancias relativas entre los puntos de datos. Además, al ser numéricamente estables, estas matrices son la base de descomposiciones y factorizaciones que veremos en un apartado posterior, como la **QR** y la **SVD**, ofreciendo robustez en la resolución precisa de sistemas lineales con grandes volúmenes de datos. Incluso en arquitecturas de *Deep Learning*, especialmente en el diseño de Redes Neuronales Recurrentes, la inicialización del algoritmo con matrices ortogonales es una técnica utilizada para mitigar el problema del ***desvanecimiento del gradiente***, asegurando que la magnitud de la señal se mantenga estable a lo largo de las capas temporales.
@@ -221,7 +240,8 @@ Esta invariancia geométrica tiene implicaciones cruciales en el análisis de da
 > Consideremos la matriz de **rotación** en el plano $2 \times 2$ que gira un vector $90^{\circ}$ en sentido antihorario:
 >
 > $$
-> \mathbf{Q} = \begin{bmatrix}
+> \mathbf{Q} = 
+> \begin{bmatrix}
 > 0 & -1 \\
 > 1 & 0
 > \end{bmatrix}
@@ -347,6 +367,7 @@ $$
 > $$
 > \sum_{i=1}^3 \sum_{j=1}^3 w_{ij}^2 = 1 + 4 + 0 + 1 + 9 + 16 + 4 + 0 + 4 = 39
 > $$
+> 
 > Finalmente, calculamos la Norma de Frobenius tomando la raíz cuadrada de la suma:
 >
 > $$
@@ -406,8 +427,6 @@ Esta relación es muy útil en la práctica, porque el rango nos ofrece una medi
 En el análisis de datos, este concepto conecta directamente con la **independencia de las características**. Las columnas de una matriz de datos representan las variables o rasgos que describen a cada instancia. Si alguna columna puede deducirse de otras (por ejemplo, si “tamaño en pies cuadrados” es siempre proporcional a “tamaño en metros cuadrados”), el determinante de la matriz que las contiene será cero.
 
 Esta situación refleja la conocida **multicolinealidad**, un problema serio en algoritmos de aprendizaje automático, porque confunde al modelo e impide determinar la contribución individual de cada característica. El resultado suele ser un rendimiento inestable y una interpretación poco fiable.
-
-
 
 ### Ejemplo sencillo
 
@@ -594,9 +613,6 @@ $$
 
 siempre que $|\mathbf{A}| \neq 0$.
 
-
-
-
 #### Ejemplo: cálculo de la inversa de una matriz $3 \times 3$ usando la adjunta
 
 Consideremos la matriz
@@ -722,8 +738,6 @@ $$
 \end{bmatrix}.
 $$
 
-
-
 **3. Matriz adjunta**
 
 La adjunta se obtiene trasponer la matriz de cofactores:
@@ -736,8 +750,6 @@ $$
 -5 & 4 & 1
 \end{bmatrix}.
 $$
-
-
 
 **4. Inversa de la matriz**
 
@@ -952,8 +964,6 @@ Por ejemplo, imagina el caso concreto de un modelo dinámico que describe cómo 
 - Si todos los autovalores están entre 0 y 1, el sistema tiende a estabilizarse (por ejemplo, la temperatura se equilibra).
 - Si algún autovalor es mayor que 1, el sistema crece sin control (una epidemia que se expande rápidamente).
 - Si los autovalores son negativos o complejos, el sistema puede mostrar oscilaciones o comportamientos más imprevisibles.
-
-
 
 >**Para reflexionar...**\
 > ¿Por qué es tan útil poder identificar direcciones privilegiadas en un conjunto de datos o en la dinámica de un sistema? ¿Cómo nos ayuda esta visión a simplificar problemas que, a primera vista, parecen demasiado complejos\
@@ -1255,6 +1265,7 @@ La SVD es aplicable a **cualquier matriz** $\mathbf{A}$ ($m \times n$) y proporc
 $$
 \mathbf{A} = \mathbf{U} \mathbf{\Sigma} \mathbf{V}^T
 $$
+
 Donde cada componente tiene un significado geométrico y funcional directo:
 
 La matriz **$\mathbf{U}$ (Matriz de Rotación de Filas)** es una matriz **ortogonal** que contiene los **vectores singulares izquierdos**. Estos vectores forman una base ortogonal para el espacio de filas de la matriz, capturando las direcciones principales de las *instancias de datos* (ej. los usuarios o documentos).
