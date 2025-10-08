@@ -25,7 +25,7 @@ En **regresión**, se toma típicamente $Y=\mathbb{R}$ y la imagen son valores r
 En **clasificación binaria**, podemos definir $Y=\{0,1\}$ y la función $f$ devuelve una etiqueta, o bien $Y=[0,1]$ si $f$ devuelve una **probabilidad**; en el caso multiclase, es común trabajar con $Y=\mathbb{R}^K$ antes de la capa *softmax* (logits) o con el **símplex de probabilidad**
 
 $$
-\Delta^{K-1}={p\in\mathbb{R}^K:p_i\ge 0,\ \sum_{i=1}^K p_i=1\\}
+\Delta^{K-1}=\{p\in\mathbb{R}^K:p_i\ge 0,\ \sum_{i=1}^K p_i=1\}
 $$
 
 cuando la salida ya son probabilidades normalizadas.
