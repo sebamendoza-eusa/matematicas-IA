@@ -1057,7 +1057,8 @@ Resolver esta ecuación nos da los posibles valores de $\lambda$, que son los **
 > Esto implica que $x = -y$, así que un autovector es
 >
 > $$
-> \mathbf{v}_1 = \begin{bmatrix}1 \\ -1\end{bmatrix}.
+> \mathbf{v}_1 = \begin{bmatrix}1 \\
+>  -1\end{bmatrix}.
 > $$
 >
 > Para $\lambda_2 = 3$, hacemos lo mismo:
@@ -1081,7 +1082,8 @@ Resolver esta ecuación nos da los posibles valores de $\lambda$, que son los **
 > Ahora se cumple $x = y$, y un autovector correspondiente es
 >
 > $$
-> \mathbf{v}_2 = \begin{bmatrix}1 \\ 1\end{bmatrix}.
+> \mathbf{v}_2 = \begin{bmatrix}1 \\
+>  1\end{bmatrix}.
 > $$
 >
 > 
@@ -1193,7 +1195,8 @@ Aunque no siempre se presenta explícitamente con el nombre de diagonalización,
 > Esto implica $x = -y$, por lo que un autovector es
 >
 > $$
-> \mathbf{v}_1 = \begin{bmatrix} 1 \\ -1 \end{bmatrix}.
+> \mathbf{v}_1 = \begin{bmatrix} 1 \\
+>  -1 \end{bmatrix}.
 > $$
 >
 > Para $\lambda_2 = 3$:
@@ -1214,7 +1217,8 @@ Aunque no siempre se presenta explícitamente con el nombre de diagonalización,
 > Esto implica $x = y$, por lo que un autovector es
 >
 > $$
-> \mathbf{v}_2 = \begin{bmatrix} 1 \\ 1 \end{bmatrix}.
+> \mathbf{v}_2 = \begin{bmatrix} 1 \\
+>  1 \end{bmatrix}.
 > $$
 >
 > **Paso 3: construcción de $\mathbf{P}$ y $\mathbf{D}$**
